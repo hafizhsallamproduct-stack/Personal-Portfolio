@@ -1,0 +1,58 @@
+/* --- Responsive (tablet) --- */
+@media (max-width: 1024px) {
+  .nav { padding: 20px 40px; }
+  .hero { padding: 40px 40px 60px; }
+  .hero-name { font-size: 56px; line-height: 60px; }
+  .hero-subtitle { font-size: 18px; line-height: 28px; }
+  .divider { padding: 0 40px; }
+  .section { flex-direction: column; padding: 60px 40px; gap: 32px; }
+  .section--header-only { padding-bottom: 20px; }
+  .section-label-col { width: 100%; }
+  .experience-cards { padding: 0 40px; }
+  .experience-card { flex-direction: column; gap: 24px; }
+  .experience-card-company { width: 100%; }
+  .work-cards { grid-template-columns: repeat(2, 1fr); padding: 0 40px 60px; }
+  .work-card, .work-card--large { grid-column: span 1; }
+  .cta-section { padding: 60px 40px; }
+  .cta-heading { font-size: 36px; line-height: 44px; }
+  .footer { padding: 24px 40px; }
+}
+
+/* --- Responsive (mobile) --- */
+@media (max-width: 640px) {
+  .nav { padding: 16px 20px; position: relative; }
+  .hamburger-menu { display: block; }
+  .nav-links { display: none; }
+  .nav-links--open { 
+    display: flex; 
+    flex-direction: column; 
+    position: absolute; 
+    top: 100%; 
+    left: 0; 
+    right: 0; 
+    background-color: var(--bg-page); 
+    padding: 24px; 
+    gap: 16px; 
+    border-bottom: 1px solid var(--divider); 
+  }
+  .hero { padding: 30px 20px 40px; }
+  .hero-name { font-size: 40px; line-height: 44px; }
+  .hero-subtitle { font-size: 18px; line-height: 28px; }
+  .hero-buttons { flex-direction: column; width: 100%; }
+  .hero-buttons .btn-primary-lg,
+  .hero-buttons .btn-secondary { width: 100%; justify-content: center; }
+  .divider { padding: 0 20px; }
+  .section { padding: 40px 20px; gap: 24px; }
+  .section--header-only { padding-bottom: 12px; }
+  .about-stats { gap: 24px; }
+  .experience-cards { padding: 0 20px; }
+  .experience-card { padding: 24px; }
+  .experience-role { flex-direction: column; gap: 8px; }
+  .skills-row { gap: 8px; }
+  .skill-tag, .tool-tag { padding: 8px 16px; font-size: 14px; }
+  .work-cards { grid-template-columns: 1fr; padding: 0 20px 40px; }
+  .work-card, .work-card--large { grid-column: span 1; }
+  .cta-section { padding: 40px 20px; }
+  .cta-heading { font-size: 28px; line-height: 36px; }
+  .footer { flex-direction: column; gap: 16px; padding: 24px 20px; text-align: center; }
+}
