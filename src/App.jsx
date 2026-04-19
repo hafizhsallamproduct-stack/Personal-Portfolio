@@ -57,12 +57,16 @@ function IndexPage({ theme, toggleTheme }) {
 }
 
 function App() {
-  const [theme, setTheme] = useState('dark');
+  const [theme, setTheme] = useState(() => {
+    // Initial state from localStorage or default to light
+    return localStorage.getItem('theme') || 'light';
+  });
   const location = useLocation();
   const backgroundLocation = location.state?.backgroundLocation;
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
   }, [theme]);
 
   const toggleTheme = () => {

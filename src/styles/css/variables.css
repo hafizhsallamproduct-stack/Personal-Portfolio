@@ -3,38 +3,6 @@
    ============================================ */
 
 :root {
-  --bg-page: #0B0B0B;
-  --bg-card: #111111;
-  --bg-card-hover: #141414;
-  --bg-placeholder: #141414;
-  --border: #1E1E1E;
-  --border-hover: #3A3A3A;
-  --divider: #1A1A1A;
-  --text-primary: #F2F2F2;
-  --text-secondary: #CCCCCC;
-  --text-muted: #A0A0A0;
-  --text-faint: #8A8A8A;
-  --text-body: #CCCCCC;
-  --text-footer: #787878;
-  --accent: #52D073;
-  --accent-bright: #52D073;
-  --accent-border: rgba(82, 208, 115, 0.25);
-  --btn-secondary-bg: #2A2A2A;
-  --btn-secondary-border: #3A3A3A;
-  --btn-secondary-hover: #333333;
-  --tag-bg: #111111;
-  --tag-border: #2A2A2A;
-  --tag-text: #E0E0E0;
-  --tag-tool-text: #A0A0A0;
-  --nav-link: #9A9A9A;
-  --logo-bg: #52D073;
-  --logo-text: #090909;
-  --badge-bg: #111111;
-  --badge-border: #2A2A2A;
-  --bullet: #555;
-}
-
-[data-theme="light"] {
   --bg-page: #FAF9F7;
   --bg-card: #FFFFFF;
   --bg-card-hover: #F5F4F2;
@@ -64,4 +32,36 @@
   --badge-bg: #F0EFED;
   --badge-border: #E8E5E0;
   --bullet: #C4BFB6;
+}
+
+[data-theme="dark"] {
+  --bg-page: #0B0B0B;
+  --bg-card: #111111;
+  --bg-card-hover: #141414;
+  --bg-placeholder: #141414;
+  --border: #1E1E1E;
+  --border-hover: #3A3A3A;
+  --divider: #1A1A1A;
+  --text-primary: #F2F2F2;
+  --text-secondary: #CCCCCC;
+  --text-muted: #A0A0A0;
+  --text-faint: #8A8A8A;
+  --text-body: #CCCCCC;
+  --text-footer: #787878;
+  --accent: #52D073;
+  --accent-bright: #52D073;
+  --accent-border: rgba(82, 208, 115, 0.25);
+  --btn-secondary-bg: #2A2A2A;
+  --btn-secondary-border: #3A3A3A;
+  --btn-secondary-hover: #333333;
+  --tag-bg: #111111;
+  --tag-border: #2A2A2A;
+  --tag-text: #E0E0E0;
+  --tag-tool-text: #A0A0A0;
+  --nav-link: #9A9A9A;
+  --logo-bg: #52D073;
+  --logo-text: #090909;
+  --badge-bg: #111111;
+  --badge-border: #2A2A2A;
+  --bullet: #555;
 }

@@ -26,6 +26,34 @@ const About = () => {
             <div className="stat-label">Industries</div>
           </div>
         </div>
+
+        <div className="about-details">
+          <div className="about-details-group about-details-group--inline">
+            <span className="about-details-icon">🇮🇩</span>
+            <p className="about-details-text">Indonesia</p>
+          </div>
+          <div className="about-details-group">
+            <h3 className="about-details-title"><i className="ph ph-translate"></i> Languages</h3>
+            <div className="languages-grid">
+              <div className="language-item">
+                <span className="language-name">English</span>
+                <span className="language-proficiency">Professional working proficiency</span>
+              </div>
+              <div className="language-item">
+                <span className="language-name">Indonesia</span>
+                <span className="language-proficiency">Professional working proficiency</span>
+              </div>
+              <div className="language-item">
+                <span className="language-name">Malay</span>
+                <span className="language-proficiency">Professional working proficiency</span>
+              </div>
+              <div className="language-item">
+                <span className="language-name">Minangkabau</span>
+                <span className="language-proficiency">Native or bilingual proficiency</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

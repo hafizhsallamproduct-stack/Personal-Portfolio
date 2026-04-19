@@ -30,10 +30,10 @@ const ExperienceRole = ({ role }) => {
         onClick={() => setIsExpanded(!isExpanded)}
         aria-expanded={isExpanded}
         aria-label={`${isExpanded ? 'Collapse' : 'Expand'} ${role.title}`}
-        style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px', background: 'none', border: 'none', color: 'inherit', font: 'inherit', padding: 0 }}
+        style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px', background: 'none', border: 'none', padding: 0 }}
       >
         <span className="experience-role-date-text">{role.date}</span>
-        <i className={`ph ${isExpanded ? 'ph-caret-up' : 'ph-caret-down'}`} style={{ color: 'var(--text-muted)' }}></i>
+        <i className={`ph ${isExpanded ? 'ph-caret-up' : 'ph-caret-down'}`} style={{ color: 'var(--text-secondary)' }}></i>
       </button>
     </div>
   );

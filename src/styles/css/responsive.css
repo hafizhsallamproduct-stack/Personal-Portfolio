@@ -68,13 +68,15 @@
   #about .section-label-col .about-photo { order: -1; }
   #about .section-label-col .section-tag { order: 0; }
   #about .section-label-col .section-title { order: 1; }
+  .about-details { padding-top: 24px; }
+  .languages-grid { grid-template-columns: 1fr; gap: 16px; }
   .education-card { padding: 16px; gap: 16px; flex-direction: row; align-items: flex-start; }
   .education-icon { width: 40px; }
   .experience-card { padding: 16px; }
   .experience-cards { padding: 0 16px 32px; }
   .experience-role { flex-direction: row; justify-content: space-between; align-items: flex-start; gap: 8px; }
   .experience-role-info { gap: 2px; }
-  .experience-role-date-mobile { display: block; font-size: 14px; color: var(--text-faint); }
+  .experience-role-date-mobile { display: block; font-size: 14px; color: var(--text-secondary); }
   .experience-role-date-text { display: none; }
   .work-cards { grid-template-columns: 1fr; padding: 0 16px 32px; }
   .work-card-body { padding: 16px; height: auto; }

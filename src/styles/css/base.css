@@ -5,6 +5,12 @@
   box-sizing: border-box;
 }
 
+button, input, textarea, select {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -15,7 +21,6 @@ body {
   color: var(--text-primary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  transition: background-color 0.3s, color 0.3s;
 }
 
 a {
