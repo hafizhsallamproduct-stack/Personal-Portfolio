@@ -22,13 +22,15 @@
   background-color: var(--bg-page);
   transform: translateY(-100%);
   opacity: 0;
-  transition: transform 0.25s ease, opacity 0.2s ease;
+  visibility: hidden;
+  transition: transform 0.25s ease, opacity 0.2s ease, visibility 0.2s ease;
   pointer-events: none;
 }
 
 .nav-fixed.visible {
   transform: translateY(0);
   opacity: 1;
+  visibility: visible;
   pointer-events: auto;
 }
 

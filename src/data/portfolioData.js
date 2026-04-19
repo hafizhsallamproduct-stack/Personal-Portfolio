@@ -115,26 +115,31 @@ export const workData = [
     title: "Wego Flight Search Redesign",
     description: "Led the end-to-end redesign of Wego's flight search experience, improving usability and conversion.",
     link: "#",
+    slug: "wego-flight-search-redesign",
     isLarge: true
   },
   {
     title: "Wego Design System",
     description: "Built and maintained a scalable design system ensuring consistency in components and tokens.",
+    slug: "wego-design-system",
     link: "#"
   },
   {
     title: "AI-Assisted Design Workflow",
     description: "Exploring how AI tools can support the design process and improve efficiency.",
+    slug: "ai-assisted-design-workflow",
     link: "#"
   },
   {
     title: "Checkout Flow Optimization",
     description: "Contributed to improving the booking and checkout experience, reducing drop-off rates.",
+    slug: "checkout-flow-optimization",
     link: "#"
   },
   {
     title: "Mobile App Experience",
     description: "Designed key mobile flows for travel booking across iOS and Android platforms.",
+    slug: "mobile-app-experience",
     link: "#"
   }
 ];

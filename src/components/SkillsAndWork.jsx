@@ -1,20 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { workData } from '../data/portfolioData';
-import PortfolioModal from './PortfolioModal';
+import { Link, useLocation } from 'react-router-dom';
 
 const SkillsAndWork = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedProject, setSelectedProject] = useState(null);
-
-  const openProject = (e, work) => {
-    e.preventDefault();
-    setSelectedProject(work);
-    setIsModalOpen(true);
-  };
+  const location = useLocation();
 
   return (
     <>
-      <section id="skills" className="section">
+      <section id="skills" className="section" tabIndex={0}>
         <div className="section-label-col">
           <span className="section-tag"><i className="ph ph-magic-wand"></i> Skill & Work</span>
           <h2 className="section-title">What I do</h2>
@@ -42,22 +35,21 @@ const SkillsAndWork = () => {
 
       <div className="work-cards" id="work-cards-container">
         {workData.map((work, idx) => (
-          <a href={work.link} className={`work-card ${work.isLarge ? 'work-card--large' : ''}`} key={idx} onClick={(e) => openProject(e, work)}>
+          <Link 
+            to={`/portfolio/${work.slug}`} 
+            state={{ backgroundLocation: location }} 
+            className={`work-card ${work.isLarge ? 'work-card--large' : ''}`} 
+            key={idx}
+          >
             <div className="work-card-body">
               <h3 className="work-card-title">{work.title}</h3>
               <p className="work-card-description">{work.description}</p>
               <span className="work-card-link">View project <i className="ph ph-arrow-right"></i></span>
             </div>
             <div className="work-card-placeholder"></div>
-          </a>
+          </Link>
         ))}
       </div>
-
-      <PortfolioModal 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
-        selectedProject={selectedProject} 
-      />
     </>
   );
 };

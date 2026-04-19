@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -6,18 +7,9 @@ import Experience from './components/Experience';
 import Education from './components/Education';
 import SkillsAndWork from './components/SkillsAndWork';
 import Footer from './components/Footer';
+import PortfolioModal from './components/PortfolioModal';
 
-function App() {
-  const [theme, setTheme] = useState('dark');
-
-  useEffect(() => {
-    document.documentElement.setAttribute('data-theme', theme);
-  }, [theme]);
-
-  const toggleTheme = () => {
-    setTheme(prev => prev === 'light' ? 'dark' : 'light');
-  };
-
+function IndexPage({ theme, toggleTheme }) {
   return (
     <>
       <Navbar theme={theme} />
@@ -60,6 +52,35 @@ function App() {
       <div className="divider"><div className="divider-line"></div></div>
       
       <Footer theme={theme} toggleTheme={toggleTheme} />
+    </>
+  );
+}
+
+function App() {
+  const [theme, setTheme] = useState('dark');
+  const location = useLocation();
+  const backgroundLocation = location.state?.backgroundLocation;
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme(prev => prev === 'light' ? 'dark' : 'light');
+  };
+
+  return (
+    <>
+      <Routes location={backgroundLocation || location}>
+        <Route path="/" element={<IndexPage theme={theme} toggleTheme={toggleTheme} />} />
+        <Route path="/portfolio/:slug" element={<PortfolioModal isStandalone />} />
+      </Routes>
+
+      {backgroundLocation && (
+        <Routes>
+          <Route path="/portfolio/:slug" element={<PortfolioModal />} />
+        </Routes>
+      )}
     </>
   );
 }

@@ -24,14 +24,16 @@ const ExperienceRole = ({ role }) => {
           </>
         )}
       </div>
-      <div 
-        className="experience-role-date" 
-        onClick={() => setIsExpanded(!isExpanded)} 
-        style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px' }}
+      <button
+        className="experience-role-date"
+        onClick={() => setIsExpanded(!isExpanded)}
+        aria-expanded={isExpanded}
+        aria-label={`${isExpanded ? 'Collapse' : 'Expand'} ${role.title}`}
+        style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px', background: 'none', border: 'none', color: 'inherit', font: 'inherit', padding: 0 }}
       >
         <span>{role.date}</span>
         <i className={`ph ${isExpanded ? 'ph-caret-up' : 'ph-caret-down'}`} style={{ color: 'var(--text-muted)' }}></i>
-      </div>
+      </button>
     </div>
   );
 };
@@ -55,7 +57,7 @@ const ExperienceCard = ({ exp }) => {
 const Experience = () => {
   return (
     <>
-      <section id="experience" className="section section--header-only">
+      <section id="experience" className="section section--header-only" tabIndex={0}>
         <div className="section-label-col">
           <span className="section-tag"><i className="ph ph-briefcase"></i> Experience</span>
           <h2 className="section-title">Where I've worked</h2>

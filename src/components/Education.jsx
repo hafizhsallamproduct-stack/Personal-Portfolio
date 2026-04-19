@@ -2,7 +2,7 @@ import React from 'react';
 
 const Education = () => {
   return (
-    <section id="education" className="section">
+    <section id="education" className="section" tabIndex={0}>
       <div className="section-label-col">
         <span className="section-tag"><i className="ph ph-graduation-cap"></i> Education</span>
         <h2 className="section-title">Background</h2>
