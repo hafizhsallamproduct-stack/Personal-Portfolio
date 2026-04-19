@@ -4,6 +4,7 @@
   .hero { padding: 40px 40px 60px; }
   .hero-name { font-size: 56px; line-height: 60px; }
   .hero-subtitle { font-size: 18px; line-height: 28px; }
+  .nav-mobile-cta { display: none; }
   .divider { padding: 0 40px; }
   .section { flex-direction: column; padding: 60px 40px; gap: 32px; }
   .section--header-only { padding-bottom: 20px; }
@@ -15,12 +16,17 @@
   .work-card, .work-card--large { grid-column: span 1; }
   .cta-section { padding: 60px 40px; }
   .cta-heading { font-size: 36px; line-height: 44px; }
-  .footer { padding: 24px 40px; }
+  .footer { padding: 32px 16px; }
 }
 
 /* --- Responsive (mobile) --- */
 @media (max-width: 640px) {
-  .nav { padding: 16px 20px; position: relative; }
+  .nav { padding: 16px 16px; position: relative; }
+  .nav-logo-text { display: none; }
+  .nav-controls-mobile { display: flex; align-items: center; gap: 8px; }
+  .nav-mobile-cta { display: none; padding: 6px 12px; font-size: 12px; }
+  .nav-mobile-cta.visible { display: inline-flex; }
+  .nav-link-cta-desktop { display: none; }
   .hamburger-menu { display: block; }
   .nav-links { display: none; }
   .nav-links--open { 
@@ -35,24 +41,45 @@
     gap: 16px; 
     border-bottom: 1px solid var(--divider); 
   }
-  .hero { padding: 30px 20px 40px; }
+  .hero { padding: 32px 16px; }
+  .hero-mobile-photo {
+    display: block;
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 8px;
+  }
   .hero-name { font-size: 40px; line-height: 44px; }
   .hero-subtitle { font-size: 18px; line-height: 28px; }
-  .hero-buttons { flex-direction: column; width: 100%; }
+  .hero-buttons { flex-direction: column; width: fit-content; }
   .hero-buttons .btn-primary-lg,
-  .hero-buttons .btn-secondary { width: 100%; justify-content: center; }
-  .divider { padding: 0 20px; }
-  .section { padding: 40px 20px; gap: 24px; }
-  .section--header-only { padding-bottom: 12px; }
+  .hero-buttons .btn-secondary { width: 300px; justify-content: center; }
+  .divider { padding: 0 16px; margin: 0; }
+  .divider--spaced { padding: 0 16px; margin: 0; }
+  .divider--icons { margin: 0; }
+  .section { padding: 32px 16px; gap: 24px; }
+  .section--header-only { padding-bottom: 32px; }
+  .section-label-col { text-align: center; align-items: center; }
+  .section-tag { justify-content: center; }
   .about-stats { gap: 24px; }
-  .experience-cards { padding: 0 20px; }
-  .experience-card { padding: 24px; }
-  .experience-role { flex-direction: column; gap: 8px; }
-  .skills-row { gap: 8px; }
-  .skill-tag, .tool-tag { padding: 8px 16px; font-size: 14px; }
-  .work-cards { grid-template-columns: 1fr; padding: 0 20px 40px; }
+  .about-photo { display: none; }
+  #about .section-label-col { display: flex; flex-direction: column; }
+  #about .section-label-col .about-photo { order: -1; }
+  #about .section-label-col .section-tag { order: 0; }
+  #about .section-label-col .section-title { order: 1; }
+  .education-card { padding: 16px; gap: 16px; flex-direction: row; align-items: flex-start; }
+  .education-icon { width: 40px; }
+  .experience-card { padding: 16px; }
+  .experience-cards { padding: 0 16px 32px; }
+  .experience-role { flex-direction: row; justify-content: space-between; align-items: flex-start; gap: 8px; }
+  .experience-role-info { gap: 2px; }
+  .experience-role-date-mobile { display: block; font-size: 14px; color: var(--text-faint); }
+  .experience-role-date-text { display: none; }
+  .work-cards { grid-template-columns: 1fr; padding: 0 16px 32px; }
+  .work-card-body { padding: 16px; height: auto; }
   .work-card, .work-card--large { grid-column: span 1; }
-  .cta-section { padding: 40px 20px; }
+  .cta-section { padding: 32px 16px; }
   .cta-heading { font-size: 28px; line-height: 36px; }
-  .footer { flex-direction: column; gap: 16px; padding: 24px 20px; text-align: center; }
+  .footer { flex-direction: column; gap: 16px; padding: 32px 16px; text-align: center; }
 }

@@ -10,6 +10,7 @@ const ExperienceRole = ({ role }) => {
       <div className="experience-role-info">
         <div className="experience-role-title">{role.title}</div>
         <div className="experience-role-location">{role.location}</div>
+        <div className="experience-role-date-mobile">{role.date}</div>
         {isExpanded && (
           <>
             {role.details ? (
@@ -31,7 +32,7 @@ const ExperienceRole = ({ role }) => {
         aria-label={`${isExpanded ? 'Collapse' : 'Expand'} ${role.title}`}
         style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px', background: 'none', border: 'none', color: 'inherit', font: 'inherit', padding: 0 }}
       >
-        <span>{role.date}</span>
+        <span className="experience-role-date-text">{role.date}</span>
         <i className={`ph ${isExpanded ? 'ph-caret-up' : 'ph-caret-down'}`} style={{ color: 'var(--text-muted)' }}></i>
       </button>
     </div>

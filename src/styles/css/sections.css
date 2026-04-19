@@ -61,6 +61,10 @@
   line-height: 20px;
 }
 
+.nav-mobile-cta {
+  display: none;
+}
+
 .nav-links {
   display: flex;
   align-items: center;
@@ -159,6 +163,10 @@
   text-align: center;
   color: var(--text-secondary);
   max-width: 720px;
+}
+
+.hero-mobile-photo {
+  display: none;
 }
 
 .hero-buttons {
@@ -286,6 +294,10 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
+}
+
+.experience-role-date-mobile {
+  display: none;
 }
 
 .experience-role-title {
