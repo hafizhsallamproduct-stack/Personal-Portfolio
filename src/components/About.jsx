@@ -1,10 +1,11 @@
 import React from 'react';
+import { User, Translate } from './icons';
 
 const About = () => {
   return (
     <section id="about" className="section" tabIndex={0}>
       <div className="section-label-col">
-        <span className="section-tag"><i className="ph ph-user"></i> About</span>
+        <span className="section-tag"><User className="icon" aria-hidden="true" /> About</span>
         <h2 className="section-title">Who I am</h2>
         <img className="about-photo" src="assets/profile.jpg" alt="Hafizh Sallam" />
       </div>
@@ -33,7 +34,7 @@ const About = () => {
             <p className="about-details-text">Indonesia</p>
           </div>
           <div className="about-details-group">
-            <h3 className="about-details-title"><i className="ph ph-translate"></i> Languages</h3>
+            <h3 className="about-details-title"><Translate className="icon" aria-hidden="true" /> Languages</h3>
             <div className="languages-grid">
               <div className="language-item">
                 <span className="language-name">English</span>

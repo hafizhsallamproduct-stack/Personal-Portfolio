@@ -8,6 +8,7 @@ import Education from './components/Education';
 import SkillsAndWork from './components/SkillsAndWork';
 import Footer from './components/Footer';
 import PortfolioModal from './components/PortfolioModal';
+import { AirplaneTilt, ShoppingBag, Bank, Money, Buildings, FigmaLogo } from './components/icons';
 
 function IndexPage({ theme, toggleTheme }) {
   return (
@@ -18,12 +19,12 @@ function IndexPage({ theme, toggleTheme }) {
       <div className="divider divider--icons">
         <div className="divider-line"></div>
         <div className="divider-icons">
-          <i className="ph ph-airplane-tilt"></i>
-          <i className="ph ph-shopping-bag"></i>
-          <i className="ph ph-bank"></i>
-          <i className="ph ph-money"></i>
-          <i className="ph ph-buildings"></i>
-          <i className="ph ph-figma-logo"></i>
+          <AirplaneTilt className="icon" aria-hidden="true" />
+          <ShoppingBag className="icon" aria-hidden="true" />
+          <Bank className="icon" aria-hidden="true" />
+          <Money className="icon" aria-hidden="true" />
+          <Buildings className="icon" aria-hidden="true" />
+          <FigmaLogo className="icon" aria-hidden="true" />
         </div>
         <div className="divider-line"></div>
       </div>

@@ -82,9 +82,11 @@
 }
 
 /* --- Icons --- */
-.ph {
-  font-size: 1.15em;
+.icon {
+  width: 1.15em;
+  height: 1.15em;
   vertical-align: -2px;
+  flex-shrink: 0;
 }
 
 .hamburger-menu {
@@ -145,8 +147,9 @@
   flex-shrink: 0;
 }
 
-.divider-icons .ph {
-  font-size: 1em;
+.divider-icons .icon {
+  width: 1em;
+  height: 1em;
   vertical-align: 0;
 }
 

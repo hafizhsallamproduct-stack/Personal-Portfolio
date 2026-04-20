@@ -1,10 +1,11 @@
 import React from 'react';
+import { GraduationCap } from './icons';
 
 const Education = () => {
   return (
     <section id="education" className="section" tabIndex={0}>
       <div className="section-label-col">
-        <span className="section-tag"><i className="ph ph-graduation-cap"></i> Education</span>
+        <span className="section-tag"><GraduationCap className="icon" aria-hidden="true" /> Education</span>
         <h2 className="section-title">Background</h2>
       </div>
       <div className="education-card">

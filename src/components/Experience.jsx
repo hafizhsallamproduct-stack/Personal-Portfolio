@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { experienceData } from '../data/portfolioData';
+import { Briefcase, CaretUp, CaretDown } from './icons';
 
 const ExperienceRole = ({ role }) => {
   const isDefaultExpanded = role.title === "Senior Product Designer II";
@@ -33,7 +34,9 @@ const ExperienceRole = ({ role }) => {
         style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px', background: 'none', border: 'none', padding: 0 }}
       >
         <span className="experience-role-date-text">{role.date}</span>
-        <i className={`ph ${isExpanded ? 'ph-caret-up' : 'ph-caret-down'}`} style={{ color: 'var(--text-secondary)' }}></i>
+        {isExpanded
+          ? <CaretUp className="icon" aria-hidden="true" style={{ color: 'var(--text-secondary)' }} />
+          : <CaretDown className="icon" aria-hidden="true" style={{ color: 'var(--text-secondary)' }} />}
       </button>
     </div>
   );
@@ -60,7 +63,7 @@ const Experience = () => {
     <>
       <section id="experience" className="section section--header-only" tabIndex={0}>
         <div className="section-label-col">
-          <span className="section-tag"><i className="ph ph-briefcase"></i> Experience</span>
+          <span className="section-tag"><Briefcase className="icon" aria-hidden="true" /> Experience</span>
           <h2 className="section-title">Where I've worked</h2>
         </div>
         <div className="section-content-col">

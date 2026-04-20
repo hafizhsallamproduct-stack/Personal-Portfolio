@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
+import { LinkedinLogo, List, X } from './icons';
 
 const Navbar = () => {
   const [isFixedVisible, setIsFixedVisible] = useState(false);
@@ -63,7 +64,7 @@ const Navbar = () => {
           </a>
           
           <button className="hamburger-menu" onClick={toggleMobileMenu} aria-label="Toggle menu">
-            <i className={`ph ${isMobileMenuOpen ? 'ph-x' : 'ph-list'}`}></i>
+            {isMobileMenuOpen ? <X className="icon" aria-hidden="true" /> : <List className="icon" aria-hidden="true" />}
           </button>
 
           <div className={`nav-links ${isMobileMenuOpen ? 'nav-links--open' : ''}`}>
@@ -90,11 +91,11 @@ const Navbar = () => {
               className={`btn-outline nav-mobile-cta ${showMobileCta ? 'visible' : ''}`} 
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              Get in touch <i className="ph ph-linkedin-logo"></i>
+              Get in touch <LinkedinLogo className="icon" aria-hidden="true" />
             </a>
 
             <button className="hamburger-menu" onClick={toggleMobileMenu} aria-label="Toggle menu">
-              <i className={`ph ${isMobileMenuOpen ? 'ph-x' : 'ph-list'}`}></i>
+              {isMobileMenuOpen ? <X className="icon" aria-hidden="true" /> : <List className="icon" aria-hidden="true" />}
             </button>
           </div>
 
@@ -103,7 +104,7 @@ const Navbar = () => {
             <a href="#experience" className={`nav-link ${activeHash === '#experience' ? 'active' : ''}`} onClick={() => setIsMobileMenuOpen(false)}>Experience</a>
             <a href="#education" className={`nav-link ${activeHash === '#education' ? 'active' : ''}`} onClick={() => setIsMobileMenuOpen(false)}>Education</a>
             <a href="#skills" className={`nav-link ${activeHash === '#skills' ? 'active' : ''}`} onClick={() => setIsMobileMenuOpen(false)}>My work</a>
-            <a href="https://www.linkedin.com/in/hafizh-s-b7299420a/" target="_blank" rel="noopener noreferrer" className="btn-outline nav-link-cta-desktop" onClick={() => setIsMobileMenuOpen(false)}>Get in touch <i className="ph ph-linkedin-logo"></i></a>
+            <a href="https://www.linkedin.com/in/hafizh-s-b7299420a/" target="_blank" rel="noopener noreferrer" className="btn-outline nav-link-cta-desktop" onClick={() => setIsMobileMenuOpen(false)}>Get in touch <LinkedinLogo className="icon" aria-hidden="true" /></a>
           </div>
         </nav>
       </header>

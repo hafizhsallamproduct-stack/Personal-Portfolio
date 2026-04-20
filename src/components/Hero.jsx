@@ -1,4 +1,5 @@
 import React from 'react';
+import { LinkedinLogo, ArrowDown } from './icons';
 
 const Hero = () => {
   return (
@@ -14,10 +15,10 @@ const Hero = () => {
       </div>
       <div className="hero-buttons">
         <a href="https://www.linkedin.com/in/hafizh-s-b7299420a/" target="_blank" rel="noopener noreferrer" className="btn-outline" id="hero-cta">
-          Get in touch <i className="ph ph-linkedin-logo"></i>
+          Get in touch <LinkedinLogo className="icon" aria-hidden="true" />
         </a>
         <a href="#skills" className="btn-primary btn-primary-lg">
-          View my work <i className="ph ph-arrow-down bounce"></i>
+          View my work <ArrowDown className="icon bounce" aria-hidden="true" />
         </a>
       </div>
     </section>

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useParams, useNavigate, Link, useLocation } from 'react-router-dom';
 import { workData } from '../data/portfolioData';
+import { X } from './icons';
 
 const PortfolioModal = ({ isStandalone }) => {
   const { slug } = useParams();
@@ -81,7 +82,7 @@ const PortfolioModal = ({ isStandalone }) => {
 
         {/* Floating close button */}
         <button className="portfolio-modal-close" onClick={handleClose} aria-label="Close modal">
-          <i className="ph ph-x"></i>
+          <X className="icon" aria-hidden="true" />
         </button>
 
         {/* Main Text Content Right */}
