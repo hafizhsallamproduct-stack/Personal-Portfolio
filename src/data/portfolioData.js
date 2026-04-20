@@ -5,6 +5,7 @@ export const experienceData = [
     roles: [
       {
         title: "Senior Product Designer II",
+        isDefault: true,
         location: "Kuala Lumpur, Malaysia",
         date: "Oct 2024 — Present",
         details: [
@@ -29,7 +30,8 @@ export const experienceData = [
   },
   {
     company: "RHB Banking Group",
-    duration: "Jan 2020 — Oct 2021<br>1 year 9 months",
+    duration: "Jan 2020 — Oct 2021",
+    tenure: "1 year 9 months",
     roles: [
       {
         title: "UI/UX Designer",
@@ -45,7 +47,8 @@ export const experienceData = [
   },
   {
     company: "AirAsia Berhad",
-    duration: "Mar 2017 — Dec 2019<br>2 years 10 months",
+    duration: "Mar 2017 — Dec 2019",
+    tenure: "2 years 10 months",
     roles: [
       {
         title: "UI/UX Designer",
@@ -70,7 +73,8 @@ export const experienceData = [
   },
   {
     company: "Lelong.my — Interbase Resources",
-    duration: "Nov 2015 — Feb 2017<br>1 year 4 months",
+    duration: "Nov 2015 — Feb 2017",
+    tenure: "1 year 4 months",
     roles: [
       {
         title: "Senior Web Designer",
@@ -86,7 +90,8 @@ export const experienceData = [
   },
   {
     company: "Searchfuse Marketing",
-    duration: "Apr 2015 — Oct 2015<br>7 months",
+    duration: "Apr 2015 — Oct 2015",
+    tenure: "7 months",
     roles: [
       {
         title: "UI Designer & Graphic Designer",

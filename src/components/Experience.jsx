@@ -3,8 +3,7 @@ import { experienceData } from '../data/portfolioData';
 import { Briefcase, CaretUp, CaretDown } from './icons';
 
 const ExperienceRole = ({ role }) => {
-  const isDefaultExpanded = role.title === "Senior Product Designer II";
-  const [isExpanded, setIsExpanded] = useState(isDefaultExpanded);
+  const [isExpanded, setIsExpanded] = useState(Boolean(role.isDefault));
 
   return (
     <div className="experience-role">
@@ -47,7 +46,10 @@ const ExperienceCard = ({ exp }) => {
     <div className="experience-card">
       <div className="experience-card-company">
         <div className="experience-card-company-name">{exp.company}</div>
-        <div className="experience-card-company-duration" dangerouslySetInnerHTML={{__html: exp.duration}} />
+        <div className="experience-card-company-duration">
+          <span>{exp.duration}</span>
+          {exp.tenure && <span className="experience-card-company-tenure">{exp.tenure}</span>}
+        </div>
       </div>
       <div className="experience-card-roles">
         {exp.roles.map((role, i) => (

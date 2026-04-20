@@ -329,6 +329,8 @@
 }
 
 .experience-card-company-duration {
+  display: flex;
+  flex-direction: column;
   font-size: 14px;
   font-weight: 400;
   color: var(--text-secondary);
