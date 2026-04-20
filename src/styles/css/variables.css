@@ -18,7 +18,9 @@
   --text-footer: #6B6B6B;
   --accent: #0A7A50;
   --accent-bright: #0A7A50;
+  --accent-hover: #086341;
   --accent-border: rgba(10, 122, 80, 0.25);
+  --accent-subtle: rgba(10, 122, 80, 0.12);
   --btn-secondary-bg: #F0EFED;
   --btn-secondary-border: #E8E5E0;
   --btn-secondary-hover: #E8E5E0;
@@ -50,7 +52,9 @@
   --text-footer: #787878;
   --accent: #52D073;
   --accent-bright: #52D073;
+  --accent-hover: #70E08B;
   --accent-border: rgba(82, 208, 115, 0.25);
+  --accent-subtle: rgba(82, 208, 115, 0.12);
   --btn-secondary-bg: #2A2A2A;
   --btn-secondary-border: #3A3A3A;
   --btn-secondary-hover: #333333;

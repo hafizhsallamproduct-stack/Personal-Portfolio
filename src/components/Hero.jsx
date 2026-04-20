@@ -13,7 +13,7 @@ const Hero = () => {
         <p className="hero-subtitle">Senior Product Designer crafting digital experiences across E-Commerce, Airlines, and Banking.</p>
       </div>
       <div className="hero-buttons">
-        <a href="https://www.linkedin.com/in/hafizh-s-b7299420a/" target="_blank" rel="noopener noreferrer" className="btn-secondary" id="hero-cta">
+        <a href="https://www.linkedin.com/in/hafizh-s-b7299420a/" target="_blank" rel="noopener noreferrer" className="btn-outline" id="hero-cta">
           Get in touch <i className="ph ph-linkedin-logo"></i>
         </a>
         <a href="#skills" className="btn-primary btn-primary-lg">

@@ -47,6 +47,7 @@ function IndexPage({ theme, toggleTheme }) {
       <section id="contact" className="cta-section">
         <h2 className="cta-heading">Let's build something<br/>great together.</h2>
         <p className="cta-subtext">Have a project in mind? I'd love to hear about it.</p>
+
       </section>
 
       <div className="divider"><div className="divider-line"></div></div>

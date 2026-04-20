@@ -87,7 +87,7 @@ const Navbar = () => {
               href="https://www.linkedin.com/in/hafizh-s-b7299420a/" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className={`btn-primary nav-mobile-cta ${showMobileCta ? 'visible' : ''}`} 
+              className={`btn-outline nav-mobile-cta ${showMobileCta ? 'visible' : ''}`} 
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Get in touch <i className="ph ph-linkedin-logo"></i>
@@ -103,7 +103,7 @@ const Navbar = () => {
             <a href="#experience" className={`nav-link ${activeHash === '#experience' ? 'active' : ''}`} onClick={() => setIsMobileMenuOpen(false)}>Experience</a>
             <a href="#education" className={`nav-link ${activeHash === '#education' ? 'active' : ''}`} onClick={() => setIsMobileMenuOpen(false)}>Education</a>
             <a href="#skills" className={`nav-link ${activeHash === '#skills' ? 'active' : ''}`} onClick={() => setIsMobileMenuOpen(false)}>My work</a>
-            <a href="https://www.linkedin.com/in/hafizh-s-b7299420a/" target="_blank" rel="noopener noreferrer" className="btn-primary nav-link-cta-desktop" onClick={() => setIsMobileMenuOpen(false)}>Get in touch <i className="ph ph-linkedin-logo"></i></a>
+            <a href="https://www.linkedin.com/in/hafizh-s-b7299420a/" target="_blank" rel="noopener noreferrer" className="btn-outline nav-link-cta-desktop" onClick={() => setIsMobileMenuOpen(false)}>Get in touch <i className="ph ph-linkedin-logo"></i></a>
           </div>
         </nav>
       </header>

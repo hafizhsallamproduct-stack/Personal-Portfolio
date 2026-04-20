@@ -41,14 +41,14 @@ const About = () => {
               </div>
               <div className="language-item">
                 <span className="language-name">Indonesia</span>
-                <span className="language-proficiency">Professional working proficiency</span>
+                <span className="language-proficiency">Native or bilingual proficiency</span>
               </div>
               <div className="language-item">
                 <span className="language-name">Malay</span>
                 <span className="language-proficiency">Professional working proficiency</span>
               </div>
               <div className="language-item">
-                <span className="language-name">Minangkabau</span>
+                <span className="language-name">Minang</span>
                 <span className="language-proficiency">Native or bilingual proficiency</span>
               </div>
             </div>
