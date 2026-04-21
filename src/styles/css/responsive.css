@@ -42,6 +42,7 @@
     border-bottom: 1px solid var(--divider); 
   }
   .hero { padding: 32px 16px; }
+  .hero-mobile-photo-wrapper { display: block; }
   .hero-mobile-photo {
     display: block;
     width: 96px;
@@ -63,9 +64,9 @@
   .section-label-col { text-align: center; align-items: center; }
   .section-tag { justify-content: center; }
   .about-stats { gap: 24px; }
-  .about-photo { display: none; }
+  .about-photo-wrapper { display: none; }
   #about .section-label-col { display: flex; flex-direction: column; }
-  #about .section-label-col .about-photo { order: -1; }
+  #about .section-label-col .about-photo-wrapper { order: -1; }
   #about .section-label-col .section-tag { order: 0; }
   #about .section-label-col .section-title { order: 1; }
   .about-details { padding-top: 24px; }

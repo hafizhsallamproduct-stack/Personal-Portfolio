@@ -9,7 +9,19 @@ const Hero = () => {
         <span className="hero-badge-text">Available for opportunities</span>
       </div>
       <div className="hero-content">
-        <img src="assets/profile.jpg" alt="Hafizh Sallam" className="hero-mobile-photo" />
+        <picture className="hero-mobile-photo-wrapper">
+          <source
+            type="image/webp"
+            srcSet="assets/profile-256.webp 1x, assets/profile-384.webp 1.5x"
+          />
+          <img
+            className="hero-mobile-photo"
+            src="assets/profile-384.jpg"
+            alt="Hafizh Sallam"
+            width="96"
+            height="96"
+          />
+        </picture>
         <h1 className="hero-name">Hafizh Sallam</h1>
         <p className="hero-subtitle">Senior Product Designer crafting digital experiences across E-Commerce, Airlines, and Banking.</p>
       </div>

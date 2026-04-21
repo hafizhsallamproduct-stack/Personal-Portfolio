@@ -165,6 +165,7 @@
   max-width: 720px;
 }
 
+.hero-mobile-photo-wrapper,
 .hero-mobile-photo {
   display: none;
 }

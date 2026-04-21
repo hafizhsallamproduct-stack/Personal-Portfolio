@@ -7,7 +7,19 @@ const About = () => {
       <div className="section-label-col">
         <span className="section-tag"><User className="icon" aria-hidden="true" /> About</span>
         <h2 className="section-title">Who I am</h2>
-        <img className="about-photo" src="assets/profile.jpg" alt="Hafizh Sallam" />
+        <picture className="about-photo-wrapper">
+          <source
+            type="image/webp"
+            srcSet="assets/profile-256.webp 1x, assets/profile-384.webp 1.5x"
+          />
+          <img
+            className="about-photo"
+            src="assets/profile-384.jpg"
+            alt="Hafizh Sallam"
+            width="128"
+            height="128"
+          />
+        </picture>
       </div>
       <div className="section-content-col">
         <p className="about-text">A Senior Product Designer based in Kuala Lumpur, Malaysia with over 10 years of experience working on digital products. I've worked across different industries including e-commerce, travel, and banking, which has helped me understand different types of users and product needs.</p>
