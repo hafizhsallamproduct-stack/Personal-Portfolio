@@ -1,6 +1,28 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { LinkedinLogo, List, X } from './icons';
 
+const SECTION_LINKS = [
+  { href: '#about', label: 'About' },
+  { href: '#experience', label: 'Experience' },
+  { href: '#education', label: 'Education' },
+  { href: '#skills', label: 'My work' },
+];
+
+const SectionLinks = ({ activeHash, onLinkClick }) => (
+  <>
+    {SECTION_LINKS.map(({ href, label }) => (
+      <a
+        key={href}
+        href={href}
+        className={`nav-link ${activeHash === href ? 'active' : ''}`}
+        onClick={onLinkClick}
+      >
+        {label}
+      </a>
+    ))}
+  </>
+);
+
 const Navbar = () => {
   const [isFixedVisible, setIsFixedVisible] = useState(false);
   const [activeHash, setActiveHash] = useState('');
@@ -55,6 +77,12 @@ const Navbar = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
+  const closeMobileMenu = () => setIsMobileMenuOpen(false);
+
+  const hamburgerIcon = isMobileMenuOpen
+    ? <X className="icon" aria-hidden="true" />
+    : <List className="icon" aria-hidden="true" />;
+
   return (
     <>
       <header className="nav-top" ref={navTopRef}>
@@ -62,16 +90,13 @@ const Navbar = () => {
           <a href="#top" className="nav-logo" aria-label="Back to home">
             <div className="nav-logo-icon">H</div>
           </a>
-          
+
           <button className="hamburger-menu" onClick={toggleMobileMenu} aria-label="Toggle menu">
-            {isMobileMenuOpen ? <X className="icon" aria-hidden="true" /> : <List className="icon" aria-hidden="true" />}
+            {hamburgerIcon}
           </button>
 
           <div className={`nav-links ${isMobileMenuOpen ? 'nav-links--open' : ''}`}>
-            <a href="#about" className="nav-link" onClick={() => setIsMobileMenuOpen(false)}>About</a>
-            <a href="#experience" className="nav-link" onClick={() => setIsMobileMenuOpen(false)}>Experience</a>
-            <a href="#education" className="nav-link" onClick={() => setIsMobileMenuOpen(false)}>Education</a>
-            <a href="#skills" className="nav-link" onClick={() => setIsMobileMenuOpen(false)}>My work</a>
+            <SectionLinks onLinkClick={closeMobileMenu} />
           </div>
         </nav>
       </header>
@@ -82,29 +107,26 @@ const Navbar = () => {
             <div className="nav-logo-icon">H</div>
             <span className="nav-logo-text">Hafizh Sallam</span>
           </a>
-          
+
           <div className="nav-controls-mobile">
-            <a 
-              href="https://www.linkedin.com/in/hafizh-s-b7299420a/" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className={`btn-outline nav-mobile-cta ${showMobileCta ? 'visible' : ''}`} 
-              onClick={() => setIsMobileMenuOpen(false)}
+            <a
+              href="https://www.linkedin.com/in/hafizh-s-b7299420a/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`btn-outline nav-mobile-cta ${showMobileCta ? 'visible' : ''}`}
+              onClick={closeMobileMenu}
             >
               Get in touch <LinkedinLogo className="icon" aria-hidden="true" />
             </a>
 
             <button className="hamburger-menu" onClick={toggleMobileMenu} aria-label="Toggle menu">
-              {isMobileMenuOpen ? <X className="icon" aria-hidden="true" /> : <List className="icon" aria-hidden="true" />}
+              {hamburgerIcon}
             </button>
           </div>
 
           <div className={`nav-links ${isMobileMenuOpen ? 'nav-links--open' : ''}`}>
-            <a href="#about" className={`nav-link ${activeHash === '#about' ? 'active' : ''}`} onClick={() => setIsMobileMenuOpen(false)}>About</a>
-            <a href="#experience" className={`nav-link ${activeHash === '#experience' ? 'active' : ''}`} onClick={() => setIsMobileMenuOpen(false)}>Experience</a>
-            <a href="#education" className={`nav-link ${activeHash === '#education' ? 'active' : ''}`} onClick={() => setIsMobileMenuOpen(false)}>Education</a>
-            <a href="#skills" className={`nav-link ${activeHash === '#skills' ? 'active' : ''}`} onClick={() => setIsMobileMenuOpen(false)}>My work</a>
-            <a href="https://www.linkedin.com/in/hafizh-s-b7299420a/" target="_blank" rel="noopener noreferrer" className="btn-outline nav-link-cta-desktop" onClick={() => setIsMobileMenuOpen(false)}>Get in touch <LinkedinLogo className="icon" aria-hidden="true" /></a>
+            <SectionLinks activeHash={activeHash} onLinkClick={closeMobileMenu} />
+            <a href="https://www.linkedin.com/in/hafizh-s-b7299420a/" target="_blank" rel="noopener noreferrer" className="btn-outline nav-link-cta-desktop" onClick={closeMobileMenu}>Get in touch <LinkedinLogo className="icon" aria-hidden="true" /></a>
           </div>
         </nav>
       </header>
