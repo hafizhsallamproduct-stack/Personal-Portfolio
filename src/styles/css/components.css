@@ -195,8 +195,9 @@
   line-height: 16px;
 }
 
-.section-tag i {
-  font-size: 16px;
+.section-tag .icon {
+  width: 16px;
+  height: 16px;
 }
 
 .section-title {
