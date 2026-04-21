@@ -1,13 +1,19 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useParams, useNavigate, Link, useLocation } from 'react-router-dom';
 import { workData } from '../data/portfolioData';
 import { X } from './icons';
+
+const FOCUSABLE_SELECTOR =
+  'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
 const PortfolioModal = ({ isStandalone }) => {
   const { slug } = useParams();
   const navigate = useNavigate();
   const location = useLocation();
   const [sidebarWidth, setSidebarWidth] = React.useState(400);
+  const containerRef = useRef(null);
+  const closeButtonRef = useRef(null);
+  const previouslyFocusedRef = useRef(null);
 
   const selectedProject = workData.find(w => w.slug === slug) || workData[0];
 
@@ -40,17 +46,72 @@ const PortfolioModal = ({ isStandalone }) => {
     }
   }, [isStandalone]);
 
-  const handleClose = () => {
+  const handleClose = React.useCallback(() => {
     if (location.state?.backgroundLocation) {
       navigate(-1);
     } else {
       navigate('/');
     }
-  };
+  }, [location.state, navigate]);
+
+  useEffect(() => {
+    previouslyFocusedRef.current = document.activeElement;
+    closeButtonRef.current?.focus();
+
+    return () => {
+      const prev = previouslyFocusedRef.current;
+      if (prev instanceof HTMLElement && document.contains(prev)) {
+        prev.focus();
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        handleClose();
+        return;
+      }
+
+      if (event.key !== 'Tab' || !containerRef.current) return;
+
+      const focusable = Array.from(
+        containerRef.current.querySelectorAll(FOCUSABLE_SELECTOR)
+      ).filter((el) => !el.hasAttribute('disabled') && el.offsetParent !== null);
+
+      if (focusable.length === 0) {
+        event.preventDefault();
+        return;
+      }
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      const active = document.activeElement;
+
+      if (event.shiftKey && active === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && active === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [handleClose]);
 
   return (
     <div className={`portfolio-modal-overlay open ${isStandalone ? 'standalone' : ''}`} onClick={handleClose}>
-      <div className="portfolio-modal-container" onClick={(e) => e.stopPropagation()}>
+      <div
+        ref={containerRef}
+        className="portfolio-modal-container"
+        onClick={(e) => e.stopPropagation()}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="portfolio-modal-heading"
+      >
         
         {/* Sidebar Left - Dynamic width limitation */}
         <div className="portfolio-modal-sidebar" style={{ width: sidebarWidth }}>
@@ -81,7 +142,12 @@ const PortfolioModal = ({ isStandalone }) => {
         <div className="portfolio-modal-resizer" onMouseDown={startResizing} aria-label="Resize sidebar"></div>
 
         {/* Floating close button */}
-        <button className="portfolio-modal-close" onClick={handleClose} aria-label="Close modal">
+        <button
+          ref={closeButtonRef}
+          className="portfolio-modal-close"
+          onClick={handleClose}
+          aria-label="Close modal"
+        >
           <X className="icon" aria-hidden="true" />
         </button>
 
@@ -90,7 +156,7 @@ const PortfolioModal = ({ isStandalone }) => {
           
           {/* Max-width 768px constraint container */}
           <div className="portfolio-modal-content">
-            <h1 className="portfolio-modal-title">{selectedProject.title}</h1>
+            <h1 id="portfolio-modal-heading" className="portfolio-modal-title">{selectedProject.title}</h1>
             <p className="portfolio-modal-subtitle">{selectedProject.description}</p>
             <p>Welcome to my online portfolio! I'm thrilled to share a curated collection of my most impactful projects, reflecting my passion for innovation and dedication to excellence.</p>
             <p>Each project in this portfolio represents a unique challenge and a valuable learning experience. From crafting intuitive user interfaces to developing robust backend systems, I've honed my skills in various aspects of software development.</p>
