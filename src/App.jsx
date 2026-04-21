@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -15,7 +15,7 @@ function IndexPage({ theme, toggleTheme }) {
     <>
       <Navbar theme={theme} />
       <Hero />
-      
+
       <div className="divider divider--icons">
         <div className="divider-line"></div>
         <div className="divider-icons">
@@ -30,29 +30,42 @@ function IndexPage({ theme, toggleTheme }) {
       </div>
 
       <About />
-      
-      <div className="divider"><div className="divider-line"></div></div>
-      
+
+      <div className="divider">
+        <div className="divider-line"></div>
+      </div>
+
       <Experience />
-      
-      <div className="divider divider--spaced"><div className="divider-line"></div></div>
-      
+
+      <div className="divider divider--spaced">
+        <div className="divider-line"></div>
+      </div>
+
       <Education />
-      
-      <div className="divider"><div className="divider-line"></div></div>
-      
+
+      <div className="divider">
+        <div className="divider-line"></div>
+      </div>
+
       <SkillsAndWork />
 
-      <div className="divider"><div className="divider-line"></div></div>
+      <div className="divider">
+        <div className="divider-line"></div>
+      </div>
 
       <section id="contact" className="cta-section">
-        <h2 className="cta-heading">Let's build something<br/>great together.</h2>
+        <h2 className="cta-heading">
+          Let's build something
+          <br />
+          great together.
+        </h2>
         <p className="cta-subtext">Have a project in mind? I'd love to hear about it.</p>
-
       </section>
 
-      <div className="divider"><div className="divider-line"></div></div>
-      
+      <div className="divider">
+        <div className="divider-line"></div>
+      </div>
+
       <Footer theme={theme} toggleTheme={toggleTheme} />
     </>
   );
@@ -72,7 +85,7 @@ function App() {
   }, [theme]);
 
   const toggleTheme = () => {
-    setTheme(prev => prev === 'light' ? 'dark' : 'light');
+    setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
   };
 
   return (

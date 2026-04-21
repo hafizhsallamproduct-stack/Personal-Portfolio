@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { experienceData } from '../data/portfolioData';
 import { Briefcase, CaretUp, CaretDown } from './icons';
 
@@ -30,12 +30,26 @@ const ExperienceRole = ({ role }) => {
         onClick={() => setIsExpanded(!isExpanded)}
         aria-expanded={isExpanded}
         aria-label={`${isExpanded ? 'Collapse' : 'Expand'} ${role.title}`}
-        style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px', background: 'none', border: 'none', padding: 0 }}
+        style={{
+          cursor: 'pointer',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '8px',
+          background: 'none',
+          border: 'none',
+          padding: 0,
+        }}
       >
         <span className="experience-role-date-text">{role.date}</span>
-        {isExpanded
-          ? <CaretUp className="icon" aria-hidden="true" style={{ color: 'var(--text-secondary)' }} />
-          : <CaretDown className="icon" aria-hidden="true" style={{ color: 'var(--text-secondary)' }} />}
+        {isExpanded ? (
+          <CaretUp className="icon" aria-hidden="true" style={{ color: 'var(--text-secondary)' }} />
+        ) : (
+          <CaretDown
+            className="icon"
+            aria-hidden="true"
+            style={{ color: 'var(--text-secondary)' }}
+          />
+        )}
       </button>
     </div>
   );
@@ -65,20 +79,22 @@ const Experience = () => {
     <>
       <section id="experience" className="section section--header-only" tabIndex={0}>
         <div className="section-label-col">
-          <span className="section-tag"><Briefcase className="icon" aria-hidden="true" /> Experience</span>
+          <span className="section-tag">
+            <Briefcase className="icon" aria-hidden="true" /> Experience
+          </span>
           <h2 className="section-title">Where I've worked</h2>
         </div>
         <div className="section-content-col">
-          <p className="experience-description">An overview of the companies I've worked at and the kind of work I was involved in, from early design tasks to shaping larger product flows.</p>
+          <p className="experience-description">
+            An overview of the companies I've worked at and the kind of work I was involved in, from
+            early design tasks to shaping larger product flows.
+          </p>
         </div>
       </section>
 
       <div className="experience-cards" id="experience-cards-container">
         {experienceData.map((exp, index) => (
-          <ExperienceCard 
-            key={index} 
-            exp={exp} 
-          />
+          <ExperienceCard key={index} exp={exp} />
         ))}
       </div>
     </>

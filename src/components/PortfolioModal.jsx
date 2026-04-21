@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useParams, useNavigate, Link, useLocation } from 'react-router-dom';
 import { workData } from '../data/portfolioData';
 import { X } from './icons';
@@ -10,43 +10,48 @@ const PortfolioModal = ({ isStandalone }) => {
   const { slug } = useParams();
   const navigate = useNavigate();
   const location = useLocation();
-  const [sidebarWidth, setSidebarWidth] = React.useState(400);
+  const [sidebarWidth, setSidebarWidth] = useState(400);
   const containerRef = useRef(null);
   const closeButtonRef = useRef(null);
   const previouslyFocusedRef = useRef(null);
 
-  const selectedProject = workData.find(w => w.slug === slug) || workData[0];
+  const selectedProject = workData.find((w) => w.slug === slug) || workData[0];
 
-  const startResizing = React.useCallback((mouseDownEvent) => {
-    const startWidth = sidebarWidth;
-    const startPosition = mouseDownEvent.clientX;
+  const startResizing = useCallback(
+    (mouseDownEvent) => {
+      const startWidth = sidebarWidth;
+      const startPosition = mouseDownEvent.clientX;
 
-    function onMouseMove(mouseMoveEvent) {
-      const newWidth = startWidth + mouseMoveEvent.clientX - startPosition;
-      setSidebarWidth(Math.max(250, Math.min(newWidth, 800)));
-    }
+      function onMouseMove(mouseMoveEvent) {
+        const newWidth = startWidth + mouseMoveEvent.clientX - startPosition;
+        setSidebarWidth(Math.max(250, Math.min(newWidth, 800)));
+      }
 
-    function onMouseUp() {
-      document.removeEventListener("mousemove", onMouseMove);
-      document.removeEventListener("mouseup", onMouseUp);
-      document.body.style.cursor = 'unset';
-    }
+      function onMouseUp() {
+        document.removeEventListener('mousemove', onMouseMove);
+        document.removeEventListener('mouseup', onMouseUp);
+        document.body.style.cursor = 'unset';
+      }
 
-    document.addEventListener("mousemove", onMouseMove);
-    document.addEventListener("mouseup", onMouseUp);
-    document.body.style.cursor = 'col-resize';
-  }, [sidebarWidth]);
+      document.addEventListener('mousemove', onMouseMove);
+      document.addEventListener('mouseup', onMouseUp);
+      document.body.style.cursor = 'col-resize';
+    },
+    [sidebarWidth]
+  );
 
   useEffect(() => {
     if (!isStandalone) {
       document.body.style.overflow = 'hidden';
-      return () => { document.body.style.overflow = 'unset'; };
+      return () => {
+        document.body.style.overflow = 'unset';
+      };
     } else {
       document.body.style.overflow = 'unset';
     }
   }, [isStandalone]);
 
-  const handleClose = React.useCallback(() => {
+  const handleClose = useCallback(() => {
     if (location.state?.backgroundLocation) {
       navigate(-1);
     } else {
@@ -103,7 +108,14 @@ const PortfolioModal = ({ isStandalone }) => {
   }, [handleClose]);
 
   return (
-    <div className={`portfolio-modal-overlay open ${isStandalone ? 'standalone' : ''}`} onClick={handleClose}>
+    // Overlay click-to-close is an enhancement; Escape and the close button
+    // cover keyboard users.
+    // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
+    <div
+      className={`portfolio-modal-overlay open ${isStandalone ? 'standalone' : ''}`}
+      onClick={handleClose}
+    >
+      {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions */}
       <div
         ref={containerRef}
         className="portfolio-modal-container"
@@ -112,7 +124,6 @@ const PortfolioModal = ({ isStandalone }) => {
         aria-modal="true"
         aria-labelledby="portfolio-modal-heading"
       >
-        
         {/* Sidebar Left - Dynamic width limitation */}
         <div className="portfolio-modal-sidebar" style={{ width: sidebarWidth }}>
           <div className="portfolio-modal-sidebar-header">
@@ -124,8 +135,8 @@ const PortfolioModal = ({ isStandalone }) => {
           </div>
           <div className="portfolio-modal-sidebar-nav">
             {workData.map((project, idx) => (
-              <Link 
-                key={idx} 
+              <Link
+                key={idx}
                 to={`/portfolio/${project.slug}`}
                 state={location.state}
                 replace
@@ -138,8 +149,13 @@ const PortfolioModal = ({ isStandalone }) => {
           </div>
         </div>
 
-        {/* Resizer Handle */}
-        <div className="portfolio-modal-resizer" onMouseDown={startResizing} aria-label="Resize sidebar"></div>
+        {/* Resizer Handle — drag-to-resize is inherently mouse-only */}
+        {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
+        <div
+          className="portfolio-modal-resizer"
+          onMouseDown={startResizing}
+          aria-label="Resize sidebar"
+        ></div>
 
         {/* Floating close button */}
         <button
@@ -153,18 +169,34 @@ const PortfolioModal = ({ isStandalone }) => {
 
         {/* Main Text Content Right */}
         <div className="portfolio-modal-main">
-          
           {/* Max-width 768px constraint container */}
           <div className="portfolio-modal-content">
-            <h1 id="portfolio-modal-heading" className="portfolio-modal-title">{selectedProject.title}</h1>
+            <h1 id="portfolio-modal-heading" className="portfolio-modal-title">
+              {selectedProject.title}
+            </h1>
             <p className="portfolio-modal-subtitle">{selectedProject.description}</p>
-            <p>Welcome to my online portfolio! I'm thrilled to share a curated collection of my most impactful projects, reflecting my passion for innovation and dedication to excellence.</p>
-            <p>Each project in this portfolio represents a unique challenge and a valuable learning experience. From crafting intuitive user interfaces to developing robust backend systems, I've honed my skills in various aspects of software development.</p>
-            <p>I believe in the power of collaboration and open communication. Throughout my career, I've had the privilege of working with talented teams, where we've collectively brainstormed ideas, tackled complex problems, and achieved remarkable outcomes.</p>
-            <p>I'm passionate about leveraging technology to solve real-world problems and create positive change. My portfolio showcases a diverse range of projects, each demonstrating my ability to adapt to different challenges and deliver innovative solutions.</p>
+            <p>
+              Welcome to my online portfolio! I'm thrilled to share a curated collection of my most
+              impactful projects, reflecting my passion for innovation and dedication to excellence.
+            </p>
+            <p>
+              Each project in this portfolio represents a unique challenge and a valuable learning
+              experience. From crafting intuitive user interfaces to developing robust backend
+              systems, I've honed my skills in various aspects of software development.
+            </p>
+            <p>
+              I believe in the power of collaboration and open communication. Throughout my career,
+              I've had the privilege of working with talented teams, where we've collectively
+              brainstormed ideas, tackled complex problems, and achieved remarkable outcomes.
+            </p>
+            <p>
+              I'm passionate about leveraging technology to solve real-world problems and create
+              positive change. My portfolio showcases a diverse range of projects, each
+              demonstrating my ability to adapt to different challenges and deliver innovative
+              solutions.
+            </p>
           </div>
         </div>
-
       </div>
     </div>
   );

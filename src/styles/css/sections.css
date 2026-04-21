@@ -23,7 +23,10 @@
   transform: translateY(-100%);
   opacity: 0;
   visibility: hidden;
-  transition: transform 0.25s ease, opacity 0.2s ease, visibility 0.2s ease;
+  transition:
+    transform 0.25s ease,
+    opacity 0.2s ease,
+    visibility 0.2s ease;
   pointer-events: none;
 }
 
@@ -424,7 +427,7 @@
 }
 
 .experience-role-details li::before {
-  content: "·";
+  content: '·';
   position: absolute;
   left: 0;
   color: var(--bullet);

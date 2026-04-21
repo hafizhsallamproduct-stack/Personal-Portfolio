@@ -1,4 +1,3 @@
-import React from 'react';
 import { LinkedinLogo, ArrowDown } from './icons';
 
 const Hero = () => {
@@ -23,10 +22,19 @@ const Hero = () => {
           />
         </picture>
         <h1 className="hero-name">Hafizh Sallam</h1>
-        <p className="hero-subtitle">Senior Product Designer crafting digital experiences across E-Commerce, Airlines, and Banking.</p>
+        <p className="hero-subtitle">
+          Senior Product Designer crafting digital experiences across E-Commerce, Airlines, and
+          Banking.
+        </p>
       </div>
       <div className="hero-buttons">
-        <a href="https://www.linkedin.com/in/hafizh-s-b7299420a/" target="_blank" rel="noopener noreferrer" className="btn-outline" id="hero-cta">
+        <a
+          href="https://www.linkedin.com/in/hafizh-s-b7299420a/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn-outline"
+          id="hero-cta"
+        >
           Get in touch <LinkedinLogo className="icon" aria-hidden="true" />
         </a>
         <a href="#skills" className="btn-primary btn-primary-lg">

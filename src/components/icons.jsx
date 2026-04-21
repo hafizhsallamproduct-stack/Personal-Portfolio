@@ -19,7 +19,7 @@ import {
   Moon,
   CaretUp,
   CaretDown,
-} from "@phosphor-icons/react";
+} from '@phosphor-icons/react';
 
 export {
   AirplaneTilt,

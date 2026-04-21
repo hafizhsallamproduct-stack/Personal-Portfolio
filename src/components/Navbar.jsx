@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { LinkedinLogo, List, X } from './icons';
 
 const SECTION_LINKS = [
@@ -44,17 +44,20 @@ const Navbar = () => {
 
   useEffect(() => {
     const sections = document.querySelectorAll('section[id], footer[id]');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          setActiveHash('#' + entry.target.id);
-        }
-      });
-    }, { rootMargin: '-120px 0px -40% 0px' });
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveHash('#' + entry.target.id);
+          }
+        });
+      },
+      { rootMargin: '-120px 0px -40% 0px' }
+    );
 
-    sections.forEach(el => observer.observe(el));
+    sections.forEach((el) => observer.observe(el));
     return () => {
-      sections.forEach(el => observer.unobserve(el));
+      sections.forEach((el) => observer.unobserve(el));
     };
   }, []);
 
@@ -62,12 +65,15 @@ const Navbar = () => {
     const heroCta = document.getElementById('hero-cta');
     if (!heroCta) return;
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        // Show mobile CTA if hero CTA is NOT intersecting (out of view)
-        setShowMobileCta(!entry.isIntersecting);
-      });
-    }, { threshold: 0 });
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          // Show mobile CTA if hero CTA is NOT intersecting (out of view)
+          setShowMobileCta(!entry.isIntersecting);
+        });
+      },
+      { threshold: 0 }
+    );
 
     observer.observe(heroCta);
     return () => observer.unobserve(heroCta);
@@ -79,9 +85,11 @@ const Navbar = () => {
 
   const closeMobileMenu = () => setIsMobileMenuOpen(false);
 
-  const hamburgerIcon = isMobileMenuOpen
-    ? <X className="icon" aria-hidden="true" />
-    : <List className="icon" aria-hidden="true" />;
+  const hamburgerIcon = isMobileMenuOpen ? (
+    <X className="icon" aria-hidden="true" />
+  ) : (
+    <List className="icon" aria-hidden="true" />
+  );
 
   return (
     <>
@@ -126,7 +134,15 @@ const Navbar = () => {
 
           <div className={`nav-links ${isMobileMenuOpen ? 'nav-links--open' : ''}`}>
             <SectionLinks activeHash={activeHash} onLinkClick={closeMobileMenu} />
-            <a href="https://www.linkedin.com/in/hafizh-s-b7299420a/" target="_blank" rel="noopener noreferrer" className="btn-outline nav-link-cta-desktop" onClick={closeMobileMenu}>Get in touch <LinkedinLogo className="icon" aria-hidden="true" /></a>
+            <a
+              href="https://www.linkedin.com/in/hafizh-s-b7299420a/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-outline nav-link-cta-desktop"
+              onClick={closeMobileMenu}
+            >
+              Get in touch <LinkedinLogo className="icon" aria-hidden="true" />
+            </a>
           </div>
         </nav>
       </header>
