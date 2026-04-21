@@ -90,9 +90,8 @@ const PortfolioModal = ({ isStandalone }) => {
           
           {/* Max-width 768px constraint container */}
           <div className="portfolio-modal-content">
-            <h1 style={{ fontSize: '32px', fontWeight: '700', marginBottom: '8px' }}>{selectedProject.title}</h1>
-            <p style={{ fontSize: '20px', fontWeight: '300', lineHeight: '32px', color: 'var(--text-secondary)' }}>{selectedProject.description}</p>
-            <div style={{ height: '32px' }}></div>
+            <h1 className="portfolio-modal-title">{selectedProject.title}</h1>
+            <p className="portfolio-modal-subtitle">{selectedProject.description}</p>
             <p>Welcome to my online portfolio! I'm thrilled to share a curated collection of my most impactful projects, reflecting my passion for innovation and dedication to excellence.</p>
             <p>Each project in this portfolio represents a unique challenge and a valuable learning experience. From crafting intuitive user interfaces to developing robust backend systems, I've honed my skills in various aspects of software development.</p>
             <p>I believe in the power of collaboration and open communication. Throughout my career, I've had the privilege of working with talented teams, where we've collectively brainstormed ideas, tackled complex problems, and achieved remarkable outcomes.</p>

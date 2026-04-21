@@ -141,6 +141,20 @@
   color: var(--text-body);
 }
 
+.portfolio-modal-title {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.portfolio-modal-subtitle {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 32px;
+  color: var(--text-secondary);
+  margin-bottom: 32px;
+}
+
 /* Close action */
 .portfolio-modal-close {
   position: absolute;
