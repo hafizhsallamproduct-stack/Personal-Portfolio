@@ -117,6 +117,25 @@ export const experienceData = [
   },
 ];
 
+export const skillsData = [
+  'Product Design',
+  'Design Systems',
+  'Prototyping',
+  'User Research',
+  'Web Design',
+  'Product Management',
+  'Product Planning',
+  'Design Mentoring',
+  'Workflow Management',
+  'Ai Product Adaptation',
+];
+
+export const toolsData = [
+  { name: 'Figma' },
+  { name: 'Sketch' },
+  { name: 'Adobe CC', strike: true },
+];
+
 export const workData = [
   {
     title: 'Wego Flight Search Redesign',

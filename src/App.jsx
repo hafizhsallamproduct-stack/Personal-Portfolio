@@ -5,7 +5,8 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Experience from './components/Experience';
 import Education from './components/Education';
-import SkillsAndWork from './components/SkillsAndWork';
+import Skills from './components/Skills';
+import Work from './components/Work';
 import Footer from './components/Footer';
 import PortfolioModal from './components/PortfolioModal';
 import { AirplaneTilt, ShoppingBag, Bank, Money, Buildings, FigmaLogo } from './components/icons';
@@ -47,7 +48,8 @@ function IndexPage({ theme, toggleTheme }) {
         <div className="divider-line"></div>
       </div>
 
-      <SkillsAndWork />
+      <Skills />
+      <Work />
 
       <div className="divider">
         <div className="divider-line"></div>
