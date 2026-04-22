@@ -17,22 +17,6 @@ module.exports = {
   settings: { react: { version: 'detect' } },
   plugins: ['react-refresh', 'prettier'],
   ignorePatterns: ['dist', 'node_modules', '.eslintrc.cjs'],
-  overrides: [
-    {
-      files: ['**/*.test.{js,jsx}', 'src/test/**/*.{js,jsx}'],
-      globals: {
-        describe: 'readonly',
-        it: 'readonly',
-        test: 'readonly',
-        expect: 'readonly',
-        vi: 'readonly',
-        beforeAll: 'readonly',
-        beforeEach: 'readonly',
-        afterAll: 'readonly',
-        afterEach: 'readonly',
-      },
-    },
-  ],
   rules: {
     'react/prop-types': 'off',
     'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
