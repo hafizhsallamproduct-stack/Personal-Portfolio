@@ -21,7 +21,9 @@ const Work = () => {
               View project <ArrowRight className="icon" aria-hidden="true" />
             </span>
           </div>
-          <div className="work-card-placeholder"></div>
+          <div className="work-card-placeholder">
+            {work.image && <img src={work.image} alt={work.title} className="work-card-image" />}
+          </div>
         </Link>
       ))}
     </div>

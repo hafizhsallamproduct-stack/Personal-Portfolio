@@ -1,19 +1,64 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useParams, useNavigate, Link, useLocation } from 'react-router-dom';
 import { workData } from '../data/portfolioData';
-import { X } from './icons';
+import { X, Sun, Moon } from './icons';
 
 const FOCUSABLE_SELECTOR =
   'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
+const ContentBlock = ({ block }) => {
+  switch (block.type) {
+    case 'heading':
+      return <h2 className="portfolio-content-heading">{block.text}</h2>;
+    case 'subheading':
+      return <h3 className="portfolio-content-subheading">{block.text}</h3>;
+    case 'paragraph':
+      return <p>{block.text}</p>;
+    case 'image':
+      return (
+        <div className="portfolio-content-image">
+          {block.url && (
+            <img src={block.url} alt={block.alt || ''} className="portfolio-detail-img" />
+          )}
+        </div>
+      );
+    case 'label':
+      return <p className="portfolio-content-label">{block.text}</p>;
+    case 'list':
+      return (
+        <ul className="portfolio-content-list">
+          {block.items.map((item, i) => (
+            <li key={i}>{item}</li>
+          ))}
+        </ul>
+      );
+    default:
+      return (
+        <div style={{ color: 'red', border: '1px solid red', padding: '10px' }}>
+          Unknown block type: {block.type}
+        </div>
+      );
+  }
+};
 
 const PortfolioModal = ({ isStandalone }) => {
   const { slug } = useParams();
   const navigate = useNavigate();
   const location = useLocation();
   const [sidebarWidth, setSidebarWidth] = useState(400);
+  const [theme, setTheme] = useState(
+    () => document.documentElement.getAttribute('data-theme') || 'light'
+  );
   const containerRef = useRef(null);
   const closeButtonRef = useRef(null);
   const previouslyFocusedRef = useRef(null);
+
+  const toggleTheme = () => {
+    const next = theme === 'light' ? 'dark' : 'light';
+    setTheme(next);
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+  };
 
   const selectedProject = workData.find((w) => w.slug === slug) || workData[0];
 
@@ -147,6 +192,15 @@ const PortfolioModal = ({ isStandalone }) => {
               </Link>
             ))}
           </div>
+          <div className="portfolio-modal-sidebar-footer">
+            <button className="theme-toggle" aria-label="Toggle theme" onClick={toggleTheme}>
+              {theme === 'light' ? (
+                <Sun className="icon" aria-hidden="true" />
+              ) : (
+                <Moon className="icon" aria-hidden="true" />
+              )}
+            </button>
+          </div>
         </div>
 
         {/* Resizer Handle — drag-to-resize is inherently mouse-only */}
@@ -171,30 +225,21 @@ const PortfolioModal = ({ isStandalone }) => {
         <div className="portfolio-modal-main">
           {/* Max-width 768px constraint container */}
           <div className="portfolio-modal-content">
-            <h1 id="portfolio-modal-heading" className="portfolio-modal-title">
-              {selectedProject.title}
-            </h1>
-            <p className="portfolio-modal-subtitle">{selectedProject.description}</p>
-            <p>
-              Welcome to my online portfolio! I'm thrilled to share a curated collection of my most
-              impactful projects, reflecting my passion for innovation and dedication to excellence.
-            </p>
-            <p>
-              Each project in this portfolio represents a unique challenge and a valuable learning
-              experience. From crafting intuitive user interfaces to developing robust backend
-              systems, I've honed my skills in various aspects of software development.
-            </p>
-            <p>
-              I believe in the power of collaboration and open communication. Throughout my career,
-              I've had the privilege of working with talented teams, where we've collectively
-              brainstormed ideas, tackled complex problems, and achieved remarkable outcomes.
-            </p>
-            <p>
-              I'm passionate about leveraging technology to solve real-world problems and create
-              positive change. My portfolio showcases a diverse range of projects, each
-              demonstrating my ability to adapt to different challenges and deliver innovative
-              solutions.
-            </p>
+            <div className="portfolio-modal-header">
+              <h1 id="portfolio-modal-heading" className="portfolio-modal-title">
+                {selectedProject.title}
+              </h1>
+              {selectedProject.year && (
+                <p className="portfolio-modal-year">{selectedProject.year}</p>
+              )}
+            </div>
+            {selectedProject.content ? (
+              selectedProject.content.map((block, idx) => <ContentBlock key={idx} block={block} />)
+            ) : (
+              <p className="portfolio-content-placeholder-text">
+                Case study coming soon. Check back for the full project breakdown.
+              </p>
+            )}
           </div>
         </div>
       </div>

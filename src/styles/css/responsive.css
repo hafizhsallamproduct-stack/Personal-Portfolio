@@ -131,7 +131,8 @@
     width: fit-content;
   }
   .hero-buttons .btn-primary-lg,
-  .hero-buttons .btn-secondary {
+  .hero-buttons .btn-secondary,
+  .hero-buttons .btn-outline {
     width: 300px;
     justify-content: center;
   }
@@ -182,9 +183,9 @@
   .about-details {
     padding-top: 24px;
   }
-  .languages-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
+  .languages-groups {
+    flex-direction: column;
+    gap: 20px;
   }
   .education-card {
     padding: 16px;

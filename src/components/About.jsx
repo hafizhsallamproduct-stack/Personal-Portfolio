@@ -62,22 +62,19 @@ const About = () => {
             <h3 className="about-details-title">
               <Translate className="icon" aria-hidden="true" /> Languages
             </h3>
-            <div className="languages-grid">
-              <div className="language-item">
-                <span className="language-name">English</span>
-                <span className="language-proficiency">Professional working proficiency</span>
+            <div className="languages-groups">
+              <div className="language-group">
+                <h4 className="language-group-title">Professional working proficiency</h4>
+                <ul className="language-group-list">
+                  <li className="language-name">English</li>
+                  <li className="language-name">Malay</li>
+                </ul>
               </div>
-              <div className="language-item">
-                <span className="language-name">Indonesia</span>
-                <span className="language-proficiency">Native or bilingual proficiency</span>
-              </div>
-              <div className="language-item">
-                <span className="language-name">Malay</span>
-                <span className="language-proficiency">Professional working proficiency</span>
-              </div>
-              <div className="language-item">
-                <span className="language-name">Minang</span>
-                <span className="language-proficiency">Native or bilingual proficiency</span>
+              <div className="language-group">
+                <h4 className="language-group-title">Native or bilingual proficiency</h4>
+                <ul className="language-group-list">
+                  <li className="language-name">Indonesia</li>
+                </ul>
               </div>
             </div>
           </div>
