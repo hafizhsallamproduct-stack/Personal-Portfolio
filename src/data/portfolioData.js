@@ -138,7 +138,8 @@ export const toolsData = [
 
 export const workData = [
   {
-    title: 'Wego Design System — Built & Maintained from the Ground Up',
+    title: 'Wego Design System: Built & Maintained from the Ground Up',
+    company: 'Wego',
     year: '2022 — Present',
     isLarge: true,
     image:
@@ -191,11 +192,6 @@ export const workData = [
           'Not everyone was familiar with Figma since we had just moved from Sketch, so people also needed time to learn the new tool.',
         ],
       },
-      {
-        type: 'image',
-        url: 'https://images.unsplash.com/photo-1559028012-481c04fa702d?q=80&w=3132&auto=format&fit=crop',
-        alt: 'Sticky notes and wireframes mapping out design system challenges',
-      },
       { type: 'heading', text: 'Design Research and Exploration' },
       {
         type: 'paragraph',
@@ -211,8 +207,8 @@ export const workData = [
       },
       {
         type: 'image',
-        url: 'https://images.unsplash.com/photo-1561070791-2526d30994b8?q=80&w=3132&auto=format&fit=crop',
-        alt: 'Foundational design explorations — typography, color, and tokens',
+        url: '/assets/portfolio/portfolio-wegodesignsystem-2.webp',
+        alt: 'Wego 2022 Design Concept — before and after UI comparisons across platforms',
       },
       { type: 'heading', text: 'Design Approval' },
       {
@@ -239,11 +235,6 @@ export const workData = [
           'Identified business concerns',
           'Clear understanding of engineering constraints, limitations, and collaboration approach',
         ],
-      },
-      {
-        type: 'image',
-        url: 'https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=3132&auto=format&fit=crop',
-        alt: 'Stakeholder and engineering alignment session',
       },
       { type: 'heading', text: 'Development, Testing and Documentation' },
       {
@@ -277,8 +268,8 @@ export const workData = [
       },
       {
         type: 'image',
-        url: 'https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?q=80&w=3132&auto=format&fit=crop',
-        alt: 'Component library and design hand-off documentation',
+        url: '/assets/portfolio/portfolio-wegodesignsystem-1.webp',
+        alt: 'Design foundation variables and text styles in Figma',
       },
       { type: 'heading', text: 'Structure, Maintenance & Documentation' },
       { type: 'subheading', text: 'Structure' },
@@ -356,27 +347,31 @@ export const workData = [
     ],
   },
   {
-    title: 'Wego Flight Search Redesign',
+    title: 'Redesigning the First Step: The Journey of the Search Form',
+    company: 'Wego',
     description:
       "Led the end-to-end redesign of Wego's flight search experience, improving usability and conversion.",
     link: '#',
     slug: 'wego-flight-search-redesign',
   },
   {
-    title: 'AI-Assisted Design Workflow',
+    title: 'Designing with AI: An Evolving Practice',
+    company: 'Wego',
     description: 'Exploring how AI tools can support the design process and improve efficiency.',
     slug: 'ai-assisted-design-workflow',
     link: '#',
   },
   {
-    title: 'Checkout Flow Optimization',
+    title: 'Flight Checkout Flow: Designing Away the Doubt',
+    company: 'Wego',
     description:
       'Contributed to improving the booking and checkout experience, reducing drop-off rates.',
     slug: 'checkout-flow-optimization',
     link: '#',
   },
   {
-    title: 'Mobile App Experience',
+    title: 'Banking on Trust: Designing for Security and Clarity',
+    company: 'RHB Banking Group',
     description: 'Designed key mobile flows for travel booking across iOS and Android platforms.',
     slug: 'mobile-app-experience',
     link: '#',

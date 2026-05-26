@@ -46,12 +46,14 @@ const PortfolioModal = ({ isStandalone }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const [sidebarWidth, setSidebarWidth] = useState(400);
+  const [isClosing, setIsClosing] = useState(false);
   const [theme, setTheme] = useState(
     () => document.documentElement.getAttribute('data-theme') || 'light'
   );
   const containerRef = useRef(null);
   const closeButtonRef = useRef(null);
   const previouslyFocusedRef = useRef(null);
+  const isClosingRef = useRef(false);
 
   const toggleTheme = () => {
     const next = theme === 'light' ? 'dark' : 'light';
@@ -97,11 +99,16 @@ const PortfolioModal = ({ isStandalone }) => {
   }, [isStandalone]);
 
   const handleClose = useCallback(() => {
-    if (location.state?.backgroundLocation) {
-      navigate(-1);
-    } else {
-      navigate('/');
-    }
+    if (isClosingRef.current) return;
+    isClosingRef.current = true;
+    setIsClosing(true);
+    setTimeout(() => {
+      if (location.state?.backgroundLocation) {
+        navigate(-1);
+      } else {
+        navigate('/');
+      }
+    }, 600);
   }, [location.state, navigate]);
 
   useEffect(() => {
@@ -157,7 +164,7 @@ const PortfolioModal = ({ isStandalone }) => {
     // cover keyboard users.
     // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
     <div
-      className={`portfolio-modal-overlay open ${isStandalone ? 'standalone' : ''}`}
+      className={`portfolio-modal-overlay open${isClosing ? ' closing' : ''}${isStandalone ? ' standalone' : ''}`}
       onClick={handleClose}
     >
       {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions */}

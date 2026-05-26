@@ -42,12 +42,10 @@
     width: 100%;
   }
   .work-cards {
-    grid-template-columns: repeat(2, 1fr);
     padding: 0 40px 60px;
   }
-  .work-card,
-  .work-card--large {
-    grid-column: span 1;
+  .work-card-placeholder {
+    width: 220px;
   }
   .cta-section {
     padding: 60px 40px;
@@ -220,16 +218,26 @@
     display: none;
   }
   .work-cards {
-    grid-template-columns: 1fr;
     padding: 0 16px 32px;
+  }
+  .work-card {
+    flex-direction: column;
+  }
+  .work-card-placeholder {
+    width: 100%;
+    min-height: 180px;
   }
   .work-card-body {
     padding: 16px;
-    height: auto;
   }
-  .work-card,
-  .work-card--large {
-    grid-column: span 1;
+  .work-card-separator {
+    width: auto;
+    height: 1px;
+    align-self: auto;
+    margin: 0 16px;
+  }
+  .work-card-action {
+    padding: 0 16px 16px;
   }
   .cta-section {
     padding: 32px 16px;

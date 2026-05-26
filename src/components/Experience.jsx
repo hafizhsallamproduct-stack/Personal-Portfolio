@@ -7,50 +7,56 @@ const ExperienceRole = ({ role }) => {
 
   return (
     <div className="experience-role">
-      <div className="experience-role-info">
-        <div className="experience-role-title">{role.title}</div>
-        <div className="experience-role-location">{role.location}</div>
-        <div className="experience-role-date-mobile">{role.date}</div>
-        {isExpanded && (
-          <>
-            {role.details ? (
-              <ul className="experience-role-details">
-                {role.details.map((detail, j) => (
-                  <li key={j}>{detail}</li>
-                ))}
-              </ul>
-            ) : (
-              <p className="experience-role-summary">{role.summary}</p>
-            )}
-          </>
-        )}
+      <div className="experience-role-header">
+        <div className="experience-role-info">
+          <div className="experience-role-title">{role.title}</div>
+          <div className="experience-role-location">{role.location}</div>
+          <div className="experience-role-date-mobile">{role.date}</div>
+        </div>
+        <button
+          className="experience-role-date"
+          onClick={() => setIsExpanded(!isExpanded)}
+          aria-expanded={isExpanded}
+          aria-label={`${isExpanded ? 'Collapse' : 'Expand'} ${role.title}`}
+          style={{
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px',
+            background: 'none',
+            border: 'none',
+            padding: 0,
+          }}
+        >
+          <span className="experience-role-date-text">{role.date}</span>
+          {isExpanded ? (
+            <CaretUp
+              className="icon"
+              aria-hidden="true"
+              style={{ color: 'var(--text-secondary)' }}
+            />
+          ) : (
+            <CaretDown
+              className="icon"
+              aria-hidden="true"
+              style={{ color: 'var(--text-secondary)' }}
+            />
+          )}
+        </button>
       </div>
-      <button
-        className="experience-role-date"
-        onClick={() => setIsExpanded(!isExpanded)}
-        aria-expanded={isExpanded}
-        aria-label={`${isExpanded ? 'Collapse' : 'Expand'} ${role.title}`}
-        style={{
-          cursor: 'pointer',
-          display: 'flex',
-          alignItems: 'center',
-          gap: '8px',
-          background: 'none',
-          border: 'none',
-          padding: 0,
-        }}
-      >
-        <span className="experience-role-date-text">{role.date}</span>
-        {isExpanded ? (
-          <CaretUp className="icon" aria-hidden="true" style={{ color: 'var(--text-secondary)' }} />
-        ) : (
-          <CaretDown
-            className="icon"
-            aria-hidden="true"
-            style={{ color: 'var(--text-secondary)' }}
-          />
-        )}
-      </button>
+      {isExpanded && (
+        <>
+          {role.details ? (
+            <ul className="experience-role-details">
+              {role.details.map((detail, j) => (
+                <li key={j}>{detail}</li>
+              ))}
+            </ul>
+          ) : (
+            <p className="experience-role-summary">{role.summary}</p>
+          )}
+        </>
+      )}
     </div>
   );
 };

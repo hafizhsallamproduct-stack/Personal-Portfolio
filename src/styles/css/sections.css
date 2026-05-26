@@ -1,16 +1,48 @@
+/* --- Container boundary lines --- */
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background-color: var(--grid-tile);
+  pointer-events: none;
+  z-index: 0;
+}
+
+body::before {
+  left: calc(50% - 600px);
+}
+
+body::after {
+  left: calc(50% + 600px);
+}
+
 /* --- Nav --- */
 .nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  max-width: 1200px;
+  max-width: calc(1200px - 2px);
   margin: 0 auto;
-  padding: 16px 80px;
+  padding: 16px 48px;
+  position: relative;
+  background-color: var(--bg-page);
 }
 
 .nav-top {
-  background-color: var(--bg-page);
+  background-color: transparent;
+}
+
+.nav-top .nav,
+.nav-fixed .nav {
+  border-bottom: 1px solid var(--grid-tile);
+}
+
+.exploration-nav .nav {
+  border-bottom: none;
 }
 
 .nav-fixed {
@@ -19,7 +51,7 @@
   left: 0;
   right: 0;
   z-index: 100;
-  background-color: var(--bg-page);
+  background-color: transparent;
   transform: translateY(-100%);
   opacity: 0;
   visibility: hidden;
@@ -114,7 +146,7 @@
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 60px 80px 80px;
+  padding: 64px 48px;
   gap: 32px;
 }
 
@@ -317,7 +349,7 @@
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 80px;
+  padding: 0 48px;
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -362,9 +394,15 @@
 
 .experience-role {
   display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 20px 0;
+}
+
+.experience-role-header {
+  display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  padding: 20px 0;
 }
 
 .experience-role:first-child {
@@ -417,12 +455,10 @@
   font-weight: 400;
   line-height: 20px;
   color: var(--text-secondary);
-  margin-top: 8px;
 }
 
 .experience-role-details {
   list-style: none;
-  margin-top: 8px;
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -529,25 +565,24 @@
   text-decoration: line-through;
 }
 
-/* --- Work Cards (Bento Grid) --- */
+/* --- Work Cards (List) --- */
 .work-cards {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  display: flex;
+  flex-direction: column;
   gap: 12px;
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 80px 80px;
+  padding: 0 48px 64px;
 }
 
 .work-card {
-  grid-column: span 2;
   border-radius: 12px;
   border: 1px solid var(--border);
   background-color: var(--bg-card);
   overflow: hidden;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   transition: border-color 0.2s;
   cursor: pointer;
 }
@@ -556,16 +591,27 @@
   border-color: var(--border-hover);
 }
 
-.work-card--large {
-  grid-column: span 4;
+.work-card-placeholder {
+  width: 280px;
+  min-height: 200px;
+  flex-shrink: 0;
+  background-color: var(--bg-placeholder);
+  overflow: hidden;
+}
+
+.work-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .work-card-body {
-  padding: 24px;
+  padding: 24px 32px;
   display: flex;
   flex-direction: column;
   gap: 8px;
-  height: 200px;
+  flex: 1;
+  justify-content: center;
 }
 
 .work-card-title {
@@ -583,49 +629,38 @@
   font-weight: 400;
   line-height: 22px;
   color: var(--text-muted);
-  flex: 1;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
 
-.work-card-link {
-  display: inline-flex;
+.work-card-separator {
+  width: 1px;
+  align-self: stretch;
+  background-color: var(--divider);
+  flex-shrink: 0;
+}
+
+.work-card-action {
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 6px;
+  justify-content: center;
+  width: 200px;
+  flex-shrink: 0;
+  gap: 12px;
+}
+
+.work-card-company {
   font-size: 14px;
   font-weight: 500;
   color: var(--text-muted);
-  margin-top: auto;
-  transition: color 0.2s;
+  white-space: nowrap;
 }
 
-.work-card-link .icon {
-  width: 16px;
-  height: 16px;
-  transition: transform 0.3s ease;
-}
-
-.work-card:hover .work-card-link {
-  color: var(--accent);
-}
-
-.work-card:hover .work-card-link .icon {
-  transform: translateX(4px);
-}
-
-.work-card-placeholder {
-  width: 100%;
-  height: 300px;
-  background-color: var(--bg-placeholder);
-  overflow: hidden;
-}
-
-.work-card-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.work-card-btn {
+  white-space: nowrap;
 }
 
 /* --- CTA --- */
@@ -636,9 +671,9 @@
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 80px;
+  padding: 64px 48px;
   gap: 32px;
-  scroll-margin-top: 80px;
+  scroll-margin-top: 64px;
 }
 
 .cta-heading {
@@ -665,7 +700,7 @@
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 32px 80px;
+  padding: 32px 48px;
 }
 
 .footer-copyright {

@@ -119,18 +119,18 @@
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 80px;
+  padding: 0;
   scroll-margin-top: 40px;
 }
 
 .divider-line {
   width: 100%;
   height: 1px;
-  background-color: var(--divider);
+  background-color: var(--grid-tile);
 }
 
 .divider--spaced {
-  padding-top: 80px;
+  padding-top: 64px;
 }
 
 .divider--icons {
@@ -164,9 +164,9 @@
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 80px;
+  padding: 64px 48px;
   gap: 120px;
-  scroll-margin-top: 80px;
+  scroll-margin-top: 64px;
 }
 
 .section--header-only {
