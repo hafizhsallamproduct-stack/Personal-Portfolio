@@ -11,11 +11,11 @@ const About = () => {
         <picture className="about-photo-wrapper">
           <source
             type="image/webp"
-            srcSet="assets/profile-256.webp 1x, assets/profile-384.webp 1.5x"
+            srcSet="/assets/profile-256.webp 1x, /assets/profile-384.webp 1.5x"
           />
           <img
             className="about-photo"
-            src="assets/profile-384.jpg"
+            src="/assets/profile-384.jpg"
             alt="Hafizh Sallam"
             width="128"
             height="128"

@@ -12,7 +12,7 @@ const Education = () => {
       <div className="education-card">
         <img
           className="education-icon"
-          src="assets/university.png"
+          src="/assets/university.png"
           alt="Universiti Utara Malaysia"
         />
         <div className="education-details">

@@ -3,19 +3,15 @@ import { LinkedinLogo, ArrowDown } from './icons';
 const Hero = () => {
   return (
     <section className="hero">
-      <div className="hero-badge">
-        <div className="hero-badge-dot"></div>
-        <span className="hero-badge-text">Available for opportunities</span>
-      </div>
       <div className="hero-content">
         <picture className="hero-mobile-photo-wrapper">
           <source
             type="image/webp"
-            srcSet="assets/profile-256.webp 1x, assets/profile-384.webp 1.5x"
+            srcSet="/assets/profile-256.webp 1x, /assets/profile-384.webp 1.5x"
           />
           <img
             className="hero-mobile-photo"
-            src="assets/profile-384.jpg"
+            src="/assets/profile-384.jpg"
             alt="Hafizh Sallam"
             width="96"
             height="96"

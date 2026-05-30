@@ -1,12 +1,12 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useParams, useNavigate, Link, useLocation } from 'react-router-dom';
 import { workData } from '../data/portfolioData';
-import { X, Sun, Moon } from './icons';
+import { X, Sun, Moon, HafizhLogo } from './icons';
 
 const FOCUSABLE_SELECTOR =
   'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
-const ContentBlock = ({ block }) => {
+const ContentBlock = ({ block, onImageClick }) => {
   switch (block.type) {
     case 'heading':
       return <h2 className="portfolio-content-heading">{block.text}</h2>;
@@ -16,11 +16,20 @@ const ContentBlock = ({ block }) => {
       return <p>{block.text}</p>;
     case 'image':
       return (
-        <div className="portfolio-content-image">
-          {block.url && (
-            <img src={block.url} alt={block.alt || ''} className="portfolio-detail-img" />
+        // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions
+        <figure
+          className="portfolio-content-image"
+          onClick={() => block.url && onImageClick?.(block.url)}
+        >
+          <div className="portfolio-image-wrap">
+            {block.url && (
+              <img src={block.url} alt={block.alt || ''} className="portfolio-detail-img" />
+            )}
+          </div>
+          {block.caption && (
+            <figcaption className="portfolio-image-caption">{block.caption}</figcaption>
           )}
-        </div>
+        </figure>
       );
     case 'label':
       return <p className="portfolio-content-label">{block.text}</p>;
@@ -47,6 +56,11 @@ const PortfolioModal = ({ isStandalone }) => {
   const location = useLocation();
   const [sidebarWidth, setSidebarWidth] = useState(400);
   const [isClosing, setIsClosing] = useState(false);
+  const [lightboxUrl, setLightboxUrl] = useState(null);
+  const lightboxUrlRef = useRef(null);
+  useEffect(() => {
+    lightboxUrlRef.current = lightboxUrl;
+  }, [lightboxUrl]);
   const [theme, setTheme] = useState(
     () => document.documentElement.getAttribute('data-theme') || 'light'
   );
@@ -127,7 +141,11 @@ const PortfolioModal = ({ isStandalone }) => {
     const handleKeyDown = (event) => {
       if (event.key === 'Escape') {
         event.preventDefault();
-        handleClose();
+        if (lightboxUrlRef.current) {
+          setLightboxUrl(null);
+        } else {
+          handleClose();
+        }
         return;
       }
 
@@ -160,97 +178,136 @@ const PortfolioModal = ({ isStandalone }) => {
   }, [handleClose]);
 
   return (
-    // Overlay click-to-close is an enhancement; Escape and the close button
-    // cover keyboard users.
-    // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
-    <div
-      className={`portfolio-modal-overlay open${isClosing ? ' closing' : ''}${isStandalone ? ' standalone' : ''}`}
-      onClick={handleClose}
-    >
-      {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions */}
-      <div
-        ref={containerRef}
-        className="portfolio-modal-container"
-        onClick={(e) => e.stopPropagation()}
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="portfolio-modal-heading"
-      >
-        {/* Sidebar Left - Dynamic width limitation */}
-        <div className="portfolio-modal-sidebar" style={{ width: sidebarWidth }}>
-          <div className="portfolio-modal-sidebar-header">
-            <div className="nav-logo-icon">H</div>
-            <div className="portfolio-modal-sidebar-info">
-              <h2>Portfolio</h2>
-              <p>Hafizh Sallam</p>
-            </div>
-          </div>
-          <div className="portfolio-modal-sidebar-nav">
-            {workData.map((project, idx) => (
-              <Link
-                key={idx}
-                to={`/portfolio/${project.slug}`}
-                state={location.state}
-                replace
-                className={`portfolio-modal-nav-item ${project.slug === selectedProject.slug ? 'active' : ''}`}
-              >
-                <div className="portfolio-modal-nav-thumb"></div>
-                <span>{project.title}</span>
-              </Link>
-            ))}
-          </div>
-          <div className="portfolio-modal-sidebar-footer">
-            <button className="theme-toggle" aria-label="Toggle theme" onClick={toggleTheme}>
-              {theme === 'light' ? (
-                <Sun className="icon" aria-hidden="true" />
-              ) : (
-                <Moon className="icon" aria-hidden="true" />
-              )}
-            </button>
-          </div>
+    <>
+      {/* Lightbox */}
+      {lightboxUrl && (
+        // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
+        <div className="lightbox-overlay" onClick={() => setLightboxUrl(null)}>
+          {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions */}
+          <img
+            src={lightboxUrl}
+            alt=""
+            className="lightbox-img"
+            onClick={(e) => e.stopPropagation()}
+          />
         </div>
-
-        {/* Resizer Handle — drag-to-resize is inherently mouse-only */}
-        {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
+      )}
+      {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
+      <div
+        className={`portfolio-modal-overlay open${isClosing ? ' closing' : ''}${isStandalone ? ' standalone' : ''}`}
+        onClick={handleClose}
+      >
+        {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions */}
         <div
-          className="portfolio-modal-resizer"
-          onMouseDown={startResizing}
-          aria-label="Resize sidebar"
-        ></div>
-
-        {/* Floating close button */}
-        <button
-          ref={closeButtonRef}
-          className="portfolio-modal-close"
-          onClick={handleClose}
-          aria-label="Close modal"
+          ref={containerRef}
+          className="portfolio-modal-container"
+          onClick={(e) => e.stopPropagation()}
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="portfolio-modal-heading"
         >
-          <X className="icon" aria-hidden="true" />
-        </button>
+          {/* Sidebar Left - Dynamic width limitation */}
+          <div className="portfolio-modal-sidebar" style={{ width: sidebarWidth }}>
+            <div className="portfolio-modal-sidebar-header">
+              <HafizhLogo className="nav-logo-icon" />
+              <div className="portfolio-modal-sidebar-info">
+                <h2>Portfolio</h2>
+                <p>Hafizh Sallam</p>
+              </div>
+            </div>
+            <div className="portfolio-modal-sidebar-nav">
+              {workData.map((project, idx) => (
+                <Link
+                  key={idx}
+                  to={`/portfolio/${project.slug}`}
+                  state={location.state}
+                  replace
+                  className={`portfolio-modal-nav-item ${project.slug === selectedProject.slug ? 'active' : ''}`}
+                >
+                  <div className="portfolio-modal-nav-thumb">
+                    {project.image && (
+                      <img
+                        src={project.image}
+                        alt=""
+                        className="portfolio-modal-nav-thumb-img"
+                        aria-hidden="true"
+                      />
+                    )}
+                  </div>
+                  <span>{project.title}</span>
+                </Link>
+              ))}
+            </div>
+            <div className="portfolio-modal-sidebar-footer">
+              <button className="theme-toggle" aria-label="Toggle theme" onClick={toggleTheme}>
+                {theme === 'light' ? (
+                  <Sun className="icon" aria-hidden="true" />
+                ) : (
+                  <Moon className="icon" aria-hidden="true" />
+                )}
+              </button>
+            </div>
+          </div>
 
-        {/* Main Text Content Right */}
-        <div className="portfolio-modal-main">
-          {/* Max-width 768px constraint container */}
-          <div className="portfolio-modal-content">
-            <div className="portfolio-modal-header">
-              <h1 id="portfolio-modal-heading" className="portfolio-modal-title">
-                {selectedProject.title}
-              </h1>
-              {selectedProject.year && (
-                <p className="portfolio-modal-year">{selectedProject.year}</p>
+          {/* Resizer Handle — drag-to-resize is inherently mouse-only */}
+          {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
+          <div
+            className="portfolio-modal-resizer"
+            onMouseDown={startResizing}
+            aria-label="Resize sidebar"
+          ></div>
+
+          {/* Floating close button */}
+          <button
+            ref={closeButtonRef}
+            className="portfolio-modal-close"
+            onClick={handleClose}
+            aria-label="Close modal"
+          >
+            <X className="icon" aria-hidden="true" />
+          </button>
+
+          {/* Main Text Content Right */}
+          <div className="portfolio-modal-main">
+            {/* Max-width 768px constraint container */}
+            <div className="portfolio-modal-content">
+              <div className="portfolio-modal-header">
+                <h1 id="portfolio-modal-heading" className="portfolio-modal-title">
+                  {selectedProject.title}
+                </h1>
+                {selectedProject.year && (
+                  <p className="portfolio-modal-year">{selectedProject.year}</p>
+                )}
+                {selectedProject.intro && (
+                  <p className="portfolio-modal-subtitle">{selectedProject.intro}</p>
+                )}
+                {selectedProject.introNote && (
+                  <p className="portfolio-modal-subtitle portfolio-modal-subtitle-note">
+                    <span className="portfolio-modal-subtitle-note-text">
+                      {selectedProject.introNote}
+                    </span>
+                    {selectedProject.introNoteEmoji && (
+                      <span className="portfolio-modal-subtitle-note-emoji" aria-hidden="true">
+                        {selectedProject.introNoteEmoji}
+                      </span>
+                    )}
+                  </p>
+                )}
+              </div>
+              {selectedProject.content ? (
+                selectedProject.content.map((block, idx) => (
+                  <ContentBlock key={idx} block={block} onImageClick={setLightboxUrl} />
+                ))
+              ) : (
+                <p className="portfolio-content-placeholder-text">
+                  Case study coming soon. Check back for the full project breakdown.
+                </p>
               )}
             </div>
-            {selectedProject.content ? (
-              selectedProject.content.map((block, idx) => <ContentBlock key={idx} block={block} />)
-            ) : (
-              <p className="portfolio-content-placeholder-text">
-                Case study coming soon. Check back for the full project breakdown.
-              </p>
-            )}
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

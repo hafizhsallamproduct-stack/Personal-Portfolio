@@ -142,16 +142,19 @@ export const workData = [
     company: 'Wego',
     year: '2022 — Present',
     isLarge: true,
-    image:
-      'https://images.unsplash.com/photo-1602576666092-bf6447a729fc?q=80&w=3132&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    image: '/assets/portfolio/portfolio-wegodesignsystem-7.webp',
     description:
       "Led the full rebuild of Wego's design system when transitioning from Sketch to Figma \u2014 establishing foundations, components, and documentation that scale across Flight and Hotel verticals on four touchpoints.",
+    intro:
+      'This portfolio focuses on the journey of building and maintaining the design system rather than going deep into technical implementation details. Because the system is a long-running and still-evolving effort, the most important story is how decisions were made, how changes were introduced gradually, and how the system stayed practical as our tools, workflows, and product needs evolved.',
+    introNote: 'For technical details, we can talk during the interview',
+    introNoteEmoji: '😊',
     slug: 'wego-design-system',
     link: '#',
     content: [
       {
         type: 'image',
-        url: 'https://images.unsplash.com/photo-1602576666092-bf6447a729fc?q=80&w=3132&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        url: '/assets/portfolio/portfolio-wegodesignsystem-7.webp',
       },
       {
         type: 'paragraph',
@@ -174,11 +177,6 @@ export const workData = [
         type: 'paragraph',
         text: 'The move to Figma gave us a chance to not just switch tools, but rethink the system. Instead of copying what we had before, we used this as an opportunity to update the visuals, refresh the design language, and build a system that better supports future product work.',
       },
-      {
-        type: 'image',
-        url: 'https://images.unsplash.com/photo-1558655146-9f40138edfeb?q=80&w=3132&auto=format&fit=crop',
-        alt: 'Transition from Sketch to Figma — rebuilding the design system',
-      },
       { type: 'heading', text: 'The Challenge' },
       {
         type: 'paragraph',
@@ -192,6 +190,12 @@ export const workData = [
           'Not everyone was familiar with Figma since we had just moved from Sketch, so people also needed time to learn the new tool.',
         ],
       },
+      {
+        type: 'image',
+        url: '/assets/portfolio/portfolio-wegodesignsystem-5.webp',
+        alt: 'Background context for the Wego Design System rebuild',
+        caption: 'Early concept for design change',
+      },
       { type: 'heading', text: 'Design Research and Exploration' },
       {
         type: 'paragraph',
@@ -204,11 +208,6 @@ export const workData = [
       {
         type: 'paragraph',
         text: 'We also explored areas like design tokens, accessibility standards, and consistency across platforms. Based on these insights, we developed a set of design explorations rooted in the existing system, focusing on core foundations such as typography, color and other fundamental design principles.',
-      },
-      {
-        type: 'image',
-        url: '/assets/portfolio/portfolio-wegodesignsystem-2.webp',
-        alt: 'Wego 2022 Design Concept — before and after UI comparisons across platforms',
       },
       { type: 'heading', text: 'Design Approval' },
       {
@@ -235,6 +234,12 @@ export const workData = [
           'Identified business concerns',
           'Clear understanding of engineering constraints, limitations, and collaboration approach',
         ],
+      },
+      {
+        type: 'image',
+        url: '/assets/portfolio/portfolio-wegodesignsystem-2.webp',
+        alt: 'Wego 2022 Design Concept — before and after UI comparisons across platforms',
+        caption: 'presentation slide for approval where we show before and after design',
       },
       { type: 'heading', text: 'Development, Testing and Documentation' },
       {
@@ -270,6 +275,19 @@ export const workData = [
         type: 'image',
         url: '/assets/portfolio/portfolio-wegodesignsystem-1.webp',
         alt: 'Design foundation variables and text styles in Figma',
+        caption: 'Foundation structure for typography and color',
+      },
+      {
+        type: 'image',
+        url: '/assets/portfolio/portfolio-wegodesignsystem-3.webp',
+        alt: 'Documentation for each component',
+        caption: 'Documentation for each component, where to use it and how to use it',
+      },
+      {
+        type: 'image',
+        url: '/assets/portfolio/portfolio-wegodesignsystem-4.webp',
+        alt: 'Example of component description',
+        caption: 'Example of component description',
       },
       { type: 'heading', text: 'Structure, Maintenance & Documentation' },
       { type: 'subheading', text: 'Structure' },
