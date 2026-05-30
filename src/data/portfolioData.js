@@ -17,6 +17,7 @@ export const experienceData = [
       },
       {
         title: 'Senior Product Designer I',
+        isDefault: true,
         location: 'Kuala Lumpur, Malaysia',
         date: 'Oct 2021 — Sep 2024',
         details: [
