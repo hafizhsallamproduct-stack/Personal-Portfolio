@@ -78,14 +78,6 @@ body::after {
 .nav-logo-icon {
   width: 32px;
   height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  background-color: var(--logo-bg);
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--logo-text);
   flex-shrink: 0;
 }
 

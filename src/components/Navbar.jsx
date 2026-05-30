@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
-import { LinkedinLogo, List, X } from './icons';
+import { HafizhLogo, LinkedinLogo, List, X } from './icons';
 
 const SECTION_LINKS = [
   { href: '#about', label: 'About' },
@@ -96,7 +96,7 @@ const Navbar = () => {
       <header className="nav-top" ref={navTopRef}>
         <nav className="nav">
           <a href="#top" className="nav-logo" aria-label="Back to home">
-            <div className="nav-logo-icon">H</div>
+            <HafizhLogo className="nav-logo-icon" />
           </a>
 
           <button className="hamburger-menu" onClick={toggleMobileMenu} aria-label="Toggle menu">
@@ -112,7 +112,7 @@ const Navbar = () => {
       <header className={`nav-fixed ${isFixedVisible ? 'visible' : ''}`} id="navFixed">
         <nav className="nav">
           <a href="#top" className="nav-logo" aria-label="Back to home">
-            <div className="nav-logo-icon">H</div>
+            <HafizhLogo className="nav-logo-icon" />
             <span className="nav-logo-text">Hafizh Sallam</span>
           </a>
 
