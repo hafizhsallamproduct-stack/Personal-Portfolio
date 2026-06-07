@@ -178,6 +178,57 @@ export const workData = [
         type: 'paragraph',
         text: 'The move to Figma gave us a chance to not just switch tools, but rethink the system. Instead of copying what we had before, we used this as an opportunity to update the visuals, refresh the design language, and build a system that better supports future product work.',
       },
+      { type: 'heading', text: 'Success Criteria' },
+      {
+        type: 'paragraph',
+        text: 'This project was structured across multiple phases, each with its own defined goals and deliverables.',
+      },
+      {
+        type: 'timeline',
+        phases: [
+          {
+            label: 'Phase 1 — Foundation',
+            title: 'Baby Phase',
+            criteria: [
+              'Alignment and approval secured from all key stakeholders and product verticals',
+              'Core design foundations and essential components are completed, validated, and ready for production use',
+              'Teams have a shared understanding of design principles, standards, and implementation approach',
+            ],
+          },
+          {
+            label: 'Phase 2 — Adoption',
+            title: 'Toddler Phase',
+            criteria: [
+              'The design system is actively used in actual designs across teams',
+              'Documentation is complete, accessible, and enables consistent application of the design system',
+              'Designers can efficiently create and maintain experiences using the shared system',
+            ],
+          },
+          {
+            label: 'Phase 3 — Refinement',
+            title: 'Child Phase',
+            criteria: [
+              'Components and foundations have been improved based on real-world usage and feedback',
+              'Documentation accurately reflects the latest standards and component behavior',
+              'The design system is mature and ready for engineering implementation at scale',
+            ],
+          },
+          {
+            label: 'Phase 4 — Unification (In Progress)',
+            title: 'Teen Phase',
+            criteria: [
+              'Design and front-end teams operate from a single, shared source of truth',
+              'Design and code components achieve a high level of parity and consistency',
+              'The latest design system standards are adopted across products and experiences',
+              'Cross-functional teams can build, maintain, and scale products using a unified component library',
+            ],
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        text: 'On Phase 4, early progress was slow due to limited resources, but accelerated significantly after integrating AI into the front-end build process. On the design side, documentation is being revised to be AI-readable, enabling faster interpretation and further speeding up the overall workflow.',
+      },
       { type: 'heading', text: 'The Challenge' },
       {
         type: 'paragraph',
@@ -312,6 +363,16 @@ export const workData = [
         type: 'paragraph',
         text: 'This approach is more sustainable and significantly easier to maintain. Improvements in Figma have also made it more practical to manage a unified system efficiently.',
       },
+      {
+        type: 'image',
+        url: '/assets/portfolio/portfolio-wegodesignsystem-8.webp',
+        alt: 'Wego Design System structure diagram',
+      },
+      {
+        type: 'image',
+        url: '/assets/portfolio/portfolio-wegodesignsystem-9.webp',
+        alt: 'Wego Design System structure diagram',
+      },
       { type: 'subheading', text: 'Maintenance' },
       {
         type: 'paragraph',
@@ -362,6 +423,22 @@ export const workData = [
       {
         type: 'paragraph',
         text: 'To keep documentation relevant, updates are usually done alongside component changes or during design system audits. This ensures that documentation stays aligned with the latest implementation and team needs.',
+      },
+      { type: 'heading', text: 'Project Takeaways (What I Learned)' },
+      {
+        type: 'paragraph',
+        text: 'The biggest lesson from this project is that a design system is more than a component library. It needs to support the product, the team, and how people actually work.',
+      },
+      {
+        type: 'list',
+        items: [
+          'Small changes are easier to adopt than one big redesign. Starting with foundations helped us modernize the product without disrupting the team.',
+          'A design system must be easy to use. Testing with designers showed how different workflows affect how components are applied.',
+          'Good documentation should answer real questions. Clear and practical guidance helps designers and developers make faster decisions.',
+          'The system structure must be easy to maintain. With a small team, one shared component library worked better than separate desktop and mobile libraries.',
+          'Design and engineering need to stay aligned. The system becomes stronger when Figma, code, and documentation match.',
+          'AI is more useful when the system is clear. Structured documentation makes it easier for AI and developers to understand and use the system.',
+        ],
       },
     ],
   },

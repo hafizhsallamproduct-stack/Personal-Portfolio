@@ -41,6 +41,28 @@ const ContentBlock = ({ block, onImageClick }) => {
           ))}
         </ul>
       );
+    case 'timeline':
+      return (
+        <div className="portfolio-timeline">
+          {block.phases.map((phase, i) => (
+            <div key={i} className="portfolio-timeline-phase">
+              <div className="portfolio-timeline-spine">
+                <div className="portfolio-timeline-dot" />
+                {i < block.phases.length - 1 && <div className="portfolio-timeline-line" />}
+              </div>
+              <div className="portfolio-timeline-body">
+                <p className="portfolio-timeline-label">{phase.label}</p>
+                <p className="portfolio-timeline-title">{phase.title} Success Criteria</p>
+                <ul className="portfolio-timeline-list">
+                  {phase.criteria.map((c, j) => (
+                    <li key={j}>{c}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          ))}
+        </div>
+      );
     default:
       return (
         <div style={{ color: 'red', border: '1px solid red', padding: '10px' }}>

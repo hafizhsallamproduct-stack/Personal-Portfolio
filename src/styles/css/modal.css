@@ -180,7 +180,7 @@
   position: relative;
   display: flex;
   justify-content: center;
-  padding: 56px 40px 0;
+  padding: 56px 40px;
   background-color: var(--bg-page);
 }
 
@@ -191,7 +191,6 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
-  padding-bottom: 56px;
 }
 
 .portfolio-modal-content p,
@@ -301,10 +300,7 @@
     border-bottom: 1px solid var(--border);
   }
   .portfolio-modal-main {
-    padding: 40px 20px 0;
-  }
-  .portfolio-modal-content {
-    padding-bottom: 40px;
+    padding: 40px 20px 56px;
   }
   .portfolio-modal-close {
     top: 24px;
@@ -365,7 +361,6 @@
   border-radius: 12px;
   border: 1px solid var(--border);
   background-color: var(--bg-placeholder);
-  max-height: 600px;
 }
 
 .portfolio-image-caption {
@@ -380,8 +375,7 @@
 .image-placeholder-inner {
   display: block;
   width: 100%;
-  max-height: 600px;
-  object-fit: cover;
+  height: auto;
 }
 
 /* --- Lightbox --- */
@@ -433,6 +427,96 @@
 }
 
 .portfolio-content-list li::before {
+  content: '\00B7';
+  position: absolute;
+  left: 0;
+  color: var(--bullet);
+  font-weight: 700;
+}
+
+/* --- Timeline --- */
+.portfolio-timeline {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 768px;
+  margin-inline: auto;
+}
+
+.portfolio-timeline-phase {
+  display: flex;
+  gap: 16px;
+}
+
+.portfolio-timeline-spine {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  width: 16px;
+  padding-top: 5px;
+}
+
+.portfolio-timeline-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #22c55e;
+  flex-shrink: 0;
+}
+
+.portfolio-timeline-line {
+  width: 1px;
+  flex: 1;
+  background-color: var(--border);
+  margin-top: 8px;
+}
+
+.portfolio-timeline-body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-bottom: 32px;
+}
+
+.portfolio-timeline-phase:last-child .portfolio-timeline-body {
+  padding-bottom: 0;
+}
+
+.portfolio-timeline-label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.portfolio-timeline-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.portfolio-timeline-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 6px;
+  padding: 0;
+}
+
+.portfolio-timeline-list li {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text-body);
+  padding-left: 16px;
+  position: relative;
+}
+
+.portfolio-timeline-list li::before {
   content: '\00B7';
   position: absolute;
   left: 0;
