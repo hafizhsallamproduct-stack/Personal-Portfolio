@@ -27,6 +27,10 @@ const Work = () => {
           </div>
         </Link>
       ))}
+      <p className="work-disclaimer">
+        All work shown was created during my employment. Company logos and brand assets are property
+        of their respective owners and are used here solely to identify the context of the work.
+      </p>
     </div>
   );
 };

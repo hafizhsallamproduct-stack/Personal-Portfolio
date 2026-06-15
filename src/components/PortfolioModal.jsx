@@ -325,6 +325,7 @@ const PortfolioModal = ({ isStandalone }) => {
                   Case study coming soon. Check back for the full project breakdown.
                 </p>
               )}
+              <div className="portfolio-modal-bottom-spacer" aria-hidden="true" />
             </div>
           </div>
         </div>

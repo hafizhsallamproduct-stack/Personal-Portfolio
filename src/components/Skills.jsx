@@ -18,12 +18,15 @@ const Skills = () => {
             </span>
           ))}
         </div>
-        <div className="skills-row">
-          {toolsData.map((tool) => (
-            <span key={tool.name} className={`tool-tag ${tool.strike ? 'tool-tag--strike' : ''}`}>
-              {tool.name}
-            </span>
-          ))}
+        <div className="skills-row-group">
+          <span className="skills-row-label">I am familiar with</span>
+          <div className="skills-row">
+            {toolsData.map((tool) => (
+              <span key={tool.name} className={`tool-tag ${tool.strike ? 'tool-tag--strike' : ''}`}>
+                {tool.name}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
     </section>

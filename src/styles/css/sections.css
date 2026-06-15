@@ -5,8 +5,8 @@ body::after {
   position: fixed;
   top: 0;
   bottom: 0;
-  width: 1px;
-  background-color: var(--grid-tile);
+  width: 0;
+  border-left: 1.5px solid var(--divider);
   pointer-events: none;
   z-index: 0;
 }
@@ -38,7 +38,7 @@ body::after {
 
 .nav-top .nav,
 .nav-fixed .nav {
-  border-bottom: 1px solid var(--grid-tile);
+  border-bottom: 1.5px solid var(--divider);
 }
 
 .exploration-nav .nav {
@@ -82,7 +82,7 @@ body::after {
 }
 
 .nav-logo-text {
-  font-size: 14px;
+  font-size: 20px;
   font-weight: 600;
   color: var(--text-primary);
   line-height: 20px;
@@ -99,7 +99,7 @@ body::after {
 }
 
 .nav-link {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
   color: var(--nav-link);
   line-height: 18px;
@@ -149,7 +149,7 @@ body::after {
   padding: 6px 16px;
   gap: 8px;
   background-color: var(--badge-bg);
-  border: 1px solid var(--badge-border);
+  border: 1.5px solid var(--badge-border);
 }
 
 .hero-badge-dot {
@@ -250,7 +250,7 @@ body::after {
   flex-direction: column;
   gap: 32px;
   padding-top: 32px;
-  border-top: 1px solid var(--border);
+  border-top: 1.5px solid var(--divider);
   margin-top: 16px;
 }
 
@@ -350,11 +350,11 @@ body::after {
 .experience-card {
   display: flex;
   width: 100%;
-  border-radius: 12px;
+  border-radius: 4px;
   padding: 32px;
   gap: 88px;
   background-color: var(--bg-card);
-  border: 1px solid var(--border);
+  border: 1.5px solid var(--divider);
 }
 
 .experience-card-company {
@@ -371,11 +371,11 @@ body::after {
 .experience-card-company-duration {
   display: flex;
   flex-direction: column;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
   color: var(--text-secondary);
   margin-top: 4px;
-  line-height: 22px;
+  line-height: 24px;
 }
 
 .experience-card-roles {
@@ -406,7 +406,7 @@ body::after {
 }
 
 .experience-role + .experience-role {
-  border-top: 1px solid var(--border);
+  border-top: 1.5px solid var(--divider);
 }
 
 .experience-role-info {
@@ -427,26 +427,26 @@ body::after {
 }
 
 .experience-role-location {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
-  line-height: 18px;
+  line-height: 24px;
   color: var(--text-secondary);
 }
 
 .experience-role-date {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
-  line-height: 16px;
+  line-height: 24px;
   color: var(--text-secondary);
   white-space: nowrap;
   flex-shrink: 0;
 }
 
 .experience-role-summary {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
-  line-height: 20px;
-  color: var(--text-secondary);
+  line-height: 24px;
+  color: var(--text-primary);
 }
 
 .experience-role-details {
@@ -457,10 +457,10 @@ body::after {
 }
 
 .experience-role-details li {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
-  line-height: 20px;
-  color: var(--text-secondary);
+  line-height: 24px;
+  color: var(--text-primary);
   padding-left: 12px;
   position: relative;
 }
@@ -477,11 +477,11 @@ body::after {
   display: flex;
   flex: 1;
   align-items: center;
-  border-radius: 12px;
+  border-radius: 4px;
   padding: 32px;
   gap: 32px;
   background-color: var(--bg-card);
-  border: 1px solid var(--border);
+  border: 1.5px solid var(--divider);
 }
 
 .education-icon {
@@ -504,16 +504,16 @@ body::after {
 }
 
 .education-degree {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
-  line-height: 18px;
+  line-height: 24px;
   color: var(--text-secondary);
 }
 
 .education-year {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
-  line-height: 16px;
+  line-height: 24px;
   color: var(--text-secondary);
   margin-top: 2px;
 }
@@ -536,17 +536,29 @@ body::after {
   border-radius: 999px;
   padding: 10px 20px;
   background-color: var(--tag-bg);
-  border: 1px solid var(--tag-border);
+  border: 1.5px solid var(--tag-border);
   font-size: 14px;
   font-weight: 400;
   line-height: 18px;
   color: var(--tag-text);
 }
 
+.skills-row-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.skills-row-label {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
 .tool-tag {
   border-radius: 999px;
   padding: 10px 20px;
-  border: 1px solid var(--tag-border);
+  border: 1.5px solid var(--tag-border);
   font-size: 14px;
   font-weight: 400;
   line-height: 16px;
@@ -569,8 +581,8 @@ body::after {
 }
 
 .work-card {
-  border-radius: 12px;
-  border: 1px solid var(--border);
+  border-radius: 4px;
+  border: 1.5px solid var(--divider);
   background-color: var(--bg-card);
   overflow: hidden;
   display: flex;
@@ -581,6 +593,7 @@ body::after {
 
 .work-card:hover {
   border-color: var(--border-hover);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
 }
 
 .work-card-placeholder {
@@ -617,10 +630,10 @@ body::after {
 }
 
 .work-card-description {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
-  line-height: 22px;
-  color: var(--text-muted);
+  line-height: 24px;
+  color: var(--text-primary);
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
@@ -628,9 +641,9 @@ body::after {
 }
 
 .work-card-separator {
-  width: 1px;
+  width: 0;
   align-self: stretch;
-  background-color: var(--divider);
+  border-left: 1.5px solid var(--divider);
   flex-shrink: 0;
 }
 
@@ -645,7 +658,7 @@ body::after {
 }
 
 .work-card-company {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 500;
   color: var(--text-muted);
   white-space: nowrap;
@@ -653,6 +666,13 @@ body::after {
 
 .work-card-btn {
   white-space: nowrap;
+}
+
+.work-disclaimer {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: var(--text-muted);
 }
 
 /* --- CTA --- */

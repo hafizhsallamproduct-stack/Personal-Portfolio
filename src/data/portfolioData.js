@@ -134,6 +134,7 @@ export const skillsData = [
 export const toolsData = [
   { name: 'Figma' },
   { name: 'Sketch' },
+  { name: 'Claude' },
   { name: 'Adobe CC', strike: true },
 ];
 
@@ -291,7 +292,7 @@ export const workData = [
         type: 'image',
         url: '/assets/portfolio/portfolio-wegodesignsystem-2.webp',
         alt: 'Wego 2022 Design Concept — before and after UI comparisons across platforms',
-        caption: 'presentation slide for approval where we show before and after design',
+        caption: 'Presentation slide for approval showing the before-and-after design.',
       },
       { type: 'heading', text: 'Development, Testing and Documentation' },
       {
@@ -367,11 +368,15 @@ export const workData = [
         type: 'image',
         url: '/assets/portfolio/portfolio-wegodesignsystem-8.webp',
         alt: 'Wego Design System structure diagram',
+        caption:
+          'Original structure: separate desktop and mobile component libraries connected to each product touchpoint and development output.',
       },
       {
         type: 'image',
         url: '/assets/portfolio/portfolio-wegodesignsystem-9.webp',
         alt: 'Wego Design System structure diagram',
+        caption:
+          'Updated structure: one shared component library for desktop and mobile, with platform-specific documentation where needed.',
       },
       { type: 'subheading', text: 'Maintenance' },
       {
@@ -439,6 +444,49 @@ export const workData = [
           'Design and engineering need to stay aligned. The system becomes stronger when Figma, code, and documentation match.',
           'AI is more useful when the system is clear. Structured documentation makes it easier for AI and developers to understand and use the system.',
         ],
+      },
+      { type: 'heading', text: 'Visual Outcomes' },
+      {
+        type: 'image',
+        url: '/assets/portfolio/portfolio-wegodesignsystem-10.webp',
+        alt: 'Wego Design System icon set',
+        caption:
+          'A refreshed icon set designed to align with the updated foundations and visual language of the component system.',
+      },
+      {
+        type: 'image',
+        url: '/assets/portfolio/portfolio-wegodesignsystem-11.webp',
+        alt: 'Search form evolution across three generations',
+        caption:
+          'The flight search form across three generations — from the original dense layout to a cleaner, more structured form that applies the updated design system foundations.',
+      },
+      {
+        type: 'image',
+        url: '/assets/portfolio/portfolio-wegodesignsystem-12.webp',
+        alt: 'Fare selection screen evolution',
+        caption:
+          'Fare selection redesigned to improve clarity and scannability. The updated layout uses consistent card patterns from the design system, making it easier to compare fare tiers at a glance.',
+      },
+      {
+        type: 'image',
+        url: '/assets/portfolio/portfolio-wegodesignsystem-13.webp',
+        alt: 'Booking form evolution across three generations',
+        caption:
+          'The booking flow updated to reflect the new design system — cleaner step indicators, improved information hierarchy, and consistent form components across passenger details and payment.',
+      },
+      {
+        type: 'image',
+        url: '/assets/portfolio/portfolio-wegodesignsystem-14.webp',
+        alt: 'SEO marketing page before and after redesign',
+        caption:
+          'An SEO marketing page updated as part of the design system rollout — applying refreshed typography, spacing, and component patterns to improve readability and visual consistency across content-heavy pages.',
+      },
+      {
+        type: 'image',
+        url: '/assets/portfolio/portfolio-wegodesignsystem-15.webp',
+        alt: 'Responsive grid implementation across breakpoints',
+        caption:
+          'The responsive grid system applied across multiple breakpoints — demonstrating how the design system foundations adapt consistently from desktop down to mobile across complex content layouts.',
       },
     ],
   },
