@@ -113,7 +113,7 @@
 
 .portfolio-modal-sidebar-info h2 {
   font-size: 24px;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--text-primary);
   line-height: 1.2;
 }
@@ -239,7 +239,7 @@
 
 .portfolio-modal-content .portfolio-modal-subtitle {
   font-size: 20px;
-  font-weight: 200;
+  font-weight: 400;
   line-height: 30px;
   color: var(--text-secondary);
   margin-bottom: 0;
@@ -320,7 +320,7 @@
 /* --- Portfolio Content Blocks --- */
 .portfolio-content-heading {
   font-size: 24px;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 32px;
   color: var(--text-primary);
   margin-top: 24px;
@@ -332,7 +332,7 @@
 
 .portfolio-content-subheading {
   font-size: 20px;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 28px;
   color: var(--text-primary);
   margin-top: 8px;
@@ -411,7 +411,7 @@
 
 .portfolio-content-label {
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 1.6;
   color: var(--text-primary);
   margin-bottom: -16px;
@@ -491,7 +491,7 @@
 
 .portfolio-timeline-label {
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--text-secondary);
@@ -500,7 +500,7 @@
 
 .portfolio-timeline-title {
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--text-primary);
   margin: 0;
 }

@@ -1,6 +1,8 @@
 export const experienceData = [
   {
     company: 'Wego Pte Ltd',
+    logo: '/assets/wego.svg',
+    logoHeight: '40px',
     duration: 'Oct 2021 — Present',
     roles: [
       {
@@ -31,6 +33,7 @@ export const experienceData = [
   },
   {
     company: 'RHB Banking Group',
+    logo: '/assets/rhb-logo.svg',
     duration: 'Jan 2020 — Oct 2021',
     tenure: '1 year 9 months',
     roles: [
@@ -48,6 +51,7 @@ export const experienceData = [
   },
   {
     company: 'AirAsia Berhad',
+    logo: '/assets/airasia-logo.svg',
     duration: 'Mar 2017 — Dec 2019',
     tenure: '2 years 10 months',
     roles: [
@@ -74,6 +78,7 @@ export const experienceData = [
   },
   {
     company: 'Lelong.my — Interbase Resources',
+    logo: '/assets/lelong-logo.png',
     duration: 'Nov 2015 — Feb 2017',
     tenure: '1 year 4 months',
     roles: [

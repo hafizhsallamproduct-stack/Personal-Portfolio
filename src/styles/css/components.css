@@ -5,11 +5,11 @@
   gap: 6px;
   border-radius: 4px;
   padding: 6px 12px;
-  background-color: var(--accent-bright);
-  border: 1.5px solid var(--accent-border);
+  background-color: var(--btn-accent);
+  border: 1.5px solid var(--btn-accent-border);
   font-size: 16px;
   font-weight: 500;
-  color: var(--logo-text);
+  color: var(--btn-accent-on);
   line-height: 16px;
   cursor: pointer;
   transition: background-color 0.2s;
@@ -17,11 +17,11 @@
 }
 
 .btn-primary:hover {
-  background-color: var(--accent-hover);
+  background-color: var(--btn-accent-hover);
 }
 
 .btn-primary:active {
-  background-color: var(--accent-hover);
+  background-color: var(--btn-accent-hover);
   transform: translateY(1px);
 }
 
@@ -61,8 +61,8 @@
   border-radius: 4px;
   padding: 10px 20px;
   background-color: var(--bg-card);
-  border: 1.5px solid var(--accent);
-  color: var(--accent);
+  border: 1.5px solid var(--btn-accent);
+  color: var(--btn-accent);
   font-size: 16px;
   font-weight: 500;
   line-height: 18px;
@@ -72,12 +72,12 @@
 }
 
 .btn-outline:hover {
-  background-color: var(--accent-subtle);
-  color: var(--accent);
+  background-color: var(--btn-accent-subtle);
+  color: var(--btn-accent);
 }
 
 .btn-outline:active {
-  background-color: var(--accent-border);
+  background-color: var(--btn-accent-border);
   transform: translateY(1px);
 }
 
@@ -195,7 +195,7 @@
   font-size: 16px;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--accent);
+  color: var(--accent-text);
   font-weight: 400;
   line-height: 16px;
 }
@@ -207,6 +207,6 @@
 
 .section-title {
   font-size: 32px;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 40px;
 }

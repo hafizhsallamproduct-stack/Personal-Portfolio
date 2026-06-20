@@ -65,6 +65,15 @@ const ExperienceCard = ({ exp }) => {
   return (
     <div className="experience-card">
       <div className="experience-card-company">
+        {exp.logo && (
+          <img
+            className="experience-card-company-logo"
+            src={exp.logo}
+            alt={`${exp.company} logo`}
+            loading="lazy"
+            style={exp.logoHeight ? { height: exp.logoHeight } : undefined}
+          />
+        )}
         <div className="experience-card-company-name">{exp.company}</div>
         <div className="experience-card-company-duration">
           <span>{exp.duration}</span>
