@@ -298,7 +298,7 @@
     align-self: auto;
     margin: 0 16px;
     border-left: none;
-    border-top: 1.5px solid var(--divider);
+    border-top: var(--line-width) solid var(--divider);
   }
   .work-card-action {
     padding: 0 16px 16px;

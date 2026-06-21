@@ -251,7 +251,7 @@ body::after {
   flex-direction: column;
   gap: 32px;
   padding-top: 32px;
-  border-top: 1.5px solid var(--divider);
+  border-top: var(--line-width) solid var(--divider);
   margin-top: 16px;
 }
 
@@ -417,7 +417,7 @@ body::after {
 }
 
 .experience-role + .experience-role {
-  border-top: 1.5px solid var(--divider);
+  border-top: var(--line-width) solid var(--divider);
 }
 
 .experience-role-info {
@@ -491,7 +491,7 @@ body::after {
   align-items: flex-start;
   gap: 8px;
   padding: 20px 0;
-  border-top: 1.5px solid var(--divider);
+  border-top: var(--line-width) solid var(--divider);
 }
 
 .experience-card-work-title {
@@ -685,7 +685,7 @@ body::after {
 .work-card-separator {
   width: 0;
   align-self: stretch;
-  border-left: 1.5px solid var(--divider);
+  border-left: var(--line-width) solid var(--divider);
   flex-shrink: 0;
 }
 
@@ -820,6 +820,7 @@ body::after {
   gap: 4px;
   padding: 16px;
   text-align: left;
+  flex: 1;
 }
 
 .side-project-title {
@@ -830,6 +831,8 @@ body::after {
 }
 
 .side-project-source {
+  margin-top: auto;
+  padding-top: 8px;
   font-size: 14px;
   font-weight: 400;
   line-height: 18px;
