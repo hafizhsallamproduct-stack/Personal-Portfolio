@@ -125,8 +125,8 @@
 
 .divider-line {
   width: 100%;
-  height: 1.5px;
-  background-color: var(--divider);
+  height: var(--line-width);
+  background-color: var(--card-border);
 }
 
 .divider--spaced {
@@ -206,6 +206,7 @@
 }
 
 .section-title {
+  font-family: var(--font-heading);
   font-size: 32px;
   font-weight: 700;
   line-height: 40px;

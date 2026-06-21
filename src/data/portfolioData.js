@@ -4,6 +4,12 @@ export const experienceData = [
     logo: '/assets/wego.svg',
     logoHeight: '40px',
     duration: 'Oct 2021 — Present',
+    caseStudies: [
+      {
+        slug: 'wego-design-system',
+        label: 'Wego Design System: Built & Maintained from the Ground Up',
+      },
+    ],
     roles: [
       {
         title: 'Senior Product Designer II',
@@ -129,17 +135,22 @@ export const skillsData = [
   'Prototyping',
   'User Research',
   'Web Design',
+  'Web Frontend',
   'Product Management',
   'Product Planning',
   'Design Mentoring',
   'Workflow Management',
-  'Ai Product Adaptation',
+  'AI Product Adaptation',
 ];
 
 export const toolsData = [
   { name: 'Figma' },
   { name: 'Sketch' },
   { name: 'Claude' },
+  { name: 'Claude Design' },
+  { name: 'Claude Code' },
+  { name: 'Codex' },
+  { name: 'Jira & Confluence' },
   { name: 'Adobe CC', strike: true },
 ];
 
@@ -147,6 +158,7 @@ export const workData = [
   {
     title: 'Wego Design System: Built & Maintained from the Ground Up',
     company: 'Wego',
+    logo: '/assets/wego.svg',
     year: '2022 — Present',
     isLarge: true,
     image: '/assets/portfolio/portfolio-wegodesignsystem-7.webp',
@@ -498,6 +510,7 @@ export const workData = [
   {
     title: 'Redesigning the First Step: The Journey of the Search Form',
     company: 'Wego',
+    logo: '/assets/wego.svg',
     description:
       "Led the end-to-end redesign of Wego's flight search experience, improving usability and conversion.",
     link: '#',
@@ -506,6 +519,7 @@ export const workData = [
   {
     title: 'Designing with AI: An Evolving Practice',
     company: 'Wego',
+    logo: '/assets/wego.svg',
     description: 'Exploring how AI tools can support the design process and improve efficiency.',
     slug: 'ai-assisted-design-workflow',
     link: '#',
@@ -513,6 +527,7 @@ export const workData = [
   {
     title: 'Flight Checkout Flow: Designing Away the Doubt',
     company: 'Wego',
+    logo: '/assets/wego.svg',
     description:
       'Contributed to improving the booking and checkout experience, reducing drop-off rates.',
     slug: 'checkout-flow-optimization',
@@ -521,8 +536,31 @@ export const workData = [
   {
     title: 'Banking on Trust: Designing for Security and Clarity',
     company: 'RHB Banking Group',
+    logo: '/assets/rhb-logo.svg',
+    logoHeight: '20px',
     description: 'Designed key mobile flows for travel booking across iOS and Android platforms.',
     slug: 'mobile-app-experience',
     link: '#',
+  },
+];
+
+export const sideProjectsData = [
+  {
+    title: 'Side Project One',
+    image: '/assets/side-projects/project-1.webp',
+    url: 'https://www.figma.com/community/file/1567910216702885020',
+    source: 'Figma Community',
+  },
+  {
+    title: 'Side Project Two',
+    image: '/assets/side-projects/project-2.webp',
+    url: 'https://www.figma.com/community/file/1434434874778116780',
+    source: 'Figma Community',
+  },
+  {
+    title: 'Smooth Project — Regular Line Icons',
+    image: '/assets/side-projects/project-3.jpg',
+    url: 'https://ui8.net/smoothproject/products/smoothproject-icon-regular-line-style',
+    source: 'UI8',
   },
 ];

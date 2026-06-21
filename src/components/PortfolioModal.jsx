@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useParams, useNavigate, Link, useLocation } from 'react-router-dom';
 import { workData } from '../data/portfolioData';
-import { X, Sun, Moon, HafizhLogo } from './icons';
+import { X, HafizhLogo } from './icons';
 
 const FOCUSABLE_SELECTOR =
   'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
@@ -83,20 +83,10 @@ const PortfolioModal = ({ isStandalone }) => {
   useEffect(() => {
     lightboxUrlRef.current = lightboxUrl;
   }, [lightboxUrl]);
-  const [theme, setTheme] = useState(
-    () => document.documentElement.getAttribute('data-theme') || 'light'
-  );
   const containerRef = useRef(null);
   const closeButtonRef = useRef(null);
   const previouslyFocusedRef = useRef(null);
   const isClosingRef = useRef(false);
-
-  const toggleTheme = () => {
-    const next = theme === 'light' ? 'dark' : 'light';
-    setTheme(next);
-    document.documentElement.setAttribute('data-theme', next);
-    localStorage.setItem('theme', next);
-  };
 
   const selectedProject = workData.find((w) => w.slug === slug) || workData[0];
 
@@ -259,15 +249,6 @@ const PortfolioModal = ({ isStandalone }) => {
                   <span>{project.title}</span>
                 </Link>
               ))}
-            </div>
-            <div className="portfolio-modal-sidebar-footer">
-              <button className="theme-toggle" aria-label="Toggle theme" onClick={toggleTheme}>
-                {theme === 'light' ? (
-                  <Sun className="icon" aria-hidden="true" />
-                ) : (
-                  <Moon className="icon" aria-hidden="true" />
-                )}
-              </button>
             </div>
           </div>
 

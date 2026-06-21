@@ -72,7 +72,7 @@
 .portfolio-modal-sidebar {
   flex-shrink: 0;
   background-color: var(--bg-page);
-  border-right: 1.5px solid var(--divider);
+  border-right: var(--line-width) solid var(--card-border);
   display: flex;
   flex-direction: column;
   overflow-y: auto;
@@ -80,13 +80,13 @@
 
 /* Sidebar Resizer */
 .portfolio-modal-resizer {
-  width: 1.5px;
+  width: var(--line-width);
   cursor: col-resize;
   background-color: transparent;
   flex-shrink: 0;
   transition: background-color 0.2s;
   z-index: 10;
-  margin-left: -1.5px; /* overlapping the border */
+  margin-left: calc(-1 * var(--line-width)); /* overlapping the border */
 }
 
 .portfolio-modal-resizer:hover,
@@ -96,7 +96,7 @@
 
 .portfolio-modal-sidebar-header {
   padding: 24px 16px;
-  border-bottom: 1.5px solid var(--divider);
+  border-bottom: var(--line-width) solid var(--card-border);
   display: flex;
   align-items: center;
   gap: 16px;
@@ -132,14 +132,14 @@
 .portfolio-modal-sidebar-footer {
   margin-top: auto;
   padding: 16px;
-  border-top: 1.5px solid var(--divider);
+  border-top: var(--line-width) solid var(--card-border);
   display: flex;
   justify-content: flex-start;
 }
 
 .portfolio-modal-nav-item {
   padding: 16px;
-  border-bottom: 1.5px solid var(--divider);
+  border-bottom: var(--line-width) solid var(--card-border);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -154,7 +154,7 @@
   width: 64px;
   height: 64px;
   background-color: var(--bg-placeholder);
-  border: 1.5px solid var(--divider);
+  border: var(--line-width) solid var(--card-border);
   border-radius: 4px;
   box-sizing: border-box;
   flex-shrink: 0;
@@ -168,9 +168,12 @@
   object-fit: cover;
 }
 
-.portfolio-modal-nav-item:hover,
-.portfolio-modal-nav-item.active {
+.portfolio-modal-nav-item:hover {
   background-color: var(--bg-card-hover);
+}
+
+.portfolio-modal-nav-item.active {
+  background-color: var(--tag-bg);
 }
 
 /* Main Modal Panel */
@@ -303,7 +306,7 @@
     height: auto;
     max-height: 30vh;
     border-right: none;
-    border-bottom: 1.5px solid var(--divider);
+    border-bottom: var(--line-width) solid var(--card-border);
   }
   .portfolio-modal-main {
     padding: 40px 20px 56px;
@@ -365,7 +368,7 @@
 .portfolio-image-wrap {
   overflow: hidden;
   border-radius: 4px;
-  border: 1.5px solid var(--divider);
+  border: var(--line-width) solid var(--card-border);
   background-color: var(--bg-placeholder);
 }
 
@@ -472,7 +475,7 @@
 }
 
 .portfolio-timeline-line {
-  width: 1.5px;
+  width: var(--line-width);
   flex: 1;
   background-color: var(--divider);
   margin-top: 8px;

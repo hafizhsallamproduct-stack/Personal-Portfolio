@@ -6,9 +6,9 @@ body::after {
   top: 0;
   bottom: 0;
   width: 0;
-  border-left: 1.5px solid var(--divider);
+  border-left: var(--line-width) solid var(--card-border);
   pointer-events: none;
-  z-index: 0;
+  z-index: 101;
 }
 
 body::before {
@@ -25,7 +25,7 @@ body::after {
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  max-width: calc(1200px - 2px);
+  max-width: 1200px;
   margin: 0 auto;
   padding: 16px 48px;
   position: relative;
@@ -38,7 +38,7 @@ body::after {
 
 .nav-top .nav,
 .nav-fixed .nav {
-  border-bottom: 1.5px solid var(--divider);
+  border-bottom: var(--line-width) solid var(--card-border);
 }
 
 .exploration-nav .nav {
@@ -101,13 +101,13 @@ body::after {
 .nav-link {
   font-size: 16px;
   font-weight: 400;
-  color: var(--nav-link);
+  color: var(--text-primary);
   line-height: 18px;
   transition: color 0.2s;
 }
 
 .nav-link:hover {
-  color: var(--text-primary);
+  color: var(--accent-text);
 }
 
 .nav-link.active {
@@ -176,6 +176,7 @@ body::after {
 }
 
 .hero-name {
+  font-family: var(--font-heading);
   font-size: 72px;
   font-weight: 600;
   line-height: 76px;
@@ -290,7 +291,7 @@ body::after {
 
 .about-details-text {
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 700;
   color: var(--text-primary);
 }
 
@@ -344,7 +345,7 @@ body::after {
   padding: 0 48px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
 }
 
 .experience-card {
@@ -354,7 +355,7 @@ body::after {
   padding: 32px;
   gap: 88px;
   background-color: var(--bg-card);
-  border: 1.5px solid var(--divider);
+  border: var(--line-width) solid var(--card-border);
 }
 
 .experience-card-company {
@@ -457,6 +458,7 @@ body::after {
   font-weight: 400;
   line-height: 24px;
   color: var(--text-primary);
+  margin-top: 8px;
 }
 
 .experience-role-details {
@@ -464,6 +466,7 @@ body::after {
   display: flex;
   flex-direction: column;
   gap: 4px;
+  margin-top: 8px;
 }
 
 .experience-role-details li {
@@ -482,6 +485,33 @@ body::after {
   color: var(--bullet);
 }
 
+.experience-card-work {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 20px 0;
+  border-top: 1.5px solid var(--divider);
+}
+
+.experience-card-work-title {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-primary);
+}
+
+.experience-role-case-study {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  color: var(--text-primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 /* --- Education --- */
 .education-card {
   display: flex;
@@ -491,7 +521,7 @@ body::after {
   padding: 32px;
   gap: 32px;
   background-color: var(--bg-card);
-  border: 1.5px solid var(--divider);
+  border: var(--line-width) solid var(--card-border);
 }
 
 .education-icon {
@@ -546,7 +576,7 @@ body::after {
   border-radius: 999px;
   padding: 10px 20px;
   background-color: var(--tag-bg);
-  border: 1.5px solid var(--tag-border);
+  border: var(--line-width) solid var(--tag-border);
   font-size: 14px;
   font-weight: 400;
   line-height: 18px;
@@ -568,7 +598,7 @@ body::after {
 .tool-tag {
   border-radius: 999px;
   padding: 10px 20px;
-  border: 1.5px solid var(--tag-border);
+  border: var(--line-width) solid var(--tag-border);
   font-size: 14px;
   font-weight: 400;
   line-height: 16px;
@@ -583,7 +613,7 @@ body::after {
 .work-cards {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
@@ -592,18 +622,20 @@ body::after {
 
 .work-card {
   border-radius: 4px;
-  border: 1.5px solid var(--divider);
+  border: var(--line-width) solid var(--card-border);
   background-color: var(--bg-card);
   overflow: hidden;
   display: flex;
   flex-direction: row;
-  transition: border-color 0.2s;
+  transition:
+    transform 0.25s cubic-bezier(0.25, 1, 0.5, 1),
+    box-shadow 0.25s cubic-bezier(0.25, 1, 0.5, 1);
   cursor: pointer;
 }
 
 .work-card:hover {
-  border-color: var(--border-hover);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  transform: translateY(-5px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
 }
 
 .work-card-placeholder {
@@ -674,6 +706,14 @@ body::after {
   white-space: nowrap;
 }
 
+.work-card-company-logo {
+  display: block;
+  width: auto;
+  height: 28px;
+  max-width: 140px;
+  object-fit: contain;
+}
+
 .work-card-btn {
   white-space: nowrap;
 }
@@ -687,6 +727,7 @@ body::after {
 
 /* --- CTA --- */
 .cta-section {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -699,6 +740,7 @@ body::after {
 }
 
 .cta-heading {
+  font-family: var(--font-heading);
   font-size: 48px;
   font-weight: 700;
   line-height: 56px;
@@ -712,6 +754,86 @@ body::after {
   line-height: 22px;
   text-align: center;
   color: var(--text-secondary);
+}
+
+.side-projects {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+  margin-top: 16px;
+}
+
+.side-project-card {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  border-radius: 4px;
+  overflow: hidden;
+  background-color: var(--bg-card);
+  border: var(--line-width) solid var(--card-border);
+  transition:
+    transform 0.25s cubic-bezier(0.25, 1, 0.5, 1),
+    box-shadow 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.side-project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+}
+
+.side-project-thumb {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  background-color: var(--bg-placeholder);
+  overflow: hidden;
+}
+
+.side-project-thumb-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.side-project-thumb-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--accent-subtle);
+}
+
+.side-project-thumb-placeholder span {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-text);
+}
+
+.side-project-body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px;
+  text-align: left;
+}
+
+.side-project-title {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 22px;
+  color: var(--text-primary);
+}
+
+.side-project-source {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+  color: var(--text-muted);
 }
 
 /* --- Footer --- */

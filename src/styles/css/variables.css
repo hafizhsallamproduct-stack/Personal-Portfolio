@@ -13,6 +13,10 @@
   --space-3xl: 40px;
   --space-4xl: 60px;
   --space-5xl: 80px;
+
+  /* Type families */
+  --font-body: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif;
+  --font-heading: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif;
 }
 
 /* ============================================
@@ -49,7 +53,7 @@
   --btn-accent-border: rgba(26, 26, 26, 0.25);
   --btn-accent-subtle: rgba(26, 26, 26, 0.08);
   --tag-bg: #efeff0;
-  --tag-border: #e7e7ea;
+  --tag-border: #c2c2c8;
   --tag-text: #1a1a1a;
   --tag-tool-text: #4f4f4f;
   --nav-link: #4f4f4f;
@@ -58,6 +62,8 @@
   --badge-bg: #efeff0;
   --badge-border: #e7e7ea;
   --bullet: #bfbfc4;
+  --card-border: #000000;
+  --line-width: 1px;
   --grid-tile: rgba(0, 0, 0, 0.1);
   --tooltip-divider: rgba(255, 255, 255, 0.15);
 }
@@ -92,7 +98,7 @@
   --btn-accent-border: rgba(242, 242, 242, 0.25);
   --btn-accent-subtle: rgba(242, 242, 242, 0.08);
   --tag-bg: #141414;
-  --tag-border: #2a2a2a;
+  --tag-border: #4a4a4a;
   --tag-text: #f2f2f2;
   --tag-tool-text: #cccccc;
   --nav-link: #9a9a9a;
@@ -101,6 +107,7 @@
   --badge-bg: #141414;
   --badge-border: #2a2a2a;
   --bullet: #555;
+  --card-border: #6a6a6a;
   --grid-tile: rgba(255, 255, 255, 0.1);
   --tooltip-divider: rgba(0, 0, 0, 0.15);
 }

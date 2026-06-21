@@ -1,9 +1,15 @@
 import { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { experienceData } from '../data/portfolioData';
 import { Briefcase, CaretUp, CaretDown } from './icons';
 
+const isMobileViewport = () =>
+  typeof window !== 'undefined' && window.matchMedia('(max-width: 640px)').matches;
+
 const ExperienceRole = ({ role }) => {
-  const [isExpanded, setIsExpanded] = useState(Boolean(role.isDefault));
+  const [isExpanded, setIsExpanded] = useState(
+    () => Boolean(role.isDefault) && !isMobileViewport()
+  );
 
   return (
     <div className="experience-role">
@@ -62,6 +68,8 @@ const ExperienceRole = ({ role }) => {
 };
 
 const ExperienceCard = ({ exp }) => {
+  const location = useLocation();
+
   return (
     <div className="experience-card">
       <div className="experience-card-company">
@@ -84,6 +92,21 @@ const ExperienceCard = ({ exp }) => {
         {exp.roles.map((role, i) => (
           <ExperienceRole key={i} role={role} />
         ))}
+        {exp.caseStudies && exp.caseStudies.length > 0 && (
+          <div className="experience-card-work">
+            <h4 className="experience-card-work-title">My Work</h4>
+            {exp.caseStudies.map((caseStudy) => (
+              <Link
+                key={caseStudy.slug}
+                to={`/portfolio/${caseStudy.slug}`}
+                state={{ backgroundLocation: location }}
+                className="experience-role-case-study"
+              >
+                {caseStudy.label}
+              </Link>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
