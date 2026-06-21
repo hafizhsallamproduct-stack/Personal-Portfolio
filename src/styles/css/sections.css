@@ -115,7 +115,7 @@ body::after {
   right: 0;
   bottom: calc(-1 * var(--nav-pad-y) - var(--line-width));
   height: 2px;
-  background-color: var(--accent-text);
+  background-color: var(--btn-accent);
   transform: scaleX(0);
   transform-origin: center;
   opacity: 0;
@@ -125,11 +125,11 @@ body::after {
 }
 
 .nav-link:hover {
-  color: var(--accent-text);
+  color: var(--btn-accent);
 }
 
 .nav-link.active {
-  color: var(--accent-text);
+  color: var(--btn-accent);
 }
 
 .nav-link.active::after {
@@ -742,10 +742,10 @@ body::after {
 }
 
 .work-disclaimer {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
-  line-height: 20px;
-  color: var(--text-muted);
+  line-height: 28px;
+  color: var(--text-body);
 }
 
 /* --- CTA --- */

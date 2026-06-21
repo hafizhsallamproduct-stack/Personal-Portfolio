@@ -33,8 +33,8 @@ const Hero = () => {
         >
           Get in touch <LinkedinLogo className="icon" aria-hidden="true" />
         </a>
-        <a href="#skills" className="btn-primary btn-primary-lg">
-          View my work <ArrowDown className="icon bounce" aria-hidden="true" />
+        <a href="#portfolio" className="btn-primary btn-primary-lg">
+          View portfolio <ArrowDown className="icon bounce" aria-hidden="true" />
         </a>
       </div>
     </section>

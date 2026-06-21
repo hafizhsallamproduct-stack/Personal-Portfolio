@@ -6,7 +6,7 @@ const SECTION_LINKS = [
   { href: '#experience', label: 'Experience' },
   { href: '#education', label: 'Education' },
   { href: '#skills', label: 'Expertise' },
-  { href: '#work', label: 'My Work' },
+  { href: '#portfolio', label: 'Portfolio' },
 ];
 
 const SectionLinks = ({ activeHash, onLinkClick }) => (
