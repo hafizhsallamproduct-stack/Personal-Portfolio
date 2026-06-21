@@ -169,6 +169,12 @@
   scroll-margin-top: 64px;
 }
 
+/* Section wrappers that contain a header + content list (Experience, Work). */
+#experience,
+#work {
+  scroll-margin-top: 64px;
+}
+
 .section--header-only {
   padding-bottom: 40px;
 }

@@ -5,7 +5,7 @@ const SECTION_LINKS = [
   { href: '#about', label: 'About' },
   { href: '#experience', label: 'Experience' },
   { href: '#education', label: 'Education' },
-  { href: '#skills', label: 'My Expertise' },
+  { href: '#skills', label: 'Expertise' },
   { href: '#work', label: 'My Work' },
 ];
 
@@ -44,21 +44,27 @@ const Navbar = () => {
   }, []);
 
   useEffect(() => {
-    const sections = document.querySelectorAll('section[id], footer[id]');
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveHash('#' + entry.target.id);
-          }
-        });
-      },
-      { rootMargin: '-120px 0px -40% 0px' }
-    );
+    // Scroll-spy: the active section is the last one whose top has crossed a
+    // trigger line near the top of the viewport. Robust for short sections.
+    const TRIGGER_OFFSET = 140;
 
-    sections.forEach((el) => observer.observe(el));
+    const updateActive = () => {
+      const sections = Array.from(document.querySelectorAll('section[id], footer[id]'));
+      let current = '';
+      for (const el of sections) {
+        if (el.getBoundingClientRect().top <= TRIGGER_OFFSET) {
+          current = '#' + el.id;
+        }
+      }
+      setActiveHash((prev) => (prev === current ? prev : current));
+    };
+
+    updateActive();
+    window.addEventListener('scroll', updateActive, { passive: true });
+    window.addEventListener('resize', updateActive);
     return () => {
-      sections.forEach((el) => observer.unobserve(el));
+      window.removeEventListener('scroll', updateActive);
+      window.removeEventListener('resize', updateActive);
     };
   }, []);
 

@@ -114,8 +114,8 @@ const ExperienceCard = ({ exp }) => {
 
 const Experience = () => {
   return (
-    <>
-      <section id="experience" className="section section--header-only" tabIndex={0}>
+    <section id="experience" tabIndex={0}>
+      <div className="section section--header-only">
         <div className="section-label-col">
           <span className="section-tag">
             <Briefcase className="icon" aria-hidden="true" /> Experience
@@ -128,14 +128,14 @@ const Experience = () => {
             early design tasks to shaping larger product flows.
           </p>
         </div>
-      </section>
+      </div>
 
-      <div className="experience-cards" id="experience-cards-container">
+      <div className="experience-cards">
         {experienceData.map((exp, index) => (
           <ExperienceCard key={index} exp={exp} />
         ))}
       </div>
-    </>
+    </section>
   );
 };
 
