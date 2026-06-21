@@ -6,7 +6,7 @@ const Skills = () => {
     <section id="skills" className="section" tabIndex={0}>
       <div className="section-label-col">
         <span className="section-tag">
-          <MagicWand className="icon" aria-hidden="true" /> My Expertise
+          <MagicWand className="icon" aria-hidden="true" /> Expertise
         </span>
         <h2 className="section-title">Skill and Knowledge</h2>
       </div>

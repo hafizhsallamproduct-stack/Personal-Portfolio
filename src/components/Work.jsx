@@ -6,17 +6,24 @@ const Work = () => {
   const location = useLocation();
 
   return (
-    <>
-      <section id="work" className="section section--header-only" tabIndex={0}>
+    <section id="portfolio" tabIndex={0}>
+      <div className="section section--header-only">
         <div className="section-label-col">
           <span className="section-tag">
-            <Sparkle className="icon" aria-hidden="true" /> My Work
+            <Sparkle className="icon" aria-hidden="true" /> Portfolio
           </span>
           <h2 className="section-title">Things I've built</h2>
         </div>
-      </section>
+        <div className="section-content-col">
+          <p className="work-disclaimer">
+            All work shown was created during my employment. Company logos and brand assets are
+            property of their respective owners and are used here solely to identify the context of
+            the work.
+          </p>
+        </div>
+      </div>
 
-      <div className="work-cards" id="work-cards-container">
+      <div className="work-cards">
         {workData.map((work) => (
           <Link
             to={`/portfolio/${work.slug}`}
@@ -48,13 +55,8 @@ const Work = () => {
             </div>
           </Link>
         ))}
-        <p className="work-disclaimer">
-          All work shown was created during my employment. Company logos and brand assets are
-          property of their respective owners and are used here solely to identify the context of
-          the work.
-        </p>
       </div>
-    </>
+    </section>
   );
 };
 

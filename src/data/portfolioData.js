@@ -546,7 +546,7 @@ export const workData = [
 
 export const sideProjectsData = [
   {
-    title: 'Side Project One',
+    title: 'Sign-in Flow for Desktop',
     image: '/assets/side-projects/project-1.webp',
     url: 'https://www.figma.com/community/file/1567910216702885020',
     source: 'Figma Community',
@@ -559,7 +559,7 @@ export const sideProjectsData = [
   },
   {
     title: 'Smooth Project — Regular Line Icons',
-    image: '/assets/side-projects/project-3.jpg',
+    image: '/assets/side-projects/project-3.webp',
     url: 'https://ui8.net/smoothproject/products/smoothproject-icon-regular-line-style',
     source: 'UI8',
   },
