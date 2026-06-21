@@ -6,9 +6,9 @@ const Skills = () => {
     <section id="skills" className="section" tabIndex={0}>
       <div className="section-label-col">
         <span className="section-tag">
-          <MagicWand className="icon" aria-hidden="true" /> Skill & Work
+          <MagicWand className="icon" aria-hidden="true" /> My Expertise
         </span>
-        <h2 className="section-title">What I do</h2>
+        <h2 className="section-title">Skill and Knowledge</h2>
       </div>
       <div className="skills-content">
         <div className="skills-row">
@@ -19,7 +19,7 @@ const Skills = () => {
           ))}
         </div>
         <div className="skills-row-group">
-          <span className="skills-row-label">I am familiar with</span>
+          <span className="skills-row-label">Tools I use</span>
           <div className="skills-row">
             {toolsData.map((tool) => (
               <span key={tool.name} className={`tool-tag ${tool.strike ? 'tool-tag--strike' : ''}`}>

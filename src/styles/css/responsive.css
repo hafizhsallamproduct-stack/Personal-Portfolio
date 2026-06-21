@@ -100,7 +100,7 @@
     background-color: var(--bg-page);
     padding: 24px;
     gap: 16px;
-    border-bottom: 1.5px solid var(--divider);
+    border-bottom: var(--line-width) solid var(--card-border);
   }
   .hero {
     padding: 32px 16px;
@@ -159,6 +159,21 @@
   .section-tag {
     justify-content: center;
   }
+  .experience-description {
+    text-align: center;
+  }
+  #skills .skills-content {
+    align-items: center;
+  }
+  #skills .skills-row {
+    justify-content: center;
+  }
+  #skills .skills-row-group {
+    align-items: center;
+  }
+  #skills .skills-row-label {
+    text-align: center;
+  }
   .about-stats {
     gap: 24px;
   }
@@ -181,6 +196,36 @@
   .about-details {
     padding-top: 24px;
   }
+  #about .section-content-col {
+    text-align: center;
+    align-items: center;
+  }
+  #about .about-stats {
+    justify-content: center;
+  }
+  #about .stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  #about .about-details {
+    align-items: center;
+  }
+  #about .about-details-group {
+    align-items: center;
+  }
+  #about .about-details-group--inline {
+    justify-content: center;
+  }
+  #about .about-details-title {
+    justify-content: center;
+  }
+  #about .languages-groups {
+    justify-content: center;
+  }
+  #about .language-group {
+    align-items: center;
+  }
   .languages-groups {
     flex-direction: column;
     gap: 20px;
@@ -200,10 +245,27 @@
   .experience-cards {
     padding: 0 16px 32px;
   }
+  .experience-card-company {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .experience-card-company-logo {
+    order: 1;
+    margin-bottom: 0;
+    margin-left: auto;
+    object-position: right;
+  }
+  .experience-card-company-name {
+    order: 0;
+  }
+  .experience-card-company-duration {
+    order: 2;
+    flex-basis: 100%;
+  }
   .experience-role {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
+    flex-direction: column;
+    align-items: stretch;
     gap: 8px;
   }
   .experience-role-info {

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -7,6 +7,7 @@ import Experience from './components/Experience';
 import Education from './components/Education';
 import Skills from './components/Skills';
 import Work from './components/Work';
+import SideProjects from './components/SideProjects';
 import Footer from './components/Footer';
 import PortfolioModal from './components/PortfolioModal';
 import { AirplaneTilt, ShoppingBag, Bank, Money, Buildings, FigmaLogo } from './components/icons';
@@ -49,6 +50,11 @@ function IndexPage({ theme, toggleTheme }) {
       </div>
 
       <Skills />
+
+      <div className="divider">
+        <div className="divider-line"></div>
+      </div>
+
       <Work />
 
       <div className="divider">
@@ -61,7 +67,10 @@ function IndexPage({ theme, toggleTheme }) {
           <br />
           great together.
         </h2>
-        <p className="cta-subtext">Have a project in mind? I'd love to hear about it.</p>
+        <p className="cta-subtext">
+          Here are some examples of projects I've worked on over the last few years.
+        </p>
+        <SideProjects />
       </section>
 
       <div className="divider">
@@ -74,21 +83,17 @@ function IndexPage({ theme, toggleTheme }) {
 }
 
 function App() {
-  const [theme, setTheme] = useState(() => {
-    // Initial state from localStorage or default to light
-    return localStorage.getItem('theme') || 'light';
-  });
+  // Dark mode is disabled for now — the app is locked to light.
+  const theme = 'light';
   const location = useLocation();
   const backgroundLocation = location.state?.backgroundLocation;
 
   useEffect(() => {
-    document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme);
-  }, [theme]);
+    document.documentElement.setAttribute('data-theme', 'light');
+    localStorage.setItem('theme', 'light');
+  }, []);
 
-  const toggleTheme = () => {
-    setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
-  };
+  const toggleTheme = () => {};
 
   return (
     <>
