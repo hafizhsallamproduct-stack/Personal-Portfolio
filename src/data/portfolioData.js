@@ -552,7 +552,7 @@ export const sideProjectsData = [
     source: 'Figma Community',
   },
   {
-    title: 'Side Project Two',
+    title: 'QA Feedback Card and Note',
     image: '/assets/side-projects/project-2.webp',
     url: 'https://www.figma.com/community/file/1434434874778116780',
     source: 'Figma Community',
