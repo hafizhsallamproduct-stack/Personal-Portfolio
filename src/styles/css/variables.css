@@ -61,7 +61,7 @@
   --logo-text: #ffffff;
   --badge-bg: #efeff0;
   --badge-border: #e7e7ea;
-  --bullet: #bfbfc4;
+  --bullet: var(--text-primary);
   --card-border: #000000;
   --line-width: 1px;
   --grid-tile: rgba(0, 0, 0, 0.1);
@@ -106,7 +106,7 @@
   --logo-text: #121212;
   --badge-bg: #141414;
   --badge-border: #2a2a2a;
-  --bullet: #555;
+  --bullet: var(--text-primary);
   --card-border: #6a6a6a;
   --grid-tile: rgba(255, 255, 255, 0.1);
   --tooltip-divider: rgba(0, 0, 0, 0.15);

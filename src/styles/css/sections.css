@@ -454,7 +454,7 @@ body::after {
 }
 
 .experience-role-details li::before {
-  content: '·';
+  content: '•';
   position: absolute;
   left: 0;
   color: var(--bullet);

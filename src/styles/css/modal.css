@@ -432,7 +432,7 @@
 }
 
 .portfolio-content-list li::before {
-  content: '\00B7';
+  content: '\2022';
   position: absolute;
   left: 0;
   color: var(--bullet);
@@ -522,7 +522,7 @@
 }
 
 .portfolio-timeline-list li::before {
-  content: '\00B7';
+  content: '\2022';
   position: absolute;
   left: 0;
   color: var(--bullet);
