@@ -174,7 +174,8 @@
   .about-text,
   .experience-description,
   .work-disclaimer,
-  .cta-subtext {
+  .cta-subtext,
+  .experience-role-details li {
     line-height: 24px;
   }
   #about .about-stats {

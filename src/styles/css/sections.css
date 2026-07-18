@@ -440,14 +440,14 @@ body::after {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 0;
   margin-top: 8px;
 }
 
 .experience-role-details li {
   font-size: 16px;
   font-weight: 400;
-  line-height: 24px;
+  line-height: 28px;
   color: var(--text-primary);
   padding-left: 12px;
   position: relative;

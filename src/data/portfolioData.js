@@ -17,11 +17,11 @@ export const experienceData = [
         location: 'Kuala Lumpur, Malaysia',
         date: 'Oct 2024 — Present',
         details: [
-          "Lead the end-to-end redesign of Wego's flight booking experience across desktop and mobile web — fare families, passenger details, payments, and booking details — running A/B experiments across the funnel to improve attach rates, drop-off, and conversion.",
+          "Lead the end-to-end redesign of Wego's flight booking experience across desktop and mobile web, covering fare families, passenger details, payments, and booking details, with A/B experiments across the funnel to improve attach rates, drop-off, and conversion.",
           'Expand ancillary design with new partnership integrations.',
-          'Expand payment and loyalty experience design — introducing new flows for promo codes and partner loyalty point redemption.',
-          'Improve design workflows and the product delivery process — from discovery and grooming to developer handoff and design QA.',
-          'Maintain and evolve the Wego Design System — new components, mobile foundations, and Figma workflow structure — and drive AI adoption in the design team, from AI-assisted workflows to design-system compliance checks against production code.',
+          'Expand payment and loyalty experience design, introducing new flows for promo codes and partner loyalty point redemption.',
+          'Improve design workflows and the product delivery process, from discovery and grooming to developer handoff and design QA.',
+          'Maintain and evolve the Wego Design System (new components, mobile foundations, and Figma workflow structure) and drive AI adoption in the design team, from AI-assisted workflows to design-system compliance checks against production code.',
         ],
       },
       {
@@ -30,7 +30,7 @@ export const experienceData = [
         location: 'Kuala Lumpur, Malaysia',
         date: 'Oct 2021 — Sep 2024',
         details: [
-          'Built the Wego Design System from the ground up — style guide, icon and illustration guidelines, and the full mobile app foundation component library.',
+          'Built the Wego Design System from the ground up: style guide, icon and illustration guidelines, and the full mobile app foundation component library.',
           'Designed core flight search experiences across web and apps: search form revamps, Flight Search 2.0, per-leg search, and sort & filter improvements.',
           "Designed Wego's in-app AI travel assistant: conversation behaviors, voice interaction, and its integration across search and support.",
           'Supported growth initiatives with a new SEO landing-page system.',
@@ -52,7 +52,7 @@ export const experienceData = [
           'Collaborated in agile cross-functional teams to deliver end-to-end banking web experiences.',
           'Designed the FPX and other payment gateway flows for banking web and mobile app.',
           'Designed the cross-border international transfer flow for banking web and mobile app.',
-          'Worked on bank back-office experiences — understanding how the underlying systems and business processes work, and translating them into simple, usable management tools.',
+          'Worked on bank back-office experiences, understanding how the underlying systems and business processes work and translating them into simple, usable management tools.',
         ],
       },
     ],
@@ -165,7 +165,7 @@ export const workData = [
     isLarge: true,
     image: '/assets/portfolio/portfolio-1.webp',
     description:
-      "Led the full rebuild of Wego's design system when transitioning from Sketch to Figma \u2014 establishing foundations, components, and documentation that scale across Flight and Hotel verticals on four touchpoints.",
+      "Led the full rebuild of Wego's design system when transitioning from Sketch to Figma, establishing foundations, components, and documentation that scale across Flight and Hotel verticals on four touchpoints.",
     intro:
       'This portfolio focuses on the journey of building and maintaining the design system rather than going deep into technical implementation details. Because the system is a long-running and still-evolving effort, the most important story is how decisions were made, how changes were introduced gradually, and how the system stayed practical as our tools, workflows, and product needs evolved.',
     introNote: 'For technical details, we can talk during the interview',
@@ -179,7 +179,7 @@ export const workData = [
       },
       {
         type: 'paragraph',
-        text: 'I lead the Wego Design System, including building it and guiding its direction across products. As part of a two-person team, I am responsible for maintaining and improving the system so it remains consistent, scalable, and aligned with product needs.',
+        text: 'I lead the Wego Design System, from building it to guiding its direction across products. As part of a two-person team, I am responsible for maintaining and improving the system so it remains consistent, scalable, and aligned with product needs.',
       },
       {
         type: 'paragraph',
@@ -189,7 +189,7 @@ export const workData = [
         type: 'paragraph',
         text: 'In my team, this is a side role I take on in addition to my main work as a designer for the flight search and booking vertical.',
       },
-      { type: 'heading', text: 'Background' },
+      { type: 'heading', text: 'Background and Problem' },
       {
         type: 'paragraph',
         text: "The Wego Design System was rebuilt when we moved from Sketch to Figma. We already had a system in Sketch, but it no longer matched the needs of the product or how the team had grown. The visual style hadn't changed much for five to six years, so the product started to feel outdated.",
@@ -207,7 +207,7 @@ export const workData = [
         type: 'timeline',
         phases: [
           {
-            label: 'Phase 1 — Foundation',
+            label: 'Phase 1: Foundation',
             title: 'Baby Phase',
             criteria: [
               'Alignment and approval secured from all key stakeholders and product verticals',
@@ -216,7 +216,7 @@ export const workData = [
             ],
           },
           {
-            label: 'Phase 2 — Adoption',
+            label: 'Phase 2: Adoption',
             title: 'Toddler Phase',
             criteria: [
               'The design system is actively used in actual designs across teams',
@@ -225,7 +225,7 @@ export const workData = [
             ],
           },
           {
-            label: 'Phase 3 — Refinement',
+            label: 'Phase 3: Refinement',
             title: 'Child Phase',
             criteria: [
               'Components and foundations have been improved based on real-world usage and feedback',
@@ -234,7 +234,7 @@ export const workData = [
             ],
           },
           {
-            label: 'Phase 4 — Unification (In Progress)',
+            label: 'Phase 4: Unification (In Progress)',
             title: 'Teen Phase',
             criteria: [
               'Design and front-end teams operate from a single, shared source of truth',
@@ -247,7 +247,7 @@ export const workData = [
       },
       {
         type: 'paragraph',
-        text: 'On Phase 4, early progress was slow due to limited resources, but accelerated significantly after integrating AI into the front-end build process. On the design side, documentation is being revised to be AI-readable, enabling faster interpretation and further speeding up the overall workflow.',
+        text: 'In Phase 4, early progress was slow because of limited resources, but it sped up significantly once we brought AI into the front-end build process. On the design side, we are revising the documentation to be AI-readable, which speeds up the workflow even more.',
       },
       { type: 'heading', text: 'The Challenge' },
       {
@@ -271,30 +271,30 @@ export const workData = [
       { type: 'heading', text: 'Design Research and Exploration' },
       {
         type: 'paragraph',
-        text: 'We aim to refresh the design while staying close to the current system, introducing a more modern feel by focusing on strengthening the foundations rather than rebuilding everything from scratch.',
+        text: 'We aimed to refresh the design while staying close to the current system: a more modern feel, achieved by strengthening the foundations rather than rebuilding everything from scratch.',
       },
       {
         type: 'paragraph',
-        text: 'As part of this process, we conducted research on established design systems and analyzed approaches taken by key competitors to guide our direction. This helped us answer key questions such as best practices for building a design system, the right structure to adopt, and how to manage and scale it effectively.',
+        text: 'We studied established design systems and how key competitors approach theirs. This helped us answer practical questions: how to build the system well, what structure to adopt, and how to manage and scale it.',
       },
       {
         type: 'paragraph',
-        text: 'We also explored areas like design tokens, accessibility standards, and consistency across platforms. Based on these insights, we developed a set of design explorations rooted in the existing system, focusing on core foundations such as typography, color and other fundamental design principles.',
+        text: 'We also looked into design tokens, accessibility standards, and consistency across platforms. From these insights, we created design explorations rooted in the existing system, focused on core foundations such as typography and color.',
       },
       { type: 'heading', text: 'Design Approval' },
       {
         type: 'paragraph',
-        text: 'We share a few design concepts with stakeholders and developers, walking them through our thinking to gain alignment and approval. This serves as our first meaningful check-in with the business side, where design decisions meet business goals.',
+        text: 'We shared a few design concepts with stakeholders and developers, walking them through our thinking to get alignment and approval. This was our first real check-in with the business side, where design decisions meet business goals.',
       },
       {
         type: 'paragraph',
-        text: 'On the engineering side, we focus on understanding constraints, technical limitations, and team capacity, while also identifying the most effective ways to collaborate.',
+        text: 'On the engineering side, we focused on understanding constraints, technical limitations, and team capacity, and on finding the most effective ways to collaborate.',
       },
       { type: 'label', text: 'Key takeaways:' },
       {
         type: 'list',
         items: [
-          "Be mindful of changes. Start by refining visuals before reworking the entire flow \u2014 reinvention can be costly if the impact isn't measurable.",
+          "Be mindful of changes. Start by refining visuals before reworking the entire flow. Reinvention can be costly if the impact isn't measurable.",
           'Trade-offs are inevitable. Balance business and design needs, accept minor compromises, and keep moving forward.',
         ],
       },
@@ -310,13 +310,13 @@ export const workData = [
       {
         type: 'image',
         url: '/assets/portfolio/portfolio-wegodesignsystem-2.webp',
-        alt: 'Wego 2022 Design Concept — before and after UI comparisons across platforms',
+        alt: 'Wego 2022 design concept, before and after UI comparisons across platforms',
         caption: 'Presentation slide for approval showing the before-and-after design.',
       },
       { type: 'heading', text: 'Development, Testing and Documentation' },
       {
         type: 'paragraph',
-        text: 'This is a longer process. With the concept approved, we now go through every foundation and component one by one with the whole design team. We get designers to actually apply the new designs and components in their own work \u2014 this way we know the system holds up in real scenarios, and we get to see how each designer works.',
+        text: 'This was the longest part of the project. With the concept approved, we went through every foundation and component one by one with the whole design team. We had designers apply the new components in their own work. This showed us whether the system held up in real scenarios, and how each designer actually works.',
       },
       {
         type: 'paragraph',
@@ -327,9 +327,9 @@ export const workData = [
         type: 'list',
         items: [
           'Library vs. foundation file: Some designers grab components from the left library panel, others prefer opening the foundation file to copy from.',
-          'Right-panel vs. left-panel designers: Right-panel folks customize through variant options. Left-panel folks dig into layers and structure \u2014 often changing colors directly instead of switching variants.',
-          "Nested components tripped people up: Modifiers stayed hidden until you clicked the exact layer, and some designers couldn't find them.",
-          'Without clear guidelines early on, designers interpreted things differently \u2014 leading to totally different looks and feels across their work.',
+          'Right-panel vs. left-panel designers: some customize through variant options, others dig into layers and structure, often changing colors directly instead of switching variants.',
+          "Nested components tripped people up: modifiers stayed hidden until you clicked the exact layer, and some designers couldn't find them.",
+          'Without clear guidelines early on, designers interpreted things differently, which led to very different looks and feels across their work.',
         ],
       },
       { type: 'label', text: 'Results:' },
@@ -365,7 +365,7 @@ export const workData = [
       { type: 'subheading', text: 'Structure' },
       {
         type: 'paragraph',
-        text: 'Our team is structured by product verticals \u2014 Flight and Hotel \u2014 each covering four touchpoints: desktop, mobile web, iOS, and Android.',
+        text: 'Our team is structured by product verticals, Flight and Hotel, each covering four touchpoints: desktop, mobile web, iOS, and Android.',
       },
       {
         type: 'paragraph',
@@ -373,7 +373,7 @@ export const workData = [
       },
       {
         type: 'paragraph',
-        text: 'While this setup appeared scalable at first, it became difficult to maintain with a small team. With only two designers actively managing the system, consistency began to break down \u2014 especially between the desktop and mobile libraries.',
+        text: 'While this setup appeared scalable at first, it became difficult to maintain with a small team. With only two designers actively managing the system, consistency began to break down, especially between the desktop and mobile libraries.',
       },
       {
         type: 'paragraph',
@@ -416,7 +416,7 @@ export const workData = [
       },
       {
         type: 'paragraph',
-        text: 'These audits focus on reviewing both foundations and components to ensure they remain relevant to current needs and design trends, as well as identifying any challenges designers face when implementing the system.',
+        text: 'Audits review both foundations and components to keep them relevant to current needs and design trends, and to catch problems designers face when using the system.',
       },
       { type: 'subheading', text: 'Documentation' },
       {
@@ -434,21 +434,21 @@ export const workData = [
       {
         type: 'list',
         items: [
-          'Foundations \u2014 Guidelines for core elements such as color, typography, spacing, and grid. This helps ensure consistency across all touchpoints.',
-          'Components \u2014 Usage guidelines for each component, including structure, variants, states, and behavior. We also document when to use (and not use) a component to avoid misuse.',
-          'Best Practices \u2014 General guidance on layout, responsiveness, and interaction patterns across desktop and mobile.',
-          'Handoff Notes \u2014 Key details to support collaboration with developers, including specifications, edge cases, and expected behaviors.',
+          'Foundations: guidelines for core elements such as color, typography, spacing, and grid. This helps keep every touchpoint consistent.',
+          'Components: usage guidelines for each component, including structure, variants, states, and behavior. We also document when to use (and not use) a component to avoid misuse.',
+          'Best Practices: general guidance on layout, responsiveness, and interaction patterns across desktop and mobile.',
+          'Handoff Notes: key details to support collaboration with developers, including specifications, edge cases, and expected behaviors.',
         ],
       },
       {
         type: 'paragraph',
-        text: 'We prioritize documenting components and patterns that are widely used or tend to cause confusion. Instead of documenting everything upfront, we take a progressive approach \u2014 adding or refining documentation as new scenarios arise.',
+        text: 'We prioritize documenting components and patterns that are widely used or tend to cause confusion. Instead of documenting everything upfront, we take a progressive approach, adding or refining documentation as new scenarios arise.',
       },
       {
         type: 'paragraph',
         text: 'To keep documentation relevant, updates are usually done alongside component changes or during design system audits. This ensures that documentation stays aligned with the latest implementation and team needs.',
       },
-      { type: 'heading', text: 'Project Takeaways (What I Learned)' },
+      { type: 'heading', text: 'What I Learned' },
       {
         type: 'paragraph',
         text: 'The biggest lesson from this project is that a design system is more than a component library. It needs to support the product, the team, and how people actually work.',
@@ -477,7 +477,7 @@ export const workData = [
         url: '/assets/portfolio/portfolio-wegodesignsystem-11.webp',
         alt: 'Search form evolution across three generations',
         caption:
-          'The flight search form across three generations — from the original dense layout to a cleaner, more structured form that applies the updated design system foundations.',
+          'The flight search form across three generations, from the original dense layout to a cleaner, more structured form that applies the updated design system foundations.',
       },
       {
         type: 'image',
@@ -491,21 +491,21 @@ export const workData = [
         url: '/assets/portfolio/portfolio-wegodesignsystem-13.webp',
         alt: 'Booking form evolution across three generations',
         caption:
-          'The booking flow updated to reflect the new design system — cleaner step indicators, improved information hierarchy, and consistent form components across passenger details and payment.',
+          'The booking flow updated to reflect the new design system: cleaner step indicators, improved information hierarchy, and consistent form components across passenger details and payment.',
       },
       {
         type: 'image',
         url: '/assets/portfolio/portfolio-wegodesignsystem-14.webp',
         alt: 'SEO marketing page before and after redesign',
         caption:
-          'An SEO marketing page updated as part of the design system rollout — applying refreshed typography, spacing, and component patterns to improve readability and visual consistency across content-heavy pages.',
+          'An SEO marketing page updated as part of the design system rollout, applying refreshed typography, spacing, and component patterns to improve readability and visual consistency across content-heavy pages.',
       },
       {
         type: 'image',
         url: '/assets/portfolio/portfolio-wegodesignsystem-15.webp',
         alt: 'Responsive grid implementation across breakpoints',
         caption:
-          'The responsive grid system applied across multiple breakpoints — demonstrating how the design system foundations adapt consistently from desktop down to mobile across complex content layouts.',
+          'The responsive grid system applied across multiple breakpoints, showing how the design system foundations adapt consistently from desktop down to mobile across complex content layouts.',
       },
     ],
   },
@@ -513,10 +513,142 @@ export const workData = [
     title: 'Redesigning the First Step: The Journey of the Search Form',
     company: 'Wego',
     logo: '/assets/wego.svg',
+    year: '2022 — Present',
     description:
       "Led the end-to-end redesign of Wego's flight search experience, improving usability and conversion.",
+    intro:
+      'The flight search form is the first step of every booking. This case study walks through how we reviewed the form, what we found, what we changed, and what the changes mean for the business.',
     link: '#',
     slug: 'wego-flight-search-redesign',
+    content: [
+      {
+        type: 'paragraph',
+        text: 'The search form is where travelers set their route, dates, passengers, cabin class, and payment preferences. Every search starts here, so a problem on this page affects every step after it. I own this page as the designer for the flight search and booking vertical, working with product managers and with iOS and Android engineers.',
+      },
+      { type: 'heading', text: 'The Problem' },
+      {
+        type: 'paragraph',
+        text: 'By 2022, the form had collected a lot of options: trip types, passengers, cabin class, payment types, and more. Each one was added for a good reason over the years, but nobody had stepped back to reorganize the whole form. Everything had the same visual weight, so the form felt busier than it needed to be.',
+      },
+      {
+        type: 'paragraph',
+        text: 'There was a second problem: the iOS and Android versions had drifted apart. Layout, copy, styles, and icons were inconsistent between the two platforms. That made the product feel less polished, and it made design and development work slower because every change had to be handled twice.',
+      },
+      {
+        type: 'image',
+        url: '/assets/portfolio/portfolio-searchform-1.png',
+        alt: 'Audit of the Wego flight search form in July 2022',
+        caption:
+          'Our starting point in July 2022: what the form contained and the main issues we logged, including the iOS and Android inconsistencies.',
+      },
+      {
+        type: 'paragraph',
+        text: 'The first instinct was to remove options. But travelers in our markets do use multi-city trips, payment types, and specific passenger mixes. Removing them would hurt real users and real revenue. So the goal became simple: keep every feature, but organize the form so the most common search is fast.',
+      },
+      { type: 'heading', text: 'The Research' },
+      {
+        type: 'paragraph',
+        text: 'We did two things. First, an audit of our own form. We listed every field, option, and rule, and asked one question about each: does the traveler need this right away, or can it wait one tap? Second, a comparison of five other travel apps. We looked at how they structure the search form, how their search behaves, how they handle date selection, and how they handle passengers and cabin class.',
+      },
+      {
+        type: 'image',
+        url: '/assets/portfolio/portfolio-searchform-2.png',
+        alt: 'Detailed review of date selection, passengers, cabin class, and payment types',
+        caption:
+          'Reviewing each part of the form in detail: date selection, passengers, cabin class, and payment types.',
+      },
+      {
+        type: 'image',
+        url: '/assets/portfolio/portfolio-searchform-3.png',
+        alt: 'Comparison of competitor search forms with suggestions',
+        caption:
+          'Comparing other travel apps and turning the differences into concrete suggestions for our own form.',
+      },
+      {
+        type: 'label',
+        text: 'Three findings shaped the redesign:',
+      },
+      {
+        type: 'list',
+        items: [
+          'Most travelers only change three things: where from, where to, and the dates. Everything else is used far less often.',
+          'Passengers and cabin class matter, but they are not needed immediately. They can be grouped into one row that opens when tapped.',
+          'Good defaults save more time than any layout change. Pre-filling the nearby airport, a popular destination, round-trip, one adult, and economy means many travelers can search without changing anything.',
+        ],
+      },
+      { type: 'heading', text: 'What We Changed' },
+      {
+        type: 'list',
+        items: [
+          'Moved From, To, and dates to the top of the form and gave them the most space.',
+          'Grouped passengers and cabin class into one summarized row that opens into focused pickers. Payment types kept their own field.',
+          'Pre-filled sensible defaults based on the traveler’s location and market, with round-trip as the default trip type.',
+          'Used a single UI across all platforms, so iOS and Android look and behave the same.',
+        ],
+      },
+      {
+        type: 'image',
+        url: '/assets/portfolio/portfolio-searchform-5.png',
+        alt: 'Comparison of traveler and cabin class selection across travel apps',
+        caption:
+          'The comparison that led to one of the changes: combining travelers and cabin class into a single selection means fewer taps.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Two constraints shaped the work. The business needed payment types, trip modes, and ad placements to stay, because they contribute to revenue. So nothing was removed, only reorganized. Engineering needed one set of rules for both platforms: passenger limits, date rules, and defaults are defined once, and the same UI is built on iOS and Android.',
+      },
+      // TODO image: before/after of the form (old layout vs current design). Export from the app design file and add here.
+      { type: 'heading', text: 'What Didn’t Work' },
+      {
+        type: 'paragraph',
+        text: 'We also explored a compact toggle for trip type (one-way, round-trip, multi-city). Instead of shipping it straight away, we agreed to test it first. Usability testing came back with mixed results, so we moved on to an A/B test. The numbers were not good enough, so we removed the toggle and kept the existing trip selection. Losing the idea was fine. Testing it before rolling it out is exactly what kept it from becoming a real problem.',
+      },
+      { type: 'heading', text: 'The Rollout' },
+      {
+        type: 'paragraph',
+        text: 'We did not replace the form in one release. Because this page is used by so many travelers every day, we changed it in stages: first a cleanup that reorganized the fields and refreshed the visuals, then a rebuild on top of the design system. Each stage shipped separately, so we could watch the data and catch problems early.',
+      },
+      // TODO image: the form across its generations (original, cleanup, design system). Export and add here.
+      { type: 'heading', text: 'The Result' },
+      {
+        type: 'list',
+        items: [
+          'The most common search now takes very few taps, because the defaults do most of the work.',
+          'No feature was removed, so nothing that drives revenue was lost.',
+          'iOS and Android now share one structure: one design update instead of two, and less QA.',
+          'The form is built from design system components, so later changes and experiments are cheaper to design and build.',
+        ],
+      },
+      {
+        type: 'paragraph',
+        text: 'The form is a live surface, and we keep improving it through A/B tests. Recent work includes a compact version of the form on the results page and search form experiments on the homepage.',
+      },
+      { type: 'heading', text: 'What We Added Later' },
+      {
+        type: 'paragraph',
+        text: 'The new structure also made it easier to add features without crowding the form again. A good example is nearby airports. Some cities have a second airport close by. A traveler flying to Dubai, for example, can often find more options by including Sharjah in the search.',
+      },
+      {
+        type: 'paragraph',
+        text: 'We started with user interviews and an MVP proposal. The first idea was to handle this on the results page, but when we walked through it with engineering, loading results for two airports at once was too heavy on performance. So we moved the option up into the search form: when a traveler picks an airport that has a nearby alternative, a toggle appears offering to include it in the search. Travelers who don’t need it never see it.',
+      },
+      {
+        type: 'paragraph',
+        text: 'That became the pattern for extending the form: show an option only when it is relevant, and keep the default view clean.',
+      },
+      { type: 'heading', text: 'What I Learned' },
+      {
+        type: 'list',
+        items: [
+          'Organize by importance instead of removing features.',
+          'Defaults are part of the design. The fastest interaction is the one the traveler never makes.',
+          'Change busy pages in stages, not all at once.',
+          'Test before committing. Usability testing and A/B tests are much cheaper than fixing a wrong change in production.',
+          'Business and engineering constraints are inputs to the design, not obstacles. Knowing why a feature exists leads to better decisions than pushing for a cleaner screen.',
+          'Show an option only when it is relevant. A clean default view and a complete form are not in conflict.',
+        ],
+      },
+    ],
   },
   {
     title: 'Designing with AI: An Evolving Practice',
