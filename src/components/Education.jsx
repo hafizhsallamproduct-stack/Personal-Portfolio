@@ -14,6 +14,9 @@ const Education = () => {
           className="education-icon"
           src="/assets/university.png"
           alt="Universiti Utara Malaysia"
+          width="112"
+          height="136"
+          loading="lazy"
         />
         <div className="education-details">
           <div className="education-name">Universiti Utara Malaysia</div>
