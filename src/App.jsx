@@ -1,13 +1,13 @@
 import { useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Hero from './components/Hero';
 import About from './components/About';
 import Experience from './components/Experience';
 import Education from './components/Education';
 import Skills from './components/Skills';
 import Work from './components/Work';
 import SideProjects from './components/SideProjects';
+import AbstractShapes from './components/AbstractShapes';
 import Footer from './components/Footer';
 import PortfolioModal from './components/PortfolioModal';
 import { AirplaneTilt, ShoppingBag, Bank, Money, Buildings, FigmaLogo } from './components/icons';
@@ -15,63 +15,63 @@ import { AirplaneTilt, ShoppingBag, Bank, Money, Buildings, FigmaLogo } from './
 function IndexPage({ theme, toggleTheme }) {
   return (
     <>
+      <a href="#main" className="skip-link">
+        Skip to content
+      </a>
       <Navbar theme={theme} />
-      <Hero />
+      <main id="main">
+        <About />
 
-      <div className="divider divider--icons">
-        <div className="divider-line"></div>
-        <div className="divider-icons">
-          <AirplaneTilt className="icon" aria-hidden="true" />
-          <ShoppingBag className="icon" aria-hidden="true" />
-          <Bank className="icon" aria-hidden="true" />
-          <Money className="icon" aria-hidden="true" />
-          <Buildings className="icon" aria-hidden="true" />
-          <FigmaLogo className="icon" aria-hidden="true" />
+        <div className="divider divider--icons">
+          <div className="divider-line"></div>
+          <div className="divider-icons">
+            <AirplaneTilt className="icon" aria-hidden="true" />
+            <ShoppingBag className="icon" aria-hidden="true" />
+            <Bank className="icon" aria-hidden="true" />
+            <Money className="icon" aria-hidden="true" />
+            <Buildings className="icon" aria-hidden="true" />
+            <FigmaLogo className="icon" aria-hidden="true" />
+          </div>
+          <div className="divider-line"></div>
         </div>
-        <div className="divider-line"></div>
-      </div>
 
-      <About />
+        <Experience />
 
-      <div className="divider">
-        <div className="divider-line"></div>
-      </div>
+        <div className="divider divider--spaced">
+          <div className="divider-line"></div>
+        </div>
 
-      <Experience />
+        <Education />
 
-      <div className="divider divider--spaced">
-        <div className="divider-line"></div>
-      </div>
+        <div className="divider">
+          <div className="divider-line"></div>
+        </div>
 
-      <Education />
+        <Skills />
 
-      <div className="divider">
-        <div className="divider-line"></div>
-      </div>
+        <div className="divider">
+          <div className="divider-line"></div>
+        </div>
 
-      <Skills />
+        <Work />
 
-      <div className="divider">
-        <div className="divider-line"></div>
-      </div>
+        <div className="divider">
+          <div className="divider-line"></div>
+        </div>
 
-      <Work />
-
-      <div className="divider">
-        <div className="divider-line"></div>
-      </div>
-
-      <section id="contact" className="cta-section">
-        <h2 className="cta-heading">
-          Let's build something
-          <br />
-          great together.
-        </h2>
-        <p className="cta-subtext">
-          Here are some examples of projects I've worked on over the last few years.
-        </p>
-        <SideProjects />
-      </section>
+        <section id="contact" className="cta-section">
+          <AbstractShapes />
+          <h2 className="cta-heading">
+            Let's build something
+            <br />
+            great together.
+          </h2>
+          <p className="cta-subtext">
+            Here are some examples of projects I've worked on over the last few years.
+          </p>
+          <SideProjects />
+        </section>
+      </main>
 
       <div className="divider">
         <div className="divider-line"></div>

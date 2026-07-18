@@ -16,8 +16,10 @@ select {
   color: inherit;
 }
 
-html {
-  scroll-behavior: smooth;
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
 body {
@@ -40,4 +42,19 @@ a {
 *:focus-visible {
   outline: 2px solid var(--text-primary);
   outline-offset: 2px;
+}
+
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 16px;
+  z-index: 200;
+  padding: 10px 16px;
+  background-color: var(--text-primary);
+  color: var(--bg-page);
+  border-radius: 8px;
+}
+
+.skip-link:focus-visible {
+  top: 16px;
 }

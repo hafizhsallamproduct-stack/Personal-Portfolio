@@ -28,7 +28,6 @@ const Navbar = () => {
   const [isFixedVisible, setIsFixedVisible] = useState(false);
   const [activeHash, setActiveHash] = useState('');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [showMobileCta, setShowMobileCta] = useState(false);
   const navTopRef = useRef(null);
 
   useEffect(() => {
@@ -68,24 +67,6 @@ const Navbar = () => {
     };
   }, []);
 
-  useEffect(() => {
-    const heroCta = document.getElementById('hero-cta');
-    if (!heroCta) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          // Show mobile CTA if hero CTA is NOT intersecting (out of view)
-          setShowMobileCta(!entry.isIntersecting);
-        });
-      },
-      { threshold: 0 }
-    );
-
-    observer.observe(heroCta);
-    return () => observer.unobserve(heroCta);
-  }, []);
-
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
@@ -106,7 +87,12 @@ const Navbar = () => {
             <HafizhLogo className="nav-logo-icon" />
           </a>
 
-          <button className="hamburger-menu" onClick={toggleMobileMenu} aria-label="Toggle menu">
+          <button
+            className="hamburger-menu"
+            onClick={toggleMobileMenu}
+            aria-label="Toggle menu"
+            aria-expanded={isMobileMenuOpen}
+          >
             {hamburgerIcon}
           </button>
 
@@ -124,17 +110,12 @@ const Navbar = () => {
           </a>
 
           <div className="nav-controls-mobile">
-            <a
-              href="https://www.linkedin.com/in/hafizh-s-b7299420a/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`btn-outline nav-mobile-cta ${showMobileCta ? 'visible' : ''}`}
-              onClick={closeMobileMenu}
+            <button
+              className="hamburger-menu"
+              onClick={toggleMobileMenu}
+              aria-label="Toggle menu"
+              aria-expanded={isMobileMenuOpen}
             >
-              Get in touch <LinkedinLogo className="icon" aria-hidden="true" />
-            </a>
-
-            <button className="hamburger-menu" onClick={toggleMobileMenu} aria-label="Toggle menu">
               {hamburgerIcon}
             </button>
           </div>

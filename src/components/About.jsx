@@ -1,4 +1,4 @@
-import { User, Translate } from './icons';
+import { User, Translate, LinkedinLogo, ArrowDown } from './icons';
 
 const About = () => {
   return (
@@ -17,12 +17,32 @@ const About = () => {
             className="about-photo"
             src="/assets/profile-384.jpg"
             alt="Hafizh Sallam"
-            width="128"
-            height="128"
+            width="154"
+            height="154"
           />
         </picture>
       </div>
       <div className="section-content-col">
+        <div className="about-intro">
+          <h1 className="about-name">Hafizh Sallam</h1>
+          <p className="about-subtitle">
+            Senior Product Designer crafting digital experiences across
+            <br className="about-subtitle-break" /> E-Commerce, Airlines, and Banking.
+          </p>
+        </div>
+        <div className="about-buttons">
+          <a
+            href="https://www.linkedin.com/in/hafizh-s-b7299420a/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-outline"
+          >
+            Get in touch <LinkedinLogo className="icon" aria-hidden="true" />
+          </a>
+          <a href="#portfolio" className="btn-primary btn-primary-lg">
+            View portfolio <ArrowDown className="icon bounce" aria-hidden="true" />
+          </a>
+        </div>
         <p className="about-text">
           A Senior Product Designer based in Kuala Lumpur, Malaysia with over 10 years of experience
           working on digital products. I've worked across different industries including e-commerce,
@@ -35,8 +55,8 @@ const About = () => {
           key flows like flight search and checkout.
         </p>
         <p className="about-text">
-          Currently, I'm exploring how to integrate AI into my workflow and how it can improve the
-          design process and streamline day-to-day work.
+          Lately, I've been exploring how to integrate AI into my workflow and how it can improve
+          the design process and streamline day-to-day work.
         </p>
         <div className="about-stats">
           <div className="stat">

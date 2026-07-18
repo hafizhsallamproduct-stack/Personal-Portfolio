@@ -161,7 +161,7 @@ export const workData = [
     logo: '/assets/wego.svg',
     year: '2022 — Present',
     isLarge: true,
-    image: '/assets/portfolio/portfolio-wegodesignsystem-7.webp',
+    image: '/assets/portfolio/portfolio-1.webp',
     description:
       "Led the full rebuild of Wego's design system when transitioning from Sketch to Figma \u2014 establishing foundations, components, and documentation that scale across Flight and Hotel verticals on four touchpoints.",
     intro:

@@ -23,7 +23,13 @@ const ContentBlock = ({ block, onImageClick }) => {
         >
           <div className="portfolio-image-wrap">
             {block.url && (
-              <img src={block.url} alt={block.alt || ''} className="portfolio-detail-img" />
+              <img
+                src={block.url}
+                alt={block.alt || ''}
+                className="portfolio-detail-img"
+                loading="lazy"
+                decoding="async"
+              />
             )}
           </div>
           {block.caption && (
@@ -89,6 +95,14 @@ const PortfolioModal = ({ isStandalone }) => {
   const isClosingRef = useRef(false);
 
   const selectedProject = workData.find((w) => w.slug === slug) || workData[0];
+
+  useEffect(() => {
+    const previousTitle = document.title;
+    document.title = `${selectedProject.title} — Hafizh Sallam`;
+    return () => {
+      document.title = previousTitle;
+    };
+  }, [selectedProject.title]);
 
   const startResizing = useCallback(
     (mouseDownEvent) => {
@@ -243,6 +257,8 @@ const PortfolioModal = ({ isStandalone }) => {
                         alt=""
                         className="portfolio-modal-nav-thumb-img"
                         aria-hidden="true"
+                        loading="lazy"
+                        decoding="async"
                       />
                     )}
                   </div>

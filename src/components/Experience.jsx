@@ -94,7 +94,7 @@ const ExperienceCard = ({ exp }) => {
         ))}
         {exp.caseStudies && exp.caseStudies.length > 0 && (
           <div className="experience-card-work">
-            <h4 className="experience-card-work-title">My Work</h4>
+            <h3 className="experience-card-work-title">My Work</h3>
             {exp.caseStudies.map((caseStudy) => (
               <Link
                 key={caseStudy.slug}

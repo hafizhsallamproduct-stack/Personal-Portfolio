@@ -4,19 +4,13 @@
     --nav-pad-y: 20px;
     padding: var(--nav-pad-y) 40px;
   }
-  .hero {
-    padding: 40px 40px 60px;
+  .about-name {
+    font-size: 40px;
+    line-height: 48px;
   }
-  .hero-name {
-    font-size: 56px;
-    line-height: 60px;
-  }
-  .hero-subtitle {
+  .about-subtitle {
     font-size: 18px;
     line-height: 28px;
-  }
-  .nav-mobile-cta {
-    display: none;
   }
   .divider {
     padding: 0 40px;
@@ -66,6 +60,10 @@
     padding: 16px 16px;
     position: relative;
   }
+  .nav-top .nav,
+  .nav-fixed .nav {
+    border-bottom: none;
+  }
   .nav-logo-text {
     display: none;
   }
@@ -73,14 +71,6 @@
     display: flex;
     align-items: center;
     gap: 8px;
-  }
-  .nav-mobile-cta {
-    display: none;
-    padding: 6px 12px;
-    font-size: 12px;
-  }
-  .nav-mobile-cta.visible {
-    display: inline-flex;
   }
   .nav-link-cta-desktop {
     display: none;
@@ -104,35 +94,24 @@
     gap: 16px;
     border-bottom: var(--line-width) solid var(--card-border);
   }
-  .hero {
-    padding: 32px 16px;
-  }
-  .hero-mobile-photo-wrapper {
-    display: block;
-  }
-  .hero-mobile-photo {
-    display: block;
-    width: 96px;
-    height: 96px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 8px;
-  }
-  .hero-name {
-    font-size: 40px;
+  .about-name {
+    font-size: 36px;
     line-height: 44px;
   }
-  .hero-subtitle {
+  .about-subtitle {
     font-size: 18px;
-    line-height: 28px;
+    line-height: 26px;
   }
-  .hero-buttons {
+  .about-subtitle-break {
+    display: none;
+  }
+  .about-buttons {
     flex-direction: column;
     width: fit-content;
+    align-self: center;
   }
-  .hero-buttons .btn-primary-lg,
-  .hero-buttons .btn-secondary,
-  .hero-buttons .btn-outline {
+  .about-buttons .btn-primary-lg,
+  .about-buttons .btn-outline {
     width: 300px;
     justify-content: center;
   }
@@ -176,34 +155,31 @@
   #skills .skills-row-label {
     text-align: center;
   }
-  .about-stats {
-    gap: 24px;
+  .about-photo {
+    width: 115px;
+    height: 115px;
   }
-  .about-photo-wrapper {
+  #about .section-tag,
+  #about .section-title {
     display: none;
-  }
-  #about .section-label-col {
-    display: flex;
-    flex-direction: column;
-  }
-  #about .section-label-col .about-photo-wrapper {
-    order: -1;
-  }
-  #about .section-label-col .section-tag {
-    order: 0;
-  }
-  #about .section-label-col .section-title {
-    order: 1;
   }
   .about-details {
     padding-top: 24px;
   }
-  #about .section-content-col {
+  .section-content-col {
     text-align: center;
     align-items: center;
   }
+  /* Tighter body leading for the short mobile measure (matches card text). */
+  .about-text,
+  .experience-description,
+  .work-disclaimer,
+  .cta-subtext {
+    line-height: 24px;
+  }
   #about .about-stats {
     justify-content: center;
+    gap: 24px;
   }
   #about .stat {
     display: flex;
@@ -223,14 +199,12 @@
     justify-content: center;
   }
   #about .languages-groups {
-    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
   }
   #about .language-group {
     align-items: center;
-  }
-  .languages-groups {
-    flex-direction: column;
-    gap: 20px;
   }
   .education-card {
     padding: 16px;
@@ -289,7 +263,7 @@
   }
   .work-card-placeholder {
     width: 100%;
-    min-height: 180px;
+    aspect-ratio: 16 / 10;
   }
   .work-card-body {
     padding: 16px;
@@ -303,7 +277,10 @@
     border-top: var(--line-width) solid var(--divider);
   }
   .work-card-action {
-    padding: 0 16px 16px;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    padding: 16px;
   }
   .cta-section {
     padding: 32px 16px;

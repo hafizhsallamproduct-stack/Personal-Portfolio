@@ -32,7 +32,15 @@ const Work = () => {
             key={work.slug}
           >
             <div className="work-card-placeholder">
-              {work.image && <img src={work.image} alt={work.title} className="work-card-image" />}
+              {work.image && (
+                <img
+                  src={work.image}
+                  alt={work.title}
+                  className="work-card-image"
+                  loading="lazy"
+                  decoding="async"
+                />
+              )}
             </div>
             <div className="work-card-body">
               <h3 className="work-card-title">{work.title}</h3>
