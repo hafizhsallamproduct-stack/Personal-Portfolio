@@ -168,8 +168,6 @@ export const workData = [
       "Led the full rebuild of Wego's design system when transitioning from Sketch to Figma, establishing foundations, components, and documentation that scale across Flight and Hotel verticals on four touchpoints.",
     intro:
       'This portfolio focuses on the journey of building and maintaining the design system rather than going deep into technical implementation details. Because the system is a long-running and still-evolving effort, the most important story is how decisions were made, how changes were introduced gradually, and how the system stayed practical as our tools, workflows, and product needs evolved.',
-    introNote: 'For technical details, we can talk during the interview',
-    introNoteEmoji: '😊',
     slug: 'wego-design-system',
     link: '#',
     content: [
@@ -311,7 +309,8 @@ export const workData = [
         type: 'image',
         url: '/assets/portfolio/portfolio-wegodesignsystem-2.webp',
         alt: 'Wego 2022 design concept, before and after UI comparisons across platforms',
-        caption: 'Presentation slide for approval showing the before-and-after design.',
+        caption:
+          'Presentation slide for approval showing the before-and-after design. This slide was made by my director, applying the tokens and design direction we agreed on.',
       },
       { type: 'heading', text: 'Development, Testing and Documentation' },
       {
@@ -601,7 +600,19 @@ export const workData = [
       { type: 'heading', text: 'What Didn’t Work' },
       {
         type: 'paragraph',
-        text: 'We also explored a compact toggle for trip type (one-way, round-trip, multi-city). Instead of shipping it straight away, we agreed to test it first. Usability testing came back with mixed results, so we moved on to an A/B test. The numbers were not good enough, so we removed the toggle and kept the existing trip selection. Losing the idea was fine. Testing it before rolling it out is exactly what kept it from becoming a real problem.',
+        text: 'One idea we explored was a quick change for trip type in the return date field: add a return date and the search becomes round-trip, remove it and it becomes one-way, without touching the trip type selector. It felt like an obvious win, so instead of shipping it straight away, we agreed to test it first.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Usability testing came back with mixed results, so we moved on to an A/B test on all three platforms. The numbers said no: it did not help more users search on any platform, and on desktop web, handoffs to partners fell for both one-way and round-trip. We rejected the variant everywhere and kept the existing trip selection. Losing the idea was fine. Testing it before rolling it out is exactly what kept it from becoming a real problem.',
+      },
+      {
+        type: 'image',
+        url: '/assets/portfolio/portfolio-searchform-7-light.webp',
+        urlDark: '/assets/portfolio/portfolio-searchform-7-dark.webp',
+        alt: 'Quick change for trip type in the return date field',
+        caption:
+          'Quick change for trip type in the return date field. Tested on desktop web, iOS, and Android; rejected everywhere after the numbers came back flat or negative.',
       },
       { type: 'heading', text: 'The Rollout' },
       {
@@ -609,6 +620,59 @@ export const workData = [
         text: 'We did not replace the form in one release. Because this page is used by so many travelers every day, we changed it in stages: first a cleanup that reorganized the fields and refreshed the visuals, then a rebuild on top of the design system. Each stage shipped separately, so we could watch the data and catch problems early.',
       },
       // TODO image: the form across its generations (original, cleanup, design system). Export and add here.
+      { type: 'heading', text: 'The Final Design' },
+      {
+        type: 'paragraph',
+        text: 'These are the key screens of the current form. Every screen ships in light and dark mode. Use the toggle on any image to switch between them.',
+      },
+      {
+        type: 'image',
+        url: '/assets/portfolio/portfolio-searchform-1-light.webp',
+        urlDark: '/assets/portfolio/portfolio-searchform-1-dark.webp',
+        alt: 'The redesigned search form for first-time users',
+        caption:
+          'The form for a first-time user, across one-way, round-trip, and multi-city. The common path is ready to search with defaults already filled.',
+      },
+      {
+        type: 'image',
+        url: '/assets/portfolio/portfolio-searchform-2-light.webp',
+        urlDark: '/assets/portfolio/portfolio-searchform-2-dark.webp',
+        alt: 'The search form for returning users with recent searches',
+        caption:
+          'The returning-user version, with recent searches one tap away. The recent searches section is the work of another designer on the team.',
+      },
+      {
+        type: 'image',
+        url: '/assets/portfolio/portfolio-searchform-3-light.webp',
+        urlDark: '/assets/portfolio/portfolio-searchform-3-dark.webp',
+        alt: 'Search form field states',
+        caption:
+          'Field states are specified in detail, so one set of rules builds the same way on iOS and Android.',
+      },
+      {
+        type: 'image',
+        url: '/assets/portfolio/portfolio-searchform-4-light.webp',
+        urlDark: '/assets/portfolio/portfolio-searchform-4-dark.webp',
+        alt: 'Departure and arrival bottom sheet',
+        caption:
+          'The departure and arrival bottom sheet: recent searches, nearby airports, and popular destinations before the traveler even types.',
+      },
+      {
+        type: 'image',
+        url: '/assets/portfolio/portfolio-searchform-5-light.webp',
+        urlDark: '/assets/portfolio/portfolio-searchform-5-dark.webp',
+        alt: 'Calendar bottom sheet with public holidays',
+        caption:
+          'The calendar bottom sheet, with public holidays listed to help travelers plan around them.',
+      },
+      {
+        type: 'image',
+        url: '/assets/portfolio/portfolio-searchform-6-light.webp',
+        urlDark: '/assets/portfolio/portfolio-searchform-6-dark.webp',
+        alt: 'Passengers, cabin class, and payment type sheets',
+        caption:
+          'Passengers and cabin class grouped into one sheet. Payment types keep their own sheet.',
+      },
       { type: 'heading', text: 'The Result' },
       {
         type: 'list',
@@ -618,6 +682,10 @@ export const workData = [
           'iOS and Android now share one structure: one design update instead of two, and less QA.',
           'The form is built from design system components, so later changes and experiments are cheaper to design and build.',
         ],
+      },
+      {
+        type: 'paragraph',
+        text: 'The redesigned app form went through a final A/B test before rollout and was accepted on both platforms. The share of sessions that turn into searches went up 0.3% on Android and 0.2% on iOS, and iOS saw 0.7% more handoffs to partners. Small percentages, but on the first step of the funnel they carry through every step after it.',
       },
       {
         type: 'paragraph',
@@ -633,19 +701,43 @@ export const workData = [
         text: 'We started with user interviews and an MVP proposal. The first idea was to handle this on the results page, but when we walked through it with engineering, loading results for two airports at once was too heavy on performance. So we moved the option up into the search form: when a traveler picks an airport that has a nearby alternative, a toggle appears offering to include it in the search. Travelers who don’t need it never see it.',
       },
       {
+        type: 'image',
+        url: '/assets/portfolio/portfolio-searchform-9-light.webp',
+        urlDark: '/assets/portfolio/portfolio-searchform-9-dark.webp',
+        alt: 'Nearby airport option on the search form',
+        caption:
+          'The nearby airport option appears on the form only when the chosen airport has one close by.',
+      },
+      {
         type: 'paragraph',
-        text: 'That became the pattern for extending the form: show an option only when it is relevant, and keep the default view clean.',
+        text: 'The tests confirmed the idea. On mobile web, handoffs to partners rose for the covered routes, up 3.6% for Sharjah, 2% for Cairo, and 1.9% for Dubai. On the apps, sessions searching those cities saw handoffs rise 1.3% on iOS and 1.4% on Android, and a second iteration added another 0.6% overall. Around one in ten travelers who get the suggestion actually use it. The feature was accepted on every platform, and it is now growing into full multi-airport search.',
+      },
+      {
+        type: 'paragraph',
+        text: 'That became the pattern for extending the form: show an option only when it is relevant. The price calendar followed it. Travelers with flexible dates had no way to see which days were cheaper without searching one date at a time, so we brought fare levels into the calendar itself, colored as cheap, average, or high. Because price data is only reliable on some routes, the calendar appears only where the coverage is good.',
+      },
+      {
+        type: 'paragraph',
+        text: 'We tested it platform by platform, and it was accepted everywhere: converted sessions rose 4.1% on desktop web and 3.25% on iOS, and Android and mobile web saw more handoffs and bookings per search. The interesting finding: the calendar did not make more people search. It made people more confident about the date they picked, and that confidence converted.',
+      },
+      {
+        type: 'image',
+        url: '/assets/portfolio/portfolio-searchform-8-light.webp',
+        urlDark: '/assets/portfolio/portfolio-searchform-8-dark.webp',
+        alt: 'Price calendar showing fare levels per day',
+        caption:
+          'The price calendar, colored by fare level. Accepted on every platform after A/B testing, with converted sessions up 4.1% on desktop web.',
       },
       { type: 'heading', text: 'What I Learned' },
       {
         type: 'list',
         items: [
-          'Organize by importance instead of removing features.',
-          'Defaults are part of the design. The fastest interaction is the one the traveler never makes.',
-          'Change busy pages in stages, not all at once.',
-          'Test before committing. Usability testing and A/B tests are much cheaper than fixing a wrong change in production.',
-          'Business and engineering constraints are inputs to the design, not obstacles. Knowing why a feature exists leads to better decisions than pushing for a cleaner screen.',
-          'Show an option only when it is relevant. A clean default view and a complete form are not in conflict.',
+          'A busy form does not need fewer features. It needs a clear order of importance. Ranking beat removing at every step of this project.',
+          'Defaults are part of the design. Most travelers never touch the secondary options, and that is the point: the fastest interaction is the one they never make.',
+          'Let the test decide, not the instinct. The trip type shortcut felt like an obvious win and failed. The price calendar looked like a small addition and lifted conversions on every platform.',
+          'Change a page this busy in stages. Each generation shipped on its own, was measured on its own, and made the next one safer.',
+          'Constraints are design inputs. Revenue kept payment types on the form, and performance moved nearby airports into it. Both decisions made the design better.',
+          'One UI and one set of rules across platforms means every improvement lands once, not three times.',
         ],
       },
     ],
