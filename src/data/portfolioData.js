@@ -512,7 +512,7 @@ export const workData = [
     title: 'Redesigning the First Step: The Journey of the Search Form',
     company: 'Wego',
     logo: '/assets/wego.svg',
-    year: '2022 — Present',
+    year: '2022 — 2025',
     description:
       "Led the end-to-end redesign of Wego's flight search experience, improving usability and conversion.",
     intro:
@@ -527,7 +527,7 @@ export const workData = [
       { type: 'heading', text: 'The Problem' },
       {
         type: 'paragraph',
-        text: 'By 2022, the form had collected a lot of options: trip types, passengers, cabin class, payment types, and more. Each one was added for a good reason over the years, but nobody had stepped back to reorganize the whole form. Everything had the same visual weight, so the form felt busier than it needed to be.',
+        text: 'By 2022, the form had collected a lot of options: trip types, passengers, cabin class, payment types, and more. Each one was added for a good reason over the years, but nobody had stepped back to reorganize the whole form. Everything had the same visual weight, so the form felt busier than it needed to be. The layout also left no room to grow: with every field already fighting for space, there was no good place to add a new feature without making the form worse.',
       },
       {
         type: 'paragraph',
@@ -735,9 +735,9 @@ export const workData = [
           'A busy form does not need fewer features. It needs a clear order of importance. Ranking beat removing at every step of this project.',
           'Defaults are part of the design. Most travelers never touch the secondary options, and that is the point: the fastest interaction is the one they never make.',
           'Let the test decide, not the instinct. The trip type shortcut felt like an obvious win and failed. The price calendar looked like a small addition and lifted conversions on every platform.',
-          'Change a page this busy in stages. Each generation shipped on its own, was measured on its own, and made the next one safer.',
-          'Constraints are design inputs. Revenue kept payment types on the form, and performance moved nearby airports into it. Both decisions made the design better.',
-          'One UI and one set of rules across platforms means every improvement lands once, not three times.',
+          'Change busy pages in stages. Ship each step, measure it, then move to the next.',
+          'Treat business and engineering constraints as part of the design, not as blockers.',
+          'One UI for all platforms means every improvement only needs to be built once.',
         ],
       },
     ],
