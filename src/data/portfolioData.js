@@ -9,6 +9,22 @@ export const experienceData = [
         slug: 'wego-design-system',
         label: 'Wego Design System: Built & Maintained from the Ground Up',
       },
+      {
+        slug: 'wego-flight-search-redesign',
+        label: 'Redesigning the First Step: The Journey of the Search Form',
+      },
+      {
+        slug: 'flight-booking-revamp',
+        label: 'Flight Checkout Flow: Designing Away the Doubt',
+      },
+      {
+        slug: 'payment-loyalty-redemption',
+        label: 'Pay with Points: New Payment and Redemption Options at Checkout',
+      },
+      {
+        slug: 'ai-assisted-design-workflow',
+        label: 'Designing with AI: An Evolving Practice',
+      },
     ],
     roles: [
       {
@@ -521,8 +537,13 @@ export const workData = [
     slug: 'wego-flight-search-redesign',
     content: [
       {
+        type: 'image',
+        url: '/assets/portfolio/portfolio-wegodesignsystem-11.webp',
+        alt: 'The flight search form across three generations',
+      },
+      {
         type: 'paragraph',
-        text: 'The search form is where travelers set their route, dates, passengers, cabin class, and payment preferences. Every search starts here, so a problem on this page affects every step after it. I own this page as the designer for the flight search and booking vertical, working with product managers and with iOS and Android engineers.',
+        text: 'The search form is where travelers set their route, dates, passengers, cabin class, and payment preferences. Every search starts here, so a problem on this page affects every step after it. As the designer for the flight search and booking vertical, this page is my responsibility, and I work on it with product managers and with iOS and Android engineers.',
       },
       { type: 'heading', text: 'The Problem' },
       {
@@ -732,12 +753,166 @@ export const workData = [
       {
         type: 'list',
         items: [
-          'A busy form does not need fewer features. It needs a clear order of importance. Ranking beat removing at every step of this project.',
-          'Defaults are part of the design. Most travelers never touch the secondary options, and that is the point: the fastest interaction is the one they never make.',
-          'Let the test decide, not the instinct. The trip type shortcut felt like an obvious win and failed. The price calendar looked like a small addition and lifted conversions on every platform.',
-          'Change busy pages in stages. Ship each step, measure it, then move to the next.',
-          'Treat business and engineering constraints as part of the design, not as blockers.',
+          'A busy form does not need fewer features. It needs a clear order of importance.',
+          'Defaults are part of the design. The fastest interaction is the one the traveler never makes.',
+          'Obvious wins are not always wins. The trip type shortcut felt certain and failed the test, while the quiet price calendar lifted conversions everywhere.',
           'One UI for all platforms means every improvement only needs to be built once.',
+        ],
+      },
+    ],
+  },
+  {
+    title: 'Flight Checkout Flow: Designing Away the Doubt',
+    company: 'Wego',
+    logo: '/assets/wego.svg',
+    year: '2024 — Present',
+    description:
+      'Leading the redesign of the flight booking flow, from fare selection to payment, and learning from a first A/B test that did not go as planned.',
+    intro:
+      'This is the story of the flight booking flow revamp: how we rebuilt every step of checkout, what the first A/B test told us, and how the numbers changed the way we ship it. The project is still in progress.',
+    slug: 'flight-booking-revamp',
+    link: '#',
+    content: [
+      {
+        type: 'paragraph',
+        text: 'I design the flight booking flow, the steps a traveler goes through after choosing a flight: fare selection, passenger details, add-ons like baggage and meals, and payment. This revamp is the largest piece of my work on the booking vertical.',
+      },
+      { type: 'heading', text: 'The Problem' },
+      {
+        type: 'paragraph',
+        text: 'The booking flow grew page by page over the years, and it showed. The design predated our design system, so it looked and behaved differently from the rest of the product. Data showed travelers dropping off at specific steps, and add-ons were easy to miss. Because most of our bookings happen on mobile, the revamp started with mobile web.',
+      },
+      { type: 'heading', text: 'The Approach' },
+      {
+        type: 'paragraph',
+        text: 'We benchmarked the strongest booking experiences in travel and used them as the baseline, proposing our own solutions where we believed we could do better. Every step was rebuilt on the design system: fare families, passenger details, the add-ons pages, price breakdown, and payment, including the voucher flow.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Before anything went live, we validated the flow twice. We ran usability testing with real users, where feedback was positive, especially on the new baggage upgrade and meal selection. We also tried something new: synthetic usability testing with AI personas, to catch friction and confusing moments cheaply before involving real participants.',
+      },
+      // TODO image: before/after of the booking flow key steps (light and dark). Export and add here.
+      { type: 'heading', text: 'The First Test' },
+      {
+        type: 'paragraph',
+        text: 'The revamp went into an A/B test on mobile web. After two weeks, the first read was negative: bookings per click were down 3.42%, passenger form submissions were down 9%, and the baggage attach rate halved. We pulled the traffic and went looking for answers.',
+      },
+      {
+        type: 'paragraph',
+        text: 'The deep dive with the data team changed the picture. Bookings per click includes fare errors and pricing issues that have nothing to do with the design, so it was the wrong lens for a flow redesign. Measured from entering checkout to submitting payment, the revamp was actually 1.1% better, and the step into passenger details improved by 6.1%. But one finding was real and stayed: the new add-ons pages were attaching fewer extras.',
+      },
+      { type: 'heading', text: 'Fixing What the Data Flagged' },
+      {
+        type: 'paragraph',
+        text: 'The test pointed at exactly two pages. We audited the revamp against the data and designed targeted fixes: one for the drop-off in the booking details page, one for the low attach rate on the add-ons page, including an active-choice pattern where travelers explicitly accept or decline each add-on instead of scrolling past it.',
+      },
+      {
+        type: 'paragraph',
+        text: 'The experience also changed how we ship. Maintaining two full designs in parallel is expensive and slow, so instead of waiting for one perfect complete revamp, we now bring it to production piece by piece, each piece measured on its own.',
+      },
+      // TODO image: the redesigned add-ons page with the active choice pattern. Export and add here.
+      { type: 'heading', text: 'Where It Stands' },
+      {
+        type: 'paragraph',
+        text: 'The first pieces are in production and the fixes for the flagged pages are in build, heading for the next round of testing. The desktop version follows once the mobile flow has proven itself.',
+      },
+      { type: 'heading', text: 'What I Learned' },
+      {
+        type: 'list',
+        items: [
+          'Pick the metric that isolates what you changed. One lens said the revamp failed, a better lens showed it was working except in one place.',
+          'A negative test is information, not defeat. It pointed at exactly two pages to fix.',
+          'Ship big redesigns piece by piece. Keeping two complete designs alive at once costs more than it protects.',
+          'Usability testing catches confusion, but production catches behavior. You need both.',
+        ],
+      },
+    ],
+  },
+  {
+    title: 'Pay with Points: New Payment and Redemption Options at Checkout',
+    company: 'Wego',
+    logo: '/assets/wego.svg',
+    year: '2026',
+    description:
+      'Designing new ways to pay on the payment page: redeeming partner loyalty points at checkout, from brief to engineering handoff.',
+    intro:
+      'This is an in-progress project about adding new ways to pay on the payment page: redeeming loyalty points from partner programs alongside the existing payment methods. It covers the process from brief to handoff, and how the design will be measured once it ships.',
+    slug: 'payment-loyalty-redemption',
+    link: '#',
+    content: [
+      {
+        type: 'paragraph',
+        text: 'This project is part of expanding the payment and loyalty experience on the booking flow. I design the flights checkout, working with the payment team, the loyalty team, and the booking flow engineers.',
+      },
+      { type: 'heading', text: 'The Problem' },
+      {
+        type: 'paragraph',
+        text: 'In one of our biggest markets, many travelers hold loyalty points from partner programs run by a major bank and a major telecom. Today they cannot use those points on Wego. Redeeming points is effectively a payment method, and not offering it makes checkout feel less local than competitors that already support in-flow redemption.',
+      },
+      {
+        type: 'paragraph',
+        text: 'The expectation in this market is clear: redemption happens in real time, inside the checkout, not in a separate points portal.',
+      },
+      { type: 'heading', text: 'The Research' },
+      {
+        type: 'paragraph',
+        text: 'We started by looking at how the market already handles this. We ran a competitor analysis of travel and e-commerce players in the Middle East, including Almosafer and the localized checkouts of global platforms, walking through their redemption flows step by step and recording them for the team.',
+      },
+      {
+        type: 'paragraph',
+        text: 'The pattern was consistent: the leaders let users redeem points in real time, inside the checkout, as part of choosing how to pay. None of them send users to a separate points portal. That set the bar for our flow and confirmed the framing: for these travelers, points are simply another way to pay.',
+      },
+      { type: 'heading', text: 'Defining Success First' },
+      {
+        type: 'paragraph',
+        text: 'The success metrics were agreed before design started: the share of transactions paid with points, checkout conversion in the target market, low drop-off at the OTP step, and high success rates for redemption and for point reversal when a booking fails. Every design decision has a measurement waiting for it once the feature is live.',
+      },
+      { type: 'heading', text: 'Designing the Flow' },
+      {
+        type: 'paragraph',
+        text: 'The starting point was reuse. Our existing wallet integration already established a trusted pattern for phone number entry and OTP verification, so the redemption flow builds on it instead of inventing a new one. Decisions made there carry over, like not adding a separate OTP countdown because the booking timer is already on screen.',
+      },
+      { type: 'label', text: 'The flow covers:' },
+      {
+        type: 'list',
+        items: [
+          'Payment method selection, with points shown as their own option alongside cards and wallets.',
+          'Phone number entry with the country code locked to the program’s market.',
+          'One combined screen for the OTP and the amount to redeem, with the redeem button disabled until both are valid.',
+          'A success state showing the amount redeemed and the remaining balance to pay.',
+          'Partial payment: the pay button always reflects only the remaining amount.',
+          'Every error state with its own message: invalid phone, invalid or expired OTP, insufficient balance, and API failure.',
+          'Reversal messaging when a booking fails, confirming the points are returned.',
+        ],
+      },
+      // TODO image: payment method selection with the points option (light and dark). Export and add here.
+      // TODO image: combined OTP and amount screen with partial payment state. Export and add here.
+      { type: 'heading', text: 'The Tricky Parts' },
+      {
+        type: 'list',
+        items: [
+          'Only one loyalty program can be active at a time, so selecting one must cleanly disable the other.',
+          'How points stack with vouchers and promo codes changes the price math and the design. We flagged this early, and it needs business alignment before the flow is final.',
+          'The whole flow must reset safely when the traveler navigates away or switches payment method.',
+          'Payment fees are loaded when the page opens, but a partial points payment changes the amount they apply to.',
+        ],
+      },
+      { type: 'heading', text: 'Where It Stands' },
+      {
+        type: 'paragraph',
+        text: 'The work is mobile first, because the target market is heavily mobile. We aligned on the flow with low fidelity mockups first, and the high fidelity designs for all platforms are in progress, together with annotated specs and component reuse notes for engineering. In parallel, the loyalty program is being placed across the wider booking flow: fare selection, booking details, price breakdown, and the payment page.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Like everything else on the booking flow, the feature will ship behind an A/B test and be judged against the metrics defined at the start.',
+      },
+      { type: 'heading', text: 'What I Learned' },
+      {
+        type: 'list',
+        items: [
+          'Agree on the success metrics before the first mockup. It sharpens every decision that follows.',
+          'In trust-sensitive flows like payments, a proven pattern beats a clever new one.',
+          'List the edge cases early. The discount stacking question changes the design, and finding it late would have been expensive.',
         ],
       },
     ],
@@ -746,18 +921,57 @@ export const workData = [
     title: 'Designing with AI: An Evolving Practice',
     company: 'Wego',
     logo: '/assets/wego.svg',
+    year: '2023 — Present',
     description: 'Exploring how AI tools can support the design process and improve efficiency.',
+    intro:
+      'AI started as a feature we designed and became a tool we design with. This is a timeline of that shift: an in-app assistant, generated 3D assets, research and data analysis through connectors, and AI in the review process.',
     slug: 'ai-assisted-design-workflow',
     link: '#',
-  },
-  {
-    title: 'Flight Checkout Flow: Designing Away the Doubt',
-    company: 'Wego',
-    logo: '/assets/wego.svg',
-    description:
-      'Contributed to improving the booking and checkout experience, reducing drop-off rates.',
-    slug: 'checkout-flow-optimization',
-    link: '#',
+    content: [
+      { type: 'heading', text: 'Designing an AI Assistant' },
+      {
+        type: 'paragraph',
+        text: 'The first encounter with AI was designing it, not using it. Around 2023 and 2024 we built an AI travel assistant for the app, starting with a design sprint and growing from there: the avatar, chat and voice control, the listening state animation, and conversation behaviors like stopping and editing a question mid-way. We also designed where it lives, from its placement on the results page to the handoff to customer support when the AI reaches its limit.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Some of it shipped, some was cut as priorities shifted. The lasting lesson: designing a conversation is not designing screens. It is designing states and behaviors, and the edge cases are the product.',
+      },
+      // TODO image: the AI assistant designs (avatar, chat, voice states). Export and add here.
+      { type: 'heading', text: 'Generating 3D Assets' },
+      {
+        type: 'paragraph',
+        text: 'When image models became good enough, I built a custom GPT that generates 3D icons and illustrations matched to our brand and product colors, and shared it with the whole design team. Anyone can produce a consistent 3D asset without briefing an illustrator.',
+      },
+      {
+        type: 'paragraph',
+        text: 'It is not magic: colors sometimes drift and need a Photoshop pass, and keeping a whole set consistent is still the hard part. But it turned a task that used to take days into one that takes minutes.',
+      },
+      // TODO image: 3D icon set generated with the custom GPT. Export and add here.
+      { type: 'heading', text: 'Research and Analysis with Connectors' },
+      {
+        type: 'paragraph',
+        text: 'The bigger shift came from connecting AI to the tools we already use. With Claude in the browser and connectors to Mobbin, Looker, Jira, Confluence, and Figma, research and analysis happen in one conversation: pattern research across real product flows on Mobbin, and data questions asked in plain language and answered from Looker, without waiting for an analyst or building a dashboard first.',
+      },
+      {
+        type: 'paragraph',
+        text: 'I set this up for the design team, including deciding who gets write access to what, so the tools are useful without being risky.',
+      },
+      { type: 'heading', text: 'AI in Analysis and Review' },
+      {
+        type: 'paragraph',
+        text: 'AI now sits inside our review process. We run design audits by checking the shipped UI against the design system straight from the production code, catching inconsistencies that eyes miss. Before usability sessions, we run synthetic tests with AI personas to catch obvious friction cheaply, so real participants spend their time on the questions that matter. And review feedback gets structured and cross-checked faster than a manual pass.',
+      },
+      { type: 'heading', text: 'What I Learned' },
+      {
+        type: 'list',
+        items: [
+          'The tools change every few months. The habit of evaluating them is the real practice.',
+          'AI helps most at the edges of design: research, analysis, and review. The decisions in the middle stay human.',
+          'Treat AI output as a draft. The 3D icons still get a Photoshop pass, and every audit still ends with a designer’s judgment.',
+        ],
+      },
+    ],
   },
   {
     title: 'Banking on Trust: Designing for Security and Clarity',

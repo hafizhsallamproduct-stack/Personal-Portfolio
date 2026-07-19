@@ -240,6 +240,14 @@
   color: var(--text-secondary);
 }
 
+.portfolio-modal-credit {
+  border-top: var(--line-width) solid var(--divider);
+  padding-top: 16px;
+  margin-top: 24px;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
 .portfolio-modal-content .portfolio-modal-subtitle {
   font-size: 20px;
   font-weight: 400;
@@ -365,7 +373,7 @@
   position: relative;
   overflow: hidden;
   border-radius: 4px;
-  border: var(--line-width) solid var(--card-border);
+  border: var(--line-width) solid var(--border);
   background-color: var(--bg-placeholder);
 }
 
@@ -391,7 +399,7 @@
   padding: 2px;
   border-radius: 999px;
   background-color: rgba(255, 255, 255, 0.92);
-  border: var(--line-width) solid var(--card-border);
+  border: var(--line-width) solid var(--border);
   z-index: 2;
 }
 
@@ -588,4 +596,22 @@
   line-height: 1.6;
   color: var(--text-muted);
   font-style: italic;
+}
+
+/* Proportionally tighter content spacing for the short mobile viewport:
+   images 48, headings 40, sub-groups 32, body 24, label-to-list 8.
+   Kept at the end of the file so it wins over the base content rules. */
+@media (max-width: 768px) {
+  .portfolio-content-image {
+    margin: 24px auto;
+  }
+  .portfolio-content-image + .portfolio-content-image {
+    margin-top: -24px;
+  }
+  .portfolio-content-heading {
+    margin-top: 16px;
+  }
+  .portfolio-content-heading:first-child {
+    margin-top: 0;
+  }
 }

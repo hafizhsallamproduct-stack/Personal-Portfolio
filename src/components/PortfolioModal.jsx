@@ -333,10 +333,9 @@ const PortfolioModal = ({ isStandalone }) => {
                 <h1 id="portfolio-modal-heading" className="portfolio-modal-title">
                   {selectedProject.title}
                 </h1>
-                <p className="portfolio-modal-byline">
-                  Hafizh Sallam · Claude (co-author)
-                  {selectedProject.year && ` · ${selectedProject.year}`}
-                </p>
+                {selectedProject.year && (
+                  <p className="portfolio-modal-byline">{selectedProject.year}</p>
+                )}
                 {selectedProject.intro && (
                   <p className="portfolio-modal-subtitle">{selectedProject.intro}</p>
                 )}
@@ -362,6 +361,7 @@ const PortfolioModal = ({ isStandalone }) => {
                   Case study coming soon. Check back for the full project breakdown.
                 </p>
               )}
+              <p className="portfolio-modal-credit">Hafizh Sallam · Claude (co-author)</p>
               <div className="portfolio-modal-bottom-spacer" aria-hidden="true" />
             </div>
           </div>
