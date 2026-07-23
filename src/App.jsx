@@ -67,7 +67,8 @@ function IndexPage({ theme, toggleTheme }) {
             great together.
           </h2>
           <p className="cta-subtext">
-            Here are some examples of projects I've worked on over the last few years.
+            I also share a few free files on the Figma Community. Take a look: they give a sense of
+            how I work and organize a working file.
           </p>
           <SideProjects />
         </section>
