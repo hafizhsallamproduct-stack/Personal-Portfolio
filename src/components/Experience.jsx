@@ -92,21 +92,25 @@ const ExperienceCard = ({ exp }) => {
         {exp.roles.map((role, i) => (
           <ExperienceRole key={i} role={role} />
         ))}
-        {exp.caseStudies && exp.caseStudies.length > 0 && (
-          <div className="experience-card-work">
-            <h3 className="experience-card-work-title">My Work</h3>
-            {exp.caseStudies.map((caseStudy) => (
-              <Link
-                key={caseStudy.slug}
-                to={`/portfolio/${caseStudy.slug}`}
-                state={{ backgroundLocation: location }}
-                className="experience-role-case-study"
-              >
-                {caseStudy.label}
-              </Link>
-            ))}
-          </div>
-        )}
+        {(() => {
+          const visibleCaseStudies = (exp.caseStudies || []).filter((cs) => !cs.hidden);
+          if (visibleCaseStudies.length === 0) return null;
+          return (
+            <div className="experience-card-work">
+              <h3 className="experience-card-work-title">My Work</h3>
+              {visibleCaseStudies.map((caseStudy) => (
+                <Link
+                  key={caseStudy.slug}
+                  to={`/portfolio/${caseStudy.slug}`}
+                  state={{ backgroundLocation: location }}
+                  className="experience-role-case-study"
+                >
+                  {caseStudy.label}
+                </Link>
+              ))}
+            </div>
+          );
+        })()}
       </div>
     </div>
   );
