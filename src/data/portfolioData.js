@@ -22,6 +22,10 @@ export const experienceData = [
         label: 'Pay with Points: New Payment and Redemption Options at Checkout',
       },
       {
+        slug: 'schedule-change-display',
+        label: 'Schedule Changes: Making Sure Travelers See Them',
+      },
+      {
         slug: 'ai-assisted-design-workflow',
         label: 'Designing with AI: An Evolving Practice',
       },
@@ -341,7 +345,7 @@ export const workData = [
       {
         type: 'list',
         items: [
-          'Library vs. foundation file: Some designers grab components from the left library panel, others prefer opening the foundation file to copy from.',
+          'Library vs. Design System file: Some designers grab components from the left library panel, others prefer opening the Design System file to copy from.',
           'Right-panel vs. left-panel designers: some customize through variant options, others dig into layers and structure, often changing colors directly instead of switching variants.',
           "Nested components tripped people up: modifiers stayed hidden until you clicked the exact layer, and some designers couldn't find them.",
           'Without clear guidelines early on, designers interpreted things differently, which led to very different looks and feels across their work.',
@@ -769,59 +773,140 @@ export const workData = [
     description:
       'Leading the redesign of the flight booking flow, from fare selection to payment, and learning from a first A/B test that did not go as planned.',
     intro:
-      'This is the story of the flight booking flow revamp: how we rebuilt every step of checkout, what the first A/B test told us, and how the numbers changed the way we ship it. The project is still in progress.',
+      'The booking flow was losing travelers at every step. This is the story of the revamp: the drop-off we set out to fix, what the first A/B test told us, and how the numbers changed the way we ship. The project is still in progress.',
     slug: 'flight-booking-revamp',
     link: '#',
     content: [
       {
         type: 'paragraph',
-        text: 'I design the flight booking flow, the steps a traveler goes through after choosing a flight: fare selection, passenger details, add-ons like baggage and meals, and payment. This revamp is the largest piece of my work on the booking vertical.',
+        text: 'I design the flight booking flow, the steps a traveler goes through after choosing a flight: fare selection, passenger details, add-ons like baggage, seats, meals, and insurance, and payment. This revamp is the largest piece of my work on the booking vertical.',
       },
       { type: 'heading', text: 'The Problem' },
       {
         type: 'paragraph',
-        text: 'The booking flow grew page by page over the years, and it showed. The design predated our design system, so it looked and behaved differently from the rest of the product. Data showed travelers dropping off at specific steps, and add-ons were easy to miss. Because most of our bookings happen on mobile, the revamp started with mobile web.',
-      },
-      { type: 'heading', text: 'The Approach' },
-      {
-        type: 'paragraph',
-        text: 'We benchmarked the strongest booking experiences in travel and used them as the baseline, proposing our own solutions where we believed we could do better. Every step was rebuilt on the design system: fare families, passenger details, the add-ons pages, price breakdown, and payment, including the voucher flow.',
+        text: 'Booking conversion was continuously dropping. That was the problem we set out to solve, and it was the reason the revamp existed.',
       },
       {
         type: 'paragraph',
-        text: 'Before anything went live, we validated the flow twice. We ran usability testing with real users, where feedback was positive, especially on the new baggage upgrade and meal selection. We also tried something new: synthetic usability testing with AI personas, to catch friction and confusing moments cheaply before involving real participants.',
+        text: 'The booking flow had grown page by page over the years, and it showed. The design predated our design system, so it looked and behaved differently from the rest of the product. But the real problem was in the numbers: conversion kept falling through the funnel, and it fell at specific steps we could point to.',
+      },
+      {
+        type: 'paragraph',
+        text: 'When we looked at the drop-off, three things stood out:',
+      },
+      {
+        type: 'list',
+        items: [
+          'Conversion fell continuously through the funnel. Each step lost more travelers than it should, and the drops added up.',
+          'The flow had too many steps and clicks to complete a booking, with information overload on each page and no automatic transition between them, so every extra step was another place to lose people.',
+          'The heaviest drop-offs sat on two steps: passenger details and the insurance step. Session recordings on these pages were full of rage clicks and dead clicks, taps on things that looked interactive but were not, and repeated taps out of frustration.',
+        ],
+      },
+      {
+        type: 'paragraph',
+        text: 'Because more than 85% of our bookings happen on mobile, the revamp started with mobile web.',
+      },
+      { type: 'heading', text: 'The Research' },
+      {
+        type: 'paragraph',
+        text: 'We started by looking outward. We benchmarked the flow against 12 competitors, walking each one step by step to see how the strongest booking experiences in travel handle the same decisions we did: how they show progress, present the itinerary, lay out add-ons, and ask for passenger details.',
+      },
+      {
+        type: 'paragraph',
+        text: 'The benchmark did two things. It confirmed the patterns worth adopting, a top stepper and a scrollable itinerary were the majority choice (7 and 9 of 12), so those were safe bets, and it surfaced the details that separate a good flow from a great one: MakeMyTrip labels each stepper step when it expands, Almosafer breaks baggage allowance down per passenger so a family can see the child included and the infant excluded, and among MENA airlines only Emirates offers an inclusive gender option. Small things, but they set the bar for the design.',
+      },
+      {
+        type: 'image',
+        url: '/assets/portfolio/portfolio-bookingrevamp-research-1.png',
+        alt: 'Competitor benchmark of 12 booking flows, highlighting stepper labels, per-passenger baggage, and inclusive gender options',
+        caption:
+          'The 12-competitor benchmark: the patterns worth adopting, and the details, like MakeMyTrip’s labelled stepper and Almosafer’s per-passenger baggage, that set the bar for the design.',
+      },
+      { type: 'heading', text: 'What We Changed' },
+      {
+        type: 'paragraph',
+        text: 'The goal was to book faster with fewer steps, and to make add-ons easy to understand and choose without friction. We used the benchmark as the baseline, proposing our own solutions where we believed we could do better. Every step was rebuilt on the design system: fare families, passenger details, the add-ons page, price breakdown, and payment, including the promo code flow.',
+      },
+      {
+        type: 'paragraph',
+        text: 'To cut the step count, we merged pages and added automatic transitions, so the flow moved travelers forward instead of making them tap through it. On the two problem steps, we cleaned up the passenger form and reworked how add-ons were presented, so the pages that were bleeding travelers had less to fight through.',
       },
       // TODO image: before/after of the booking flow key steps (light and dark). Export and add here.
-      { type: 'heading', text: 'The First Test' },
+      { type: 'heading', text: 'Testing Before Launch' },
       {
         type: 'paragraph',
-        text: 'The revamp went into an A/B test on mobile web. After two weeks, the first read was negative: bookings per click were down 3.42%, passenger form submissions were down 9%, and the baggage attach rate halved. We pulled the traffic and went looking for answers.',
+        text: 'Before real users saw the redesign, we pressure-tested it. We ran a synthetic usability test, five AI personas walking the built flow, as a cheap way to catch confusion early, and it pointed straight at the two steps the funnel had already flagged.',
+      },
+      { type: 'label', text: 'The personas kept snagging on the same five things:' },
+      {
+        type: 'list',
+        items: [
+          'The stepper was too subtle. Everyone noticed it, but they wanted plain labels for each step instead of guessing where they were.',
+          'On the add-ons step, the title "Travel Essentials" read as mandatory. Three of five personas hesitated, unsure whether they had to buy any of it.',
+          'The collapsed booking summary on that step was missed by three of five, so travelers who wanted to double-check their details did not realize they could.',
+          'After picking seats, four of five could not tell who was sitting where. The summary listed seat numbers with no traveler next to them.',
+          'Travel protection felt compulsory. A forced error on continue made people think they had to choose one, and the opt-out was easy to scroll past.',
+        ],
+      },
+      {
+        type: 'image',
+        url: '/assets/portfolio/portfolio-bookingrevamp-research-2.png',
+        alt: 'Old versus new comparison from the synthetic usability test, with personas favoring the redesigned screen',
+        caption:
+          'One of the old versus new comparisons the personas judged. Seeing the two side by side made the friction concrete rather than hypothetical.',
       },
       {
         type: 'paragraph',
-        text: 'The deep dive with the data team changed the picture. Bookings per click includes fare errors and pricing issues that have nothing to do with the design, so it was the wrong lens for a flow redesign. Measured from entering checkout to submitting payment, the revamp was actually 1.1% better, and the step into passenger details improved by 6.1%. But one finding was real and stayed: the new add-ons pages were attaching fewer extras.',
+        text: 'These were early signals, not verdicts, but they shaped what we refined and gave us specific things to watch for once the flow was in front of real travelers. We also validated the flow with real users, and the feedback was positive, especially on the new baggage upgrade and meal selection.',
       },
-      { type: 'heading', text: 'Fixing What the Data Flagged' },
+      { type: 'heading', text: 'What Didn’t Work' },
       {
         type: 'paragraph',
-        text: 'The test pointed at exactly two pages. We audited the revamp against the data and designed targeted fixes: one for the drop-off in the booking details page, one for the low attach rate on the add-ons page, including an active-choice pattern where travelers explicitly accept or decline each add-on instead of scrolling past it.',
+        text: 'The revamp went into an A/B test on mobile web. After two weeks, the first read was negative. Bookings per click were down, passenger form submissions were down, and the baggage attach rate dropped. We pulled the traffic and went looking for answers.',
       },
+      {
+        type: 'paragraph',
+        text: 'The deep dive with the data team changed the picture. Bookings per click includes fare errors and pricing issues that have nothing to do with the design, so it was the wrong lens for a flow redesign. Measured from entering checkout to submitting payment, the revamp was actually better, and the step into passenger details improved. The redesign was doing its job on the part we changed.',
+      },
+      {
+        type: 'paragraph',
+        text: 'But two findings were real and stayed. Add-on attach dropped, and revenue per booking fell, driven mostly by insurance attach falling. The cause pointed back at one of our own decisions: we had merged all the add-ons, baggage, seats, meals, and insurance, onto a single page. In the booking stage, where traveler anxiety is already high, that one page added cognitive load instead of removing it, and fewer people attached anything.',
+      },
+      {
+        type: 'paragraph',
+        text: 'The test pointed at exactly the pages we had changed, so we audited the revamp against the data and designed targeted fixes:',
+      },
+      {
+        type: 'list',
+        items: [
+          'Split the single add-ons page back into two, grouping baggage with insurance and seats with meals, so each page asks for less at once.',
+          'Decluttered the passenger details page: hid the baggage details behind a button and cut the extra text in the form.',
+          'Made add-ons a required choice. An active-choice pattern asks travelers to explicitly accept or decline each add-on instead of scrolling past it, so the decision is made rather than missed.',
+          'Cleaned up the titles and stepper so travelers understand where they are, with plainer labels like "Who is flying?" instead of "Booking Details".',
+        ],
+      },
+      // TODO image: the redesigned add-ons page with the active choice pattern. Export and add here.
+      { type: 'heading', text: 'The Rollout' },
       {
         type: 'paragraph',
         text: 'The experience also changed how we ship. Maintaining two full designs in parallel is expensive and slow, so instead of waiting for one perfect complete revamp, we now bring it to production piece by piece, each piece measured on its own.',
       },
-      // TODO image: the redesigned add-ons page with the active choice pattern. Export and add here.
-      { type: 'heading', text: 'Where It Stands' },
       {
         type: 'paragraph',
-        text: 'The first pieces are in production and the fixes for the flagged pages are in build, heading for the next round of testing. The desktop version follows once the mobile flow has proven itself.',
+        text: 'The first pieces are in production, rolling out on mobile web, and the fixes for the flagged pages are in build, heading for the next round of testing. The active-choice pattern goes out as its own A/B test on top of the revamp. The desktop version follows once the mobile flow has proven itself.',
+      },
+      { type: 'heading', text: 'The Result' },
+      {
+        type: 'paragraph',
+        text: 'Measured from entering checkout to submitting payment, the revamp already reads better than the flow it replaced, and the step into passenger details improved. The two problems the first test surfaced, add-on attach and revenue per booking, are what the current fixes target, and they go back out under their own A/B tests before this is called a win. The project is still in progress, and each piece answers to its own number.',
       },
       { type: 'heading', text: 'What I Learned' },
       {
         type: 'list',
         items: [
-          'Pick the metric that isolates what you changed. One lens said the revamp failed, a better lens showed it was working except in one place.',
-          'A negative test is information, not defeat. It pointed at exactly two pages to fix.',
+          'Pick the metric that isolates what you changed. One lens said the revamp failed, a better lens showed it was working on the part we touched.',
+          'Fewer steps is the goal, but fewer pages is not the same thing. Merging all the add-ons onto one page cut steps and cut attach rate at the same time.',
+          'A negative test is information, not defeat. It pointed at exactly the pages to fix.',
           'Ship big redesigns piece by piece. Keeping two complete designs alive at once costs more than it protects.',
           'Usability testing catches confusion, but production catches behavior. You need both.',
         ],
@@ -913,6 +998,114 @@ export const workData = [
           'Agree on the success metrics before the first mockup. It sharpens every decision that follows.',
           'In trust-sensitive flows like payments, a proven pattern beats a clever new one.',
           'List the edge cases early. The discount stacking question changes the design, and finding it late would have been expensive.',
+        ],
+      },
+    ],
+  },
+  {
+    title: 'Schedule Changes: Making Sure Travelers See Them',
+    company: 'Wego',
+    logo: '/assets/wego.svg',
+    year: '2026',
+    description:
+      'Redesigning how flight schedule changes are shown on the fare page, so travelers stop booking flights at times they did not choose.',
+    intro:
+      'Sometimes an airline changes a flight schedule between the search results and the fare page. Travelers were missing the change and booking flights at times they did not choose. This case study covers how we redesigned the schedule change display on desktop and mobile.',
+    slug: 'schedule-change-display',
+    link: '#',
+    content: [
+      {
+        type: 'paragraph',
+        text: 'This work sits on the fare page, the step right after a traveler picks a flight, and it is part of my booking flow scope. I worked on it with the product lead and the booking flow engineers.',
+      },
+      { type: 'heading', text: 'Problem and Background' },
+      {
+        type: 'paragraph',
+        text: 'Customer support started receiving complaints from travelers who booked flights whose schedule had changed. The search results showed one departure time, say 15:30, but by the time the traveler reached the fare page the airline had moved the flight, sometimes as far as 02:30. The page did show the update, but travelers missed it and booked anyway.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Looking at the page, it was easy to see why. The updated time was shown in orange text, and a small "New Schedule" chip appeared only for major changes like a different date. A time-only change, the most common case, produced no chip at all. There was no confirmation step anywhere in the flow.',
+      },
+      { type: 'heading', text: 'Feedback and Research' },
+      {
+        type: 'paragraph',
+        text: 'We started from the complaints and walked the same journey the travelers did. An old popup design existed from years before, never implemented, and the first instinct was to revive it. Engineering flagged the constraint that shaped everything after: the fare page also serves Google Flights traffic, and a blocking popup could break that flow. A popup was safe only on the booking page, which meant the fare page itself had to carry the warning.',
+      },
+      {
+        type: 'paragraph',
+        text: 'For the display, we looked at how flight tracking apps present time changes and borrowed the strongest idea: show the old and new time side by side instead of only the new one. We adapted the language, though. A tracking app says "1h late" because it describes a delay. A schedule change needs "1h later." Small words, different meaning.',
+      },
+      { type: 'heading', text: 'Exploration' },
+      {
+        type: 'paragraph',
+        text: 'The first round replaced the chip with a banner, in two options: banner only, or banner plus a stronger border around the changed section. The border version felt aggressive, so the banner won. The first banner showed only the new time, and the feedback was immediate: it forces the traveler to remember what the original time was. The next version put both times side by side with the difference spelled out.',
+      },
+      {
+        type: 'paragraph',
+        text: 'We stress tested the warning color across four scenarios, from the worst case where the date changes too, down to a muted version with less orange. The muted version looked calmer but made the change easy to miss at a glance, which is the exact problem we were fixing, so the warning color stayed. We also cut the arrival time difference from the copy: "Departs 1h earlier and arrives 55m earlier" reads twice as heavy and says little more than the departure line alone.',
+      },
+      {
+        type: 'paragraph',
+        text: 'The hardest detail was layovers. When one or both flights move, the connection time changes too, and a shorter connection can matter more than the new departure time. The design shows the new layover next to the old one, with the difference called out. The backend does not provide these differences, so the frontend calculates them, and if it cannot, the design falls back to showing the times without the difference.',
+      },
+      { type: 'heading', text: 'What We Removed and What We Added' },
+      { type: 'label', text: 'Removed:' },
+      {
+        type: 'list',
+        items: [
+          'The "New Schedule" chip. It appeared only for date changes and was easy to miss.',
+          'The popup idea on the fare page. It risked blocking Google Flights traffic, so the display itself had to do the work.',
+          'The arrival time difference from the copy. The departure difference plus updated times says enough.',
+        ],
+      },
+      { type: 'label', text: 'Added:' },
+      {
+        type: 'list',
+        items: [
+          'A "Schedule Updated" banner on the fare page, on desktop and mobile, for every change, even a few minutes.',
+          'Old and new times side by side, with the difference spelled out: "Departs 1h 30m earlier."',
+          'Layover impact: the new connection time shown against the old one, so a tightened or stretched layover is visible before booking.',
+          'Precise wording: "later" and "earlier" for schedule changes, and correct terms for layovers and stopovers.',
+        ],
+      },
+      {
+        type: 'image',
+        url: '/assets/portfolio/portfolio-schedulechange-1.png',
+        alt: 'Desktop fare page with the schedule updated banner and old and new times',
+        caption:
+          'The desktop fare page: a banner announces the update, old times are struck through next to the new ones, and each leg states its difference.',
+      },
+      {
+        type: 'image',
+        url: '/assets/portfolio/portfolio-schedulechange-2.png',
+        alt: 'Mobile fare page with the schedule updated banner',
+        caption: 'The same system on mobile, with the difference called out per leg.',
+      },
+      {
+        type: 'image',
+        url: '/assets/portfolio/portfolio-schedulechange-3.png',
+        alt: 'Flight summary showing per-segment schedule changes and layover impact',
+        caption:
+          'The flight summary handles the hardest case: per-segment changes and the layover impact, here a connection that grew by 1h 30m.',
+      },
+      { type: 'heading', text: 'The Result' },
+      {
+        type: 'paragraph',
+        text: 'The new display shipped to production on desktop and mobile, covering both the current pages and the booking flow revamp. During design QA we caught a time format bug on desktop before it reached travelers.',
+      },
+      {
+        type: 'paragraph',
+        text: 'The number this work answers to is the one that started it: complaints from travelers who booked a changed flight without noticing. The fix is recent, so that count is still accumulating, and it is the measure we are watching.',
+      },
+      { type: 'heading', text: 'What I Learned' },
+      {
+        type: 'list',
+        items: [
+          'A warning that only appears sometimes trains people to ignore it. It now fires for every change, even a few minutes.',
+          'Show the comparison, not just the new value. Nobody can spot a change without seeing what it changed from.',
+          'Constraints decide the solution. A popup was the obvious answer, but bot traffic ruled it out, and the better design came from working inside that limit.',
+          'Words carry meaning as much as layout: "later" is a schedule change, "late" is a delay.',
         ],
       },
     ],
