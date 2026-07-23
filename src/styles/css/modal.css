@@ -234,9 +234,17 @@
   margin-bottom: 0;
 }
 
-.portfolio-modal-year {
+.portfolio-modal-byline {
   font-size: 16px;
   font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.portfolio-modal-credit {
+  border-top: var(--line-width) solid var(--divider);
+  padding-top: 16px;
+  margin-top: 24px;
+  font-size: 14px;
   color: var(--text-secondary);
 }
 
@@ -349,23 +357,76 @@
   margin-top: -32px;
 }
 
-.portfolio-content-list + .portfolio-content-image {
-  margin-top: 0;
-}
-
 .portfolio-content-image:has(+ .portfolio-content-heading) {
   margin-bottom: 0;
 }
 
-.portfolio-content-image + .portfolio-content-heading {
-  margin-top: 24px;
+.portfolio-content-image:has(+ .portfolio-content-subheading) {
+  margin-bottom: 0;
+}
+
+.portfolio-content-image:has(+ .portfolio-content-label) {
+  margin-bottom: 0;
 }
 
 .portfolio-image-wrap {
+  position: relative;
   overflow: hidden;
   border-radius: 4px;
-  border: var(--line-width) solid var(--card-border);
+  border: var(--line-width) solid var(--border);
   background-color: var(--bg-placeholder);
+}
+
+.portfolio-detail-img-dark {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.portfolio-detail-img-dark.visible {
+  opacity: 1;
+}
+
+.portfolio-image-theme-toggle {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  gap: 2px;
+  padding: 2px;
+  border-radius: 999px;
+  background-color: rgba(255, 255, 255, 0.92);
+  border: var(--line-width) solid var(--border);
+  z-index: 2;
+}
+
+.portfolio-image-theme-toggle button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border: none;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition:
+    background-color 0.25s cubic-bezier(0.25, 1, 0.5, 1),
+    color 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.portfolio-image-theme-toggle button .icon {
+  width: 12px;
+  height: 12px;
+}
+
+.portfolio-image-theme-toggle button.active {
+  background-color: var(--text-primary);
+  color: var(--bg-page);
 }
 
 .portfolio-image-caption {
@@ -413,6 +474,7 @@
   font-weight: 700;
   line-height: 1.6;
   color: var(--text-primary);
+  margin-top: 8px;
   margin-bottom: -16px;
 }
 
@@ -420,7 +482,7 @@
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 0;
 }
 
 .portfolio-content-list li {
@@ -432,7 +494,7 @@
 }
 
 .portfolio-content-list li::before {
-  content: '\00B7';
+  content: '\2022';
   position: absolute;
   left: 0;
   color: var(--bullet);
@@ -508,7 +570,7 @@
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 0;
   margin-top: 6px;
   padding: 0;
 }
@@ -522,7 +584,7 @@
 }
 
 .portfolio-timeline-list li::before {
-  content: '\00B7';
+  content: '\2022';
   position: absolute;
   left: 0;
   color: var(--bullet);
@@ -534,4 +596,22 @@
   line-height: 1.6;
   color: var(--text-muted);
   font-style: italic;
+}
+
+/* Proportionally tighter content spacing for the short mobile viewport:
+   images 48, headings 40, sub-groups 32, body 24, label-to-list 8.
+   Kept at the end of the file so it wins over the base content rules. */
+@media (max-width: 768px) {
+  .portfolio-content-image {
+    margin: 24px auto;
+  }
+  .portfolio-content-image + .portfolio-content-image {
+    margin-top: -24px;
+  }
+  .portfolio-content-heading {
+    margin-top: 16px;
+  }
+  .portfolio-content-heading:first-child {
+    margin-top: 0;
+  }
 }

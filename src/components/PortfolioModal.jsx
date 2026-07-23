@@ -1,10 +1,70 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useParams, useNavigate, Link, useLocation } from 'react-router-dom';
 import { workData } from '../data/portfolioData';
-import { X, HafizhLogo } from './icons';
+import { X, HafizhLogo, Sun, Moon } from './icons';
 
 const FOCUSABLE_SELECTOR =
   'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
+const ImageBlock = ({ block, onImageClick }) => {
+  const [imageTheme, setImageTheme] = useState('light');
+  const src = imageTheme === 'dark' && block.urlDark ? block.urlDark : block.url;
+
+  return (
+    // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions
+    <figure className="portfolio-content-image" onClick={() => src && onImageClick?.(src)}>
+      <div className="portfolio-image-wrap">
+        {block.url && (
+          <img
+            src={block.url}
+            alt={block.alt || ''}
+            className="portfolio-detail-img"
+            loading="lazy"
+            decoding="async"
+          />
+        )}
+        {block.urlDark && (
+          <img
+            src={block.urlDark}
+            alt=""
+            aria-hidden={imageTheme !== 'dark'}
+            className={`portfolio-detail-img portfolio-detail-img-dark ${
+              imageTheme === 'dark' ? 'visible' : ''
+            }`}
+            loading="lazy"
+            decoding="async"
+          />
+        )}
+        {block.urlDark && (
+          // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
+          <div className="portfolio-image-theme-toggle" onClick={(e) => e.stopPropagation()}>
+            <button
+              type="button"
+              className={imageTheme === 'light' ? 'active' : ''}
+              onClick={() => setImageTheme('light')}
+              aria-label="Show light version"
+              aria-pressed={imageTheme === 'light'}
+            >
+              <Sun className="icon" aria-hidden="true" />
+            </button>
+            <button
+              type="button"
+              className={imageTheme === 'dark' ? 'active' : ''}
+              onClick={() => setImageTheme('dark')}
+              aria-label="Show dark version"
+              aria-pressed={imageTheme === 'dark'}
+            >
+              <Moon className="icon" aria-hidden="true" />
+            </button>
+          </div>
+        )}
+      </div>
+      {block.caption && (
+        <figcaption className="portfolio-image-caption">{block.caption}</figcaption>
+      )}
+    </figure>
+  );
+};
 
 const ContentBlock = ({ block, onImageClick }) => {
   switch (block.type) {
@@ -15,28 +75,7 @@ const ContentBlock = ({ block, onImageClick }) => {
     case 'paragraph':
       return <p>{block.text}</p>;
     case 'image':
-      return (
-        // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions
-        <figure
-          className="portfolio-content-image"
-          onClick={() => block.url && onImageClick?.(block.url)}
-        >
-          <div className="portfolio-image-wrap">
-            {block.url && (
-              <img
-                src={block.url}
-                alt={block.alt || ''}
-                className="portfolio-detail-img"
-                loading="lazy"
-                decoding="async"
-              />
-            )}
-          </div>
-          {block.caption && (
-            <figcaption className="portfolio-image-caption">{block.caption}</figcaption>
-          )}
-        </figure>
-      );
+      return <ImageBlock block={block} onImageClick={onImageClick} />;
     case 'label':
       return <p className="portfolio-content-label">{block.text}</p>;
     case 'list':
@@ -295,7 +334,7 @@ const PortfolioModal = ({ isStandalone }) => {
                   {selectedProject.title}
                 </h1>
                 {selectedProject.year && (
-                  <p className="portfolio-modal-year">{selectedProject.year}</p>
+                  <p className="portfolio-modal-byline">{selectedProject.year}</p>
                 )}
                 {selectedProject.intro && (
                   <p className="portfolio-modal-subtitle">{selectedProject.intro}</p>
@@ -322,6 +361,7 @@ const PortfolioModal = ({ isStandalone }) => {
                   Case study coming soon. Check back for the full project breakdown.
                 </p>
               )}
+              <p className="portfolio-modal-credit">Hafizh Sallam · Claude (co-author)</p>
               <div className="portfolio-modal-bottom-spacer" aria-hidden="true" />
             </div>
           </div>
