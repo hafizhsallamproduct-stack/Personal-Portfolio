@@ -16,18 +16,22 @@ export const experienceData = [
       {
         slug: 'flight-booking-revamp',
         label: 'Flight Checkout Flow: Designing Away the Doubt',
+        hidden: true,
       },
       {
         slug: 'payment-loyalty-redemption',
         label: 'Pay with Points: New Payment and Redemption Options at Checkout',
+        hidden: true,
       },
       {
         slug: 'schedule-change-display',
         label: 'Schedule Changes: Making Sure Travelers See Them',
+        hidden: true,
       },
       {
         slug: 'ai-assisted-design-workflow',
         label: 'Designing with AI: An Evolving Practice',
+        hidden: true,
       },
     ],
     roles: [
@@ -533,6 +537,7 @@ export const workData = [
     company: 'Wego',
     logo: '/assets/wego.svg',
     year: '2022 — 2025',
+    image: '/assets/portfolio/portfolio-2.webp',
     description:
       "Led the end-to-end redesign of Wego's flight search experience, improving usability and conversion.",
     intro:
@@ -560,7 +565,7 @@ export const workData = [
       },
       {
         type: 'image',
-        url: '/assets/portfolio/portfolio-searchform-1.png',
+        url: '/assets/portfolio/portfolio-searchform-1.webp',
         alt: 'Audit of the Wego flight search form in July 2022',
         caption:
           'Our starting point in July 2022: what the form contained and the main issues we logged, including the iOS and Android inconsistencies.',
@@ -576,14 +581,14 @@ export const workData = [
       },
       {
         type: 'image',
-        url: '/assets/portfolio/portfolio-searchform-2.png',
+        url: '/assets/portfolio/portfolio-searchform-2.webp',
         alt: 'Detailed review of date selection, passengers, cabin class, and payment types',
         caption:
           'Reviewing each part of the form in detail: date selection, passengers, cabin class, and payment types.',
       },
       {
         type: 'image',
-        url: '/assets/portfolio/portfolio-searchform-3.png',
+        url: '/assets/portfolio/portfolio-searchform-3.webp',
         alt: 'Comparison of competitor search forms with suggestions',
         caption:
           'Comparing other travel apps and turning the differences into concrete suggestions for our own form.',
@@ -612,7 +617,7 @@ export const workData = [
       },
       {
         type: 'image',
-        url: '/assets/portfolio/portfolio-searchform-5.png',
+        url: '/assets/portfolio/portfolio-searchform-5.webp',
         alt: 'Comparison of traveler and cabin class selection across travel apps',
         caption:
           'The comparison that led to one of the changes: combining travelers and cabin class into a single selection means fewer taps.',
@@ -649,6 +654,14 @@ export const workData = [
       {
         type: 'paragraph',
         text: 'These are the key screens of the current form. Every screen ships in light and dark mode. Use the toggle on any image to switch between them.',
+      },
+      {
+        type: 'image',
+        url: '/assets/portfolio/portfolio-searchform-10-light.webp',
+        urlDark: '/assets/portfolio/portfolio-searchform-10-dark.webp',
+        alt: 'The search form across iOS, Android, and mobile web',
+        caption:
+          'One design, three platforms: the same form on iOS, Android, and mobile web, built from a single set of rules so it looks and behaves the same everywhere.',
       },
       {
         type: 'image',
@@ -775,6 +788,7 @@ export const workData = [
     intro:
       'The booking flow was losing travelers at every step. This is the story of the revamp: the drop-off we set out to fix, what the first A/B test told us, and how the numbers changed the way we ship. The project is still in progress.',
     slug: 'flight-booking-revamp',
+    hidden: true,
     link: '#',
     content: [
       {
@@ -923,6 +937,7 @@ export const workData = [
     intro:
       'This is an in-progress project about adding new ways to pay on the payment page: redeeming loyalty points from partner programs alongside the existing payment methods. It covers the process from brief to handoff, and how the design will be measured once it ships.',
     slug: 'payment-loyalty-redemption',
+    hidden: true,
     link: '#',
     content: [
       {
@@ -1012,6 +1027,7 @@ export const workData = [
     intro:
       'Sometimes an airline changes a flight schedule between the search results and the fare page. Travelers were missing the change and booking flights at times they did not choose. This case study covers how we redesigned the schedule change display on desktop and mobile.',
     slug: 'schedule-change-display',
+    hidden: true,
     link: '#',
     content: [
       {
@@ -1071,20 +1087,20 @@ export const workData = [
       },
       {
         type: 'image',
-        url: '/assets/portfolio/portfolio-schedulechange-1.png',
+        url: '/assets/portfolio/portfolio-schedulechange-1.webp',
         alt: 'Desktop fare page with the schedule updated banner and old and new times',
         caption:
           'The desktop fare page: a banner announces the update, old times are struck through next to the new ones, and each leg states its difference.',
       },
       {
         type: 'image',
-        url: '/assets/portfolio/portfolio-schedulechange-2.png',
+        url: '/assets/portfolio/portfolio-schedulechange-2.webp',
         alt: 'Mobile fare page with the schedule updated banner',
         caption: 'The same system on mobile, with the difference called out per leg.',
       },
       {
         type: 'image',
-        url: '/assets/portfolio/portfolio-schedulechange-3.png',
+        url: '/assets/portfolio/portfolio-schedulechange-3.webp',
         alt: 'Flight summary showing per-segment schedule changes and layover impact',
         caption:
           'The flight summary handles the hardest case: per-segment changes and the layover impact, here a connection that grew by 1h 30m.',
@@ -1119,6 +1135,7 @@ export const workData = [
     intro:
       'AI started as a feature we designed and became a tool we design with. This is a timeline of that shift: an in-app assistant, generated 3D assets, research and data analysis through connectors, and AI in the review process.',
     slug: 'ai-assisted-design-workflow',
+    hidden: true,
     link: '#',
     content: [
       { type: 'heading', text: 'Designing an AI Assistant' },
@@ -1174,6 +1191,7 @@ export const workData = [
     description:
       'Designed the FPX payment flow and back-office banking tools, turning complex systems and business processes into simple, usable interfaces.',
     slug: 'mobile-app-experience',
+    hidden: true,
     link: '#',
   },
 ];

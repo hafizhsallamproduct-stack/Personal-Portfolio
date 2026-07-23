@@ -133,7 +133,11 @@ const PortfolioModal = ({ isStandalone }) => {
   const previouslyFocusedRef = useRef(null);
   const isClosingRef = useRef(false);
 
-  const selectedProject = workData.find((w) => w.slug === slug) || workData[0];
+  const visibleProjects = workData.filter((w) => !w.hidden);
+  const matchedProject = workData.find((w) => w.slug === slug);
+  // Hidden case studies are not reachable by direct URL: fall back to the first visible one.
+  const selectedProject =
+    matchedProject && !matchedProject.hidden ? matchedProject : visibleProjects[0];
 
   useEffect(() => {
     const previousTitle = document.title;
@@ -281,7 +285,7 @@ const PortfolioModal = ({ isStandalone }) => {
               </div>
             </div>
             <div className="portfolio-modal-sidebar-nav">
-              {workData.map((project, idx) => (
+              {visibleProjects.map((project, idx) => (
                 <Link
                   key={idx}
                   to={`/portfolio/${project.slug}`}
