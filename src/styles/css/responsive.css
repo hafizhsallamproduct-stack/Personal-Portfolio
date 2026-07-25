@@ -1,5 +1,5 @@
 /* --- Responsive (tablet) --- */
-@media (max-width: 1024px) {
+@media (max-width: 900px) {
   .nav {
     --nav-pad-y: 20px;
     padding: var(--nav-pad-y) 40px;

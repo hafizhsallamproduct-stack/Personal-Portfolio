@@ -9,20 +9,35 @@ const SECTION_LINKS = [
   { href: '#portfolio', label: 'Portfolio' },
 ];
 
-const SectionLinks = ({ activeHash, onLinkClick }) => (
-  <>
-    {SECTION_LINKS.map(({ href, label }) => (
-      <a
-        key={href}
-        href={href}
-        className={`nav-link ${activeHash === href ? 'active' : ''}`}
-        onClick={onLinkClick}
-      >
-        {label}
-      </a>
-    ))}
-  </>
-);
+const SectionLinks = ({ activeHash, onLinkClick }) => {
+  const handleClick = (event, href) => {
+    // Smooth-scroll to the target section ourselves. Relying on native hash
+    // anchoring is unreliable under the router (and when a hash is already in
+    // the URL), so we scroll the element into view directly.
+    const target = document.querySelector(href);
+    if (target) {
+      event.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      window.history.replaceState(null, '', href);
+    }
+    onLinkClick?.(event);
+  };
+
+  return (
+    <>
+      {SECTION_LINKS.map(({ href, label }) => (
+        <a
+          key={href}
+          href={href}
+          className={`nav-link ${activeHash === href ? 'active' : ''}`}
+          onClick={(event) => handleClick(event, href)}
+        >
+          {label}
+        </a>
+      ))}
+    </>
+  );
+};
 
 const Navbar = () => {
   const [isFixedVisible, setIsFixedVisible] = useState(false);

@@ -18,6 +18,7 @@ export const experienceData = [
       {
         slug: 'flight-booking-revamp',
         label: 'Flight Checkout Flow: Designing Away the Doubt',
+        hidden: true,
       },
       {
         slug: 'payment-loyalty-redemption',
@@ -812,6 +813,7 @@ export const workData = [
     intro:
       'The booking flow was losing travelers at every step. This is the story of the revamp: the drop-off we set out to fix, what the first A/B test told us, and how the numbers changed the way we ship. The project is still in progress.',
     slug: 'flight-booking-revamp',
+    hidden: true,
     link: '#',
     content: [
       {
