@@ -2,7 +2,9 @@ export const experienceData = [
   {
     company: 'Wego Pte Ltd',
     logo: '/assets/wego.svg',
+    logoSquare: '/assets/wego-icon.jpg',
     logoHeight: '40px',
+    location: 'Kuala Lumpur, Malaysia',
     duration: 'Oct 2021 — Present',
     caseStudies: [
       {
@@ -16,7 +18,6 @@ export const experienceData = [
       {
         slug: 'flight-booking-revamp',
         label: 'Flight Checkout Flow: Designing Away the Doubt',
-        hidden: true,
       },
       {
         slug: 'payment-loyalty-redemption',
@@ -38,10 +39,9 @@ export const experienceData = [
       {
         title: 'Senior Product Designer II',
         isDefault: true,
-        location: 'Kuala Lumpur, Malaysia',
         date: 'Oct 2024 — Present',
         details: [
-          "Lead the end-to-end redesign of Wego's flight booking experience across desktop and mobile web, covering fare families, passenger details, payments, and booking details, with A/B experiments across the funnel to improve attach rates, drop-off, and conversion.",
+          "Lead the end-to-end redesign of Wego's flight booking experience across desktop and mobile web, covering fare families, passenger details, add-ons, payments, and booking details.",
           'Expand ancillary design with new partnership integrations.',
           'Expand payment and loyalty experience design, introducing new flows for promo codes and partner loyalty point redemption.',
           'Improve design workflows and the product delivery process, from discovery and grooming to developer handoff and design QA.',
@@ -51,7 +51,6 @@ export const experienceData = [
       {
         title: 'Senior Product Designer I',
         isDefault: true,
-        location: 'Kuala Lumpur, Malaysia',
         date: 'Oct 2021 — Sep 2024',
         details: [
           'Built the Wego Design System from the ground up: style guide, icon and illustration guidelines, and the full mobile app foundation component library.',
@@ -65,12 +64,13 @@ export const experienceData = [
   {
     company: 'RHB Banking Group',
     logo: '/assets/rhb-logo.svg',
+    logoSquare: '/assets/rhb-icon.jpg',
+    location: 'Kuala Lumpur, Malaysia',
     duration: 'Jan 2020 — Oct 2021',
     tenure: '1 year 9 months',
     roles: [
       {
         title: 'UI/UX Designer',
-        location: 'Kuala Lumpur, Malaysia',
         date: 'Jan 2020 — Oct 2021',
         details: [
           'Collaborated in agile cross-functional teams to deliver end-to-end banking web experiences.',
@@ -84,12 +84,13 @@ export const experienceData = [
   {
     company: 'AirAsia Berhad',
     logo: '/assets/airasia-logo.svg',
+    logoSquare: '/assets/airasia-icon.webp',
+    location: 'Selangor, Malaysia',
     duration: 'Mar 2017 — Dec 2019',
     tenure: '2 years 10 months',
     roles: [
       {
         title: 'UI/UX Designer',
-        location: 'Selangor, Malaysia',
         date: 'Nov 2018 — Dec 2019',
         details: [
           'Contributing to the design evolution of AirAsia 3.0, helping transition the website from an airline platform into a super app ecosystem.',
@@ -98,7 +99,6 @@ export const experienceData = [
       },
       {
         title: 'Web Designer',
-        location: 'Selangor, Malaysia',
         date: 'Mar 2017 — Oct 2018',
         details: [
           'Maintained and enhanced website visual design.',
@@ -109,14 +109,15 @@ export const experienceData = [
     ],
   },
   {
-    company: 'Lelong.my — Interbase Resources',
+    company: 'Lelong.my',
     logo: '/assets/lelong-logo.png',
+    logoSquare: '/assets/lelong-icon.jpg',
+    location: 'Selangor, Malaysia',
     duration: 'Nov 2015 — Feb 2017',
     tenure: '1 year 4 months',
     roles: [
       {
-        title: 'Senior Web Designer',
-        location: 'Selangor, Malaysia',
+        title: 'Web Designer',
         date: 'Nov 2015 — Feb 2017',
         details: [
           'Managed website visual design and campaign landing pages.',
@@ -128,12 +129,12 @@ export const experienceData = [
   },
   {
     company: 'Searchfuse Marketing',
+    location: 'Freelance Remote (Dubai)',
     duration: 'Apr 2015 — Oct 2015',
     tenure: '7 months',
     roles: [
       {
         title: 'UI Designer & Graphic Designer',
-        location: 'Freelance Remote (Dubai)',
         date: 'Apr 2015 — Oct 2015',
         summary:
           'Delivered UI and graphic design solutions for various client industries including education and airlines.',
@@ -142,14 +143,18 @@ export const experienceData = [
   },
   {
     company: 'Freelance Designer',
+    location: 'Anywhere',
     duration: '2012 — Apr 2015',
     roles: [
       {
-        title: 'Freelance Designer',
-        location: 'Various projects',
+        title: 'Graphic & Web Designer',
         date: '2012 — Apr 2015',
-        summary:
-          'Worked on multiple projects in graphic and web design. Also sold digital products on Creative Market and Envato.',
+        details: [
+          'Worked on multiple projects in graphic and web design for clients across different industries.',
+          'Designed and sold digital products on Creative Market and Envato Marketplace, mostly print templates like posters, brochures, icon sets, and graphic assets.',
+          'Sold to a global audience of designers, which taught me to build reusable, well-documented, and easy-to-customize assets.',
+          'This was an early foundation for the systematic, component-based thinking I use in design systems today.',
+        ],
       },
     ],
   },
@@ -209,7 +214,7 @@ export const workData = [
       },
       {
         type: 'paragraph',
-        text: 'In my team, this is a side role I take on in addition to my main work as a designer for the flight search and booking vertical.',
+        text: 'In my team, this is a side role I take on in addition to my main work as a designer for the flight shopping and booking vertical.',
       },
       { type: 'heading', text: 'Background and Problem' },
       {
@@ -269,7 +274,7 @@ export const workData = [
       },
       {
         type: 'paragraph',
-        text: 'In Phase 4, early progress was slow because of limited resources, but it sped up significantly once we brought AI into the front-end build process. On the design side, we are revising the documentation to be AI-readable, which speeds up the workflow even more.',
+        text: 'In Phase 4, early progress was slow because of limited resources, but it sped up significantly once we brought AI into the front-end build process. On the design side, we are now revising the documentation to be AI-readable, which speeds up the workflow even further.',
       },
       { type: 'heading', text: 'The Challenge' },
       {
@@ -552,7 +557,7 @@ export const workData = [
       },
       {
         type: 'paragraph',
-        text: 'The search form is where travelers set their route, dates, passengers, cabin class, and payment preferences. Every search starts here, so a problem on this page affects every step after it. As the designer for the flight search and booking vertical, this page is my responsibility, and I work on it with product managers and with iOS and Android engineers.',
+        text: 'The search form is where travelers set their route, dates, passengers, cabin class, and payment preferences. Every search starts here, so a problem on this page affects every step after it. As the designer for the flight search and booking vertical, this page is my responsibility, and I work on it with product managers and with iOS, Android, and web engineers.',
       },
       { type: 'heading', text: 'The Problem' },
       {
@@ -627,6 +632,11 @@ export const workData = [
         text: 'Two constraints shaped the work. The business needed payment types, trip modes, and ad placements to stay, because they contribute to revenue. So nothing was removed, only reorganized. Engineering needed one set of rules for both platforms: passenger limits, date rules, and defaults are defined once, and the same UI is built on iOS and Android.',
       },
       // TODO image: before/after of the form (old layout vs current design). Export from the app design file and add here.
+      { type: 'heading', text: 'The Rollout' },
+      {
+        type: 'paragraph',
+        text: 'We did not replace the form in one release. Because this page is used by so many travelers every day, we changed it in stages: first a cleanup that reorganized the fields and refreshed the visuals, then a rebuild on top of the design system. Each stage shipped separately, so we could watch the data and catch problems early.',
+      },
       { type: 'heading', text: 'What Didn’t Work' },
       {
         type: 'paragraph',
@@ -634,7 +644,7 @@ export const workData = [
       },
       {
         type: 'paragraph',
-        text: 'Usability testing came back with mixed results, so we moved on to an A/B test on all three platforms. The numbers said no: it did not help more users search on any platform, and on desktop web, handoffs to partners fell for both one-way and round-trip. We rejected the variant everywhere and kept the existing trip selection. Losing the idea was fine. Testing it before rolling it out is exactly what kept it from becoming a real problem.',
+        text: 'Usability testing came back with mixed results, so we moved on to an A/B test. We ran it on iOS only, since it has the highest traffic and would let us collect data the fastest. The numbers said no: it did not help more users search, and handoffs to partners fell for both one-way and round-trip. We rejected the variant and kept the existing trip selection. Losing the idea was fine. Testing it before rolling it out is exactly what kept it from becoming a real problem.',
       },
       {
         type: 'image',
@@ -642,12 +652,7 @@ export const workData = [
         urlDark: '/assets/portfolio/portfolio-searchform-7-dark.webp',
         alt: 'Quick change for trip type in the return date field',
         caption:
-          'Quick change for trip type in the return date field. Tested on desktop web, iOS, and Android; rejected everywhere after the numbers came back flat or negative.',
-      },
-      { type: 'heading', text: 'The Rollout' },
-      {
-        type: 'paragraph',
-        text: 'We did not replace the form in one release. Because this page is used by so many travelers every day, we changed it in stages: first a cleanup that reorganized the fields and refreshed the visuals, then a rebuild on top of the design system. Each stage shipped separately, so we could watch the data and catch problems early.',
+          'Quick change for trip type in the return date field. A/B tested on iOS, our highest-traffic platform; rejected after the numbers came back flat or negative.',
       },
       // TODO image: the form across its generations (original, cleanup, design system). Export and add here.
       { type: 'heading', text: 'The Final Design' },
@@ -766,6 +771,25 @@ export const workData = [
         caption:
           'The price calendar, colored by fare level. Accepted on every platform after A/B testing, with converted sessions up 4.1% on desktop web.',
       },
+      { type: 'heading', text: 'How to Make It Better' },
+      {
+        type: 'paragraph',
+        text: 'The form keeps evolving, and two changes are next. These are suggestions I believe in but have not tested yet:',
+      },
+      {
+        type: 'list',
+        items: [
+          'A single unified search form widget. Right now the form lives on several surfaces, each built and maintained separately. Packaging it as one widget means the same form can be integrated anywhere and applied easily across all Wego pages, so the search form stays consistent everywhere and any improvement ships once.',
+          'An improved calendar. Today the calendar closes automatically once the traveler taps a return date. That was fine before, but now that the price calendar shows fare levels per day, closing it too early cuts the exploration short. The next step is refining the date selection UI so travelers can stay in the calendar and play around with dates, comparing prices before they commit.',
+        ],
+      },
+      {
+        type: 'image',
+        url: '/assets/portfolio/portfolio-searchform-11-light.jpg',
+        alt: 'Two upcoming improvements: a unified search form widget and an improved date selection UI',
+        caption:
+          'Two changes I believe will make a difference: a unified search form widget (left) and an improved date selection UI (right).',
+      },
       { type: 'heading', text: 'What I Learned' },
       {
         type: 'list',
@@ -788,7 +812,6 @@ export const workData = [
     intro:
       'The booking flow was losing travelers at every step. This is the story of the revamp: the drop-off we set out to fix, what the first A/B test told us, and how the numbers changed the way we ship. The project is still in progress.',
     slug: 'flight-booking-revamp',
-    hidden: true,
     link: '#',
     content: [
       {
@@ -829,13 +852,7 @@ export const workData = [
         type: 'paragraph',
         text: 'The benchmark did two things. It confirmed the patterns worth adopting, a top stepper and a scrollable itinerary were the majority choice (7 and 9 of 12), so those were safe bets, and it surfaced the details that separate a good flow from a great one: MakeMyTrip labels each stepper step when it expands, Almosafer breaks baggage allowance down per passenger so a family can see the child included and the infant excluded, and among MENA airlines only Emirates offers an inclusive gender option. Small things, but they set the bar for the design.',
       },
-      {
-        type: 'image',
-        url: '/assets/portfolio/portfolio-bookingrevamp-research-1.png',
-        alt: 'Competitor benchmark of 12 booking flows, highlighting stepper labels, per-passenger baggage, and inclusive gender options',
-        caption:
-          'The 12-competitor benchmark: the patterns worth adopting, and the details, like MakeMyTrip’s labelled stepper and Almosafer’s per-passenger baggage, that set the bar for the design.',
-      },
+      // TODO image: the 12-competitor benchmark (research-1). Export and add here.
       { type: 'heading', text: 'What We Changed' },
       {
         type: 'paragraph',
@@ -862,13 +879,7 @@ export const workData = [
           'Travel protection felt compulsory. A forced error on continue made people think they had to choose one, and the opt-out was easy to scroll past.',
         ],
       },
-      {
-        type: 'image',
-        url: '/assets/portfolio/portfolio-bookingrevamp-research-2.png',
-        alt: 'Old versus new comparison from the synthetic usability test, with personas favoring the redesigned screen',
-        caption:
-          'One of the old versus new comparisons the personas judged. Seeing the two side by side made the friction concrete rather than hypothetical.',
-      },
+      // TODO image: old vs new comparison from the synthetic test (research-2). Export and add here.
       {
         type: 'paragraph',
         text: 'These were early signals, not verdicts, but they shaped what we refined and gave us specific things to watch for once the flow was in front of real travelers. We also validated the flow with real users, and the feedback was positive, especially on the new baggage upgrade and meal selection.',

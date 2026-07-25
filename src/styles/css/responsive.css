@@ -94,6 +94,11 @@
     gap: 16px;
     border-bottom: var(--line-width) solid var(--card-border);
   }
+  /* No underline on the active item in the expanded mobile menu;
+     the accent color already marks it. */
+  .nav-links--open .nav-link::after {
+    display: none;
+  }
   .about-name {
     font-size: 36px;
     line-height: 44px;
@@ -145,9 +150,18 @@
   }
   #skills .skills-content {
     align-items: center;
+    gap: 24px;
   }
+  /* Smaller chips on mobile so they take less space. */
   #skills .skills-row {
     justify-content: center;
+    gap: 6px;
+  }
+  #skills .skill-tag,
+  #skills .tool-tag {
+    padding: 5px 12px;
+    font-size: 13px;
+    line-height: 16px;
   }
   #skills .skills-row-group {
     align-items: center;
@@ -227,18 +241,41 @@
     flex-wrap: wrap;
     align-items: center;
   }
+  /* Mobile swaps the wide wordmark for the square icon logo. */
   .experience-card-company-logo {
-    order: 1;
-    margin-bottom: 0;
-    margin-left: auto;
-    object-position: right;
+    display: none;
+  }
+  .experience-card-company-logo-square {
+    display: block;
+    order: 0;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    object-fit: contain;
+    margin-right: 12px;
   }
   .experience-card-company-name {
-    order: 0;
+    order: 1;
   }
-  .experience-card-company-duration {
+  .experience-card-company-location {
     order: 2;
     flex-basis: 100%;
+    margin-top: 2px;
+  }
+  .experience-card-company-duration {
+    order: 3;
+    flex-basis: 100%;
+    margin-top: 2px;
+    /* Time range and tenure share one line on mobile. */
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: baseline;
+    column-gap: 8px;
+  }
+  .experience-card-company-tenure::before {
+    content: '·';
+    margin-right: 8px;
+    color: var(--text-secondary);
   }
   .experience-role {
     flex-direction: column;
@@ -247,14 +284,6 @@
   }
   .experience-role-info {
     gap: 2px;
-  }
-  .experience-role-date-mobile {
-    display: block;
-    font-size: 14px;
-    color: var(--text-secondary);
-  }
-  .experience-role-date-text {
-    display: none;
   }
   .work-cards {
     padding: 0 16px 32px;

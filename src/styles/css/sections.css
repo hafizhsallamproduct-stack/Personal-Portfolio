@@ -344,6 +344,14 @@ body::after {
   line-height: 24px;
 }
 
+.experience-card-company-location {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22px;
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
+
 .experience-card-company-logo {
   display: block;
   width: auto;
@@ -354,14 +362,19 @@ body::after {
   margin-bottom: 12px;
 }
 
+/* Square icon logo is used on mobile only; hidden on desktop. */
+.experience-card-company-logo-square {
+  display: none;
+}
+
 .experience-card-company-duration {
   display: flex;
   flex-direction: column;
   font-size: 16px;
   font-weight: 400;
   color: var(--text-secondary);
-  margin-top: 4px;
-  line-height: 24px;
+  margin-top: 2px;
+  line-height: 22px;
 }
 
 .experience-card-roles {
@@ -401,10 +414,6 @@ body::after {
   gap: 4px;
 }
 
-.experience-role-date-mobile {
-  display: none;
-}
-
 .experience-role-title {
   font-size: 18px;
   font-weight: 700;
@@ -412,20 +421,22 @@ body::after {
   color: var(--tag-text);
 }
 
-.experience-role-location {
+.experience-role-date {
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
   color: var(--text-secondary);
 }
 
-.experience-role-date {
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 24px;
-  color: var(--text-secondary);
-  white-space: nowrap;
+.experience-role-toggle {
+  display: flex;
+  align-items: center;
   flex-shrink: 0;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  margin-left: 16px;
 }
 
 .experience-role-summary {
@@ -434,6 +445,10 @@ body::after {
   line-height: 24px;
   color: var(--text-primary);
   margin-top: 8px;
+}
+
+.experience-role-summary--standalone {
+  margin-top: 0;
 }
 
 .experience-role-details {
