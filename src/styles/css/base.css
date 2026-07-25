@@ -22,6 +22,12 @@ select {
   }
 }
 
+/* Offset anchored sections so their tops clear the fixed header. */
+main > section[id],
+main > [id] {
+  scroll-margin-top: 80px;
+}
+
 body {
   font-family: var(--font-body);
   background-color: var(--bg-page);

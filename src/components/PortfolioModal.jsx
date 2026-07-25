@@ -66,6 +66,137 @@ const ImageBlock = ({ block, onImageClick }) => {
   );
 };
 
+const ZOOM_MIN = 1;
+const ZOOM_MAX = 5;
+const ZOOM_STEP = 0.25;
+
+const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
+
+const Lightbox = ({ url, onClose }) => {
+  const [zoom, setZoom] = useState(1);
+  const [offset, setOffset] = useState({ x: 0, y: 0 });
+  const [isDragging, setIsDragging] = useState(false);
+  const dragRef = useRef(null);
+
+  const reset = useCallback(() => {
+    setZoom(1);
+    setOffset({ x: 0, y: 0 });
+  }, []);
+
+  const zoomBy = useCallback((delta) => {
+    setZoom((z) => {
+      const next = clamp(z + delta, ZOOM_MIN, ZOOM_MAX);
+      if (next === 1) setOffset({ x: 0, y: 0 });
+      return next;
+    });
+  }, []);
+
+  // Keyboard controls: +/- zoom, arrows pan, 0 reset, Esc close.
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      switch (event.key) {
+        case 'Escape':
+          event.preventDefault();
+          onClose();
+          break;
+        case '+':
+        case '=':
+          event.preventDefault();
+          zoomBy(ZOOM_STEP);
+          break;
+        case '-':
+        case '_':
+          event.preventDefault();
+          zoomBy(-ZOOM_STEP);
+          break;
+        case '0':
+          event.preventDefault();
+          reset();
+          break;
+        case 'ArrowUp':
+          event.preventDefault();
+          setOffset((o) => ({ ...o, y: o.y + 40 }));
+          break;
+        case 'ArrowDown':
+          event.preventDefault();
+          setOffset((o) => ({ ...o, y: o.y - 40 }));
+          break;
+        case 'ArrowLeft':
+          event.preventDefault();
+          setOffset((o) => ({ ...o, x: o.x + 40 }));
+          break;
+        case 'ArrowRight':
+          event.preventDefault();
+          setOffset((o) => ({ ...o, x: o.x - 40 }));
+          break;
+        default:
+          break;
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown, true);
+    return () => window.removeEventListener('keydown', handleKeyDown, true);
+  }, [onClose, reset, zoomBy]);
+
+  const handleWheel = (event) => {
+    event.preventDefault();
+    zoomBy(event.deltaY < 0 ? ZOOM_STEP : -ZOOM_STEP);
+  };
+
+  const handlePointerDown = (event) => {
+    if (zoom <= 1) return;
+    dragRef.current = { startX: event.clientX, startY: event.clientY, origin: offset };
+    setIsDragging(true);
+    event.currentTarget.setPointerCapture?.(event.pointerId);
+  };
+
+  const handlePointerMove = (event) => {
+    if (!dragRef.current) return;
+    setOffset({
+      x: dragRef.current.origin.x + (event.clientX - dragRef.current.startX),
+      y: dragRef.current.origin.y + (event.clientY - dragRef.current.startY),
+    });
+  };
+
+  const endDrag = () => {
+    dragRef.current = null;
+    setIsDragging(false);
+  };
+
+  return (
+    // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
+    <div className="lightbox-overlay" onClick={onClose} onWheel={handleWheel}>
+      {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
+      <div className="lightbox-controls" onClick={(e) => e.stopPropagation()}>
+        <button type="button" onClick={() => zoomBy(-ZOOM_STEP)} aria-label="Zoom out">
+          &minus;
+        </button>
+        <button type="button" onClick={reset} aria-label="Reset zoom">
+          {Math.round(zoom * 100)}%
+        </button>
+        <button type="button" onClick={() => zoomBy(ZOOM_STEP)} aria-label="Zoom in">
+          +
+        </button>
+      </div>
+      {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions */}
+      <img
+        src={url}
+        alt=""
+        className="lightbox-img"
+        style={{
+          transform: `translate(${offset.x}px, ${offset.y}px) scale(${zoom})`,
+          cursor: zoom > 1 ? (isDragging ? 'grabbing' : 'grab') : 'default',
+        }}
+        onClick={(e) => e.stopPropagation()}
+        onDoubleClick={() => (zoom > 1 ? reset() : zoomBy(1))}
+        onPointerDown={handlePointerDown}
+        onPointerMove={handlePointerMove}
+        onPointerUp={endDrag}
+        onPointerCancel={endDrag}
+      />
+    </div>
+  );
+};
+
 const ContentBlock = ({ block, onImageClick }) => {
   switch (block.type) {
     case 'heading':
@@ -249,18 +380,7 @@ const PortfolioModal = ({ isStandalone }) => {
   return (
     <>
       {/* Lightbox */}
-      {lightboxUrl && (
-        // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
-        <div className="lightbox-overlay" onClick={() => setLightboxUrl(null)}>
-          {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions */}
-          <img
-            src={lightboxUrl}
-            alt=""
-            className="lightbox-img"
-            onClick={(e) => e.stopPropagation()}
-          />
-        </div>
-      )}
+      {lightboxUrl && <Lightbox url={lightboxUrl} onClose={() => setLightboxUrl(null)} />}
       {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
       <div
         className={`portfolio-modal-overlay open${isClosing ? ' closing' : ''}${isStandalone ? ' standalone' : ''}`}

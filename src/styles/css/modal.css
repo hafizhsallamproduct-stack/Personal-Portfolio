@@ -455,6 +455,9 @@
   justify-content: center;
   padding: 32px;
   cursor: pointer;
+  overflow: hidden;
+  overscroll-behavior: contain;
+  touch-action: none;
 }
 
 .lightbox-img {
@@ -463,6 +466,44 @@
   object-fit: contain;
   border-radius: 4px;
   cursor: default;
+  transform-origin: center center;
+  transition: transform 0.12s ease-out;
+  will-change: transform;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.lightbox-controls {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  z-index: 10001;
+}
+
+.lightbox-controls button {
+  min-width: 40px;
+  height: 36px;
+  padding: 0 12px;
+  border: none;
+  border-radius: 999px;
+  background: transparent;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.lightbox-controls button:hover {
+  background: rgba(255, 255, 255, 0.15);
 }
 
 .portfolio-content-image {
@@ -613,5 +654,15 @@
   }
   .portfolio-content-heading:first-child {
     margin-top: 0;
+  }
+  /* Edge-to-edge lightbox on mobile so tapping enlarges the image
+     rather than shrinking it inside padding. */
+  .lightbox-overlay {
+    padding: 0;
+  }
+  .lightbox-img {
+    max-width: 100vw;
+    max-height: 100vh;
+    border-radius: 0;
   }
 }

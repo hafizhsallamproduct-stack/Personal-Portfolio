@@ -7,34 +7,35 @@ const isMobileViewport = () =>
   typeof window !== 'undefined' && window.matchMedia('(max-width: 640px)').matches;
 
 const ExperienceRole = ({ role }) => {
-  const [isExpanded, setIsExpanded] = useState(
-    () => Boolean(role.isDefault) && !isMobileViewport()
-  );
+  // Desktop shows every role expanded by default; mobile starts collapsed
+  // so the section stays compact.
+  const [isExpanded, setIsExpanded] = useState(() => !isMobileViewport());
+
+  // Roles without a title are shown as a plain summary (no collapsible header),
+  // since the company card already carries the name and dates.
+  if (!role.title) {
+    return (
+      <div className="experience-role">
+        <p className="experience-role-summary experience-role-summary--standalone">
+          {role.summary}
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div className="experience-role">
       <div className="experience-role-header">
         <div className="experience-role-info">
           <div className="experience-role-title">{role.title}</div>
-          <div className="experience-role-location">{role.location}</div>
-          <div className="experience-role-date-mobile">{role.date}</div>
+          <div className="experience-role-date">{role.date}</div>
         </div>
         <button
-          className="experience-role-date"
+          className="experience-role-toggle"
           onClick={() => setIsExpanded(!isExpanded)}
           aria-expanded={isExpanded}
           aria-label={`${isExpanded ? 'Collapse' : 'Expand'} ${role.title}`}
-          style={{
-            cursor: 'pointer',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '8px',
-            background: 'none',
-            border: 'none',
-            padding: 0,
-          }}
         >
-          <span className="experience-role-date-text">{role.date}</span>
           {isExpanded ? (
             <CaretUp
               className="icon"
@@ -82,7 +83,16 @@ const ExperienceCard = ({ exp }) => {
             style={exp.logoHeight ? { height: exp.logoHeight } : undefined}
           />
         )}
+        {exp.logoSquare && (
+          <img
+            className="experience-card-company-logo-square"
+            src={exp.logoSquare}
+            alt={`${exp.company} logo`}
+            loading="lazy"
+          />
+        )}
         <div className="experience-card-company-name">{exp.company}</div>
+        {exp.location && <div className="experience-card-company-location">{exp.location}</div>}
         <div className="experience-card-company-duration">
           <span>{exp.duration}</span>
           {exp.tenure && <span className="experience-card-company-tenure">{exp.tenure}</span>}
