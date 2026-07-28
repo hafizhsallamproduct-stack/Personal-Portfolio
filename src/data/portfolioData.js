@@ -1579,6 +1579,15 @@ export const workData = [
   },
 ];
 
+// Case studies being written up. These only appear as labels in the portfolio
+// sidebar, so people can see what is coming without a page to open yet.
+export const wipData = [
+  { title: 'Design Hub: Using Claude Design for Exploration', company: 'Wego' },
+  { title: 'Flight Checkout Flow: Designing Away the Doubt', company: 'Wego' },
+  { title: 'Banking on Trust: Designing for Security and Clarity', company: 'RHB' },
+  { title: 'AirAsia: From Airline Website to Super App', company: 'AirAsia' },
+];
+
 export const sideProjectsData = [
   {
     title: 'Sign-in Flow for Desktop',

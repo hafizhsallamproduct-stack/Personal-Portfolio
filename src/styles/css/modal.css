@@ -129,6 +129,48 @@
   flex-direction: column;
 }
 
+/* Work in progress: case studies being written up. Labels only, with no page
+   to open, so these are plain divs rather than links. */
+/* No border-top here: the last nav item above already ends with one. */
+.portfolio-modal-sidebar-wip {
+  display: flex;
+  flex-direction: column;
+}
+
+.portfolio-modal-sidebar-wip-title {
+  padding: 10px 16px;
+  background-color: var(--bg-placeholder);
+  border-bottom: var(--line-width) solid var(--card-border);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+/* The thumbnail frame carries a WIP label instead of an image, so the row
+   keeps the same shape as the nav items without a screenshot to show. */
+.portfolio-modal-wip-thumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+}
+
+/* Same card shape as the nav items above, minus the link behavior. */
+.portfolio-modal-wip-item {
+  padding: 16px;
+  border-bottom: var(--line-width) solid var(--card-border);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
 .portfolio-modal-sidebar-footer {
   margin-top: auto;
   padding: 16px;
@@ -148,6 +190,25 @@
   color: var(--text-primary);
   transition: background-color 0.2s;
   text-decoration: none;
+}
+
+/* Title with the company below it, so it is clear where each study is from. */
+.portfolio-modal-nav-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  min-width: 0;
+}
+
+.portfolio-modal-nav-company {
+  color: var(--text-secondary);
+  font-size: 10px;
+  /* Fixed weight, so the label does not thicken when the row goes bold. */
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  line-height: 16px;
+  text-transform: uppercase;
 }
 
 .portfolio-modal-nav-thumb {
@@ -174,8 +235,13 @@
   }
 }
 
+/* The old fill alone was too weak to spot: in dark mode tag-bg sat 2/255 off
+   the sidebar, and in light mode the hover colour fell between the two. Bold
+   text carries the selected state instead. */
 .portfolio-modal-nav-item.active {
-  background-color: var(--tag-bg);
+  background-color: var(--bg-card-hover);
+  color: var(--text-primary);
+  font-weight: 600;
 }
 
 /* Main Modal Panel */
