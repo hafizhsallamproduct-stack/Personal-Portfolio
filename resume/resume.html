@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hafizh Sallam — Resume</title>
+    <style>
+      @page {
+        size: A4;
+        margin: 15mm 16mm;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial,
+          sans-serif;
+        color: #1a1a1a;
+        font-size: 10px;
+        line-height: 1.5;
+      }
+      a {
+        color: #1a1a1a;
+        text-decoration: none;
+      }
+      a.link {
+        color: #2159c9;
+        text-decoration: underline;
+        text-underline-offset: 2px;
+      }
+
+      /* Header */
+      .name {
+        font-size: 24px;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+      }
+      .title {
+        font-size: 12px;
+        color: #545454;
+        margin-top: 2px;
+      }
+      .contact {
+        margin-top: 7px;
+        font-size: 9.5px;
+        color: #545454;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px 16px;
+      }
+
+      /* Section */
+      .section {
+        margin-top: 26px;
+      }
+      .section-title {
+        font-size: 9.5px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        color: #767676;
+        margin-bottom: 12px;
+      }
+      .summary {
+        color: #333;
+      }
+      .summary p + p {
+        margin-top: 6px;
+      }
+
+      /* Experience */
+      .job {
+        margin-bottom: 18px;
+      }
+      .job:last-child {
+        margin-bottom: 0;
+      }
+      .company-row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .logo {
+        width: 20px;
+        height: 20px;
+        border-radius: 5px;
+        object-fit: contain;
+        flex-shrink: 0;
+        border: 1px solid #eee;
+      }
+      .logo-placeholder {
+        width: 20px;
+        height: 20px;
+        border-radius: 5px;
+        flex-shrink: 0;
+        background: #f0f0f0;
+        border: 1px solid #eee;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 10px;
+        font-weight: 700;
+        color: #999;
+      }
+      .company {
+        font-size: 12.5px;
+        font-weight: 700;
+      }
+      .company-meta {
+        font-size: 9.5px;
+        color: #767676;
+        font-weight: 400;
+      }
+      .role {
+        margin-top: 7px;
+        padding-left: 2px;
+      }
+      .role-title {
+        font-size: 10.5px;
+        font-weight: 600;
+      }
+      .role-title .role-meta {
+        font-weight: 400;
+        color: #767676;
+      }
+      ul.bullets {
+        list-style: none;
+        margin-top: 3px;
+      }
+      ul.bullets li {
+        position: relative;
+        padding-left: 12px;
+        margin-bottom: 2px;
+        color: #333;
+      }
+      ul.bullets li::before {
+        content: '•';
+        position: absolute;
+        left: 2px;
+        color: #aaa;
+      }
+      .role-summary {
+        margin-top: 3px;
+        color: #333;
+      }
+      .job-links {
+        margin-top: 5px;
+        padding-left: 2px;
+        font-size: 9.5px;
+      }
+      .job-links .label {
+        color: #767676;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        font-size: 8px;
+        display: block;
+        margin-bottom: 2px;
+      }
+      .job-links a {
+        color: #2159c9;
+        display: block;
+        margin-bottom: 1px;
+        text-decoration: underline;
+        text-underline-offset: 2px;
+      }
+
+      /* Skills / tools as a plain list */
+      .listline {
+        color: #333;
+        line-height: 1.6;
+      }
+      .strike-text {
+        text-decoration: line-through;
+        color: #aaa;
+      }
+
+      /* Footer cols */
+      .cols {
+        display: flex;
+        gap: 20px;
+      }
+      .col {
+        flex: 1;
+      }
+      /* Force a job to start on a new page. */
+      .job.page-break {
+        break-before: page;
+      }
+      .edu-name {
+        font-size: 11px;
+        font-weight: 700;
+      }
+      .edu-degree {
+        color: #333;
+      }
+      .edu-year {
+        font-size: 9.5px;
+        color: #767676;
+      }
+      .lang-line {
+        margin-bottom: 2px;
+      }
+      .lang-label {
+        color: #767676;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="name">Hafizh Sallam</div>
+      <div class="title">Senior Product Designer — E-Commerce, Airlines, and Banking</div>
+      <div class="contact">
+        <span>Kuala Lumpur, Malaysia</span>
+        <a class="link" href="mailto:hafizhsallam@gmail.com">hafizhsallam@gmail.com</a>
+        <a class="link" href="https://www.linkedin.com/in/hafizh-s-b7299420a/">LinkedIn</a>
+        <a class="link" href="https://hafizhsallam.com">Portfolio</a>
+      </div>
+    </header>
+
+    <section class="section">
+      <div class="section-title">Summary</div>
+      <div class="summary">
+        <p>
+          A Senior Product Designer based in Kuala Lumpur, Malaysia with over 10 years of experience
+          working on digital products. I have worked across different industries including
+          e-commerce, travel, and banking, which has helped me understand different types of users
+          and product needs.
+        </p>
+        <p>
+          Currently at Wego.com, I maintain the design system and contribute to key flows like
+          flight search and checkout. Lately, I have been exploring how to integrate AI into my
+          workflow to improve the design process and streamline day-to-day work.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">Experience</div>
+
+      <div class="job">
+        <div class="company-row">
+          <div>
+            <span class="company">Wego</span>
+            <span class="company-meta"> — Kuala Lumpur, Malaysia · Oct 2021 — Present</span>
+          </div>
+        </div>
+        <div class="role">
+          <div class="role-title">
+            Senior Product Designer II <span class="role-meta">· Oct 2024 — Present</span>
+          </div>
+          <ul class="bullets">
+            <li>
+              Lead the end-to-end redesign of Wego's flight booking experience across desktop and
+              mobile web, covering fare selection, passenger details, add-ons, payments, and booking
+              details.
+            </li>
+            <li>Expand ancillary design with new partnership integrations.</li>
+            <li>
+              Expand payment and loyalty experience design, introducing new flows for promo codes
+              and partner loyalty point redemption.
+            </li>
+            <li>
+              Improve design workflows and the product delivery process, from discovery and grooming
+              to developer handoff and design QA.
+            </li>
+            <li>
+              Maintain and evolve the Wego Design System and drive AI adoption in the design team,
+              from AI-assisted workflows to design-system compliance checks against production code.
+            </li>
+            <li>
+              Support the team beyond design: screening candidates during hiring, and reviewing
+              other designers' work and progress to keep quality and direction consistent.
+            </li>
+          </ul>
+        </div>
+        <div class="role">
+          <div class="role-title">
+            Senior Product Designer I <span class="role-meta">· Oct 2021 — Sep 2024</span>
+          </div>
+          <ul class="bullets">
+            <li>
+              Built the Wego Design System from the ground up: style guide, icon and illustration
+              guidelines, and the full mobile app foundation component library.
+            </li>
+            <li>Designed core flight search experiences across web and apps.</li>
+            <li>
+              Designed Wego's in-app AI travel assistant: conversation behaviors, voice interaction,
+              and its integration across search and support.
+            </li>
+            <li>Supported growth initiatives with a new SEO landing-page system.</li>
+          </ul>
+        </div>
+        <div class="job-links">
+          <span class="label">Selected case studies</span>
+          <a href="https://hafizhsallam.com/portfolio/wego-design-system"
+            >Wego Design System: Built & Maintained from the Ground Up</a
+          >
+          <a href="https://hafizhsallam.com/portfolio/wego-flight-search-redesign"
+            >Redesigning the First Step: The Journey of the Search Form</a
+          >
+          <a href="https://hafizhsallam.com/portfolio/fare-families"
+            >Fare Selection: Making the Upgrade Decision Clear</a
+          >
+        </div>
+      </div>
+
+      <div class="job">
+        <div class="company-row">
+          <div>
+            <span class="company">RHB Banking Group</span>
+            <span class="company-meta"> — Kuala Lumpur, Malaysia · Jan 2020 — Oct 2021</span>
+          </div>
+        </div>
+        <div class="role">
+          <div class="role-title">UI/UX Designer <span class="role-meta">· Jan 2020 — Oct 2021</span></div>
+          <ul class="bullets">
+            <li>
+              Collaborated in agile cross-functional teams to deliver end-to-end banking web
+              experiences.
+            </li>
+            <li>Designed the FPX and other payment gateway flows for banking web and mobile app.</li>
+            <li>
+              Designed the cross-border international transfer flow for banking web and mobile app.
+            </li>
+            <li>
+              Worked on bank back-office experiences, translating underlying systems and business
+              processes into simple, usable management tools.
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="job">
+        <div class="company-row">
+          <div>
+            <span class="company">AirAsia Berhad</span>
+            <span class="company-meta"> — Selangor, Malaysia · Mar 2017 — Dec 2019</span>
+          </div>
+        </div>
+        <div class="role">
+          <div class="role-title">UI/UX Designer <span class="role-meta">· Nov 2018 — Dec 2019</span></div>
+          <ul class="bullets">
+            <li>
+              Contributed to the design evolution of AirAsia 3.0, helping transition the website
+              from an airline platform into a super app ecosystem.
+            </li>
+            <li>
+              Worked on the end-to-end UX process: research, ideation, prototyping, testing, and
+              iteration.
+            </li>
+          </ul>
+        </div>
+        <div class="role">
+          <div class="role-title">Web Designer <span class="role-meta">· Mar 2017 — Oct 2018</span></div>
+          <ul class="bullets">
+            <li>Maintained and enhanced website visual design.</li>
+            <li>
+              Designed landing pages for campaigns and collaborated closely with marketing teams.
+            </li>
+            <li>
+              Worked alongside the CRM team daily, supporting email marketing design and execution.
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="job page-break">
+        <div class="company-row">
+          <div>
+            <span class="company">Lelong.my</span>
+            <span class="company-meta"> — Selangor, Malaysia · Nov 2015 — Feb 2017</span>
+          </div>
+        </div>
+        <div class="role">
+          <div class="role-title">Web Designer <span class="role-meta">· Nov 2015 — Feb 2017</span></div>
+          <ul class="bullets">
+            <li>Managed website visual design and campaign landing pages.</li>
+            <li>
+              Developed design guidelines for major campaigns (MyCyberSale, Black Friday, Chinese
+              New Year).
+            </li>
+            <li>Designed newsletters and social media visuals in collaboration with marketing.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="job">
+        <div class="company-row">
+          <div>
+            <span class="company">Searchfuse Marketing</span>
+            <span class="company-meta"> — Freelance Remote (Dubai) · Apr 2015 — Oct 2015</span>
+          </div>
+        </div>
+        <div class="role">
+          <div class="role-title">
+            UI Designer & Graphic Designer <span class="role-meta">· Apr 2015 — Oct 2015</span>
+          </div>
+          <div class="role-summary">
+            Delivered UI and graphic design solutions for various client industries including
+            education and airlines.
+          </div>
+        </div>
+      </div>
+
+      <div class="job">
+        <div class="company-row">
+          <div>
+            <span class="company">Freelance Designer</span>
+            <span class="company-meta"> — 2012 — Apr 2015</span>
+          </div>
+        </div>
+        <div class="role">
+          <div class="role-title">
+            Graphic & Web Designer <span class="role-meta">· 2012 — Apr 2015</span>
+          </div>
+          <ul class="bullets">
+            <li>
+              Worked on multiple graphic and web design projects for clients across different
+              industries.
+            </li>
+            <li>
+              Designed and sold digital products on Creative Market and Envato Marketplace, mostly
+              print templates like posters, brochures, icon sets, and graphic assets, building
+              reusable and well-documented assets for a global audience of designers.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">Skills</div>
+      <div class="listline">
+        Product Design, Design Systems, Prototyping, User Research, Web Design, Web Frontend, Product
+        Management, Product Planning, Design Mentoring, Workflow Management, AI Product Adaptation
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">Tools</div>
+      <div class="listline">
+        Figma, Sketch, Claude, Claude Design, Claude Code, Codex, Jira & Confluence,
+        <span class="strike-text">Adobe CC</span>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">Education</div>
+      <div class="listline">
+        <strong>Universiti Utara Malaysia</strong> — Bachelor of Multimedia Technology, Multimedia
+        Design (Honours) · 2008 — 2011
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">Languages</div>
+      <div class="listline">
+        Indonesian (native / bilingual) · English, Malay (professional working)
+      </div>
+    </section>
+  </body>
+</html>
