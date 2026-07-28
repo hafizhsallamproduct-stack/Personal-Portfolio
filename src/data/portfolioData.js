@@ -852,15 +852,15 @@ export const workData = [
     ],
   },
   {
-    title: 'Fare Families: Making the Upgrade Decision Clear',
+    title: 'Fare Selection: Making the Upgrade Decision Clear',
     company: 'Wego',
     logo: '/assets/wego.svg',
     year: '2023 — Present',
     image: '/assets/portfolio/portfolio-3.webp',
     description:
-      "Redesigned Wego's fare families page across desktop and mobile so travelers can compare fares and trust what they see before they book.",
+      "Redesigned Wego's fare selection page across desktop and mobile so travelers can compare fares and trust what they see before they book.",
     intro:
-      'Fare families is where a traveler picks which version of a fare to buy: the basic one, or a higher tier with more baggage and flexibility. This case study covers the redesign and the later improvements that made the page clearer and easier to trust.',
+      'Fare selection is where a traveler picks which version of a fare to buy: the basic one, or a higher tier with more baggage and flexibility. This case study covers the redesign and the later improvements that made the page clearer and easier to trust.',
     link: '#',
     slug: 'fare-families',
     content: [
@@ -868,9 +868,9 @@ export const workData = [
         type: 'image',
         url: '/assets/portfolio/portfolio-farefamilies-light-01.webp',
         urlDark: '/assets/portfolio/portfolio-farefamilies-dark-01.webp',
-        alt: 'The fare families page across three generations, from before the design system to the latest design',
+        alt: 'The fare selection page across three generations, from before the design system to the latest design',
         caption:
-          'The fare families page over time: the version before the design system, the first change after it, and the latest design.',
+          'The fare selection page over time: the version before the design system, the first change after it, and the latest design.',
       },
       { type: 'heading', text: 'Background and Problem' },
       {
@@ -890,7 +890,7 @@ export const workData = [
       { type: 'subheading', text: 'Updating Flight Details Card' },
       {
         type: 'paragraph',
-        text: 'The fare families card shows after a traveler makes a selection from a partner in FBOW Meta. The old design did not show the flight card at all, so we added a flight details card in the first iteration, since we planned to distribute our bookings to external partners like Kayak and Google Flights, where confirming the flight matters even more.',
+        text: 'The fare selection card shows after a traveler makes a selection from a partner in FBOW Meta. The old design did not show the flight card at all, so we added a flight details card in the first iteration, since we planned to distribute our bookings to external partners like Kayak and Google Flights, where confirming the flight matters even more.',
       },
       {
         type: 'label',
@@ -1046,7 +1046,7 @@ export const workData = [
         type: 'image',
         url: '/assets/portfolio/portfolio-farefamilies-light-03.webp',
         urlDark: '/assets/portfolio/portfolio-farefamilies-dark-03.webp',
-        alt: 'The full fare families page for single passenger, multiple passengers, and multiple passengers with infant',
+        alt: 'The full fare selection page for single passenger, multiple passengers, and multiple passengers with infant',
         caption:
           'The full page in context, with the fare cards adapting to the passenger count: single passenger, multiple passengers, and multiple passengers with an infant.',
       },
@@ -1098,9 +1098,8 @@ export const workData = [
       {
         type: 'list',
         items: [
-          'When everything is shown at once, nothing stands out. Hiding detail until it is needed makes a dense page usable.',
-          'A symbol is not an explanation. If a mark needs a legend, it is often faster to remove the mark.',
-          'Trust is built from small consistencies. Two surfaces showing different numbers makes the whole page feel unreliable.',
+          'A symbol is not an explanation. If a mark needs a legend to make sense, removing the mark is usually faster than teaching it.',
+          'The change can be big or small, what matters is that it solves a real user problem. Breaking the work into detailed steps also kept the stress down: each step was small enough to check on its own, so I could tell whether it actually helped before moving to the next one.',
         ],
       },
     ],
@@ -1115,6 +1114,7 @@ export const workData = [
     intro: 'A write-up on the Design Hub: what it is, why I made it, and how it works.',
     link: '#',
     slug: 'design-hub',
+    hidden: true,
     content: [
       // TODO image: the Design Hub landing page. Export and add here.
       { type: 'heading', text: 'The Gap' },
