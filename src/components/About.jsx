@@ -42,6 +42,11 @@ const About = () => {
           <a href="#portfolio" className="btn-primary btn-primary-lg">
             View portfolio <ArrowDown className="icon bounce" aria-hidden="true" />
           </a>
+          <p className="about-cv about-cv--stacked">
+            <a href="/Hafizh-Sallam-Resume.pdf" download className="about-cv-link">
+              <DownloadSimple className="icon" aria-hidden="true" /> Download CV
+            </a>
+          </p>
         </div>
         <p className="about-text">
           A Senior Product Designer based in Kuala Lumpur, Malaysia with over 10 years of experience

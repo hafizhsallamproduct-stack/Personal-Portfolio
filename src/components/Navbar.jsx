@@ -122,6 +122,10 @@ const Navbar = () => {
           <a href="#top" className="nav-logo" aria-label="Back to home">
             <HafizhLogo className="nav-logo-icon" />
             <span className="nav-logo-text">Hafizh Sallam</span>
+            <span className="nav-logo-identity" aria-hidden="true">
+              <span className="nav-logo-identity-name">Hafizh Sallam</span>
+              <span className="nav-logo-identity-role">Senior Product Designer</span>
+            </span>
           </a>
 
           <div className="nav-controls-mobile">
