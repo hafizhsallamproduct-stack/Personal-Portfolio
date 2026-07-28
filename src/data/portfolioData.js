@@ -16,6 +16,10 @@ export const experienceData = [
         label: 'Redesigning the First Step: The Journey of the Search Form',
       },
       {
+        slug: 'fare-families',
+        label: 'Fare Selection: Making the Upgrade Decision Clear',
+      },
+      {
         slug: 'flight-booking-revamp',
         label: 'Flight Checkout Flow: Designing Away the Doubt',
         hidden: true,
@@ -42,7 +46,7 @@ export const experienceData = [
         isDefault: true,
         date: 'Oct 2024 — Present',
         details: [
-          "Lead the end-to-end redesign of Wego's flight booking experience across desktop and mobile web, covering fare families, passenger details, add-ons, payments, and booking details.",
+          "Lead the end-to-end redesign of Wego's flight booking experience across desktop and mobile web, covering fare selection, passenger details, add-ons, payments, and booking details.",
           'Expand ancillary design with new partnership integrations.',
           'Expand payment and loyalty experience design, introducing new flows for promo codes and partner loyalty point redemption.',
           'Improve design workflows and the product delivery process, from discovery and grooming to developer handoff and design QA.',
@@ -1224,7 +1228,7 @@ export const workData = [
       { type: 'heading', text: 'What We Changed' },
       {
         type: 'paragraph',
-        text: 'The goal was to book faster with fewer steps, and to make add-ons easy to understand and choose without friction. We used the benchmark as the baseline, proposing our own solutions where we believed we could do better. Every step was rebuilt on the design system: fare families, passenger details, the add-ons page, price breakdown, and payment, including the promo code flow.',
+        text: 'The goal was to book faster with fewer steps, and to make add-ons easy to understand and choose without friction. We used the benchmark as the baseline, proposing our own solutions where we believed we could do better. Every step was rebuilt on the design system: fare selection, passenger details, the add-ons page, price breakdown, and payment, including the promo code flow.',
       },
       {
         type: 'paragraph',
