@@ -16,8 +16,12 @@
   font-family: inherit;
 }
 
-.btn-primary:hover {
-  background-color: var(--btn-accent-hover);
+/* Hover only where there is a real pointer. On touch the state sticks after
+   a tap; the :active rules below still give tap feedback. */
+@media (hover: hover) {
+  .btn-primary:hover {
+    background-color: var(--btn-accent-hover);
+  }
 }
 
 .btn-primary:active {
@@ -50,8 +54,10 @@
   font-family: inherit;
 }
 
-.btn-secondary:hover {
-  background-color: var(--btn-secondary-hover);
+@media (hover: hover) {
+  .btn-secondary:hover {
+    background-color: var(--btn-secondary-hover);
+  }
 }
 
 .btn-outline {
@@ -71,9 +77,11 @@
   font-family: inherit;
 }
 
-.btn-outline:hover {
-  background-color: var(--btn-accent-subtle);
-  color: var(--btn-accent);
+@media (hover: hover) {
+  .btn-outline:hover {
+    background-color: var(--btn-accent-subtle);
+    color: var(--btn-accent);
+  }
 }
 
 .btn-outline:active {
@@ -109,8 +117,10 @@
   height: 20px;
 }
 
-.hamburger-menu:hover {
-  background-color: var(--border-hover);
+@media (hover: hover) {
+  .hamburger-menu:hover {
+    background-color: var(--border-hover);
+  }
 }
 
 /* --- Bounce Animation --- */

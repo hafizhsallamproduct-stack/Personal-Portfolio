@@ -77,6 +77,16 @@
   .nav-logo-text {
     display: none;
   }
+  /* Only the scrolled header carries the name and role; the top header
+     stays as just the logo mark. */
+  .nav-fixed .nav-logo-identity {
+    display: flex;
+  }
+  .nav-fixed .nav-logo {
+    min-width: 0;
+    flex: 1;
+    margin-right: 12px;
+  }
   .nav-controls-mobile {
     display: flex;
     align-items: center;
@@ -129,6 +139,16 @@
   .about-buttons .btn-outline {
     width: 300px;
     justify-content: center;
+  }
+  /* Download CV moves under View portfolio, so the three actions read as one
+     group instead of the link sitting further down after the bio. */
+  .about-cv--stacked {
+    display: block;
+    margin-top: 4px;
+    text-align: center;
+  }
+  .about-cv:not(.about-cv--stacked) {
+    display: none;
   }
   .divider {
     padding: 0 16px;
