@@ -47,6 +47,7 @@ export const experienceData = [
           'Expand payment and loyalty experience design, introducing new flows for promo codes and partner loyalty point redemption.',
           'Improve design workflows and the product delivery process, from discovery and grooming to developer handoff and design QA.',
           'Maintain and evolve the Wego Design System (new components, mobile foundations, and Figma workflow structure) and drive AI adoption in the design team, from AI-assisted workflows to design-system compliance checks against production code.',
+          'Support the team beyond design work: screening candidates during hiring, and reviewing other designers work and progress to keep quality and direction consistent.',
         ],
       },
       {
@@ -55,7 +56,7 @@ export const experienceData = [
         date: 'Oct 2021 — Sep 2024',
         details: [
           'Built the Wego Design System from the ground up: style guide, icon and illustration guidelines, and the full mobile app foundation component library.',
-          'Designed core flight search experiences across web and apps: search form revamps, Flight Search 2.0, per-leg search, and sort & filter improvements.',
+          'Designed core flight search experiences across web and apps.',
           "Designed Wego's in-app AI travel assistant: conversation behaviors, voice interaction, and its integration across search and support.",
           'Supported growth initiatives with a new SEO landing-page system.',
         ],
@@ -197,7 +198,7 @@ export const workData = [
     description:
       "Led the full rebuild of Wego's design system when transitioning from Sketch to Figma, establishing foundations, components, and documentation that scale across Flight and Hotel verticals on four touchpoints.",
     intro:
-      'This portfolio focuses on the journey of building and maintaining the design system rather than going deep into technical implementation details. Because the system is a long-running and still-evolving effort, the most important story is how decisions were made, how changes were introduced gradually, and how the system stayed practical as our tools, workflows, and product needs evolved.',
+      'This is the story of building and maintaining the design system, not its technical details. The system is still evolving, so what matters most is how decisions were made, how changes were introduced gradually, and how it stayed practical as our tools, workflows, and product needs changed.',
     slug: 'wego-design-system',
     link: '#',
     content: [
@@ -479,7 +480,7 @@ export const workData = [
       },
       { type: 'heading', text: 'What I Learned' },
       {
-        type: 'paragraph',
+        type: 'note',
         text: 'The biggest lesson from this project is that a design system is more than a component library. It needs to support the product, the team, and how people actually work.',
       },
       {
@@ -583,21 +584,64 @@ export const workData = [
       { type: 'heading', text: 'The Research' },
       {
         type: 'paragraph',
-        text: 'We did two things. First, an audit of our own form. We listed every field, option, and rule, and asked one question about each: does the traveler need this right away, or can it wait one tap? Second, a comparison of five other travel apps. We looked at how they structure the search form, how their search behaves, how they handle date selection, and how they handle passengers and cabin class.',
+        text: 'We did two things. First, an audit of our own form. We listed every field, option, and rule, and asked one question about each: does the traveler need this right away, or can it wait one tap? Second, a competitor analysis of five other travel apps, MakeMyTrip, Almosafer, Kayak, Hopper, and Kiwi. We looked at how they structure the search form, how their search behaves, how they handle date selection, and how they handle passengers and cabin class.',
       },
       {
-        type: 'image',
-        url: '/assets/portfolio/portfolio-searchform-2.webp',
-        alt: 'Detailed review of date selection, passengers, cabin class, and payment types',
-        caption:
-          'Reviewing each part of the form in detail: date selection, passengers, cabin class, and payment types.',
+        type: 'carousel',
+        items: [
+          {
+            url: '/assets/portfolio/portfolio-searchform-research-wego-2.webp',
+            alt: 'Audit of the Wego search form, part 1',
+            caption:
+              'Auditing our own form: what it has, and the questions it raised, starting with inconsistency between iOS and Android.',
+          },
+          {
+            url: '/assets/portfolio/portfolio-searchform-research-wego-3.webp',
+            alt: 'Audit of the Wego search form, part 2',
+            caption: 'Auditing our own form: what it has and the questions it raised.',
+          },
+        ],
       },
       {
-        type: 'image',
-        url: '/assets/portfolio/portfolio-searchform-3.webp',
-        alt: 'Comparison of competitor search forms with suggestions',
-        caption:
-          'Comparing other travel apps and turning the differences into concrete suggestions for our own form.',
+        type: 'carousel',
+        items: [
+          {
+            url: '/assets/portfolio/portfolio-searchform-research-mapping.webp',
+            alt: 'Feature mapping of Wego against MakeMyTrip, Almosafer, Kayak, Hopper, and Kiwi',
+            caption:
+              'Mapping every search form feature against five competitors to see where we stood and what to borrow.',
+          },
+          {
+            url: '/assets/portfolio/portfolio-searchform-research-mmt-1.webp',
+            alt: 'MakeMyTrip search page teardown, part 1',
+            caption:
+              'Competitor teardown: MakeMyTrip search page, what they have and the key takeaways.',
+          },
+          {
+            url: '/assets/portfolio/portfolio-searchform-research-mmt-2.webp',
+            alt: 'MakeMyTrip search page teardown, part 2',
+            caption:
+              'Competitor teardown: MakeMyTrip search page, what they have and the key takeaways.',
+          },
+          {
+            url: '/assets/portfolio/portfolio-searchform-research-mmt-3.webp',
+            alt: 'MakeMyTrip search page teardown, part 3',
+            caption:
+              'Competitor teardown: MakeMyTrip search page, what they have and the key takeaways.',
+          },
+          {
+            url: '/assets/portfolio/portfolio-searchform-research-mmt-4.webp',
+            alt: 'MakeMyTrip search page teardown, part 4',
+            caption:
+              'Competitor teardown: MakeMyTrip search page, what they have and the key takeaways.',
+          },
+          {
+            url: '/assets/portfolio/portfolio-searchform-research-mmt-5.webp',
+            alt: 'MakeMyTrip search page teardown, part 5',
+            caption:
+              'Competitor teardown: MakeMyTrip search page, what they have and the key takeaways.',
+          },
+        ],
       },
       {
         type: 'label',
@@ -645,7 +689,11 @@ export const workData = [
       },
       {
         type: 'paragraph',
-        text: 'Usability testing came back with mixed results, so we moved on to an A/B test. We ran it on iOS only, since it has the highest traffic and would let us collect data the fastest. The numbers said no: it did not help more users search, and handoffs to partners fell for both one-way and round-trip. We rejected the variant and kept the existing trip selection. Losing the idea was fine. Testing it before rolling it out is exactly what kept it from becoming a real problem.',
+        text: 'Usability testing came back with mixed results, so we moved on to an A/B test. We ran it on iOS only, since it has the highest traffic and would let us collect data the fastest. The numbers said no: it did not help more users search, and handoffs to partners fell for both one-way and round-trip. We rejected the variant and kept the existing trip selection.',
+      },
+      {
+        type: 'note',
+        text: 'Losing the idea was fine. Testing it before rolling it out is exactly what kept it from becoming a real problem.',
       },
       {
         type: 'image',
@@ -729,7 +777,7 @@ export const workData = [
       },
       {
         type: 'paragraph',
-        text: 'The redesigned app form went through a final A/B test before rollout and was accepted on both platforms. The share of sessions that turn into searches went up 0.3% on Android and 0.2% on iOS, and iOS saw 0.7% more handoffs to partners. Small percentages, but on the first step of the funnel they carry through every step after it.',
+        text: 'The redesigned app form went through a final A/B test before rollout and was accepted on both platforms. The share of sessions that turn into searches went up {{0.3%}} on Android and {{0.2%}} on iOS, and iOS saw {{0.7%}} more handoffs to partners. Small percentages, but on the first step of the funnel they carry through every step after it.',
       },
       {
         type: 'paragraph',
@@ -754,7 +802,7 @@ export const workData = [
       },
       {
         type: 'paragraph',
-        text: 'The tests confirmed the idea. On mobile web, handoffs to partners rose for the covered routes, up 3.6% for Sharjah, 2% for Cairo, and 1.9% for Dubai. On the apps, sessions searching those cities saw handoffs rise 1.3% on iOS and 1.4% on Android, and a second iteration added another 0.6% overall. Around one in ten travelers who get the suggestion actually use it. The feature was accepted on every platform, and it is now growing into full multi-airport search.',
+        text: 'The tests confirmed the idea. On mobile web, handoffs to partners rose for the covered routes, up {{3.6%}} for Sharjah, {{2%}} for Cairo, and {{1.9%}} for Dubai. On the apps, sessions searching those cities saw handoffs rise {{1.3%}} on iOS and {{1.4%}} on Android, and a second iteration added another {{0.6%}} overall. Around one in ten travelers who get the suggestion actually use it. The feature was accepted on every platform, and it is now growing into full multi-airport search.',
       },
       {
         type: 'paragraph',
@@ -762,7 +810,7 @@ export const workData = [
       },
       {
         type: 'paragraph',
-        text: 'We tested it platform by platform, and it was accepted everywhere: converted sessions rose 4.1% on desktop web and 3.25% on iOS, and Android and mobile web saw more handoffs and bookings per search. The interesting finding: the calendar did not make more people search. It made people more confident about the date they picked, and that confidence converted.',
+        text: 'We tested it platform by platform, and it was accepted everywhere: converted sessions rose {{4.1%}} on desktop web and {{3.25%}} on iOS, and Android and mobile web saw more handoffs and bookings per search. The interesting finding: the calendar did not make more people search. It made people more confident about the date they picked, and that confidence converted.',
       },
       {
         type: 'image',
@@ -770,12 +818,12 @@ export const workData = [
         urlDark: '/assets/portfolio/portfolio-searchform-8-dark.webp',
         alt: 'Price calendar showing fare levels per day',
         caption:
-          'The price calendar, colored by fare level. Accepted on every platform after A/B testing, with converted sessions up 4.1% on desktop web.',
+          'The price calendar, colored by fare level. Accepted on every platform after A/B testing, with converted sessions up {{4.1%}} on desktop web.',
       },
       { type: 'heading', text: 'How to Make It Better' },
       {
         type: 'paragraph',
-        text: 'The form keeps evolving, and two changes are next. These are suggestions I believe in but have not tested yet:',
+        text: 'The form keeps evolving, and two changes are next. These are suggestions I believe in, a personal exploration rather than part of the roadmap or an internal initiative:',
       },
       {
         type: 'list',
@@ -786,7 +834,7 @@ export const workData = [
       },
       {
         type: 'image',
-        url: '/assets/portfolio/portfolio-searchform-11-light.jpg',
+        url: '/assets/portfolio/portfolio-searchform-11-light.webp',
         alt: 'Two upcoming improvements: a unified search form widget and an improved date selection UI',
         caption:
           'Two changes I believe will make a difference: a unified search form widget (left) and an improved date selection UI (right).',
@@ -800,6 +848,324 @@ export const workData = [
           'Obvious wins are not always wins. The trip type shortcut felt certain and failed the test, while the quiet price calendar lifted conversions everywhere.',
           'One UI for all platforms means every improvement only needs to be built once.',
         ],
+      },
+    ],
+  },
+  {
+    title: 'Fare Families: Making the Upgrade Decision Clear',
+    company: 'Wego',
+    logo: '/assets/wego.svg',
+    year: '2023 — Present',
+    image: '/assets/portfolio/portfolio-3.webp',
+    description:
+      "Redesigned Wego's fare families page across desktop and mobile so travelers can compare fares and trust what they see before they book.",
+    intro:
+      'Fare families is where a traveler picks which version of a fare to buy: the basic one, or a higher tier with more baggage and flexibility. This case study covers the redesign and the later improvements that made the page clearer and easier to trust.',
+    link: '#',
+    slug: 'fare-families',
+    content: [
+      {
+        type: 'image',
+        url: '/assets/portfolio/portfolio-farefamilies-light-01.webp',
+        urlDark: '/assets/portfolio/portfolio-farefamilies-dark-01.webp',
+        alt: 'The fare families page across three generations, from before the design system to the latest design',
+        caption:
+          'The fare families page over time: the version before the design system, the first change after it, and the latest design.',
+      },
+      { type: 'heading', text: 'Background and Problem' },
+      {
+        type: 'paragraph',
+        text: 'The page is simple: select a fare, tap continue. But a few things got in the way. The main call to action did not look like one, reading more like part of a bottom sheet, so the next step was easy to miss. And the price was confusing: from user feedback, travelers were unsure how it added up, even with the total in the bottom button.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Looking closer, two things mattered most. The flight details matter as much as the fare, since many travelers arrive from partner sites like Google Flights and first confirm the flight they clicked on, so those need to be clear and visible first. And the fare decision comes down to a few things: baggage, whether it can be changed or cancelled, and how much more the upgrade costs.',
+      },
+      // TODO image: annotated screenshot of the earlier page showing the weak CTA and price format. Export and add here.
+      { type: 'heading', text: 'Design Process and Task' },
+      {
+        type: 'note',
+        text: 'The order below is not the order we changed things in. It follows the design layout of the page, starting from the flight details at the top and continuing down to the fare card.',
+      },
+      { type: 'subheading', text: 'Updating Flight Details Card' },
+      {
+        type: 'paragraph',
+        text: 'The fare families card shows after a traveler makes a selection from a partner in FBOW Meta. The old design did not show the flight card at all, so we added a flight details card in the first iteration, since we planned to distribute our bookings to external partners like Kayak and Google Flights, where confirming the flight matters even more.',
+      },
+      {
+        type: 'label',
+        text: 'A few problems stood out:',
+      },
+      {
+        type: 'list',
+        items: [
+          'The card carried too little detail, and it could not show a flight with a stop at all.',
+          'One-way and round-trip looked almost the same: a single arrow versus a two-direction arrow, easy to miss.',
+          'Schedule changes were hard to surface, so we ended up adding extra lines below the card that made it feel crowded.',
+        ],
+      },
+      {
+        type: 'image',
+        url: '/assets/portfolio/portfolio-farefamilies-light-04.webp',
+        alt: 'The earlier flight details card across single passenger, multiple passengers, and a schedule change',
+        caption:
+          'The earlier flight details card. Schedule changes pushed extra lines into the card, which made it feel crowded.',
+      },
+      {
+        type: 'paragraph',
+        text: 'I rebuilt the card to handle every case in one structure: one-way, round-trip, multi-city, and single and multiple stops.',
+      },
+      {
+        type: 'label',
+        text: 'What We Changed',
+      },
+      {
+        type: 'list',
+        items: [
+          'Clear flight details for both legs, shown together instead of hidden.',
+          'Schedule changes shown inline, so what changed is clear without extra lines that crowd the card.',
+          'The airline logo is visible on the card, where before travelers had to open the details to confirm it.',
+          'Gave banners like the umrah visa notice a place on the card, instead of stacking them on top of the page.',
+        ],
+      },
+      {
+        type: 'image',
+        url: '/assets/portfolio/portfolio-farefamilies-light-02.webp',
+        urlDark: '/assets/portfolio/portfolio-farefamilies-dark-02.webp',
+        alt: 'The flight details card across its scenarios: trip types, stops, self-transfer, other transport, banners, schedule change, and loading',
+        caption:
+          'One flight details card, specified for every case: trip types, stops, self-transfer, other transport, schedule changes, banners, and the loading state.',
+      },
+      { type: 'subheading', text: 'Updating Fare Card' },
+      {
+        type: 'paragraph',
+        text: 'The fare card is where the traveler compares options and decides whether to upgrade. The structure worked, but the detail on each card was not clear or consistent enough to trust.',
+      },
+      {
+        type: 'label',
+        text: 'A few problems stood out:',
+      },
+      {
+        type: 'list',
+        items: [
+          'Fees like date change and cancellation were marked with an asterisk, but nothing on the card explained it. A symbol was standing in for an explanation, and travelers were left guessing.',
+          'Mixed fares, where the two legs use different tiers, were shown as one blended summary that hid the difference between them.',
+        ],
+      },
+      {
+        type: 'image',
+        url: '/assets/portfolio/portfolio-farefamilies-light-05.webp',
+        alt: 'The fare card across three versions, from before the booking revamp to the current design',
+        caption:
+          'The fare card over time: the version before the booking revamp, an early revamp version, and the current design.',
+      },
+      {
+        type: 'paragraph',
+        text: 'For the fee legend, I looked at how other apps reveal fare detail, by how much friction each adds: hover tooltips (Etihad, Qatar), which fail on mobile; click to open (Emirates, Trip.com); tabs below the card (Traveloka); and plain text (Almosafer). Click fit best: it works the same on both platforms and could reuse the policy content the page already had.',
+      },
+      {
+        type: 'table',
+        mobileImage: '/assets/portfolio/portfolio-farefamilies-light-research.webp',
+        columns: ['Site', 'Indicator', 'Trigger', 'Disclosure UI', 'Notes'],
+        rows: [
+          [
+            'Etihad',
+            'Info (i) icon',
+            'Hover',
+            'Dark tooltip',
+            'Small (i) icon next to items with extra info. Hover shows a dark tooltip with details (no-show fees, fare rules).',
+          ],
+          [
+            'Qatar Airways',
+            'Info (i) icon',
+            'Hover',
+            'Dark tooltip',
+            'Same pattern as Etihad. Tooltip shows conditions like "change applies within same fare class".',
+          ],
+          [
+            'Emirates',
+            'Underlined text',
+            'Click',
+            'Popover with close',
+            'Only values with extra context are underlined. Plain text for simple values (e.g. "From USD 150.00"). No (i) icons.',
+          ],
+          [
+            'Traveloka',
+            'Tabs below card',
+            'Click tab',
+            'Expandable panel',
+            'No indicators in the fare list itself. Tabs below each flight: Flight Details, Refund, Reschedule. Expands a full detail panel with sub-nav.',
+          ],
+          [
+            'Almosafer',
+            'Mostly plain text',
+            'Mixed',
+            'Occasional (i) tooltip',
+            'Simple policies shown as plain text. Some complex items (e.g. FLY+ cancellation credit) have an (i) icon with extra info.',
+          ],
+          [
+            'Trip.com',
+            'Blue link text',
+            'Click',
+            'Side panel / drawer',
+            'Text turns blue and underlines on hover. Click opens a full side panel, Baggage Allowance & Policies, with 3 tabs and detailed fee tables. Not all items are clickable.',
+          ],
+        ],
+        caption:
+          'How other travel apps reveal the detail behind a fare attribute, grouped by indicator, trigger, and disclosure UI.',
+      },
+      {
+        type: 'label',
+        text: 'What We Changed',
+      },
+      {
+        type: 'list',
+        items: [
+          'Removed the asterisk and underlined any attribute with more detail, so the hint is a clear affordance.',
+          'Clicking an attribute opens the baggage and cancellation policy panel directly.',
+          'Adapted the hint per platform: underline on hover on desktop, shown by default on mobile.',
+          'Fixed mixed fares to show each leg with its own baggage and fee rules instead of one blended summary.',
+          'Reconciled mismatched fees and stopped showing duplicate or unavailable fares, so the page never contradicts itself.',
+        ],
+      },
+      {
+        type: 'image',
+        url: '/assets/portfolio/portfolio-farefamilies-light-06.webp',
+        alt: 'The fare card attributes across three stages of improvement',
+        caption:
+          'Improving the fare attributes in three stages. Original: still using the old icons. First improvement: clearer icons for a quick scan, based on competitor analysis, so it is obvious what is included and what is not. Second improvement: after internal feedback, an underline on the change and refundable status, making it clear those open more detail.',
+      },
+      {
+        type: 'image',
+        url: '/assets/portfolio/portfolio-farefamilies-light-07.webp',
+        alt: 'The current fare card for single passenger, multiple passengers, and mixed fare',
+        caption:
+          'The current fare card across scenarios: single passenger, multiple passengers, and a mixed fare where each leg has its own tier.',
+      },
+      {
+        type: 'image',
+        url: '/assets/portfolio/portfolio-farefamilies-light-03.webp',
+        urlDark: '/assets/portfolio/portfolio-farefamilies-dark-03.webp',
+        alt: 'The full fare families page for single passenger, multiple passengers, and multiple passengers with infant',
+        caption:
+          'The full page in context, with the fare cards adapting to the passenger count: single passenger, multiple passengers, and multiple passengers with an infant.',
+      },
+      {
+        type: 'image',
+        url: '/assets/portfolio/portfolio-farefamilies-light-08.webp',
+        alt: 'The multiple fare flow: pick the departure fare, a loading state, then the return fare, then both selected',
+        caption:
+          'The multiple fare flow, for when each leg is priced separately. The traveler picks the departure fare, the return options load, they pick the return fare, and both selections roll up into one total. The loading state is intentional: it marks the handover from one fare to the next, so the traveler understands they are now choosing for a different leg.',
+      },
+      {
+        type: 'image',
+        url: '/assets/portfolio/portfolio-farefamilies-light-09.webp',
+        alt: 'The banner scenarios: infant baggage notice, travel advisory, and combined ticket disclaimer',
+        caption:
+          'The different banners that can appear on the card, depending on the trip and the moment: an infant baggage notice, a travel advisory during regional disruptions, and a combined ticket disclaimer for two one-way tickets.',
+      },
+      { type: 'heading', text: 'The Rollout' },
+      {
+        type: 'paragraph',
+        text: 'This was not a single rollout. Over about three years the page changed gradually, each update driven by real user feedback, internal feedback, and usability testing run by our UX team, and measured through A/B tests rather than shipped all at once.',
+      },
+      {
+        type: 'list',
+        items: [
+          'Added the multiple fare flow.',
+          'Replaced the two-step radio button selection with a single call-to-action flow.',
+          'Added a new mixed branded fare design, so travelers are clear when their departure and return use different packages.',
+          'Updated the flight details card.',
+          'Updated the icon in the fare card.',
+          'Added different types of banner depending on the event and user feedback.',
+          'Updated the schedule change design to be clearer and more compact.',
+        ],
+      },
+      { type: 'heading', text: 'The Result' },
+      {
+        type: 'paragraph',
+        text: 'The redesign was A/B tested and won on both platforms, shipped in two phases: mobile (iOS, Android, and mobile web) rolled out to 100% first, then desktop. Each saw a {{+2 to 3% CVR}} lift, a statistically significant increase. On desktop, session conversion from the fare compare page to the booking page rose from {{65.65%}} to {{68.20%}}. Downstream metrics stayed roughly flat, so the gain sits right at the step the redesign was meant to improve.',
+      },
+      {
+        type: 'list',
+        items: [
+          'The decision is easier to make: travelers see what each fare includes and how much more it costs at a glance.',
+          'No fare option or rule was removed, so the full detail is still there for those who want it.',
+          'One structure serves desktop and mobile, so later changes and experiments are cheaper to ship.',
+        ],
+      },
+      { type: 'heading', text: 'What I Learned' },
+      {
+        type: 'list',
+        items: [
+          'When everything is shown at once, nothing stands out. Hiding detail until it is needed makes a dense page usable.',
+          'A symbol is not an explanation. If a mark needs a legend, it is often faster to remove the mark.',
+          'Trust is built from small consistencies. Two surfaces showing different numbers makes the whole page feel unreliable.',
+        ],
+      },
+    ],
+  },
+  {
+    title: 'Design Hub: A Home for the Design System Outside Figma',
+    company: 'Wego',
+    logo: '/assets/wego.svg',
+    year: '2026 — Present',
+    description:
+      'A side project that got out of hand in the best way: one place where the design system lives outside Figma, so designers, AI, and developers all pull from the same source.',
+    intro: 'A write-up on the Design Hub: what it is, why I made it, and how it works.',
+    link: '#',
+    slug: 'design-hub',
+    content: [
+      // TODO image: the Design Hub landing page. Export and add here.
+      { type: 'heading', text: 'The Gap' },
+      {
+        type: 'paragraph',
+        text: 'A design system that lives only in Figma has one problem: you cannot ship it. A Figma file is a picture of the UI, not the real components, so a screen gets made twice, once in design and once in code, with a hand-off in between where the small stuff quietly goes missing.',
+      },
+      {
+        type: 'paragraph',
+        text: 'AI made this sharper. People across the company started generating designs, but the output often drifted far from our guidelines. The Design Hub is my approach to closing that gap, with one goal: reduce the distance between designers and developers, and speed up how we design and build.',
+      },
+      {
+        type: 'paragraph',
+        text: 'This is as much an AI project as a design one. Much of the work is teaching the AI to build the way we would: training it to stay consistent and reach for our components, working with it as a collaborator to figure out how, and structuring the files and code so both people and the AI can read them easily.',
+      },
+      { type: 'heading', text: 'How It Grew' },
+      {
+        type: 'paragraph',
+        text: 'It did not start as a big idea. It grew in three steps, each one solving the next problem in front of me.',
+      },
+      {
+        type: 'list',
+        items: [
+          'A simple HTML and CSS repo that generated UI matching our design system, so AI-made screens stopped drifting from our guidelines.',
+          'When Claude introduced Claude Design, I turned the repo into a proper design system for Claude to build from, so the output was on brand by default.',
+          'Now, the focus is closing the gap all the way to production-ready front-end UI. That meant moving from plain HTML and CSS to React, to match how our product is actually built, so what comes out is close to shippable code, not just a mockup.',
+        ],
+      },
+      // TODO image: the Design Hub in use (Claude Design + the components). Export and add here.
+      { type: 'heading', text: 'What It Does' },
+      {
+        type: 'paragraph',
+        text: 'You tell Claude what screen you want, and it builds it from our actual components, so it lands on brand instead of looking like a generic AI mockup. A blank canvas becomes a real first draft in seconds. It still needs a designer’s eye, but it skips the boring part.',
+      },
+      {
+        type: 'paragraph',
+        text: 'The same components are available as real code, so developers can pull the whole system, tokens, components, and assets, into their project with one command. And because the prototypes are built from the components that ship, what a developer clicks through is the real thing, not a flat picture of it.',
+      },
+      { type: 'heading', text: 'How It Is Built' },
+      {
+        type: 'paragraph',
+        text: 'Nothing fancy, on purpose: a static site on GitHub Pages, right next to the code it serves. It also doubles as a map of what the design team is working on, sorted by area, flight booking, dashboard, email, and side explorations, each linking to its Figma file and prototype with its status, so anyone can find the latest version of a screen without asking around.',
+      },
+      { type: 'heading', text: 'Where It Is Now' },
+      {
+        type: 'paragraph',
+        text: 'It is live and in real use: designers start screens with Claude, developers pull the system and hand off from live components, and everyone stops guessing which file is current.',
+      },
+      {
+        type: 'note',
+        text: 'More than a tool, it is an example of using AI to improve how we work, not to replace the craft, but to remove the repetitive parts so designers and developers can move faster on what actually matters.',
       },
     ],
   },

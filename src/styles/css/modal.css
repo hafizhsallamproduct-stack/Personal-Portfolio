@@ -219,6 +219,16 @@
   color: var(--text-body);
 }
 
+/* Inline banner / callout note. */
+.portfolio-modal-content p.portfolio-content-note {
+  background-color: var(--bg-placeholder);
+  border-left: 3px solid var(--border-hover);
+  border-radius: 4px;
+  padding: 12px 16px;
+  font-size: 15px;
+  color: var(--text-secondary);
+}
+
 .portfolio-modal-header {
   width: 100%;
   max-width: 768px;
@@ -228,9 +238,15 @@
   gap: 16px;
 }
 
+/* Full-width hero image at the top of the detail view, mobile only. */
+.portfolio-modal-hero {
+  display: none;
+}
+
 .portfolio-modal-title {
-  font-size: 48px;
+  font-size: 42px;
   font-weight: 700;
+  line-height: 1.1;
   margin-bottom: 0;
 }
 
@@ -315,6 +331,15 @@
   .portfolio-modal-main {
     padding: 40px 20px 56px;
   }
+  /* Full-bleed hero: cancel the container's top and side padding so the
+     thumbnail spans edge to edge above the title, like a hero image. */
+  .portfolio-modal-hero {
+    display: block;
+    width: calc(100% + 40px);
+    margin: -40px -20px 8px;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+  }
   .portfolio-modal-close {
     top: 24px;
     right: 20px;
@@ -330,7 +355,9 @@
   font-weight: 700;
   line-height: 32px;
   color: var(--text-primary);
-  margin-top: 24px;
+  /* Extra breathing room above a section heading, on top of the 24px
+     container gap, for a clear section break. */
+  margin-top: 16px;
 }
 
 .portfolio-content-heading:first-child {
@@ -342,7 +369,9 @@
   font-weight: 700;
   line-height: 28px;
   color: var(--text-primary);
-  margin-top: 8px;
+  /* Pull the following block up so the subheading hugs its content
+     instead of the full 24px container gap. */
+  margin-bottom: -14px;
 }
 
 .portfolio-content-image {
@@ -350,23 +379,163 @@
   width: 100%;
   max-width: 768px;
   flex-shrink: 0;
-  margin: 32px auto;
+  /* Small extra margin on top of the 24px container gap, so images get a
+     touch more breathing room than text without stacking large gaps. */
+  margin: 8px auto;
 }
 
 .portfolio-content-image + .portfolio-content-image {
-  margin-top: -32px;
+  margin-top: -16px;
 }
 
-.portfolio-content-image:has(+ .portfolio-content-heading) {
-  margin-bottom: 0;
+/* --- Carousel --- */
+.portfolio-carousel {
+  display: block;
+  width: 100%;
+  max-width: 768px;
+  flex-shrink: 0;
+  margin: 8px auto;
 }
 
-.portfolio-content-image:has(+ .portfolio-content-subheading) {
-  margin-bottom: 0;
+.portfolio-carousel-stage {
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  border: var(--line-width) solid var(--border);
+  background-color: var(--bg-placeholder);
 }
 
-.portfolio-content-image:has(+ .portfolio-content-label) {
-  margin-bottom: 0;
+.portfolio-carousel-main {
+  display: block;
+  width: 100%;
+  height: auto;
+  cursor: zoom-in;
+}
+
+.portfolio-carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  cursor: pointer;
+  /* Hidden until the stage is hovered. */
+  opacity: 0;
+  transition:
+    opacity 0.2s,
+    background-color 0.2s;
+  z-index: 2;
+}
+
+.portfolio-carousel-arrow .icon {
+  width: 22px;
+  height: 22px;
+}
+
+.portfolio-carousel-stage:hover .portfolio-carousel-arrow {
+  opacity: 1;
+}
+
+/* Touch devices have no hover, so keep the arrows visible there. */
+@media (hover: none) {
+  .portfolio-carousel-arrow {
+    opacity: 1;
+  }
+}
+
+.portfolio-carousel-arrow:hover {
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.portfolio-carousel-arrow--prev {
+  left: 12px;
+}
+
+.portfolio-carousel-arrow--next {
+  right: 12px;
+}
+
+/* Lightbox navigation arrows */
+.lightbox-arrow {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  z-index: 10001;
+}
+
+.lightbox-arrow .icon {
+  width: 26px;
+  height: 26px;
+}
+
+.lightbox-arrow:hover {
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.lightbox-arrow--prev {
+  left: 20px;
+}
+
+.lightbox-arrow--next {
+  right: 20px;
+}
+
+.portfolio-carousel-thumbs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.portfolio-carousel-thumb {
+  width: 72px;
+  height: 48px;
+  padding: 0;
+  border: var(--line-width) solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+  background: none;
+  cursor: pointer;
+  opacity: 0.55;
+  transition:
+    opacity 0.2s,
+    border-color 0.2s;
+}
+
+.portfolio-carousel-thumb:hover {
+  opacity: 0.8;
+}
+
+.portfolio-carousel-thumb.active {
+  opacity: 1;
+  border-color: var(--text-primary);
+}
+
+.portfolio-carousel-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .portfolio-image-wrap {
@@ -437,6 +606,54 @@
   padding: 0 4px;
 }
 
+/* --- Content table --- */
+.portfolio-table-wrap {
+  width: 100%;
+  max-width: 768px;
+  margin: 8px auto;
+  overflow-x: auto;
+  flex-shrink: 0; /* don't let the flex column squish it */
+}
+
+.portfolio-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text-body);
+}
+
+.portfolio-table th,
+.portfolio-table td {
+  padding: 12px 14px;
+  text-align: left;
+  vertical-align: top;
+  border: var(--line-width) solid var(--border);
+}
+
+.portfolio-table th {
+  font-weight: 700;
+  color: var(--text-primary);
+  white-space: nowrap;
+  background-color: var(--bg-placeholder);
+}
+
+/* The mobile image only shows in the mobile layout. */
+.portfolio-table-mobile-img {
+  display: none;
+}
+
+/* Real figures kept in the data but hidden on screen, framed as a redacted
+   box and always blurred. */
+.portfolio-blur {
+  display: inline-block;
+  padding: 0 6px;
+  border-radius: 4px;
+  background-color: var(--bg-placeholder);
+  filter: blur(4px);
+  user-select: none;
+}
+
 .portfolio-detail-img,
 .image-placeholder-inner {
   display: block;
@@ -471,6 +688,13 @@
   will-change: transform;
   user-select: none;
   -webkit-user-drag: none;
+  touch-action: none;
+}
+
+/* No transition while actively dragging or pinching, so gestures track
+   the finger instead of easing behind it. */
+.lightbox-img.interacting {
+  transition: none;
 }
 
 .lightbox-controls {
@@ -515,7 +739,8 @@
   font-weight: 700;
   line-height: 1.6;
   color: var(--text-primary);
-  margin-top: 8px;
+  /* Pull the following list up so the label reads as its heading.
+     -16px against the 24px container gap leaves an 8px space. */
   margin-bottom: -16px;
 }
 
@@ -639,21 +864,31 @@
   font-style: italic;
 }
 
-/* Proportionally tighter content spacing for the short mobile viewport:
-   images 48, headings 40, sub-groups 32, body 24, label-to-list 8.
+/* Content spacing tuned for the short mobile viewport.
    Kept at the end of the file so it wins over the base content rules. */
 @media (max-width: 768px) {
   .portfolio-content-image {
-    margin: 24px auto;
+    margin: 12px auto;
   }
   .portfolio-content-image + .portfolio-content-image {
-    margin-top: -24px;
+    margin-top: -12px;
   }
   .portfolio-content-heading {
-    margin-top: 16px;
+    margin-top: 12px;
   }
   .portfolio-content-heading:first-child {
     margin-top: 0;
+  }
+  /* On mobile, swap the wide table for its image. */
+  .portfolio-table-wrap:has(.portfolio-table-mobile-img) .portfolio-table {
+    display: none;
+  }
+  .portfolio-table-mobile-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    cursor: zoom-in;
   }
   /* Edge-to-edge lightbox on mobile so tapping enlarges the image
      rather than shrinking it inside padding. */

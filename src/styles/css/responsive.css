@@ -1,3 +1,13 @@
+/* Tablet range (e.g. iPad Pro portrait, 1024px): keep the three Figma
+   Community cards on a single row by letting them shrink to fit. */
+@media (min-width: 901px) and (max-width: 1024px) {
+  .side-project-card {
+    width: auto;
+    flex: 1 1 0;
+    min-width: 0;
+  }
+}
+
 /* --- Responsive (tablet) --- */
 @media (max-width: 900px) {
   .nav {
@@ -76,7 +86,7 @@
     display: none;
   }
   .hamburger-menu {
-    display: block;
+    display: flex;
   }
   .nav-links {
     display: none;
@@ -281,6 +291,22 @@
     flex-direction: column;
     align-items: stretch;
     gap: 8px;
+    /* Padding moves onto the header button below so the whole area taps. */
+    padding: 0;
+  }
+  /* Larger tap target for the accordion on mobile. */
+  .experience-role-header {
+    padding: 20px 0;
+    align-items: center;
+  }
+  /* When expanded, the header keeps its top padding but drops the bottom
+     gap so the details sit closer, with their own padding below. */
+  .experience-role-header[aria-expanded='true'] {
+    padding-bottom: 0;
+  }
+  .experience-role-details,
+  .experience-role-summary {
+    padding-bottom: 20px;
   }
   .experience-role-info {
     gap: 2px;
