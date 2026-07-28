@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useParams, useNavigate, Link, useLocation } from 'react-router-dom';
-import { workData } from '../data/portfolioData';
+import { workData, wipData } from '../data/portfolioData';
 import { X, HafizhLogo, Sun, Moon, CaretLeft, CaretRight } from './icons';
 
 const FOCUSABLE_SELECTOR =
@@ -652,10 +652,33 @@ const PortfolioModal = ({ isStandalone }) => {
                       />
                     )}
                   </div>
-                  <span>{project.title}</span>
+                  <span className="portfolio-modal-nav-text">
+                    {project.title}
+                    {project.company && (
+                      <span className="portfolio-modal-nav-company">{project.company}</span>
+                    )}
+                  </span>
                 </Link>
               ))}
             </div>
+            {wipData.length > 0 && (
+              <div className="portfolio-modal-sidebar-wip">
+                <h3 className="portfolio-modal-sidebar-wip-title">PORTFOLIO IN PROGRESS</h3>
+                {wipData.map((item) => (
+                  // Not a link: these are being written up, so there is no page
+                  // to open yet.
+                  <div key={item.title} className="portfolio-modal-wip-item">
+                    <div className="portfolio-modal-nav-thumb portfolio-modal-wip-thumb">WIP</div>
+                    <span className="portfolio-modal-nav-text">
+                      {item.title}
+                      {item.company && (
+                        <span className="portfolio-modal-nav-company">{item.company}</span>
+                      )}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
 
           {/* Resizer Handle — drag-to-resize is inherently mouse-only */}
