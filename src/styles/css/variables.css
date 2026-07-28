@@ -66,6 +66,7 @@
   --line-width: 1px;
   --grid-tile: rgba(0, 0, 0, 0.1);
   --tooltip-divider: rgba(255, 255, 255, 0.15);
+  --nav-glass: rgba(250, 250, 250, 0.7);
 }
 
 [data-theme='dark'] {
@@ -110,4 +111,5 @@
   --card-border: #6a6a6a;
   --grid-tile: rgba(255, 255, 255, 0.1);
   --tooltip-divider: rgba(0, 0, 0, 0.15);
+  --nav-glass: rgba(18, 18, 18, 0.7);
 }

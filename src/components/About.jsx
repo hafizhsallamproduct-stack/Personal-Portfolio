@@ -1,4 +1,4 @@
-import { User, Translate, LinkedinLogo, ArrowDown } from './icons';
+import { User, Translate, LinkedinLogo, ArrowDown, DownloadSimple } from './icons';
 
 const About = () => {
   return (
@@ -53,6 +53,11 @@ const About = () => {
           Currently at Wego.com, I maintain the design system and contribute to key flows like
           flight search and checkout. Lately, I've been exploring how to integrate AI into my
           workflow to improve the design process and streamline day-to-day work.
+        </p>
+        <p className="about-cv">
+          <a href="/Hafizh-Sallam-Resume.pdf" download className="about-cv-link">
+            <DownloadSimple className="icon" aria-hidden="true" /> Download CV
+          </a>
         </p>
         <div className="about-stats">
           <div className="stat">

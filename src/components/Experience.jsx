@@ -25,17 +25,18 @@ const ExperienceRole = ({ role }) => {
 
   return (
     <div className="experience-role">
-      <div className="experience-role-header">
+      <button
+        type="button"
+        className="experience-role-header"
+        onClick={() => setIsExpanded(!isExpanded)}
+        aria-expanded={isExpanded}
+        aria-label={`${isExpanded ? 'Collapse' : 'Expand'} ${role.title}`}
+      >
         <div className="experience-role-info">
           <div className="experience-role-title">{role.title}</div>
           <div className="experience-role-date">{role.date}</div>
         </div>
-        <button
-          className="experience-role-toggle"
-          onClick={() => setIsExpanded(!isExpanded)}
-          aria-expanded={isExpanded}
-          aria-label={`${isExpanded ? 'Collapse' : 'Expand'} ${role.title}`}
-        >
+        <span className="experience-role-toggle">
           {isExpanded ? (
             <CaretUp
               className="icon"
@@ -49,8 +50,8 @@ const ExperienceRole = ({ role }) => {
               style={{ color: 'var(--text-secondary)' }}
             />
           )}
-        </button>
-      </div>
+        </span>
+      </button>
       {isExpanded && (
         <>
           {role.details ? (

@@ -1,10 +1,33 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useParams, useNavigate, Link, useLocation } from 'react-router-dom';
 import { workData } from '../data/portfolioData';
-import { X, HafizhLogo, Sun, Moon } from './icons';
+import { X, HafizhLogo, Sun, Moon, CaretLeft, CaretRight } from './icons';
 
 const FOCUSABLE_SELECTOR =
   'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
+// Text wrapped in {{...}} keeps its real value in the data but renders blurred,
+// so figures are hidden on screen without being lost.
+const BLUR_RE = /\{\{(.+?)\}\}/g;
+
+const renderText = (text) => {
+  if (typeof text !== 'string' || !text.includes('{{')) return text;
+  const parts = [];
+  let lastIndex = 0;
+  let match;
+  let key = 0;
+  while ((match = BLUR_RE.exec(text)) !== null) {
+    if (match.index > lastIndex) parts.push(text.slice(lastIndex, match.index));
+    parts.push(
+      <span key={key++} className="portfolio-blur">
+        {match[1]}
+      </span>
+    );
+    lastIndex = BLUR_RE.lastIndex;
+  }
+  if (lastIndex < text.length) parts.push(text.slice(lastIndex));
+  return parts;
+};
 
 const ImageBlock = ({ block, onImageClick }) => {
   const [imageTheme, setImageTheme] = useState('light');
@@ -60,7 +83,73 @@ const ImageBlock = ({ block, onImageClick }) => {
         )}
       </div>
       {block.caption && (
-        <figcaption className="portfolio-image-caption">{block.caption}</figcaption>
+        <figcaption className="portfolio-image-caption">{renderText(block.caption)}</figcaption>
+      )}
+    </figure>
+  );
+};
+
+const CarouselBlock = ({ block, onImageClick }) => {
+  const [index, setIndex] = useState(0);
+  const items = block.items || [];
+  const count = items.length;
+  const current = items[index] || {};
+
+  const go = (next) => setIndex((i) => (i + next + count) % count);
+
+  if (count === 0) return null;
+
+  return (
+    <figure className="portfolio-carousel">
+      <div className="portfolio-carousel-stage">
+        {count > 1 && (
+          <button
+            type="button"
+            className="portfolio-carousel-arrow portfolio-carousel-arrow--prev"
+            onClick={() => go(-1)}
+            aria-label="Previous image"
+          >
+            <CaretLeft className="icon" aria-hidden="true" />
+          </button>
+        )}
+        {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions */}
+        <img
+          src={current.url}
+          alt={current.alt || ''}
+          className="portfolio-carousel-main"
+          loading="lazy"
+          decoding="async"
+          onClick={() => current.url && onImageClick?.({ items, index })}
+        />
+        {count > 1 && (
+          <button
+            type="button"
+            className="portfolio-carousel-arrow portfolio-carousel-arrow--next"
+            onClick={() => go(1)}
+            aria-label="Next image"
+          >
+            <CaretRight className="icon" aria-hidden="true" />
+          </button>
+        )}
+      </div>
+      {count > 1 && (
+        <div className="portfolio-carousel-thumbs">
+          {items.map((item, i) => (
+            <button
+              key={i}
+              type="button"
+              className={`portfolio-carousel-thumb ${i === index ? 'active' : ''}`}
+              onClick={() => setIndex(i)}
+              aria-label={`Show image ${i + 1}`}
+              aria-current={i === index}
+            >
+              <img src={item.url} alt="" loading="lazy" decoding="async" />
+            </button>
+          ))}
+        </div>
+      )}
+      {current.caption && (
+        <figcaption className="portfolio-image-caption">{renderText(current.caption)}</figcaption>
       )}
     </figure>
   );
@@ -72,15 +161,46 @@ const ZOOM_STEP = 0.25;
 
 const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
 
-const Lightbox = ({ url, onClose }) => {
+const Lightbox = ({ source, onClose }) => {
+  // source is either a string URL or { items: [{url}], index }.
+  const gallery = typeof source === 'string' ? [{ url: source }] : source.items || [];
+  const [galleryIndex, setGalleryIndex] = useState(
+    typeof source === 'string' ? 0 : source.index || 0
+  );
+  const galleryCount = gallery.length;
+  const url = gallery[galleryIndex]?.url;
+
   const [zoom, setZoom] = useState(1);
   const [offset, setOffset] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
+  const [isPinching, setIsPinching] = useState(false);
   const dragRef = useRef(null);
+  // Active touch/pointer positions, keyed by pointerId, for pinch handling.
+  const pointersRef = useRef(new Map());
+  const pinchRef = useRef(null);
 
   const reset = useCallback(() => {
     setZoom(1);
     setOffset({ x: 0, y: 0 });
+  }, []);
+
+  // Move between gallery images, resetting zoom/pan for the new one.
+  const goTo = useCallback(
+    (next) => {
+      if (galleryCount < 2) return;
+      setGalleryIndex((i) => (i + next + galleryCount) % galleryCount);
+      setZoom(1);
+      setOffset({ x: 0, y: 0 });
+    },
+    [galleryCount]
+  );
+
+  const setZoomTo = useCallback((value) => {
+    setZoom(() => {
+      const next = clamp(value, ZOOM_MIN, ZOOM_MAX);
+      if (next === 1) setOffset({ x: 0, y: 0 });
+      return next;
+    });
   }, []);
 
   const zoomBy = useCallback((delta) => {
@@ -123,11 +243,14 @@ const Lightbox = ({ url, onClose }) => {
           break;
         case 'ArrowLeft':
           event.preventDefault();
-          setOffset((o) => ({ ...o, x: o.x + 40 }));
+          // When zoomed in, arrows pan; otherwise they browse the gallery.
+          if (zoom > 1) setOffset((o) => ({ ...o, x: o.x + 40 }));
+          else goTo(-1);
           break;
         case 'ArrowRight':
           event.preventDefault();
-          setOffset((o) => ({ ...o, x: o.x - 40 }));
+          if (zoom > 1) setOffset((o) => ({ ...o, x: o.x - 40 }));
+          else goTo(1);
           break;
         default:
           break;
@@ -135,29 +258,63 @@ const Lightbox = ({ url, onClose }) => {
     };
     window.addEventListener('keydown', handleKeyDown, true);
     return () => window.removeEventListener('keydown', handleKeyDown, true);
-  }, [onClose, reset, zoomBy]);
+  }, [onClose, reset, zoomBy, goTo, zoom]);
 
   const handleWheel = (event) => {
     event.preventDefault();
     zoomBy(event.deltaY < 0 ? ZOOM_STEP : -ZOOM_STEP);
   };
 
+  const pinchDistance = () => {
+    const points = Array.from(pointersRef.current.values());
+    const dx = points[0].x - points[1].x;
+    const dy = points[0].y - points[1].y;
+    return Math.hypot(dx, dy);
+  };
+
   const handlePointerDown = (event) => {
-    if (zoom <= 1) return;
-    dragRef.current = { startX: event.clientX, startY: event.clientY, origin: offset };
-    setIsDragging(true);
+    pointersRef.current.set(event.pointerId, { x: event.clientX, y: event.clientY });
     event.currentTarget.setPointerCapture?.(event.pointerId);
+
+    if (pointersRef.current.size === 2) {
+      // Start of a pinch: remember the finger spread and the current zoom.
+      dragRef.current = null;
+      setIsDragging(false);
+      setIsPinching(true);
+      pinchRef.current = { startDistance: pinchDistance(), startZoom: zoom };
+    } else if (pointersRef.current.size === 1 && zoom > 1) {
+      dragRef.current = { startX: event.clientX, startY: event.clientY, origin: offset };
+      setIsDragging(true);
+    }
   };
 
   const handlePointerMove = (event) => {
-    if (!dragRef.current) return;
-    setOffset({
-      x: dragRef.current.origin.x + (event.clientX - dragRef.current.startX),
-      y: dragRef.current.origin.y + (event.clientY - dragRef.current.startY),
-    });
+    if (pointersRef.current.has(event.pointerId)) {
+      pointersRef.current.set(event.pointerId, { x: event.clientX, y: event.clientY });
+    }
+
+    // Two fingers down: pinch to zoom.
+    if (pointersRef.current.size === 2 && pinchRef.current) {
+      const scale = pinchDistance() / pinchRef.current.startDistance;
+      setZoomTo(pinchRef.current.startZoom * scale);
+      return;
+    }
+
+    // One finger down and zoomed in: pan.
+    if (dragRef.current) {
+      setOffset({
+        x: dragRef.current.origin.x + (event.clientX - dragRef.current.startX),
+        y: dragRef.current.origin.y + (event.clientY - dragRef.current.startY),
+      });
+    }
   };
 
-  const endDrag = () => {
+  const handlePointerUp = (event) => {
+    pointersRef.current.delete(event.pointerId);
+    if (pointersRef.current.size < 2) {
+      pinchRef.current = null;
+      setIsPinching(false);
+    }
     dragRef.current = null;
     setIsDragging(false);
   };
@@ -177,11 +334,24 @@ const Lightbox = ({ url, onClose }) => {
           +
         </button>
       </div>
+      {galleryCount > 1 && (
+        <button
+          type="button"
+          className="lightbox-arrow lightbox-arrow--prev"
+          onClick={(e) => {
+            e.stopPropagation();
+            goTo(-1);
+          }}
+          aria-label="Previous image"
+        >
+          <CaretLeft className="icon" aria-hidden="true" />
+        </button>
+      )}
       {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions */}
       <img
         src={url}
         alt=""
-        className="lightbox-img"
+        className={`lightbox-img ${isDragging || isPinching ? 'interacting' : ''}`}
         style={{
           transform: `translate(${offset.x}px, ${offset.y}px) scale(${zoom})`,
           cursor: zoom > 1 ? (isDragging ? 'grabbing' : 'grab') : 'default',
@@ -190,12 +360,63 @@ const Lightbox = ({ url, onClose }) => {
         onDoubleClick={() => (zoom > 1 ? reset() : zoomBy(1))}
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}
-        onPointerUp={endDrag}
-        onPointerCancel={endDrag}
+        onPointerUp={handlePointerUp}
+        onPointerCancel={handlePointerUp}
       />
+      {galleryCount > 1 && (
+        <button
+          type="button"
+          className="lightbox-arrow lightbox-arrow--next"
+          onClick={(e) => {
+            e.stopPropagation();
+            goTo(1);
+          }}
+          aria-label="Next image"
+        >
+          <CaretRight className="icon" aria-hidden="true" />
+        </button>
+      )}
     </div>
   );
 };
+
+// Renders a table on desktop. On mobile, if the block has a mobileImage, the
+// table is swapped for that image (a wide table is easier to read as a graphic
+// on small screens).
+const TableBlock = ({ block, onImageClick }) => (
+  <figure className="portfolio-table-wrap">
+    <table className="portfolio-table">
+      <thead>
+        <tr>
+          {block.columns.map((col, i) => (
+            <th key={i}>{col}</th>
+          ))}
+        </tr>
+      </thead>
+      <tbody>
+        {block.rows.map((row, i) => (
+          <tr key={i}>
+            {row.map((cell, j) => (
+              <td key={j}>{renderText(cell)}</td>
+            ))}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+    {block.mobileImage && (
+      // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions
+      <img
+        src={block.mobileImage}
+        alt={block.caption || ''}
+        className="portfolio-table-mobile-img"
+        loading="lazy"
+        decoding="async"
+        onClick={() => onImageClick?.(block.mobileImage)}
+      />
+    )}
+    {block.caption && <figcaption className="portfolio-image-caption">{block.caption}</figcaption>}
+  </figure>
+);
 
 const ContentBlock = ({ block, onImageClick }) => {
   switch (block.type) {
@@ -204,19 +425,25 @@ const ContentBlock = ({ block, onImageClick }) => {
     case 'subheading':
       return <h3 className="portfolio-content-subheading">{block.text}</h3>;
     case 'paragraph':
-      return <p>{block.text}</p>;
+      return <p>{renderText(block.text)}</p>;
+    case 'note':
+      return <p className="portfolio-content-note">{renderText(block.text)}</p>;
     case 'image':
       return <ImageBlock block={block} onImageClick={onImageClick} />;
+    case 'carousel':
+      return <CarouselBlock block={block} onImageClick={onImageClick} />;
     case 'label':
       return <p className="portfolio-content-label">{block.text}</p>;
     case 'list':
       return (
         <ul className="portfolio-content-list">
           {block.items.map((item, i) => (
-            <li key={i}>{item}</li>
+            <li key={i}>{renderText(item)}</li>
           ))}
         </ul>
       );
+    case 'table':
+      return <TableBlock block={block} onImageClick={onImageClick} />;
     case 'timeline':
       return (
         <div className="portfolio-timeline">
@@ -380,7 +607,7 @@ const PortfolioModal = ({ isStandalone }) => {
   return (
     <>
       {/* Lightbox */}
-      {lightboxUrl && <Lightbox url={lightboxUrl} onClose={() => setLightboxUrl(null)} />}
+      {lightboxUrl && <Lightbox source={lightboxUrl} onClose={() => setLightboxUrl(null)} />}
       {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
       <div
         className={`portfolio-modal-overlay open${isClosing ? ' closing' : ''}${isStandalone ? ' standalone' : ''}`}
@@ -453,6 +680,13 @@ const PortfolioModal = ({ isStandalone }) => {
           <div className="portfolio-modal-main">
             {/* Max-width 768px constraint container */}
             <div className="portfolio-modal-content">
+              {selectedProject.image && (
+                <img
+                  className="portfolio-modal-hero"
+                  src={selectedProject.image}
+                  alt={selectedProject.title}
+                />
+              )}
               <div className="portfolio-modal-header">
                 <h1 id="portfolio-modal-heading" className="portfolio-modal-title">
                   {selectedProject.title}

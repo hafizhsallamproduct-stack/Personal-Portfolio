@@ -91,12 +91,26 @@
 
 .hamburger-menu {
   display: none;
-  background: none;
-  border: none;
-  font-size: 24px;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: var(--bg-placeholder);
   color: var(--text-primary);
+  border: none;
   cursor: pointer;
-  padding: 4px;
+  padding: 0;
+  transition: background-color 0.2s;
+}
+
+.hamburger-menu .icon {
+  width: 20px;
+  height: 20px;
+}
+
+.hamburger-menu:hover {
+  background-color: var(--border-hover);
 }
 
 /* --- Bounce Animation --- */
