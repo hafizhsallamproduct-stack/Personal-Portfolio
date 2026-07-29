@@ -56,8 +56,10 @@ const About = () => {
         </p>
         <p className="about-text">
           Currently at Wego.com, I maintain the design system and contribute to key flows like
-          flight search and checkout. Lately, I've been exploring how to integrate AI into my
-          workflow to improve the design process and streamline day-to-day work.
+          flight search and checkout. It's a flat team, so as the most senior designer under our
+          Design Director I also guide three senior designers on craft and direction. Lately, I've
+          been exploring how to integrate AI into my workflow to improve the design process and
+          streamline day-to-day work.
         </p>
         <p className="about-cv">
           <a href="/Hafizh-Sallam-Resume.pdf" download className="about-cv-link">

@@ -52,10 +52,9 @@ export const experienceData = [
         details: [
           "Lead the end-to-end redesign of Wego's flight booking experience across desktop and mobile web, covering fare selection, passenger details, add-ons, payments, and booking details.",
           'Expand ancillary design with new partnership integrations.',
-          'Expand payment and loyalty experience design, introducing new flows for promo codes and partner loyalty point redemption.',
           'Improve design workflows and the product delivery process, from discovery and grooming to developer handoff and design QA.',
           'Maintain and evolve the Wego Design System (new components, mobile foundations, and Figma workflow structure) and drive AI adoption in the design team, from AI-assisted workflows to design-system compliance checks against production code.',
-          'Support the team beyond design work: screening candidates during hiring, and reviewing other designers work and progress to keep quality and direction consistent.',
+          'The most senior designer on a flat team reporting to the Design Director, guiding three senior designers on craft and direction, reviewing their design work to keep quality consistent, and screening candidates during hiring with a say in the final decision.',
         ],
       },
       {
