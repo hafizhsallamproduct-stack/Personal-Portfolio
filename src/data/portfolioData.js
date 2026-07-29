@@ -1109,67 +1109,79 @@ export const workData = [
     ],
   },
   {
-    title: 'Design Hub: A Home for the Design System Outside Figma',
+    title: 'Design Hub: Using Claude Design for Exploration',
     company: 'Wego',
     logo: '/assets/wego.svg',
     year: '2026 — Present',
     description:
-      'A side project that got out of hand in the best way: one place where the design system lives outside Figma, so designers, AI, and developers all pull from the same source.',
-    intro: 'A write-up on the Design Hub: what it is, why I made it, and how it works.',
+      'A lite design system built in HTML and CSS, so AI generated screens come out looking like our product instead of a generic mockup.',
+    intro:
+      'A side project that started before Claude Design existed: a lightweight design system in plain HTML and CSS, made so anyone generating UI with AI would get something close to the Wego Design System style.',
     link: '#',
     slug: 'design-hub',
-    hidden: true,
     content: [
       // TODO image: the Design Hub landing page. Export and add here.
-      { type: 'heading', text: 'The Gap' },
+      { type: 'heading', text: 'Background and Problem' },
       {
         type: 'paragraph',
-        text: 'A design system that lives only in Figma has one problem: you cannot ship it. A Figma file is a picture of the UI, not the real components, so a screen gets made twice, once in design and once in code, with a hand-off in between where the small stuff quietly goes missing.',
+        text: 'We already had an internal hub where anyone could share what they made with AI: presentations, reports, and design. Product managers and designers were both using it, and that was the problem. Every AI generated screen came out with a completely different look, so none of it matched the product or each other.',
       },
       {
         type: 'paragraph',
-        text: 'AI made this sharper. People across the company started generating designs, but the output often drifted far from our guidelines. The Design Hub is my approach to closing that gap, with one goal: reduce the distance between designers and developers, and speed up how we design and build.',
+        text: 'Designers treated that output as inspiration only. It was never something they could build on, so they still had to redo the whole thing in Figma. The generating part was fast, and everything after it was not.',
       },
       {
         type: 'paragraph',
-        text: 'This is as much an AI project as a design one. Much of the work is teaching the AI to build the way we would: training it to stay consistent and reach for our components, working with it as a collaborator to figure out how, and structuring the files and code so both people and the AI can read them easily.',
+        text: 'So I tried a different angle: if the AI generated UI already sat close to our design system, converting it into a real design would be much easier. We might even hand off the HTML version instead of the Figma file.',
       },
-      { type: 'heading', text: 'How It Grew' },
+      { type: 'heading', text: 'What I Built' },
       {
         type: 'paragraph',
-        text: 'It did not start as a big idea. It grew in three steps, each one solving the next problem in front of me.',
+        text: 'A lite design system in plain HTML and CSS. Plain on purpose, since a single set of files is easy to share across the company, and easy for Claude to read and reuse.',
+      },
+      { type: 'subheading', text: 'The Setup' },
+      {
+        type: 'paragraph',
+        text: 'The process is simple, just a lot of small steps:',
       },
       {
         type: 'list',
         items: [
-          'A simple HTML and CSS repo that generated UI matching our design system, so AI-made screens stopped drifting from our guidelines.',
-          'When Claude introduced Claude Design, I turned the repo into a proper design system for Claude to build from, so the output was on brand by default.',
-          'Now, the focus is closing the gap all the way to production-ready front-end UI. That meant moving from plain HTML and CSS to React, to match how our product is actually built, so what comes out is close to shippable code, not just a mockup.',
+          'Create a GitHub account to store the project.',
+          'Install a text editor that connects to an AI tool. I used Claude.',
+          'Create a repository for the HTML and CSS project.',
+          'Connect the Figma MCP to Claude, so it can read the design files directly.',
+          'Import the design foundations into code: colors, type, spacing, and the rest.',
+          'Build the primitive components on top of those foundations: buttons, badges, inputs.',
+          'Write skills around the common tasks, to keep the output consistent and quick.',
         ],
       },
+      {
+        type: 'paragraph',
+        text: 'To hold it together, I also built a few page templates as a base. The AI starts a task by picking a template, so every screen begins from the same structure instead of an empty canvas.',
+      },
       // TODO image: the Design Hub in use (Claude Design + the components). Export and add here.
-      { type: 'heading', text: 'What It Does' },
+      { type: 'heading', text: 'Then Claude Design Launched' },
       {
         type: 'paragraph',
-        text: 'You tell Claude what screen you want, and it builds it from our actual components, so it lands on brand instead of looking like a generic AI mockup. A blank canvas becomes a real first draft in seconds. It still needs a designer’s eye, but it skips the boring part.',
+        text: 'Claude Design launched when the project was nearly done. It solved sharing straight away, and soon after it added support for your own design system. Since the lite system was already built, importing it took little work: connect the repository, bring it in, adjust a few things.',
       },
       {
         type: 'paragraph',
-        text: 'The same components are available as real code, so developers can pull the whole system, tokens, components, and assets, into their project with one command. And because the prototypes are built from the components that ship, what a developer clicks through is the real thing, not a flat picture of it.',
+        text: 'It still does not support the Figma MCP, so design files cannot feed it directly. That mattered less than it would have, because the foundations had already been imported into code once and could be reused.',
       },
-      { type: 'heading', text: 'How It Is Built' },
       {
         type: 'paragraph',
-        text: 'Nothing fancy, on purpose: a static site on GitHub Pages, right next to the code it serves. It also doubles as a map of what the design team is working on, sorted by area, flight booking, dashboard, email, and side explorations, each linking to its Figma file and prototype with its status, so anyone can find the latest version of a screen without asking around.',
+        text: 'The result is two versions of the same system: one through Claude Code, pointed at the repository, and one inside Claude Design. Whichever fits how people at Wego work.',
       },
       { type: 'heading', text: 'Where It Is Now' },
       {
         type: 'paragraph',
-        text: 'It is live and in real use: designers start screens with Claude, developers pull the system and hand off from live components, and everyone stops guessing which file is current.',
+        text: 'It is in use, and the next step is moving from plain HTML and CSS to React, to match how the product is actually built. The closer the output is to real front-end code, the less there is to redo after the generating part is done.',
       },
       {
         type: 'note',
-        text: 'More than a tool, it is an example of using AI to improve how we work, not to replace the craft, but to remove the repetitive parts so designers and developers can move faster on what actually matters.',
+        text: 'The point was never to replace the design work. It was to remove the part where a promising AI screen gets thrown away because it looks nothing like the product.',
       },
     ],
   },
@@ -1582,7 +1594,6 @@ export const workData = [
 // Case studies being written up. These only appear as labels in the portfolio
 // sidebar, so people can see what is coming without a page to open yet.
 export const wipData = [
-  { title: 'Design Hub: Using Claude Design for Exploration', company: 'Wego' },
   { title: 'Flight Checkout Flow: Designing Away the Doubt', company: 'Wego' },
   { title: 'Banking on Trust: Designing for Security and Clarity', company: 'RHB' },
   { title: 'AirAsia: From Airline Website to Super App', company: 'AirAsia' },

@@ -137,15 +137,28 @@
   flex-direction: column;
 }
 
+/* A toggle, so the list can stay out of the way until asked for. */
 .portfolio-modal-sidebar-wip-title {
-  padding: 10px 16px;
-  background-color: var(--bg-placeholder);
+  width: 100%;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background-color: transparent;
+  border: none;
   border-bottom: var(--line-width) solid var(--card-border);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font-family: inherit;
+  font-size: 14px;
   color: var(--text-secondary);
+  text-align: left;
+  cursor: pointer;
+}
+
+.portfolio-modal-sidebar-wip-title .icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
 }
 
 /* The thumbnail frame carries a WIP label instead of an image, so the row
@@ -169,6 +182,35 @@
   gap: 16px;
   font-size: 14px;
   color: var(--text-secondary);
+}
+
+/* Outbound link to the older work, kept visually quieter than the case
+   studies since it leaves the site. */
+.portfolio-modal-sidebar-external {
+  padding: 16px;
+  border-bottom: var(--line-width) solid var(--card-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  text-decoration: none;
+}
+
+.portfolio-modal-sidebar-external .icon {
+  width: 16px;
+  height: 16px;
+  /* Never squeezed by the label, which is long enough to fill a narrow
+     sidebar; the text wraps instead. */
+  flex-shrink: 0;
+}
+
+@media (hover: hover) {
+  .portfolio-modal-sidebar-external:hover {
+    background-color: var(--bg-card-hover);
+    color: var(--text-primary);
+  }
 }
 
 .portfolio-modal-sidebar-footer {

@@ -83,6 +83,13 @@ export const ArrowRight = (props) => (
   />
 );
 
+export const ArrowSquareOut = (props) => (
+  <Icon
+    {...props}
+    path="M216,104a8,8,0,0,1-16,0V59.32l-66.33,66.34a8,8,0,0,1-11.32-11.32L188.68,48H144a8,8,0,0,1,0-16h64a8,8,0,0,1,8,8Zm-24,24a8,8,0,0,0-8,8v56H56V72h56a8,8,0,0,0,0-16H56A16,16,0,0,0,40,72V192a16,16,0,0,0,16,16H184a16,16,0,0,0,16-16V136A8,8,0,0,0,192,128Z"
+  />
+);
+
 export const Briefcase = (props) => (
   <Icon
     {...props}

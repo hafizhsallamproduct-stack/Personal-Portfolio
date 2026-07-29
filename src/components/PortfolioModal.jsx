@@ -1,7 +1,17 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useParams, useNavigate, Link, useLocation } from 'react-router-dom';
 import { workData, wipData } from '../data/portfolioData';
-import { X, HafizhLogo, Sun, Moon, CaretLeft, CaretRight } from './icons';
+import {
+  X,
+  HafizhLogo,
+  Sun,
+  Moon,
+  CaretLeft,
+  CaretRight,
+  CaretUp,
+  CaretDown,
+  ArrowSquareOut,
+} from './icons';
 
 const FOCUSABLE_SELECTOR =
   'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
@@ -480,6 +490,9 @@ const PortfolioModal = ({ isStandalone }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const [sidebarWidth, setSidebarWidth] = useState(400);
+  // Collapsed by default: these have no page to open, so they should not
+  // compete with the published studies above them.
+  const [isWipExpanded, setIsWipExpanded] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
   const [lightboxUrl, setLightboxUrl] = useState(null);
   const lightboxUrlRef = useRef(null);
@@ -663,22 +676,44 @@ const PortfolioModal = ({ isStandalone }) => {
             </div>
             {wipData.length > 0 && (
               <div className="portfolio-modal-sidebar-wip">
-                <h3 className="portfolio-modal-sidebar-wip-title">PORTFOLIO IN PROGRESS</h3>
-                {wipData.map((item) => (
-                  // Not a link: these are being written up, so there is no page
-                  // to open yet.
-                  <div key={item.title} className="portfolio-modal-wip-item">
-                    <div className="portfolio-modal-nav-thumb portfolio-modal-wip-thumb">WIP</div>
-                    <span className="portfolio-modal-nav-text">
-                      {item.title}
-                      {item.company && (
-                        <span className="portfolio-modal-nav-company">{item.company}</span>
-                      )}
-                    </span>
-                  </div>
-                ))}
+                <button
+                  type="button"
+                  className="portfolio-modal-sidebar-wip-title"
+                  onClick={() => setIsWipExpanded(!isWipExpanded)}
+                  aria-expanded={isWipExpanded}
+                >
+                  Portfolio in progress
+                  {isWipExpanded ? (
+                    <CaretUp className="icon" aria-hidden="true" />
+                  ) : (
+                    <CaretDown className="icon" aria-hidden="true" />
+                  )}
+                </button>
+                {isWipExpanded &&
+                  wipData.map((item) => (
+                    // Not a link: these are being written up, so there is no
+                    // page to open yet.
+                    <div key={item.title} className="portfolio-modal-wip-item">
+                      <div className="portfolio-modal-nav-thumb portfolio-modal-wip-thumb">WIP</div>
+                      <span className="portfolio-modal-nav-text">
+                        {item.title}
+                        {item.company && (
+                          <span className="portfolio-modal-nav-company">{item.company}</span>
+                        )}
+                      </span>
+                    </div>
+                  ))}
               </div>
             )}
+            <a
+              href="https://www.behance.net/hafizhsallam"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="portfolio-modal-sidebar-external"
+            >
+              Check my old portfolio (before Wego)
+              <ArrowSquareOut className="icon" aria-hidden="true" />
+            </a>
           </div>
 
           {/* Resizer Handle — drag-to-resize is inherently mouse-only */}
