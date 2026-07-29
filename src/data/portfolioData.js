@@ -20,6 +20,10 @@ export const experienceData = [
         label: 'Fare Selection: Making the Upgrade Decision Clear',
       },
       {
+        slug: 'design-hub',
+        label: 'Design Hub: Using Claude Design for Exploration',
+      },
+      {
         slug: 'flight-booking-revamp',
         label: 'Flight Checkout Flow: Designing Away the Doubt',
         hidden: true,
@@ -1113,10 +1117,11 @@ export const workData = [
     company: 'Wego',
     logo: '/assets/wego.svg',
     year: '2026 — Present',
+    image: '/assets/portfolio/portfolio-4.webp',
     description:
       'A lite design system built in HTML and CSS, so AI generated screens come out looking like our product instead of a generic mockup.',
     intro:
-      'A side project that started before Claude Design existed: a lightweight design system in plain HTML and CSS, made so anyone generating UI with AI would get something close to the Wego Design System style.',
+      'A side project I started before Claude Design existed: a lightweight design system in plain HTML and CSS, built so anyone generating UI with AI would get something close to the Wego Design System style.',
     link: '#',
     slug: 'design-hub',
     content: [
@@ -1124,64 +1129,157 @@ export const workData = [
       { type: 'heading', text: 'Background and Problem' },
       {
         type: 'paragraph',
-        text: 'We already had an internal hub where anyone could share what they made with AI: presentations, reports, and design. Product managers and designers were both using it, and that was the problem. Every AI generated screen came out with a completely different look, so none of it matched the product or each other.',
+        text: 'We had an internal hub where anyone could share what they made with AI, and product managers and designers were both using it. Every generated screen came out looking different, so designers treated the output as inspiration only and still redid the whole thing in Figma. The generating part was fast, everything after it was not.',
       },
       {
         type: 'paragraph',
-        text: 'Designers treated that output as inspiration only. It was never something they could build on, so they still had to redo the whole thing in Figma. The generating part was fast, and everything after it was not.',
-      },
-      {
-        type: 'paragraph',
-        text: 'So I tried a different angle: if the AI generated UI already sat close to our design system, converting it into a real design would be much easier. We might even hand off the HTML version instead of the Figma file.',
+        text: 'So I tried a different angle: if the generated UI already sat close to our design system, converting it would be much easier, and we might even hand off the HTML instead of the Figma file.',
       },
       { type: 'heading', text: 'What I Built' },
       {
         type: 'paragraph',
-        text: 'A lite design system in plain HTML and CSS. Plain on purpose, since a single set of files is easy to share across the company, and easy for Claude to read and reuse.',
+        text: 'I built a lite design system in plain HTML and CSS. I kept it plain on purpose, since a single set of files is easy to share across the company, and easy for Claude to read and reuse.',
       },
       { type: 'subheading', text: 'The Setup' },
       {
         type: 'paragraph',
-        text: 'The process is simple, just a lot of small steps:',
+        text: 'Each step was simple. There were just a lot of them:',
       },
       {
         type: 'list',
         items: [
-          'Create a GitHub account to store the project.',
-          'Install a text editor that connects to an AI tool. I used Claude.',
-          'Create a repository for the HTML and CSS project.',
-          'Connect the Figma MCP to Claude, so it can read the design files directly.',
-          'Import the design foundations into code: colors, type, spacing, and the rest.',
-          'Build the primitive components on top of those foundations: buttons, badges, inputs.',
-          'Write skills around the common tasks, to keep the output consistent and quick.',
+          'Set up a GitHub account to hold the project.',
+          'Installed a text editor that connects to an AI tool. I used Claude.',
+          'Created a repository for the HTML and CSS.',
+          'Connected the Figma MCP to Claude, so it could read our design files directly.',
+          'Imported the design foundations into code: colors, type, spacing, and the rest.',
+          'Built the primitive components on top of those foundations: buttons, badges, inputs.',
+          'Wrote skills around the common tasks, to keep the output consistent and quick.',
+        ],
+      },
+      { type: 'subheading', text: 'The Skills' },
+      {
+        type: 'paragraph',
+        text: 'The last of those steps did the most work. Rather than re-explaining our rules in every prompt, I wrote them down once as nine skills: four that generate a screen, three that maintain the system, and two that check the result. The handoffs matter more than the list. Each skill does one job and knows which one comes next, so the rules stay in one place as the system grows.',
+      },
+      {
+        type: 'image',
+        url: '/assets/portfolio/portfolio-designhub-skills.webp',
+        alt: 'The nine skills in three groups, with arrows showing which skill hands off to which',
+        caption:
+          'The nine skills and how they connect. Add and update both hand off to the audit, a foundation token change lands before the component change that needs it, and the page review checks whatever the generators produced.',
+      },
+      { type: 'heading', text: 'Then Claude Design Launched' },
+      {
+        type: 'paragraph',
+        text: 'Claude Design launched when I was nearly done. It solved sharing straight away, and soon after it added support for bringing in your own design system. Because I already had the lite system built, importing it took me little work: I connected the repository, brought it in, and adjusted a few things.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Claude Design still does not support the Figma MCP, so design files cannot feed it directly. That mattered less than it might have, because I had already imported the foundations into code once and could reuse them.',
+      },
+      {
+        type: 'paragraph',
+        text: 'So I ended up with two versions of the same system: one I run through Claude Code, pointed at the repository, and one inside Claude Design. Whichever fits how people at Wego work.',
+      },
+      {
+        type: 'carousel',
+        items: [
+          {
+            url: '/assets/portfolio/portfolio-claudedesign-1.webp',
+            alt: 'The Claude Design start screen with Wego Design System Lite selected as the design system',
+            caption:
+              'Starting a design in Claude Design. The Wego Design System Lite is selected as the design system, so anything generated from here follows our foundations by default.',
+          },
+          {
+            url: '/assets/portfolio/portfolio-claudedesign-2.webp',
+            alt: 'The imported design system, showing foundations, primitives, and composites alongside the repository structure',
+            caption:
+              'The system once imported, grouped into foundations, primitives, and composites. The readme carries the repository structure, so both a designer and Claude can see where each token and component lives.',
+          },
         ],
       },
       {
         type: 'paragraph',
-        text: 'To hold it together, I also built a few page templates as a base. The AI starts a task by picking a template, so every screen begins from the same structure instead of an empty canvas.',
-      },
-      // TODO image: the Design Hub in use (Claude Design + the components). Export and add here.
-      { type: 'heading', text: 'Then Claude Design Launched' },
-      {
-        type: 'paragraph',
-        text: 'Claude Design launched when the project was nearly done. It solved sharing straight away, and soon after it added support for your own design system. Since the lite system was already built, importing it took little work: connect the repository, bring it in, adjust a few things.',
+        text: 'The templates carry most of the consistency. Instead of starting from an empty canvas, you pick the one that matches what you are designing, and the page arrives with our header, footer, and layout already in place.',
       },
       {
-        type: 'paragraph',
-        text: 'It still does not support the Figma MCP, so design files cannot feed it directly. That mattered less than it would have, because the foundations had already been imported into code once and could be reused.',
+        type: 'image',
+        url: '/assets/portfolio/portfolio-claudedesign-3.webp',
+        alt: 'Three starting templates: Wego Meta, Wego Booking, and Booking Fare Selection',
+        caption:
+          'The templates you can start from: Wego Meta, Wego Booking, and Fare Selection. Each one already has the shell and structure of that page, so the work starts from something on brand instead of a blank screen.',
       },
       {
         type: 'paragraph',
-        text: 'The result is two versions of the same system: one through Claude Code, pointed at the repository, and one inside Claude Design. Whichever fits how people at Wego work.',
+        text: 'What comes out is a real page, not a picture of one. These were all generated from a prompt, and all of these screens are for exploration:',
+      },
+      {
+        type: 'carousel',
+        items: [
+          {
+            url: '/assets/portfolio/portfolio-claudedesign-4.webp',
+            alt: 'A generated money transfer comparison landing page in the Wego style',
+          },
+          {
+            url: '/assets/portfolio/portfolio-claudedesign-5.webp',
+            alt: 'The same page scrolled to a provider comparison table with rates, fees, and delivery speed',
+          },
+          {
+            url: '/assets/portfolio/portfolio-claudedesign-6.webp',
+            alt: 'A generated travel guide page in dark mode, for coffee spots in Dubai',
+          },
+          {
+            url: '/assets/portfolio/portfolio-claudedesign-7.webp',
+            alt: 'A generated restaurant orders dashboard with live order queues and stats',
+          },
+        ],
       },
       { type: 'heading', text: 'Where It Is Now' },
       {
         type: 'paragraph',
-        text: 'It is in use, and the next step is moving from plain HTML and CSS to React, to match how the product is actually built. The closer the output is to real front-end code, the less there is to redo after the generating part is done.',
+        text: 'Both versions, Claude Design and HTML, are reached from one place: the Design Hub. It is a page listing every design area with its Figma file, its exploration, and its status, so anyone can find the current version of a screen without asking. The page itself is built with the same design system, which is the simplest proof that the thing works.',
+      },
+      {
+        type: 'paragraph',
+        text: 'It also carries the documentation: how to install either version and how to use it. Each component page shows the component in its states and sizes, with an example prompt beside it, so a designer can see the phrasing that produces the right result instead of guessing at it.',
+      },
+      {
+        type: 'carousel',
+        items: [
+          {
+            url: '/assets/portfolio/portfolio-designhub-1.webp',
+            alt: 'The Design Hub landing page, showing the three ways to work and the design work table',
+            caption:
+              'The Design Hub landing page. Three ways to work: generate in Claude Design, explore in HTML, or hand off a live prototype. Below that, every page of design work with its platform, Figma file, exploration, and status.',
+          },
+          {
+            url: '/assets/portfolio/portfolio-designhub-2.webp',
+            alt: 'The colour foundation documented with every token in light and dark mode',
+            caption:
+              'The foundations, documented from the same source the components read. Every colour token is shown in light and dark with its hex value, so nobody has to open the CSS to check one.',
+          },
+          {
+            url: '/assets/portfolio/portfolio-designhub-3.webp',
+            alt: 'The Card News component documentation with example prompts above each layout',
+            caption:
+              'A component page. Each layout has an example prompt above it, so a designer can copy the phrasing that produces this result rather than working out how to ask.',
+          },
+          {
+            url: '/assets/portfolio/portfolio-designhub-4.webp',
+            alt: 'The phone number input documented with its sizes, states, and a live interactive example',
+            caption:
+              'The same for a smaller component, down to every state: valid, auto-filled, disabled, keyboard focus, and error. The top example is live, not a picture, so the behaviour can be checked in the browser.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        text: 'The next step is hand-off ready files. Right now the output is close to production, and I want it closer, so what a developer receives is the real thing rather than something to rebuild.',
       },
       {
         type: 'note',
-        text: 'The point was never to replace the design work. It was to remove the part where a promising AI screen gets thrown away because it looks nothing like the product.',
+        text: 'I never set out to replace the design work. I wanted to remove the part where a promising AI screen gets thrown away because it looks nothing like the product.',
       },
     ],
   },
