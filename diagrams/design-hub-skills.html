@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Design System Lite — Skills Map</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      body {
+        width: 1480px;
+        height: 620px;
+        background: #f4f4f5;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        color: #1a1a1a;
+        padding: 44px 56px 0;
+      }
+
+      h1 {
+        font-size: 25px;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+      }
+      .sub {
+        margin-top: 7px;
+        font-size: 14.5px;
+        color: #545454;
+      }
+
+      /* ---- Grid: 3 columns with fixed gutters so SVG maths is exact ---- */
+      .stage {
+        position: relative;
+        margin-top: 34px;
+        width: 1368px;
+        height: 400px;
+      }
+      svg.wires {
+        position: absolute;
+        inset: 0;
+        width: 1368px;
+        height: 400px;
+        overflow: visible;
+      }
+      .col {
+        position: absolute;
+        top: 0;
+        width: 404px;
+      }
+      .c1 {
+        left: 0;
+      }
+      .c2 {
+        left: 482px;
+      }
+      .c3 {
+        left: 964px;
+      }
+
+      .col-head {
+        display: flex;
+        align-items: baseline;
+        gap: 8px;
+      }
+      .col-num {
+        font-size: 11px;
+        font-weight: 700;
+        color: #9a9a9d;
+        letter-spacing: 0.12em;
+      }
+      .col-title {
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.11em;
+      }
+      .col-note {
+        margin-top: 7px;
+        font-size: 13px;
+        color: #545454;
+        line-height: 1.45;
+        height: 36px;
+      }
+
+      .card {
+        background: #fff;
+        border: 1px solid #e4e4e6;
+        border-radius: 8px;
+        padding: 12px 15px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+      }
+      .card-name {
+        font-size: 14.5px;
+        font-weight: 600;
+        line-height: 1.3;
+      }
+      .card-desc {
+        margin-top: 4px;
+        font-size: 12.5px;
+        color: #545454;
+        line-height: 1.45;
+      }
+      .card--gen {
+        border-left: 3px solid #b8b8bb;
+      }
+      .card--maint {
+        border-left: 3px solid #d98055;
+      }
+      .card--check {
+        border-left: 3px solid #6d9e79;
+      }
+      .card--audit {
+        background: #fdf8f4;
+        border-color: #e6cfba;
+      }
+      .badge {
+        display: inline-block;
+        margin-top: 7px;
+        padding: 2px 7px;
+        border-radius: 3px;
+        background: #efeff0;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        color: #6a6a6d;
+        text-transform: uppercase;
+      }
+
+      /* Absolute card placement, so every arrow endpoint is known */
+      .card {
+        position: absolute;
+        width: 404px;
+      }
+      .r1 {
+        top: 74px;
+      }
+      .r2 {
+        top: 158px;
+      }
+      .r3 {
+        top: 242px;
+      }
+      .r4 {
+        top: 326px;
+      }
+      .g1 {
+        top: 74px;
+      }
+      .g2 {
+        top: 146px;
+      }
+      .g3 {
+        top: 218px;
+      }
+      .g4 {
+        top: 290px;
+      }
+
+      .wire-label {
+        position: absolute;
+        font-size: 11.5px;
+        font-weight: 600;
+        color: #b0673f;
+        background: #f4f4f5;
+        padding: 0 6px;
+        letter-spacing: 0.01em;
+      }
+      .wire-label--grey {
+        color: #6a6a6d;
+      }
+
+      .legend {
+        position: absolute;
+        left: 56px;
+        right: 56px;
+        bottom: 26px;
+        display: flex;
+        gap: 26px;
+        align-items: center;
+        font-size: 12.5px;
+        color: #545454;
+        border-top: 1px solid #e0e0e2;
+        padding-top: 13px;
+      }
+      .legend b {
+        color: #1a1a1a;
+        font-weight: 600;
+      }
+      .key {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+      }
+      .swatch {
+        width: 24px;
+        height: 0;
+        border-top: 2px solid #c8734a;
+      }
+      .swatch--dash {
+        border-top: 2px dashed #8a8a8d;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Design System Lite — the nine skills</h1>
+    <p class="sub">
+      Each skill has one job and knows which one comes next. The building skills hand off to the
+      checks instead of carrying their own copy of them.
+    </p>
+
+    <div class="stage">
+      <svg class="wires" viewBox="0 0 1368 400">
+        <defs>
+          <marker
+            id="ar"
+            viewBox="0 0 10 10"
+            refX="8"
+            refY="5"
+            markerWidth="6.5"
+            markerHeight="6.5"
+            orient="auto-start-reverse"
+          >
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#c8734a" />
+          </marker>
+          <marker
+            id="arg"
+            viewBox="0 0 10 10"
+            refX="8"
+            refY="5"
+            markerWidth="6.5"
+            markerHeight="6.5"
+            orient="auto-start-reverse"
+          >
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#8a8a8d" />
+          </marker>
+        </defs>
+        <!-- ORANGE: the only true handoffs. Add and Update both end at the Audit. -->
+        <path d="M 886 112 H 926 V 112 H 956" fill="none" stroke="#c8734a" stroke-width="2" marker-end="url(#ar)" />
+        <path d="M 886 184 H 926 V 128 H 956" fill="none" stroke="#c8734a" stroke-width="2" marker-end="url(#ar)" />
+
+        <!-- GREY DASHED: a foundation token change lands before either component change.
+             Routed in column 2's own left margin (cards begin at x=482). -->
+        <path d="M 482 258 H 466 V 112 H 476" fill="none" stroke="#8a8a8d" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#arg)" />
+        <path d="M 466 184 H 476" fill="none" stroke="#8a8a8d" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#arg)" />
+      </svg>
+
+      <!-- Column 1 -->
+      <div class="col c1">
+        <div class="col-head">
+          <span class="col-num">01</span><span class="col-title">Generate a screen</span>
+        </div>
+        <p class="col-note">Four skills, one per output type. Each writes to its own folder.</p>
+      </div>
+      <div class="card card--gen c1 r1" style="left: 0">
+        <div class="card-name">Desktop page</div>
+        <div class="card-desc">exploration-desktop/</div>
+      </div>
+      <div class="card card--gen r2" style="left: 0">
+        <div class="card-name">Mobile screen</div>
+        <div class="card-desc">393px · exploration-mobile/</div>
+      </div>
+      <div class="card card--gen r3" style="left: 0">
+        <div class="card-name">Email template</div>
+        <div class="card-desc">exploration-email/</div>
+      </div>
+      <div class="card card--gen r4" style="left: 0">
+        <div class="card-name">Dashboard</div>
+        <div class="card-desc">exploration-dashboard/</div>
+      </div>
+
+      <!-- Column 2 -->
+      <div class="col c2">
+        <div class="col-head">
+          <span class="col-num">02</span><span class="col-title">Maintain the system</span>
+        </div>
+        <p class="col-note">Three skills that change the system itself, not one screen.</p>
+      </div>
+      <div class="card card--maint g1" style="left: 482px">
+        <div class="card-name">Add a component</div>
+        <div class="card-desc">Lands it across all seven layers it has to exist in.</div>
+      </div>
+      <div class="card card--maint g2" style="left: 482px">
+        <div class="card-name">Update a component</div>
+        <div class="card-desc">Rename, split, or retire. Keeps every consumer in sync.</div>
+      </div>
+      <div class="card card--maint g3" style="left: 482px">
+        <div class="card-name">Change a foundation token</div>
+        <div class="card-desc">
+          Highest blast radius: every component and page reads these values.
+        </div>
+        <span class="badge">Token first</span>
+      </div>
+
+      <!-- Column 3 -->
+      <div class="col c3">
+        <div class="col-head">
+          <span class="col-num">03</span><span class="col-title">Check the result</span>
+        </div>
+        <p class="col-note">Two skills. The audit is where the set converges; the review checks whatever the four generators produced.</p>
+      </div>
+      <div class="card card--check card--audit g1" style="left: 964px">
+        <div class="card-name">Audit a component</div>
+        <div class="card-desc">Safe to hand to Claude Design? Add and update both finish here.</div>
+        <span class="badge">Shared gate</span>
+      </div>
+      <div class="card card--check g4" style="left: 964px; top: 218px">
+        <div class="card-name">Review a page</div>
+        <div class="card-desc">
+          The inverse: did the generated page follow the rules? Token values only.
+        </div>
+      </div>
+
+      <span class="wire-label" style="left: 900px; top: 92px">hands off</span>
+    </div>
+
+    <div class="legend">
+      <span class="key"><span class="swatch"></span> <b>Hands off to</b></span>
+      <span class="key"><span class="swatch swatch--dash"></span> <b>Runs first</b></span>
+      <span>A foundation token change lands before the component change that needs it.</span>
+    </div>
+  </body>
+</html>
