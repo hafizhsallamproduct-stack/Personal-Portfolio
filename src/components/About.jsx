@@ -31,6 +31,9 @@ const About = () => {
           </p>
         </div>
         <div className="about-buttons">
+          <a href="#portfolio" className="btn-primary btn-primary-lg">
+            View portfolio <ArrowDown className="icon bounce" aria-hidden="true" />
+          </a>
           <a
             href="https://www.linkedin.com/in/hafizh-s-b7299420a/"
             target="_blank"
@@ -39,14 +42,9 @@ const About = () => {
           >
             Get in touch <LinkedinLogo className="icon" aria-hidden="true" />
           </a>
-          <a href="#portfolio" className="btn-primary btn-primary-lg">
-            View portfolio <ArrowDown className="icon bounce" aria-hidden="true" />
+          <a href="/Hafizh-Sallam-Resume.pdf" download className="btn-outline">
+            Download CV <DownloadSimple className="icon" aria-hidden="true" />
           </a>
-          <p className="about-cv about-cv--stacked">
-            <a href="/Hafizh-Sallam-Resume.pdf" download className="about-cv-link">
-              <DownloadSimple className="icon" aria-hidden="true" /> Download CV
-            </a>
-          </p>
         </div>
         <p className="about-text">
           A Senior Product Designer based in Kuala Lumpur, Malaysia with over 10 years of experience
@@ -55,16 +53,11 @@ const About = () => {
           needs.
         </p>
         <p className="about-text">
-          Currently at Wego.com, I maintain the design system and contribute to key flows like
-          flight search and checkout. It's a flat team, so as the most senior designer under our
-          Design Director I also guide three senior designers on craft and direction. Lately, I've
-          been exploring how to integrate AI into my workflow to improve the design process and
-          streamline day-to-day work.
-        </p>
-        <p className="about-cv">
-          <a href="/Hafizh-Sallam-Resume.pdf" download className="about-cv-link">
-            <DownloadSimple className="icon" aria-hidden="true" /> Download CV
-          </a>
+          Currently at Wego.com, I maintain the design system and work mostly on the end-to-end
+          booking checkout flow. It's a flat team, so as the most senior designer reporting to the
+          Product Design Director I also guide three senior designers on craft and direction.
+          Lately, I've been exploring how to integrate AI into my workflow to improve the design
+          process and streamline day-to-day work.
         </p>
         <div className="about-stats">
           <div className="stat">

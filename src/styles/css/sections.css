@@ -225,17 +225,6 @@ body::after {
   text-align: center;
 }
 
-/* The Download CV link is rendered twice: in its usual spot after the bio,
-   and inside the button group. Only one shows at a time, so on mobile it can
-   sit directly under View portfolio without reordering the desktop layout. */
-.about-cv--stacked {
-  display: none;
-}
-
-.about-buttons .about-cv--stacked a {
-  min-width: 0;
-}
-
 .about-photo {
   width: 154px;
   height: 154px;
@@ -250,24 +239,6 @@ body::after {
   line-height: 28px;
   color: var(--text-body);
   text-wrap: pretty;
-}
-
-.about-cv-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 16px;
-  font-weight: 500;
-  color: var(--text-primary);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  transition: color 0.2s;
-}
-
-@media (hover: hover) {
-  .about-cv-link:hover {
-    color: var(--btn-accent);
-  }
 }
 
 .about-stats {

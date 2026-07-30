@@ -54,7 +54,7 @@ export const experienceData = [
           'Expand ancillary design with new partnership integrations.',
           'Improve design workflows and the product delivery process, from discovery and grooming to developer handoff and design QA.',
           'Maintain and evolve the Wego Design System (new components, mobile foundations, and Figma workflow structure) and drive AI adoption in the design team, from AI-assisted workflows to design-system compliance checks against production code.',
-          'The most senior designer on a flat team reporting to the Design Director, guiding three senior designers on craft and direction, reviewing their design work to keep quality consistent, and screening candidates during hiring with a say in the final decision.',
+          'The most senior designer on a flat team reporting to the Product Design Director, guiding three senior designers on craft and direction, reviewing their design work to keep quality consistent, and screening candidates during hiring with a say in the final decision.',
         ],
       },
       {
@@ -220,10 +220,6 @@ export const workData = [
       {
         type: 'paragraph',
         text: 'In my day-to-day work, I review how teams apply the system, ensure components are used correctly and consistently, and introduce updates as the system evolves. This role also requires close collaboration with developers to make sure design decisions are implemented effectively and continue to support both design and engineering workflows.',
-      },
-      {
-        type: 'paragraph',
-        text: 'In my team, this is a side role I take on in addition to my main work as a designer for the flight shopping and booking vertical.',
       },
       { type: 'heading', text: 'Background and Problem' },
       {
@@ -1166,7 +1162,7 @@ export const workData = [
         url: '/assets/portfolio/portfolio-designhub-skills.webp',
         alt: 'The nine skills in three groups, with arrows showing which skill hands off to which',
         caption:
-          'The nine skills and how they connect. Add and update both hand off to the audit, a foundation token change lands before the component change that needs it, and the page review checks whatever the generators produced.',
+          'The nine skills and how they connect. A component lands as Draft when added, and only the audit can mark it Stable, so nothing certifies its own work. Tokens are checked first, since every component builds on them.',
       },
       { type: 'heading', text: 'Then Claude Design Launched' },
       {
@@ -1275,6 +1271,23 @@ export const workData = [
       {
         type: 'paragraph',
         text: 'The next step is hand-off ready files. Right now the output is close to production, and I want it closer, so what a developer receives is the real thing rather than something to rebuild.',
+      },
+      {
+        type: 'carousel',
+        items: [
+          {
+            url: '/assets/portfolio/portfolio-claudedesign-10.webp',
+            alt: 'The goal for live prototypes: clickable, always current, no tool barrier, and hand-off ready',
+            caption:
+              'What I am aiming for: one link that opens the real thing in a browser, so a reviewer walks the flow instead of reading a Figma frame. Design stays exploration, the prototype becomes the hand-off, and the same code ships.',
+          },
+          {
+            url: '/assets/portfolio/portfolio-claudedesign-8.webp',
+            alt: 'The live prototype plan, running on the production packages, alongside the repository skill files',
+            caption:
+              'How it gets there: the prototype runs on the same packages engineering ships, so what we design is what production renders. The remaining blocker is read access to those repositories.',
+          },
+        ],
       },
       {
         type: 'note',
