@@ -500,6 +500,7 @@ const PortfolioModal = ({ isStandalone }) => {
     lightboxUrlRef.current = lightboxUrl;
   }, [lightboxUrl]);
   const containerRef = useRef(null);
+  const mainRef = useRef(null);
   const closeButtonRef = useRef(null);
   const previouslyFocusedRef = useRef(null);
   const isClosingRef = useRef(false);
@@ -509,6 +510,14 @@ const PortfolioModal = ({ isStandalone }) => {
   // Hidden case studies are not reachable by direct URL: fall back to the first visible one.
   const selectedProject =
     matchedProject && !matchedProject.hidden ? matchedProject : visibleProjects[0];
+
+  // Switching case studies swaps the content but leaves the scroll position
+  // where it was, so a new study can open halfway down. Back to the top.
+  useEffect(() => {
+    // Assigning scrollTop rather than scrollTo, so it jumps without animating
+    // and without depending on support for behavior: 'instant'.
+    if (mainRef.current) mainRef.current.scrollTop = 0;
+  }, [selectedProject.slug]);
 
   useEffect(() => {
     const previousTitle = document.title;
@@ -735,7 +744,7 @@ const PortfolioModal = ({ isStandalone }) => {
           </button>
 
           {/* Main Text Content Right */}
-          <div className="portfolio-modal-main">
+          <div className="portfolio-modal-main" ref={mainRef}>
             {/* Max-width 768px constraint container */}
             <div className="portfolio-modal-content">
               {selectedProject.image && (

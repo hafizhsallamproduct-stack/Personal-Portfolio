@@ -92,9 +92,6 @@
     align-items: center;
     gap: 8px;
   }
-  .nav-link-cta-desktop {
-    display: none;
-  }
   .hamburger-menu {
     display: flex;
   }

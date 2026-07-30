@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
-import { HafizhLogo, LinkedinLogo, List, X } from './icons';
+import { HafizhLogo, List, X } from './icons';
 
 const SECTION_LINKS = [
   { href: '#about', label: 'About' },
@@ -141,15 +141,6 @@ const Navbar = () => {
 
           <div className={`nav-links ${isMobileMenuOpen ? 'nav-links--open' : ''}`}>
             <SectionLinks activeHash={activeHash} onLinkClick={closeMobileMenu} />
-            <a
-              href="https://www.linkedin.com/in/hafizh-s-b7299420a/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-outline nav-link-cta-desktop"
-              onClick={closeMobileMenu}
-            >
-              Get in touch <LinkedinLogo className="icon" aria-hidden="true" />
-            </a>
           </div>
         </nav>
       </header>
