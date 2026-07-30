@@ -140,21 +140,6 @@
     width: 300px;
     justify-content: center;
   }
-  /* Download CV moves under View portfolio, so the three actions read as one
-     group instead of the link sitting further down after the bio. */
-  .about-cv--stacked {
-    display: block;
-    margin-top: 4px;
-    text-align: center;
-  }
-  /* Icon after the label here, so it trails the text like the icons on the
-     buttons above it. */
-  .about-cv--stacked .about-cv-link .icon {
-    order: 1;
-  }
-  .about-cv:not(.about-cv--stacked) {
-    display: none;
-  }
   .divider {
     padding: 0 16px;
     margin: 0;
