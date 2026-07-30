@@ -43,7 +43,7 @@ const About = () => {
             Get in touch <LinkedinLogo className="icon" aria-hidden="true" />
           </a>
           <a href="/Hafizh-Sallam-Resume.pdf" download className="btn-outline">
-            Download CV <DownloadSimple className="icon" aria-hidden="true" />
+            Download Resume <DownloadSimple className="icon" aria-hidden="true" />
           </a>
         </div>
         <p className="about-text">
