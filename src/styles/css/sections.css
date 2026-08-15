@@ -169,11 +169,14 @@ body::after {
   gap: 32px;
 }
 
+/* Idle links sit back at --nav-link so the active one, which takes the accent,
+   is legible as the current section. Against ordinary text colour the two were
+   a few percent apart and only the sliding marker told them apart. */
 .nav-link {
   position: relative;
   font-size: 16px;
   font-weight: 400;
-  color: var(--text-primary);
+  color: var(--nav-link);
   line-height: 18px;
   transition: color 0.2s;
 }

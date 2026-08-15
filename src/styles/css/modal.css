@@ -74,7 +74,7 @@
 .portfolio-modal-sidebar {
   flex-shrink: 0;
   background-color: var(--bg-card);
-  border-right: var(--line-width) solid var(--card-border);
+  border-right: var(--line-width) solid var(--ring-line);
   display: flex;
   flex-direction: column;
   overflow-y: auto;
@@ -98,7 +98,7 @@
 
 .portfolio-modal-sidebar-header {
   padding: 24px 16px;
-  border-bottom: var(--line-width) solid var(--card-border);
+  border-bottom: var(--line-width) solid var(--ring-line);
   display: flex;
   align-items: center;
   gap: 16px;
@@ -149,7 +149,7 @@
   gap: 12px;
   background-color: transparent;
   border: none;
-  border-bottom: var(--line-width) solid var(--card-border);
+  border-bottom: var(--line-width) solid var(--ring-line);
   font-family: inherit;
   font-size: 14px;
   color: var(--text-secondary);
@@ -178,7 +178,7 @@
 /* Same card shape as the nav items above, minus the link behavior. */
 .portfolio-modal-wip-item {
   padding: 16px;
-  border-bottom: var(--line-width) solid var(--card-border);
+  border-bottom: var(--line-width) solid var(--ring-line);
   display: flex;
   align-items: center;
   gap: 16px;
@@ -190,7 +190,7 @@
    studies since it leaves the site. */
 .portfolio-modal-sidebar-external {
   padding: 16px;
-  border-bottom: var(--line-width) solid var(--card-border);
+  border-bottom: var(--line-width) solid var(--ring-line);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -218,14 +218,14 @@
 .portfolio-modal-sidebar-footer {
   margin-top: auto;
   padding: 16px;
-  border-top: var(--line-width) solid var(--card-border);
+  border-top: var(--line-width) solid var(--ring-line);
   display: flex;
   justify-content: flex-start;
 }
 
 .portfolio-modal-nav-item {
   padding: 16px;
-  border-bottom: var(--line-width) solid var(--card-border);
+  border-bottom: var(--line-width) solid var(--ring-line);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -260,7 +260,7 @@
   width: 80px;
   aspect-ratio: 16 / 10;
   background-color: var(--bg-placeholder);
-  border: var(--line-width) solid var(--card-border);
+  border: var(--line-width) solid var(--ring-line);
   border-radius: var(--radius-lg);
   box-sizing: border-box;
   flex-shrink: 0;

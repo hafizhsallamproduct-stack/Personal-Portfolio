@@ -51,7 +51,10 @@
   --border: #353535;
   --border-hover: #434343;
   --divider: #2e2e2e;
-  --text-primary: #f0f0f0;
+  /* Held a step below pure white so the accent has somewhere to sit above it.
+     At #f0f0f0 an accented element was 4% brighter than ordinary text, which
+     is not a difference anyone reads. Still 12.9:1 on the page. */
+  --text-primary: #e4e4e4;
   --text-secondary: #a0a0a0;
   --text-muted: #7a7a7a;
   --text-faint: #7a7a7a;
@@ -91,13 +94,12 @@
   --badge-bg: #1f1f1f;
   --badge-border: #353535;
   --bullet: #ffffff;
-  --card-border: #313131;
   --line-width: 1px;
   --grid-tile: rgba(255, 255, 255, 0.1);
   --tooltip-divider: rgba(255, 255, 255, 0.15);
   --nav-glass: rgba(18, 18, 18, 0.72);
   /* Canvas board behind the page */
-  --ring-line: rgba(255, 255, 255, 0.022);
+  --ring-line: rgba(255, 255, 255, 0.034);
   --card-lift-shadow: 0 12px 32px rgba(0, 0, 0, 0.55);
   /* Floating chip over artwork, where the page background cannot be relied on. */
   --chip-glass: rgba(20, 20, 20, 0.92);
@@ -118,7 +120,9 @@
   --border: #dadade;
   --border-hover: #d0d0d4;
   --divider: #e7e7ea;
-  --text-primary: #171717;
+  /* Same reasoning inverted: the light accent is #171717, so ordinary text
+     sits a step lighter to leave it room. */
+  --text-primary: #262626;
   --text-secondary: #565656;
   --text-muted: #7a7a7a;
   --text-faint: #7a7a7a;
@@ -154,7 +158,6 @@
   --badge-bg: #f0f0f0;
   --badge-border: #e7e7ea;
   --bullet: #171717;
-  --card-border: #e4e4e4;
   --grid-tile: rgba(0, 0, 0, 0.1);
   --tooltip-divider: rgba(255, 255, 255, 0.15);
   --nav-glass: rgba(245, 245, 245, 0.72);
