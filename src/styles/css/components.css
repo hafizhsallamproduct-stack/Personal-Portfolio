@@ -3,16 +3,17 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  border-radius: 4px;
+  border-radius: var(--radius-md);
   padding: 6px 12px;
   background-color: var(--btn-accent);
+  background-image: linear-gradient(180deg, var(--btn-accent-hi) 0%, var(--btn-accent-lo) 100%);
   border: 1.5px solid var(--btn-accent-border);
   font-size: 16px;
   font-weight: 500;
   color: var(--btn-accent-on);
   line-height: 16px;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: background-image 0.2s;
   font-family: inherit;
 }
 
@@ -20,12 +21,17 @@
    a tap; the :active rules below still give tap feedback. */
 @media (hover: hover) {
   .btn-primary:hover {
-    background-color: var(--btn-accent-hover);
+    background-image: linear-gradient(
+      180deg,
+      var(--btn-accent-hi-hover) 0%,
+      var(--btn-accent-lo-hover) 100%
+    );
   }
 }
 
+/* Pressed reverses the light: darker at the top, as if pushed in. */
 .btn-primary:active {
-  background-color: var(--btn-accent-hover);
+  background-image: linear-gradient(180deg, var(--btn-accent-lo) 0%, var(--btn-accent-hi) 100%);
   transform: translateY(1px);
 }
 
@@ -41,16 +47,20 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  border-radius: 4px;
+  border-radius: var(--radius-md);
   padding: 10px 20px;
   background-color: var(--btn-secondary-bg);
-  border: 1.5px solid var(--btn-secondary-border);
+  /* The outline carries the accent while the fill stays neutral, so it reads as
+     a companion to the primary button rather than a separate family. */
+  border: 1px solid var(--btn-accent);
   font-size: 16px;
   font-weight: 500;
   color: var(--text-primary);
   line-height: 18px;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition:
+    background-color 0.2s,
+    border-color 0.2s;
   font-family: inherit;
 }
 
@@ -64,28 +74,30 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  border-radius: 4px;
+  border-radius: var(--radius-md);
   padding: 10px 20px;
-  background-color: var(--bg-card);
-  border: 1.5px solid var(--btn-accent);
-  color: var(--btn-accent);
+  background-color: var(--btn-secondary-bg);
+  border: 1px solid var(--btn-accent);
+  color: var(--text-primary);
   font-size: 16px;
   font-weight: 500;
   line-height: 18px;
   cursor: pointer;
-  transition: all 0.2s;
+  transition:
+    background-color 0.2s,
+    border-color 0.2s;
   font-family: inherit;
 }
 
+/* The edge already carries the accent, so hover lifts the fill instead. */
 @media (hover: hover) {
   .btn-outline:hover {
-    background-color: var(--btn-accent-subtle);
-    color: var(--btn-accent);
+    background-color: var(--btn-secondary-hover);
   }
 }
 
 .btn-outline:active {
-  background-color: var(--btn-accent-border);
+  background-color: var(--btn-secondary-hover);
   transform: translateY(1px);
 }
 
@@ -150,7 +162,7 @@
 .divider-line {
   width: 100%;
   height: var(--line-width);
-  background-color: var(--card-border);
+  background-color: var(--ring-line);
 }
 
 .divider--spaced {
@@ -221,23 +233,26 @@
 .section-tag {
   display: flex;
   align-items: center;
-  gap: 6px;
-  font-size: 16px;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 12px;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--text-secondary);
-  font-weight: 400;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+  font-weight: 500;
   line-height: 16px;
 }
 
 .section-tag .icon {
-  width: 16px;
-  height: 16px;
+  width: 14px;
+  height: 14px;
+  color: var(--accent-text);
 }
 
 .section-title {
   font-family: var(--font-heading);
   font-size: 32px;
-  font-weight: 700;
-  line-height: 40px;
+  font-weight: 600;
+  line-height: 38px;
+  letter-spacing: -0.02em;
 }

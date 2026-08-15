@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "targets": {
+    "story:src/App.stories.json": [
+      {
+        "id": "frame-1",
+        "breakpoint": "desktop"
+      }
+    ]
+  }
+}

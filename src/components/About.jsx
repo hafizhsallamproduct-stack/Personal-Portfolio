@@ -53,11 +53,11 @@ const About = () => {
           needs.
         </p>
         <p className="about-text">
-          Currently at Wego.com, I maintain the design system and work mostly on the end-to-end
-          booking checkout flow. It's a flat team, so as the most senior designer reporting to the
-          Product Design Director I also guide three senior designers on craft and direction.
-          Lately, I've been exploring how to integrate AI into my workflow to improve the design
-          process and streamline day-to-day work.
+          Currently at Wego.com, I am the Design Lead for the design system and the Design Lead for
+          flight booking, which covers the end-to-end booking checkout flow. It's a flat team, so
+          reporting to the Product Design Director I also guide three senior designers on craft and
+          direction. Lately, I've been exploring how to integrate AI into my workflow to improve the
+          design process and streamline day-to-day work.
         </p>
         <div className="about-stats">
           <div className="stat">

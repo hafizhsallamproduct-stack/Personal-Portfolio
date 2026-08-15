@@ -28,12 +28,75 @@ main > [id] {
   scroll-margin-top: 80px;
 }
 
+/* The canvas board a Forge frame sits on: the ring set, then the guides.
+
+   The board is clipped to the 1200px container, so the margins either side stay
+   plain and the pattern belongs to the content rather than the window.
+
+   It lives on its own fixed layer rather than on the body with
+   background-attachment: fixed. Several fixed-attachment layers repaint on every
+   scroll frame, which iOS Safari in particular handles badly; one composited
+   element behind the page costs nothing to scroll over. */
+html::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 100%;
+  max-width: 1200px;
+  transform: translateX(-50%);
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    /* Three closed circles rather than a repeating gradient, which would run
+       past the frame and leave cut arcs at the edges. */
+    radial-gradient(
+      circle at 50% 42%,
+      transparent 0 calc(var(--ring-r1) - 1px),
+      var(--ring-line) calc(var(--ring-r1) - 1px) var(--ring-r1),
+      transparent var(--ring-r1) calc(var(--ring-r2) - 1px),
+      var(--ring-line) calc(var(--ring-r2) - 1px) var(--ring-r2),
+      transparent var(--ring-r2) calc(var(--ring-r3) - 1px),
+      var(--ring-line) calc(var(--ring-r3) - 1px) var(--ring-r3),
+      transparent var(--ring-r3)
+    ),
+    /* Same stroke as the rings above, so the whole board is drawn in one
+       weight rather than the straight guides reading heavier than the arcs. */
+    linear-gradient(to right, var(--ring-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--ring-line) 1px, transparent 1px);
+  background-size:
+    100% 100%,
+    var(--grid-step) var(--grid-step),
+    var(--grid-step) var(--grid-step);
+  /* The vertical guides start a quarter step in. Left at zero, the first one
+     lands exactly on the container boundary line and the two hairlines stack,
+     making the left edge read heavier than every other line on the page. */
+  background-position:
+    0 0,
+    120px 0,
+    0 0;
+}
+
 body {
   font-family: var(--font-body);
-  background-color: var(--bg-page);
+  /* Transparent, so the board above shows through. The page colour is carried
+     by html, which keeps overscroll areas the right colour too. */
+  background-color: transparent;
   color: var(--text-primary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  background-color: var(--bg-page);
+}
+
+/* Dark ink on the accent, matching the primary button: white on this orange
+   only reaches 3.15:1. */
+::selection {
+  background-color: var(--accent);
+  color: #121212;
 }
 
 a {
@@ -46,7 +109,7 @@ a {
 }
 
 *:focus-visible {
-  outline: 2px solid var(--text-primary);
+  outline: 2px solid var(--accent-bright);
   outline-offset: 2px;
 }
 

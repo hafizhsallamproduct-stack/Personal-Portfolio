@@ -1,4 +1,6 @@
-/* --- Container boundary lines --- */
+/* --- Container boundary lines ---
+   Part of the board rather than the content, so they carry the same stroke as
+   the rings and guides behind them. */
 body::before,
 body::after {
   content: '';
@@ -6,7 +8,7 @@ body::after {
   top: 0;
   bottom: 0;
   width: 0;
-  border-left: var(--line-width) solid var(--card-border);
+  border-left: var(--line-width) solid var(--ring-line);
   pointer-events: none;
   z-index: 101;
 }
@@ -41,11 +43,48 @@ body::after {
 
 .nav-top .nav,
 .nav-fixed .nav {
-  border-bottom: var(--line-width) solid var(--card-border);
+  border-bottom: var(--line-width) solid var(--ring-line);
+}
+
+/* A segment of the header rule marking the section you are in. It slides along
+   the rule as the active section changes, so the marker tracks the scroll.
+
+   Navbar measures the active link and writes --beam-x/--beam-w onto each .nav,
+   which is why the two headers can carry different positions: the fixed one
+   has a wider logo, so its links do not sit where the top one's do. */
+.nav-top .nav::after,
+.nav-fixed .nav::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: calc(-1 * var(--line-width));
+  width: var(--beam-w, 0);
+  height: 2px;
+  transform: translateX(var(--beam-x, 0));
+  opacity: var(--beam-opacity, 0);
+  pointer-events: none;
+  background-color: var(--btn-accent);
+  transition:
+    transform 0.45s cubic-bezier(0.25, 1, 0.5, 1),
+    width 0.45s cubic-bezier(0.25, 1, 0.5, 1),
+    opacity 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* The marker still tracks the section, it just stops sliding to get there. */
+@media (prefers-reduced-motion: reduce) {
+  .nav-top .nav::after,
+  .nav-fixed .nav::after {
+    transition: opacity 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+  }
 }
 
 .exploration-nav .nav {
   border-bottom: none;
+}
+
+/* No rule to sit on here, so no marker either. */
+.exploration-nav .nav::after {
+  display: none;
 }
 
 .nav-fixed {
@@ -139,22 +178,6 @@ body::after {
   transition: color 0.2s;
 }
 
-.nav-link::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: calc(-1 * var(--nav-pad-y) - var(--line-width));
-  height: 2px;
-  background-color: var(--btn-accent);
-  transform: scaleX(0);
-  transform-origin: center;
-  opacity: 0;
-  transition:
-    transform 0.25s cubic-bezier(0.25, 1, 0.5, 1),
-    opacity 0.25s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
 @media (hover: hover) {
   .nav-link:hover {
     color: var(--btn-accent);
@@ -165,25 +188,37 @@ body::after {
   color: var(--btn-accent);
 }
 
-.nav-link.active::after {
-  transform: scaleX(1);
-  opacity: 1;
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border-radius: var(--radius-md);
+  background-color: var(--btn-secondary-bg);
+  /* Same treatment as the secondary buttons, since it sits in the footer beside
+     the same family of controls. */
+  border: 1px solid var(--btn-accent);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition:
+    background-color 0.2s,
+    border-color 0.2s,
+    color 0.2s;
 }
 
-.theme-toggle {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 18px;
-  color: var(--nav-link);
-  transition: color 0.2s;
-  padding: 4px;
-  display: flex;
-  align-items: center;
+.theme-toggle .icon {
+  width: 18px;
+  height: 18px;
+  vertical-align: 0;
 }
 
 @media (hover: hover) {
   .theme-toggle:hover {
+    background-color: var(--btn-secondary-hover);
+    border-color: var(--btn-accent);
     color: var(--text-primary);
   }
 }
@@ -195,12 +230,16 @@ body::after {
   gap: 12px;
 }
 
-.about-name {
+/* The hero name and the closing heading are the two display lines on the page
+   and share one type spec, declared together so they cannot drift apart at a
+   breakpoint the way they had. The responsive steps are paired the same way. */
+.about-name,
+.cta-heading {
   font-family: var(--font-heading);
-  font-size: 48px;
+  font-size: 64px;
   font-weight: 600;
-  line-height: 56px;
-  letter-spacing: -0.02em;
+  line-height: 66px;
+  letter-spacing: -0.04em;
 }
 
 .about-subtitle {
@@ -249,8 +288,10 @@ body::after {
 
 .stat-number {
   font-size: 36px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 44px;
+  letter-spacing: -0.03em;
+  color: var(--accent-text);
 }
 
 .stat-label {
@@ -260,13 +301,13 @@ body::after {
   color: var(--text-muted);
 }
 
+/* Only a small step beyond the column's own 24px gap. The larger offset here
+   existed to clear a divider rule that no longer sits above this block. */
 .about-details {
   display: flex;
   flex-direction: column;
   gap: 32px;
-  padding-top: 32px;
-  border-top: var(--line-width) solid var(--divider);
-  margin-top: 16px;
+  padding-top: 8px;
 }
 
 .about-details-group {
@@ -287,10 +328,11 @@ body::after {
 }
 
 .about-details-title {
+  font-family: var(--font-mono);
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   color: var(--text-muted);
   display: flex;
   align-items: center;
@@ -365,11 +407,10 @@ body::after {
 .experience-card {
   display: flex;
   width: 100%;
-  border-radius: 4px;
+  border-radius: var(--radius-xl);
   padding: 32px;
   gap: 88px;
   background-color: var(--bg-card);
-  border: var(--line-width) solid var(--card-border);
 }
 
 .experience-card-company {
@@ -527,12 +568,13 @@ body::after {
 }
 
 .experience-card-work-title {
-  font-size: 16px;
-  font-weight: 400;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
   line-height: 16px;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--text-primary);
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
 }
 
 .experience-role-case-study {
@@ -541,7 +583,16 @@ body::after {
   line-height: 20px;
   color: var(--text-primary);
   text-decoration: underline;
+  text-decoration-color: var(--accent-border);
   text-underline-offset: 3px;
+  transition: color 0.2s;
+}
+
+@media (hover: hover) {
+  .experience-role-case-study:hover {
+    color: var(--accent-text);
+    text-decoration-color: var(--accent-text);
+  }
 }
 
 /* --- Education --- */
@@ -549,11 +600,10 @@ body::after {
   display: flex;
   flex: 1;
   align-items: center;
-  border-radius: 4px;
+  border-radius: var(--radius-xl);
   padding: 32px;
   gap: 32px;
   background-color: var(--bg-card);
-  border: var(--line-width) solid var(--card-border);
 }
 
 .education-icon {
@@ -653,8 +703,7 @@ body::after {
 }
 
 .work-card {
-  border-radius: 4px;
-  border: var(--line-width) solid var(--card-border);
+  border-radius: var(--radius-xl);
   background-color: var(--bg-card);
   /* No grey flash on tap; the card is a link, so mobile browsers would
      otherwise paint their default highlight over the whole thing. */
@@ -673,7 +722,7 @@ body::after {
 @media (hover: hover) {
   .work-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+    box-shadow: var(--card-lift-shadow);
   }
 }
 
@@ -802,11 +851,6 @@ body::after {
 }
 
 .cta-heading {
-  font-family: var(--font-heading);
-  font-size: 48px;
-  font-weight: 700;
-  line-height: 56px;
-  letter-spacing: -0.03em;
   text-align: center;
 }
 
@@ -831,10 +875,9 @@ body::after {
   display: flex;
   flex-direction: column;
   width: 300px;
-  border-radius: 4px;
+  border-radius: var(--radius-xl);
   overflow: hidden;
   background-color: var(--bg-card);
-  border: var(--line-width) solid var(--card-border);
   -webkit-tap-highlight-color: transparent;
   transition:
     transform 0.25s cubic-bezier(0.25, 1, 0.5, 1),
@@ -844,7 +887,7 @@ body::after {
 @media (hover: hover) {
   .side-project-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+    box-shadow: var(--card-lift-shadow);
   }
 }
 
@@ -898,13 +941,17 @@ body::after {
 .side-project-source {
   margin-top: auto;
   padding-top: 8px;
-  font-size: 14px;
+  font-family: var(--font-mono);
+  font-size: 12px;
   font-weight: 400;
   line-height: 18px;
   color: var(--text-muted);
 }
 
 /* --- Footer --- */
+/* Opaque in the page colour rather than transparent, so the board's rings and
+   guides stop at the footer instead of running behind it. Held to the container
+   width, which keeps it aligned with the boundary lines either side. */
 .footer {
   display: flex;
   align-items: center;
@@ -913,10 +960,12 @@ body::after {
   max-width: 1200px;
   margin: 0 auto;
   padding: 32px 48px;
+  background-color: var(--bg-page);
 }
 
 .footer-copyright {
-  font-size: 14px;
+  font-family: var(--font-mono);
+  font-size: 12px;
   font-weight: 400;
   line-height: 16px;
   color: var(--text-footer);
