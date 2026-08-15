@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import About from './components/About';
@@ -83,18 +83,30 @@ function IndexPage({ theme, toggleTheme }) {
   );
 }
 
+// The inline script in index.html has already resolved and applied the theme
+// before first paint, so read that back rather than deciding again here. Doing
+// it twice is how the two end up disagreeing on the first render.
+const getInitialTheme = () => {
+  const applied = document.documentElement.getAttribute('data-theme');
+  return applied === 'light' ? 'light' : 'dark';
+};
+
 function App() {
-  // Dark mode is disabled for now — the app is locked to light.
-  const theme = 'light';
+  const [theme, setTheme] = useState(getInitialTheme);
   const location = useLocation();
   const backgroundLocation = location.state?.backgroundLocation;
 
   useEffect(() => {
-    document.documentElement.setAttribute('data-theme', 'light');
-    localStorage.setItem('theme', 'light');
-  }, []);
+    document.documentElement.setAttribute('data-theme', theme);
+    try {
+      localStorage.setItem('theme', theme);
+    } catch {
+      // Storage can throw in private browsing; the theme still applies for
+      // this session, it just will not be remembered.
+    }
+  }, [theme]);
 
-  const toggleTheme = () => {};
+  const toggleTheme = () => setTheme((current) => (current === 'dark' ? 'light' : 'dark'));
 
   return (
     <>

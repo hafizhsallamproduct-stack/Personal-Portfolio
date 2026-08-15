@@ -2,6 +2,7 @@ export const experienceData = [
   {
     company: 'Wego Pte Ltd',
     logo: '/assets/wego.svg',
+    logoDark: '/assets/wego-dark.svg',
     logoSquare: '/assets/wego-icon.jpg',
     logoHeight: '40px',
     location: 'Kuala Lumpur, Malaysia',
@@ -199,6 +200,7 @@ export const workData = [
     title: 'Wego Design System: Built & Maintained from the Ground Up',
     company: 'Wego',
     logo: '/assets/wego.svg',
+    logoDark: '/assets/wego-dark.svg',
     year: '2022 — Present',
     isLarge: true,
     image: '/assets/portfolio/portfolio-1.webp',
@@ -546,6 +548,7 @@ export const workData = [
     title: 'Redesigning the First Step: The Journey of the Search Form',
     company: 'Wego',
     logo: '/assets/wego.svg',
+    logoDark: '/assets/wego-dark.svg',
     year: '2022 — 2025',
     image: '/assets/portfolio/portfolio-2.webp',
     description:
@@ -858,6 +861,7 @@ export const workData = [
     title: 'Fare Selection: Making the Upgrade Decision Clear',
     company: 'Wego',
     logo: '/assets/wego.svg',
+    logoDark: '/assets/wego-dark.svg',
     year: '2023 — Present',
     image: '/assets/portfolio/portfolio-3.webp',
     description:
@@ -1111,6 +1115,7 @@ export const workData = [
     title: 'Design Hub: Using Claude Design for Exploration',
     company: 'Wego',
     logo: '/assets/wego.svg',
+    logoDark: '/assets/wego-dark.svg',
     year: '2026 — Present',
     image: '/assets/portfolio/portfolio-4.webp',
     description:
@@ -1299,6 +1304,7 @@ export const workData = [
     title: 'Flight Checkout Flow: Designing Away the Doubt',
     company: 'Wego',
     logo: '/assets/wego.svg',
+    logoDark: '/assets/wego-dark.svg',
     year: '2024 — Present',
     description:
       'Leading the redesign of the flight booking flow, from fare selection to payment, and learning from a first A/B test that did not go as planned.',
@@ -1436,6 +1442,7 @@ export const workData = [
     title: 'Pay with Points: New Payment and Redemption Options at Checkout',
     company: 'Wego',
     logo: '/assets/wego.svg',
+    logoDark: '/assets/wego-dark.svg',
     year: '2026',
     description:
       'Designing new ways to pay on the payment page: redeeming partner loyalty points at checkout, from brief to engineering handoff.',
@@ -1526,6 +1533,7 @@ export const workData = [
     title: 'Schedule Changes: Making Sure Travelers See Them',
     company: 'Wego',
     logo: '/assets/wego.svg',
+    logoDark: '/assets/wego-dark.svg',
     year: '2026',
     description:
       'Redesigning how flight schedule changes are shown on the fare page, so travelers stop booking flights at times they did not choose.',
@@ -1635,6 +1643,7 @@ export const workData = [
     title: 'Designing with AI: An Evolving Practice',
     company: 'Wego',
     logo: '/assets/wego.svg',
+    logoDark: '/assets/wego-dark.svg',
     year: '2023 — Present',
     description: 'Exploring how AI tools can support the design process and improve efficiency.',
     intro:

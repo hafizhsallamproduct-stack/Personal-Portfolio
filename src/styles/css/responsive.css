@@ -14,8 +14,9 @@
     --nav-pad-y: 20px;
     padding: var(--nav-pad-y) 40px;
   }
-  .about-name {
-    font-size: 40px;
+  .about-name,
+  .cta-heading {
+    font-size: 44px;
     line-height: 48px;
   }
   .about-subtitle {
@@ -54,10 +55,6 @@
   }
   .cta-section {
     padding: 60px 40px;
-  }
-  .cta-heading {
-    font-size: 36px;
-    line-height: 44px;
   }
   .footer {
     padding: 32px 16px;
@@ -109,16 +106,12 @@
     background-color: var(--bg-page);
     padding: 24px;
     gap: 16px;
-    border-bottom: var(--line-width) solid var(--card-border);
+    border-bottom: var(--line-width) solid var(--ring-line);
   }
-  /* No underline on the active item in the expanded mobile menu;
-     the accent color already marks it. */
-  .nav-links--open .nav-link::after {
-    display: none;
-  }
-  .about-name {
-    font-size: 36px;
-    line-height: 44px;
+  .about-name,
+  .cta-heading {
+    font-size: 32px;
+    line-height: 36px;
   }
   .about-subtitle {
     font-size: 18px;
@@ -195,7 +188,7 @@
     display: none;
   }
   .about-details {
-    padding-top: 24px;
+    padding-top: 4px;
   }
   .section-content-col {
     text-align: center;
@@ -347,10 +340,6 @@
   }
   .cta-section {
     padding: 32px 16px;
-  }
-  .cta-heading {
-    font-size: 28px;
-    line-height: 36px;
   }
   .footer {
     flex-direction: column;

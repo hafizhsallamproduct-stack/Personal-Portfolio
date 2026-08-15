@@ -1,81 +1,69 @@
 import { useEffect, useRef, useState } from 'react';
 
-const SHAPE_TYPES = ['circle', 'ring', 'square', 'triangle', 'plus', 'arc', 'dot'];
-const WRAP_MARGIN = 64;
+/* Kept deliberately sparse: a handful of meteors at a time reads as weather
+   behind the heading, while a dense shower would compete with it. */
+const MAX_METEORS = 7;
+const SPAWN_GAP_MIN = 0.9;
+const SPAWN_GAP_MAX = 2.6;
 
-const createShape = (width, height) => {
-  const heading = Math.random() * Math.PI * 2;
-  const speed = 5 + Math.random() * 12;
+/* Falling down-left, the direction a meteor reads most naturally. */
+const ANGLE = (118 * Math.PI) / 180;
+const DIR_X = Math.cos(ANGLE);
+const DIR_Y = Math.sin(ANGLE);
+
+/* Fallback matches the dark theme, which is what the site renders. */
+const DEFAULT_METEOR_RGB = '255, 255, 255';
+
+const createMeteor = (width, height) => {
+  const length = 90 + Math.random() * 130;
   return {
-    type: SHAPE_TYPES[Math.floor(Math.random() * SHAPE_TYPES.length)],
-    size: 10 + Math.random() * 34,
-    x: Math.random() * width,
-    y: Math.random() * height,
-    vx: Math.cos(heading) * speed,
-    vy: Math.sin(heading) * speed,
-    rotation: Math.random() * Math.PI * 2,
-    spin: (Math.random() - 0.5) * 0.6,
-    alpha: 0.06 + Math.random() * 0.1,
-    arcStart: Math.random() * Math.PI * 2,
+    // Start off the top edge, biased right, so the travel crosses the section
+    // rather than clipping a corner.
+    x: width * (0.25 + Math.random() * 1.05),
+    y: -length - Math.random() * height * 0.4,
+    speed: 190 + Math.random() * 200,
+    length,
+    width: 1 + Math.random() * 0.6,
+    alpha: 0.28 + Math.random() * 0.34,
   };
 };
 
-const drawShape = (ctx, shape) => {
-  const { type, size } = shape;
-  const half = size / 2;
+/* Every meteor starts above the frame, so a cold start would leave the section
+   empty for the first second or so. Seeded ones get a head start along their
+   own path, putting them mid-fall the moment the section is reached. */
+const seedMeteor = (width, height) => {
+  const meteor = createMeteor(width, height);
+  const headStart = Math.random() * 2.4;
+  meteor.x += DIR_X * meteor.speed * headStart;
+  meteor.y += DIR_Y * meteor.speed * headStart;
+  return meteor;
+};
+
+const drawMeteor = (ctx, meteor, rgb, accentRgb) => {
+  const tailX = meteor.x - DIR_X * meteor.length;
+  const tailY = meteor.y - DIR_Y * meteor.length;
+
+  // The streak fades from a hot head back to nothing, so the tail dissolves
+  // instead of ending on a hard cap.
+  const gradient = ctx.createLinearGradient(meteor.x, meteor.y, tailX, tailY);
+  gradient.addColorStop(0, `rgba(${rgb}, ${meteor.alpha})`);
+  gradient.addColorStop(0.35, `rgba(${accentRgb}, ${meteor.alpha * 0.5})`);
+  gradient.addColorStop(1, `rgba(${accentRgb}, 0)`);
 
   ctx.save();
-  ctx.translate(shape.x, shape.y);
-  ctx.rotate(shape.rotation);
-  ctx.strokeStyle = `rgba(26, 26, 26, ${shape.alpha})`;
-  ctx.fillStyle = `rgba(26, 26, 26, ${shape.alpha})`;
-  ctx.lineWidth = 1;
+  ctx.strokeStyle = gradient;
+  ctx.lineWidth = meteor.width;
+  ctx.lineCap = 'round';
+  ctx.beginPath();
+  ctx.moveTo(tailX, tailY);
+  ctx.lineTo(meteor.x, meteor.y);
+  ctx.stroke();
 
-  switch (type) {
-    case 'circle':
-      ctx.beginPath();
-      ctx.arc(0, 0, half, 0, Math.PI * 2);
-      ctx.stroke();
-      break;
-    case 'ring':
-      ctx.beginPath();
-      ctx.arc(0, 0, half, 0, Math.PI * 2);
-      ctx.stroke();
-      ctx.beginPath();
-      ctx.arc(0, 0, half * 0.55, 0, Math.PI * 2);
-      ctx.stroke();
-      break;
-    case 'square':
-      ctx.strokeRect(-half, -half, size, size);
-      break;
-    case 'triangle':
-      ctx.beginPath();
-      ctx.moveTo(0, -half);
-      ctx.lineTo(half * 0.866, half * 0.5);
-      ctx.lineTo(-half * 0.866, half * 0.5);
-      ctx.closePath();
-      ctx.stroke();
-      break;
-    case 'plus':
-      ctx.beginPath();
-      ctx.moveTo(-half, 0);
-      ctx.lineTo(half, 0);
-      ctx.moveTo(0, -half);
-      ctx.lineTo(0, half);
-      ctx.stroke();
-      break;
-    case 'arc':
-      ctx.beginPath();
-      ctx.arc(0, 0, half, shape.arcStart, shape.arcStart + Math.PI * 1.2);
-      ctx.stroke();
-      break;
-    case 'dot':
-      ctx.beginPath();
-      ctx.arc(0, 0, Math.max(2, half * 0.15), 0, Math.PI * 2);
-      ctx.fill();
-      break;
-  }
-
+  // A small bright point at the head.
+  ctx.fillStyle = `rgba(${rgb}, ${Math.min(1, meteor.alpha + 0.25)})`;
+  ctx.beginPath();
+  ctx.arc(meteor.x, meteor.y, meteor.width * 0.9, 0, Math.PI * 2);
+  ctx.fill();
   ctx.restore();
 };
 
@@ -90,17 +78,24 @@ const AbstractShapes = () => {
     const ctx = canvas.getContext('2d');
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    let shapes = [];
+    // Read the themed ink once, rather than per frame.
+    const styles = getComputedStyle(document.documentElement);
+    const meteorRgb = styles.getPropertyValue('--meteor-rgb').trim() || DEFAULT_METEOR_RGB;
+    const accentRgb = styles.getPropertyValue('--meteor-accent-rgb').trim() || meteorRgb;
+
+    let meteors = [];
     let width = 0;
     let height = 0;
     let rafId = null;
     let lastTime = null;
     let isOnScreen = true;
+    let spawnIn = 0;
+    let seeded = false;
 
     const drawFrame = () => {
       ctx.clearRect(0, 0, width, height);
-      for (const shape of shapes) {
-        drawShape(ctx, shape);
+      for (const meteor of meteors) {
+        drawMeteor(ctx, meteor, meteorRgb, accentRgb);
       }
     };
 
@@ -108,23 +103,30 @@ const AbstractShapes = () => {
       const dt = Math.min((time - (lastTime ?? time)) / 1000, 0.1);
       lastTime = time;
 
-      for (const shape of shapes) {
-        shape.x += shape.vx * dt;
-        shape.y += shape.vy * dt;
-        shape.rotation += shape.spin * dt;
-
-        if (shape.x < -WRAP_MARGIN) shape.x = width + WRAP_MARGIN;
-        if (shape.x > width + WRAP_MARGIN) shape.x = -WRAP_MARGIN;
-        if (shape.y < -WRAP_MARGIN) shape.y = height + WRAP_MARGIN;
-        if (shape.y > height + WRAP_MARGIN) shape.y = -WRAP_MARGIN;
+      spawnIn -= dt;
+      if (spawnIn <= 0 && meteors.length < MAX_METEORS) {
+        meteors.push(createMeteor(width, height));
+        spawnIn = SPAWN_GAP_MIN + Math.random() * (SPAWN_GAP_MAX - SPAWN_GAP_MIN);
       }
+
+      for (const meteor of meteors) {
+        meteor.x += DIR_X * meteor.speed * dt;
+        meteor.y += DIR_Y * meteor.speed * dt;
+      }
+
+      // Drop the ones whose tail has fully left the frame.
+      meteors = meteors.filter(
+        (meteor) =>
+          meteor.y - DIR_Y * meteor.length < height &&
+          meteor.x - DIR_X * meteor.length > -meteor.length
+      );
 
       drawFrame();
       rafId = requestAnimationFrame(tick);
     };
 
     const startLoop = () => {
-      if (prefersReducedMotion || rafId !== null || !isOnScreen || shapes.length === 0) return;
+      if (prefersReducedMotion || rafId !== null || !isOnScreen || width === 0) return;
       lastTime = null;
       rafId = requestAnimationFrame(tick);
     };
@@ -145,9 +147,11 @@ const AbstractShapes = () => {
       canvas.height = Math.round(height * dpr);
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-      if (shapes.length === 0 && width > 0 && height > 0) {
-        const count = Math.min(48, Math.max(18, Math.round((width * height) / 18000)));
-        shapes = Array.from({ length: count }, () => createShape(width, height));
+      if (width > 0 && height > 0) {
+        if (!seeded) {
+          seeded = true;
+          meteors = Array.from({ length: 3 }, () => seedMeteor(width, height));
+        }
         startLoop();
       }
       drawFrame();

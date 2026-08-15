@@ -10,8 +10,17 @@
     />
     <link rel="icon" type="image/svg+xml" href="/assets/hafizhlogo.svg" />
     <script>
-      // Dark mode is disabled for now — always render light.
-      document.documentElement.setAttribute('data-theme', 'light');
+      // Resolve the saved theme before first paint, so switching to light and
+      // reloading does not flash the dark page first. Dark is the default.
+      (function () {
+        var theme = 'dark';
+        try {
+          if (localStorage.getItem('theme') === 'light') theme = 'light';
+        } catch (e) {
+          /* private browsing: fall back to the default */
+        }
+        document.documentElement.setAttribute('data-theme', theme);
+      })();
     </script>
   </head>
   <body id="top">

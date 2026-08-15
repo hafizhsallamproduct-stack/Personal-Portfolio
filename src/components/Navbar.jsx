@@ -44,6 +44,7 @@ const Navbar = () => {
   const [activeHash, setActiveHash] = useState('');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const navTopRef = useRef(null);
+  const navFixedRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -82,6 +83,42 @@ const Navbar = () => {
     };
   }, []);
 
+  // Point the lit segment of the header rule at the active link. Each header is
+  // measured on its own: the fixed one carries a wider logo, so its links do
+  // not line up with the top one's.
+  useEffect(() => {
+    const positionBeam = (header) => {
+      const nav = header?.querySelector('.nav');
+      if (!nav) return;
+
+      const active = nav.querySelector('.nav-link.active');
+      // No active section yet, or the links are stacked in the mobile menu
+      // rather than laid out along the rule.
+      if (!active || active.offsetParent === null) {
+        nav.style.setProperty('--beam-opacity', '0');
+        return;
+      }
+
+      const navBox = nav.getBoundingClientRect();
+      const linkBox = active.getBoundingClientRect();
+      nav.style.setProperty('--beam-x', `${linkBox.left - navBox.left}px`);
+      nav.style.setProperty('--beam-w', `${linkBox.width}px`);
+      nav.style.setProperty('--beam-opacity', '1');
+    };
+
+    const update = () => {
+      positionBeam(navTopRef.current);
+      positionBeam(navFixedRef.current);
+    };
+
+    update();
+    // Fonts land after first paint and shift the links sideways, so measure
+    // again once they are ready.
+    document.fonts?.ready.then(update).catch(() => {});
+    window.addEventListener('resize', update);
+    return () => window.removeEventListener('resize', update);
+  }, [activeHash, isMobileMenuOpen]);
+
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
@@ -117,7 +154,11 @@ const Navbar = () => {
         </nav>
       </header>
 
-      <header className={`nav-fixed ${isFixedVisible ? 'visible' : ''}`} id="navFixed">
+      <header
+        className={`nav-fixed ${isFixedVisible ? 'visible' : ''}`}
+        id="navFixed"
+        ref={navFixedRef}
+      >
         <nav className="nav">
           <a href="#top" className="nav-logo" aria-label="Back to home">
             <HafizhLogo className="nav-logo-icon" />

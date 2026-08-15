@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { experienceData } from '../data/portfolioData';
+import { useTheme } from '../hooks/useTheme';
 import { Briefcase, CaretUp, CaretDown } from './icons';
 
 const isMobileViewport = () =>
@@ -71,14 +72,18 @@ const ExperienceRole = ({ role }) => {
 
 const ExperienceCard = ({ exp }) => {
   const location = useLocation();
+  const theme = useTheme();
+  // Wordmarks with dark ink need a reversed copy on the dark page; brands whose
+  // logo is already coloured only ship the one file and fall through to it.
+  const logo = theme === 'dark' && exp.logoDark ? exp.logoDark : exp.logo;
 
   return (
     <div className="experience-card">
       <div className="experience-card-company">
-        {exp.logo && (
+        {logo && (
           <img
             className="experience-card-company-logo"
-            src={exp.logo}
+            src={logo}
             alt={`${exp.company} logo`}
             loading="lazy"
             style={exp.logoHeight ? { height: exp.logoHeight } : undefined}
