@@ -12,10 +12,14 @@
     <script>
       // Resolve the saved theme before first paint, so switching to light and
       // reloading does not flash the dark page first. Dark is the default.
+      //
+      // Read from theme-2 rather than theme: the pre-revamp site wrote
+      // theme: 'light' on every load, so every returning visitor carries a
+      // stored value that would otherwise override the new default forever.
       (function () {
         var theme = 'dark';
         try {
-          if (localStorage.getItem('theme') === 'light') theme = 'light';
+          if (localStorage.getItem('theme-2') === 'light') theme = 'light';
         } catch (e) {
           /* private browsing: fall back to the default */
         }

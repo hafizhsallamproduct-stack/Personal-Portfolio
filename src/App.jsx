@@ -83,6 +83,9 @@ function IndexPage({ theme, toggleTheme }) {
   );
 }
 
+// Must match the key the pre-paint script in index.html reads.
+const THEME_KEY = 'theme-2';
+
 // The inline script in index.html has already resolved and applied the theme
 // before first paint, so read that back rather than deciding again here. Doing
 // it twice is how the two end up disagreeing on the first render.
@@ -99,7 +102,9 @@ function App() {
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
     try {
-      localStorage.setItem('theme', theme);
+      localStorage.setItem(THEME_KEY, theme);
+      // Drop the pre-revamp key so it cannot be read by anything later.
+      localStorage.removeItem('theme');
     } catch {
       // Storage can throw in private browsing; the theme still applies for
       // this session, it just will not be remembered.
