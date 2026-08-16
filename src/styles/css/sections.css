@@ -944,8 +944,7 @@ body::after {
 .side-project-source {
   margin-top: auto;
   padding-top: 8px;
-  font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 400;
   line-height: 18px;
   color: var(--text-muted);
@@ -967,8 +966,7 @@ body::after {
 }
 
 .footer-copyright {
-  font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 400;
   line-height: 16px;
   color: var(--text-footer);

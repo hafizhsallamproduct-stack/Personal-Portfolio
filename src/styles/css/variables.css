@@ -25,15 +25,6 @@
   --radius-md: 6px;
   --radius-lg: 8px;
   --radius-xl: 12px;
-
-  /* Canvas board geometry. Structural guides set far apart rather than a dense
-     grid, which is what keeps the field from reading mechanical. */
-  --grid-step: 480px;
-  /* Ring radii are in vmin so the whole set always closes inside the frame
-     instead of running off an edge and reading as a cut arc. */
-  --ring-r1: 13vmin;
-  --ring-r2: 26vmin;
-  --ring-r3: 39vmin;
 }
 
 /* ============================================
@@ -99,7 +90,7 @@
   --tooltip-divider: rgba(255, 255, 255, 0.15);
   --nav-glass: rgba(18, 18, 18, 0.72);
   /* Canvas board behind the page */
-  --ring-line: rgba(255, 255, 255, 0.034);
+  --ring-line: rgba(255, 255, 255, 0.075);
   --card-lift-shadow: 0 12px 32px rgba(0, 0, 0, 0.55);
   /* Floating chip over artwork, where the page background cannot be relied on. */
   --chip-glass: rgba(20, 20, 20, 0.92);
