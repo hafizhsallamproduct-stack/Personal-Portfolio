@@ -8,6 +8,7 @@ import Skills from './components/Skills';
 import Work from './components/Work';
 import SideProjects from './components/SideProjects';
 import AbstractShapes from './components/AbstractShapes';
+import CanvasBoard from './components/CanvasBoard';
 import Footer from './components/Footer';
 import PortfolioModal from './components/PortfolioModal';
 import { AirplaneTilt, ShoppingBag, Bank, Money, Buildings, FigmaLogo } from './components/icons';
@@ -115,6 +116,8 @@ function App() {
 
   return (
     <>
+      <CanvasBoard />
+
       <Routes location={backgroundLocation || location}>
         <Route path="/" element={<IndexPage theme={theme} toggleTheme={toggleTheme} />} />
         <Route path="/portfolio/:slug" element={<PortfolioModal isStandalone />} />
