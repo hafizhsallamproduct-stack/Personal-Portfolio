@@ -152,7 +152,12 @@
   --grid-tile: rgba(0, 0, 0, 0.1);
   --tooltip-divider: rgba(255, 255, 255, 0.15);
   --nav-glass: rgba(245, 245, 245, 0.72);
-  --ring-line: rgba(0, 0, 0, 0.03);
+  /* Black on a light page needs more alpha than white on a dark one to land at
+     the same contrast. At 0.03 the board and the hairline borders were roughly a
+     third of the weight the dark theme carries; 0.085 puts the two themes at the
+     same 1.22:1 against their own page colour. Still lighter than --divider, so
+     the ordering of the line weights holds. */
+  --ring-line: rgba(0, 0, 0, 0.085);
   --card-lift-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
   --chip-glass: rgba(255, 255, 255, 0.92);
   --meteor-rgb: 26, 26, 26;

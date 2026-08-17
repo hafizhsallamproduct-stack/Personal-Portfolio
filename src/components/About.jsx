@@ -1,3 +1,4 @@
+import Button from './Button';
 import { User, Translate, LinkedinLogo, ArrowDown, DownloadSimple } from './icons';
 
 const About = () => {
@@ -31,20 +32,21 @@ const About = () => {
           </p>
         </div>
         <div className="about-buttons">
-          <a href="#portfolio" className="btn-primary btn-primary-lg">
-            View portfolio <ArrowDown className="icon bounce" aria-hidden="true" />
-          </a>
-          <a
+          <Button href="#portfolio" icon={ArrowDown} iconClassName="icon bounce">
+            View portfolio
+          </Button>
+          <Button
+            variant="outline"
             href="https://www.linkedin.com/in/hafizh-s-b7299420a/"
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-outline"
+            icon={LinkedinLogo}
           >
-            Get in touch <LinkedinLogo className="icon" aria-hidden="true" />
-          </a>
-          <a href="/Hafizh-Sallam-Resume.pdf" download className="btn-outline">
-            Download Resume <DownloadSimple className="icon" aria-hidden="true" />
-          </a>
+            Get in touch
+          </Button>
+          <Button variant="outline" href="/Hafizh-Sallam-Resume.pdf" download icon={DownloadSimple}>
+            Download Resume
+          </Button>
         </div>
         <p className="about-text">
           A Senior Product Designer based in Kuala Lumpur, Malaysia with over 10 years of experience
