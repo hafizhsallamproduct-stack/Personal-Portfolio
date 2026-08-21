@@ -101,6 +101,14 @@
   transform: translateY(1px);
 }
 
+/* The compact outline, matching the metrics of the base .btn-primary so the two
+   variants line up when they sit side by side at the same size. */
+.btn-outline--sm {
+  gap: 6px;
+  padding: 6px 12px;
+  line-height: 16px;
+}
+
 /* --- Icons --- */
 .icon {
   width: 1.15em;

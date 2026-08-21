@@ -6,6 +6,12 @@
         "id": "frame-1",
         "breakpoint": "desktop"
       }
+    ],
+    "story:src/components/PortfolioModal.stories.json": [
+      {
+        "id": "frame-1",
+        "breakpoint": "desktop"
+      }
     ]
   }
 }

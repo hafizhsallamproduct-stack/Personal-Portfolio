@@ -1,4 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
+import Button from './Button';
 import { workData } from '../data/portfolioData';
 import { useTheme } from '../hooks/useTheme';
 import { Sparkle } from './icons';
@@ -63,7 +64,9 @@ const Work = () => {
                 ) : (
                   <span className="work-card-company">{work.company}</span>
                 )}
-                <span className="btn-outline work-card-btn">View Details</span>
+                <Button as="span" variant="outline" className="work-card-btn">
+                  View Details
+                </Button>
               </div>
             </Link>
           ))}
