@@ -47,7 +47,7 @@ export const experienceData = [
     ],
     roles: [
       {
-        title: 'Senior Product Designer II',
+        title: 'Senior Product Designer II (Lead)',
         isDefault: true,
         date: 'Oct 2024 — Present',
         details: [
