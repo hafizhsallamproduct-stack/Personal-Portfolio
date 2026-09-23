@@ -295,14 +295,10 @@
     padding: 0;
   }
   /* Larger tap target for the accordion on mobile. */
+  /* Top padding only: the details below carry their own bottom padding. */
   .experience-role-header {
-    padding: 20px 0;
+    padding: 20px 0 0;
     align-items: center;
-  }
-  /* When expanded, the header keeps its top padding but drops the bottom
-     gap so the details sit closer, with their own padding below. */
-  .experience-role-header[aria-expanded='true'] {
-    padding-bottom: 0;
   }
   .experience-role-details,
   .experience-role-summary {

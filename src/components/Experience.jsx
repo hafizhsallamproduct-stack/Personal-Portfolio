@@ -1,19 +1,11 @@
-import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { experienceData } from '../data/portfolioData';
 import { useTheme } from '../hooks/useTheme';
-import { Briefcase, CaretUp, CaretDown } from './icons';
-
-const isMobileViewport = () =>
-  typeof window !== 'undefined' && window.matchMedia('(max-width: 640px)').matches;
+import { Briefcase } from './icons';
 
 const ExperienceRole = ({ role }) => {
-  // Desktop shows every role expanded by default; mobile starts collapsed
-  // so the section stays compact.
-  const [isExpanded, setIsExpanded] = useState(() => !isMobileViewport());
-
-  // Roles without a title are shown as a plain summary (no collapsible header),
-  // since the company card already carries the name and dates.
+  // Roles without a title are shown as a plain summary, since the company card
+  // already carries the name and dates.
   if (!role.title) {
     return (
       <div className="experience-role">
@@ -26,45 +18,20 @@ const ExperienceRole = ({ role }) => {
 
   return (
     <div className="experience-role">
-      <button
-        type="button"
-        className="experience-role-header"
-        onClick={() => setIsExpanded(!isExpanded)}
-        aria-expanded={isExpanded}
-        aria-label={`${isExpanded ? 'Collapse' : 'Expand'} ${role.title}`}
-      >
+      <div className="experience-role-header">
         <div className="experience-role-info">
           <div className="experience-role-title">{role.title}</div>
           <div className="experience-role-date">{role.date}</div>
         </div>
-        <span className="experience-role-toggle">
-          {isExpanded ? (
-            <CaretUp
-              className="icon"
-              aria-hidden="true"
-              style={{ color: 'var(--text-secondary)' }}
-            />
-          ) : (
-            <CaretDown
-              className="icon"
-              aria-hidden="true"
-              style={{ color: 'var(--text-secondary)' }}
-            />
-          )}
-        </span>
-      </button>
-      {isExpanded && (
-        <>
-          {role.details ? (
-            <ul className="experience-role-details">
-              {role.details.map((detail, j) => (
-                <li key={j}>{detail}</li>
-              ))}
-            </ul>
-          ) : (
-            <p className="experience-role-summary">{role.summary}</p>
-          )}
-        </>
+      </div>
+      {role.details ? (
+        <ul className="experience-role-details">
+          {role.details.map((detail, j) => (
+            <li key={j}>{detail}</li>
+          ))}
+        </ul>
+      ) : (
+        <p className="experience-role-summary">{role.summary}</p>
       )}
     </div>
   );
