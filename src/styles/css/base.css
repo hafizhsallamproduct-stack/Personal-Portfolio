@@ -62,11 +62,11 @@ html {
   background-color: var(--bg-page);
 }
 
-/* Dark ink on the accent, matching the primary button: white on this orange
-   only reaches 3.15:1. */
+/* The primary button's colours: the accent fill with its own ink. A fixed dark
+   ink went black on black in the light theme, where the accent is #171717. */
 ::selection {
   background-color: var(--accent);
-  color: #121212;
+  color: var(--btn-accent-on);
 }
 
 a {

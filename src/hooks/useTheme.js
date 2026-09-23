@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 const readTheme = () =>
-  document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+  document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
 
 /**
  * The active theme, read straight off the document element.

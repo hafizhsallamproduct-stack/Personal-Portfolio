@@ -96,10 +96,6 @@
   --card-lift-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
   /* Floating chip over artwork, where the page background cannot be relied on. */
   --chip-glass: rgba(20, 20, 20, 0.92);
-  /* Ink for the CTA meteors, read by AbstractShapes: a bright head fading back
-     through the accent. */
-  --meteor-rgb: 255, 255, 255;
-  --meteor-accent-rgb: 255, 255, 255;
 }
 
 [data-theme='light'] {
@@ -163,6 +159,4 @@
   --board-line: rgba(0, 0, 0, 0.045);
   --card-lift-shadow: 0 6px 16px rgba(0, 0, 0, 0.07);
   --chip-glass: rgba(255, 255, 255, 0.92);
-  --meteor-rgb: 26, 26, 26;
-  --meteor-accent-rgb: 23, 23, 23;
 }
