@@ -55,11 +55,10 @@ const About = () => {
           needs.
         </p>
         <p className="about-text">
-          Currently at Wego.com, I am the Design Lead for the design system and the Design Lead for
-          flight booking, which covers the end-to-end booking checkout flow. It's a flat team, so
-          reporting to the Product Design Director I also guide three senior designers on craft and
-          direction. Lately, I've been exploring how to integrate AI into my workflow to improve the
-          design process and streamline day-to-day work.
+          Currently at Wego.com, I'm the Design Lead for two areas: the design system, and flight
+          booking, which covers the full checkout flow. I report to the Product Design Director. Our
+          team is flat, so I also guide three senior designers on craft and direction. Lately, I've
+          been exploring how AI can improve my design process and simplify day-to-day work.
         </p>
         <div className="about-stats">
           <div className="stat">
@@ -77,10 +76,6 @@ const About = () => {
         </div>
 
         <div className="about-details">
-          <div className="about-details-group about-details-group--inline">
-            <span className="about-details-icon">🇮🇩</span>
-            <p className="about-details-text">Indonesia</p>
-          </div>
           <div className="about-details-group">
             <h3 className="about-details-title">
               <Translate className="icon" aria-hidden="true" /> Languages
@@ -100,6 +95,11 @@ const About = () => {
                 </ul>
               </div>
             </div>
+          </div>
+          <div className="about-details-group about-details-group--inline">
+            <p className="about-details-text">
+              <span className="about-details-label">Nationality:</span> Indonesia
+            </p>
           </div>
         </div>
       </div>

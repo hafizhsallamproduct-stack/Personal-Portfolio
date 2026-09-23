@@ -62,6 +62,17 @@ html {
   background-color: var(--bg-page);
 }
 
+/* Inter Display for every title set in the heading font: the top of Inter's
+   optical size axis, with tighter spacing and finer detail than the text cut.
+   Pinned rather than left to follow the size, so a small title still gets it. */
+.section-title,
+.about-name,
+.cta-heading,
+.portfolio-modal-title {
+  font-optical-sizing: none;
+  font-variation-settings: 'opsz' 32;
+}
+
 /* The primary button's colours: the accent fill with its own ink. A fixed dark
    ink went black on black in the light theme, where the accent is #171717. */
 ::selection {
