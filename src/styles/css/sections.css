@@ -291,7 +291,7 @@ body::after {
 
 .stat-number {
   font-size: 36px;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 44px;
   letter-spacing: -0.03em;
   color: var(--accent-text);
@@ -325,9 +325,11 @@ body::after {
   gap: 12px;
 }
 
-.about-details-icon {
-  font-size: 20px;
-  line-height: 1;
+/* The label half of a "Label: value" line, set like the language group titles
+   so the value carries the weight. */
+.about-details-label {
+  font-weight: 400;
+  color: var(--text-faint);
 }
 
 .about-details-title {
