@@ -730,7 +730,7 @@ body::after {
 }
 
 .work-card-placeholder {
-  width: 280px;
+  width: 400px;
   aspect-ratio: 16 / 10;
   flex-shrink: 0;
   align-self: center;
