@@ -268,11 +268,60 @@ body::after {
 }
 
 .about-photo {
-  width: 154px;
-  height: 154px;
+  display: block;
+  width: var(--photo);
+  height: var(--photo);
   border-radius: 50%;
   object-fit: cover;
+}
+
+/* The photo with the availability message circling it. The drawing is laid
+   out for a 200px photo in a 240 unit box, so the box is the photo size scaled
+   by the same ratio. On desktop it runs past the 200px column into the gap
+   before the text. */
+.about-photo-ring {
+  --photo: 200px;
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: calc(var(--photo) * 240 / 200);
+  aspect-ratio: 1;
   margin-top: 8px;
+}
+
+.about-photo-ring-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+  animation: about-ring-spin 30s linear infinite;
+}
+
+/* In the drawing's units, which match px at the desktop size. */
+.about-photo-ring-text {
+  fill: var(--text-primary);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.about-photo-ring-text--narrow {
+  display: none;
+}
+
+@keyframes about-ring-spin {
+  to {
+    rotate: 360deg;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-photo-ring-svg {
+    animation: none;
+  }
 }
 
 .about-text {
@@ -319,19 +368,6 @@ body::after {
   gap: 12px;
 }
 
-.about-details-group--inline {
-  flex-direction: row;
-  align-items: center;
-  gap: 12px;
-}
-
-/* The label half of a "Label: value" line, set like the language group titles
-   so the value carries the weight. */
-.about-details-label {
-  font-weight: 400;
-  color: var(--text-faint);
-}
-
 .about-details-title {
   font-family: var(--font-mono);
   font-size: 12px;
@@ -348,12 +384,6 @@ body::after {
   color: var(--accent-text);
   width: 16px;
   height: 16px;
-}
-
-.about-details-text {
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--text-primary);
 }
 
 .languages-groups {

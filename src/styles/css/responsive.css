@@ -187,13 +187,17 @@
   #skills .skills-row-label {
     text-align: center;
   }
-  .about-photo {
-    width: 115px;
-    height: 115px;
+  .about-photo-ring {
+    --photo: 140px;
   }
-  #about .section-tag,
-  #about .section-title {
+  /* The drawing shrinks with the photo here, so switch to the line with fewer
+     copies, set larger in the drawing's units to stay legible on screen. */
+  .about-photo-ring-text--wide {
     display: none;
+  }
+  .about-photo-ring-text--narrow {
+    display: inline;
+    font-size: 12px;
   }
   .about-details {
     padding-top: 4px;
@@ -224,9 +228,6 @@
   }
   #about .about-details-group {
     align-items: center;
-  }
-  #about .about-details-group--inline {
-    justify-content: center;
   }
   #about .about-details-title {
     justify-content: center;
