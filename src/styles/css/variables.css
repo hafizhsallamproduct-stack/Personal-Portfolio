@@ -91,13 +91,11 @@
   --nav-glass: rgba(18, 18, 18, 0.72);
   /* Canvas board behind the page */
   --ring-line: rgba(255, 255, 255, 0.075);
-  --card-lift-shadow: 0 12px 32px rgba(0, 0, 0, 0.55);
+  /* Fainter than ring-line, so the column grid sits behind the section borders. */
+  --board-line: rgba(255, 255, 255, 0.04);
+  --card-lift-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
   /* Floating chip over artwork, where the page background cannot be relied on. */
   --chip-glass: rgba(20, 20, 20, 0.92);
-  /* Ink for the CTA meteors, read by AbstractShapes: a bright head fading back
-     through the accent. */
-  --meteor-rgb: 255, 255, 255;
-  --meteor-accent-rgb: 255, 255, 255;
 }
 
 [data-theme='light'] {
@@ -158,8 +156,7 @@
      same 1.22:1 against their own page colour. Still lighter than --divider, so
      the ordering of the line weights holds. */
   --ring-line: rgba(0, 0, 0, 0.085);
-  --card-lift-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+  --board-line: rgba(0, 0, 0, 0.045);
+  --card-lift-shadow: 0 6px 16px rgba(0, 0, 0, 0.07);
   --chip-glass: rgba(255, 255, 255, 0.92);
-  --meteor-rgb: 26, 26, 26;
-  --meteor-accent-rgb: 23, 23, 23;
 }

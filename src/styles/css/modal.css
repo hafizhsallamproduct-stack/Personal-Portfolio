@@ -288,8 +288,8 @@
   color: var(--text-primary);
   font-weight: 600;
   /* Inset rather than a real border, so the row content does not shift 3px
-     when it becomes the selected one. */
-  box-shadow: inset 3px 0 0 var(--accent);
+     when it becomes the selected one. On the right, the edge facing the page. */
+  box-shadow: inset -3px 0 0 var(--accent);
 }
 
 /* Main Modal Panel */
@@ -299,14 +299,14 @@
   position: relative;
   display: flex;
   justify-content: center;
-  padding: 56px 40px;
+  padding: 56px 64px;
   background-color: var(--bg-card);
 }
 
-/* Container Constraint — Expanded to 1200px for breakout images */
+/* No cap of its own: text blocks hold themselves to 768px, while images and
+   carousels run up to 1280px inside its 64px side padding. */
 .portfolio-modal-content {
   width: 100%;
-  max-width: 1200px;
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -422,23 +422,13 @@
   border: none;
   cursor: pointer;
   font-size: 16px;
-  /* The button floats over the hero image, so it needs a shadow to stay
-     legible against whatever is behind it. */
-  box-shadow:
-    0 2px 8px rgba(0, 0, 0, 0.18),
-    0 0 0 1px rgba(0, 0, 0, 0.04);
-  transition:
-    background-color 0.2s,
-    box-shadow 0.2s;
+  transition: background-color 0.2s;
   z-index: 10;
 }
 
 @media (hover: hover) {
   .portfolio-modal-close:hover {
     background-color: var(--border-hover);
-    box-shadow:
-      0 4px 12px rgba(0, 0, 0, 0.24),
-      0 0 0 1px rgba(0, 0, 0, 0.04);
   }
 }
 
@@ -507,8 +497,10 @@
 
 .portfolio-content-image {
   display: block;
-  width: 100%;
-  max-width: 768px;
+  /* Shrinks to the image, so a small one shows at its own size rather than
+     stretched. Otherwise the panel width, up to 1280px. */
+  width: fit-content;
+  max-width: min(100%, 1280px);
   flex-shrink: 0;
   /* Small extra margin on top of the 24px container gap, so images get a
      touch more breathing room than text without stacking large gaps. */
@@ -523,7 +515,7 @@
 .portfolio-carousel {
   display: block;
   width: 100%;
-  max-width: 768px;
+  max-width: 1280px;
   flex-shrink: 0;
   margin: 8px auto;
 }
@@ -1040,4 +1032,17 @@
     max-height: 100vh;
     border-radius: 0;
   }
+}
+
+.portfolio-content-image .portfolio-detail-img {
+  width: auto;
+  max-width: 100%;
+}
+
+/* Zero width with a full minimum, so a long caption wraps under the image
+   instead of stretching the shrink-wrapped figure past it. */
+.portfolio-content-image .portfolio-image-caption {
+  width: 0;
+  min-width: 100%;
+  box-sizing: border-box;
 }

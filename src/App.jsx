@@ -7,7 +7,6 @@ import Education from './components/Education';
 import Skills from './components/Skills';
 import Work from './components/Work';
 import SideProjects from './components/SideProjects';
-import AbstractShapes from './components/AbstractShapes';
 import CanvasBoard from './components/CanvasBoard';
 import Footer from './components/Footer';
 import PortfolioModal from './components/PortfolioModal';
@@ -61,7 +60,6 @@ function IndexPage({ theme, toggleTheme }) {
         </div>
 
         <section id="contact" className="cta-section">
-          <AbstractShapes />
           <h2 className="cta-heading">
             Let's build something
             <br />
@@ -85,14 +83,14 @@ function IndexPage({ theme, toggleTheme }) {
 }
 
 // Must match the key the pre-paint script in index.html reads.
-const THEME_KEY = 'theme-2';
+const THEME_KEY = 'theme-3';
 
 // The inline script in index.html has already resolved and applied the theme
 // before first paint, so read that back rather than deciding again here. Doing
 // it twice is how the two end up disagreeing on the first render.
 const getInitialTheme = () => {
   const applied = document.documentElement.getAttribute('data-theme');
-  return applied === 'light' ? 'light' : 'dark';
+  return applied === 'dark' ? 'dark' : 'light';
 };
 
 function App() {
@@ -104,8 +102,9 @@ function App() {
     document.documentElement.setAttribute('data-theme', theme);
     try {
       localStorage.setItem(THEME_KEY, theme);
-      // Drop the pre-revamp key so it cannot be read by anything later.
+      // Drop the older keys so they cannot be read by anything later.
       localStorage.removeItem('theme');
+      localStorage.removeItem('theme-2');
     } catch {
       // Storage can throw in private browsing; the theme still applies for
       // this session, it just will not be remembered.
