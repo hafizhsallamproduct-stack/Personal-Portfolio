@@ -10,6 +10,7 @@ import SideProjects from './components/SideProjects';
 import CanvasBoard from './components/CanvasBoard';
 import Footer from './components/Footer';
 import PortfolioModal from './components/PortfolioModal';
+import { useScrollReveal } from './hooks/useScrollReveal';
 import { AirplaneTilt, ShoppingBag, Bank, Money, Buildings, FigmaLogo } from './components/icons';
 
 function IndexPage({ theme, toggleTheme }) {
@@ -95,6 +96,7 @@ const getInitialTheme = () => {
 
 function App() {
   const [theme, setTheme] = useState(getInitialTheme);
+  useScrollReveal();
   const location = useLocation();
   const backgroundLocation = location.state?.backgroundLocation;
 

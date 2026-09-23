@@ -1,34 +1,41 @@
 import Button from './Button';
-import { User, Translate, LinkedinLogo, ArrowDown, DownloadSimple } from './icons';
+import AvailabilityRing from './AvailabilityRing';
+import ScrambleText from './ScrambleText';
+import { Translate, LinkedinLogo, ArrowDown, DownloadSimple } from './icons';
 
 const About = () => {
   return (
     <section id="about" className="section" tabIndex={0}>
       <div className="section-label-col">
-        <span className="section-tag">
-          <User className="icon" aria-hidden="true" /> About
-        </span>
-        <h2 className="section-title">Who I am</h2>
-        <picture className="about-photo-wrapper">
-          <source
-            type="image/webp"
-            srcSet="/assets/profile-256.webp 1x, /assets/profile-384.webp 1.5x"
-          />
-          <img
-            className="about-photo"
-            src="/assets/profile-384.jpg"
-            alt="Hafizh Sallam"
-            width="154"
-            height="154"
-          />
-        </picture>
+        <AvailabilityRing>
+          <picture className="about-photo-wrapper">
+            <source
+              type="image/webp"
+              srcSet="/assets/profile-256.webp 1x, /assets/profile-384.webp 1.5x"
+            />
+            <img
+              className="about-photo"
+              src="/assets/profile-384.jpg"
+              alt="Hafizh Sallam"
+              width="200"
+              height="200"
+            />
+          </picture>
+        </AvailabilityRing>
       </div>
       <div className="section-content-col">
         <div className="about-intro">
-          <h1 className="about-name">Hafizh Sallam</h1>
+          <h1 className="about-name">
+            <ScrambleText text="Hafizh Sallam" stagger={0.04} />
+          </h1>
           <p className="about-subtitle">
-            Senior Product Designer crafting digital experiences across
-            <br className="about-subtitle-break" /> E-Commerce, Airlines, and Banking.
+            <ScrambleText
+              text="Senior Product Designer crafting digital experiences across"
+              delay={0.2}
+              stagger={0.012}
+            />
+            <br className="about-subtitle-break" />{' '}
+            <ScrambleText text="E-Commerce, Airlines, and Banking." delay={0.5} stagger={0.012} />
           </p>
         </div>
         <div className="about-buttons">
@@ -95,11 +102,6 @@ const About = () => {
                 </ul>
               </div>
             </div>
-          </div>
-          <div className="about-details-group about-details-group--inline">
-            <p className="about-details-text">
-              <span className="about-details-label">Nationality:</span> Indonesia
-            </p>
           </div>
         </div>
       </div>
