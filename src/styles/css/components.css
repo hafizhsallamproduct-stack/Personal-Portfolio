@@ -259,8 +259,8 @@
 
 .section-title {
   font-family: var(--font-heading);
-  font-size: 32px;
+  font-size: 40px;
   font-weight: 700;
-  line-height: 38px;
+  line-height: 46px;
   letter-spacing: -0.02em;
 }

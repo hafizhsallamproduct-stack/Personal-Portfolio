@@ -10,6 +10,10 @@
 
 /* --- Responsive (tablet) --- */
 @media (max-width: 900px) {
+  .section-title {
+    font-size: 36px;
+    line-height: 42px;
+  }
   .nav {
     --nav-pad-y: 20px;
     padding: var(--nav-pad-y) 40px;
@@ -63,6 +67,10 @@
 
 /* --- Responsive (mobile) --- */
 @media (max-width: 640px) {
+  .section-title {
+    font-size: 32px;
+    line-height: 38px;
+  }
   .nav {
     padding: 16px 16px;
     position: relative;
