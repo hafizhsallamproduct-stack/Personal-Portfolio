@@ -9,6 +9,7 @@ import SideProjects from './components/SideProjects';
 import CanvasBoard from './components/CanvasBoard';
 import Footer from './components/Footer';
 import SideActions from './components/SideActions';
+import PageRuler from './components/PageRuler';
 import PortfolioModal from './components/PortfolioModal';
 import { useScrollReveal } from './hooks/useScrollReveal';
 
@@ -20,6 +21,7 @@ function IndexPage() {
       </a>
       <div className="page-card-mask" aria-hidden="true"></div>
       <div className="page-card">
+        <PageRuler />
         <Navbar />
         <main id="main">
           <About />

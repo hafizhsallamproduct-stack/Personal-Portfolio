@@ -247,7 +247,8 @@
 
 @media (hover: hover) {
   .ledger-head:hover .ledger-toggle {
-    background-color: var(--bg-card);
+    background-color: var(--brand-red);
+    color: var(--btn-primary-on);
   }
 }
 

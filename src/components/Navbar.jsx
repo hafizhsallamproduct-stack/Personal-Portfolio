@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import { HafizhLogo, List, X } from './icons';
 
 const SECTION_LINKS = [
@@ -43,7 +43,6 @@ const Navbar = () => {
   const [activeHash, setActiveHash] = useState('');
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const headerRef = useRef(null);
 
   // The name joins the logo only once the page has scrolled, while the hero
   // below already shows it large.
@@ -79,35 +78,6 @@ const Navbar = () => {
     };
   }, []);
 
-  // Point the lit segment of the header rule at the active link.
-  useEffect(() => {
-    const positionBeam = () => {
-      const nav = headerRef.current?.querySelector('.nav');
-      if (!nav) return;
-
-      const active = nav.querySelector('.nav-link.active');
-      // No active section yet, or the links are stacked in the mobile menu
-      // rather than laid out along the rule.
-      if (!active || active.offsetParent === null) {
-        nav.style.setProperty('--beam-opacity', '0');
-        return;
-      }
-
-      const navBox = nav.getBoundingClientRect();
-      const linkBox = active.getBoundingClientRect();
-      nav.style.setProperty('--beam-x', `${linkBox.left - navBox.left}px`);
-      nav.style.setProperty('--beam-w', `${linkBox.width}px`);
-      nav.style.setProperty('--beam-opacity', '1');
-    };
-
-    positionBeam();
-    // Fonts land after first paint and shift the links sideways, so measure
-    // again once they are ready.
-    document.fonts?.ready.then(positionBeam).catch(() => {});
-    window.addEventListener('resize', positionBeam);
-    return () => window.removeEventListener('resize', positionBeam);
-  }, [activeHash, isMobileMenuOpen]);
-
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
@@ -121,7 +91,7 @@ const Navbar = () => {
   );
 
   return (
-    <header className={`nav-top ${isScrolled ? 'nav-top--scrolled' : ''}`} ref={headerRef}>
+    <header className={`nav-top ${isScrolled ? 'nav-top--scrolled' : ''}`}>
       <nav className="nav">
         <a href="#top" className="nav-logo" aria-label="Back to home">
           <HafizhLogo className="nav-logo-icon" />

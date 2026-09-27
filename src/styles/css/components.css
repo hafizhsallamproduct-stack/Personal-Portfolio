@@ -40,34 +40,6 @@
   gap: 8px;
 }
 
-.btn-secondary {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  border-radius: var(--radius-sm);
-  padding: 10px 20px;
-  background-color: var(--bg-page);
-  border: 1px solid var(--btn-outline-border);
-  font-size: 16px;
-  font-weight: 500;
-  color: var(--btn-outline-text);
-  line-height: 18px;
-  cursor: pointer;
-  transition:
-    background-color 0.2s,
-    border-color 0.2s,
-    color 0.2s;
-  font-family: inherit;
-}
-
-@media (hover: hover) {
-  .btn-secondary:hover {
-    background-color: var(--btn-secondary-hover);
-    border-color: var(--btn-outline-border-hover);
-    color: var(--text-primary);
-  }
-}
-
 .btn-outline {
   display: inline-flex;
   align-items: center;
@@ -198,12 +170,6 @@
   margin: 0 auto;
   padding: 64px 48px;
   gap: 120px;
-  scroll-margin-top: 64px;
-}
-
-/* Section wrappers that contain a header + content list (Experience, Work). */
-#experience,
-#portfolio {
   scroll-margin-top: 64px;
 }
 

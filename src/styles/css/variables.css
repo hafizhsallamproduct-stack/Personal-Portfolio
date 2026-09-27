@@ -64,10 +64,18 @@
   --skills-text: #121212;
   --skills-text-muted: #6b6b6b;
   --skills-tag-bg: #f0f0f0;
+  --skills-rule: #e6e6e6;
+  /* Large stat figures when not highlighted: 3.5:1, fine at 48px. */
+  --skills-stat-idle: #8a8a8a;
+  /* The Portfolio section: bright yellow with near-black type. */
+  --portfolio-bg: #ffdd00;
+  --portfolio-text: #121212;
+  /* The running work-in-progress banner on Portfolio. */
+  --wip-bg: var(--brand-red);
+  --wip-text: #ffffff;
   /* Figma Community cards on the red closing section. */
   --side-card-bg: #ffffff;
   --side-card-title: #121212;
-  --side-card-source: #6b6b6b;
   /* The resume half of the floating actions, a step darker than the red. */
   --side-action-dark: #c40404;
   --side-action-dark-hover: #d20606;
@@ -102,11 +110,9 @@
      on this page reads at 17.5:1, the strongest contrast available. */
   --accent: #ffffff;
   --accent-bright: #ffffff;
-  --accent-hover: #ffffff;
   --accent-text: #ffffff;
   --accent-border: rgba(255, 255, 255, 0.4);
   --accent-subtle: rgba(255, 255, 255, 0.1);
-  --btn-secondary-border: #3d3d3d;
   --btn-secondary-hover: #262626;
   /* Outlined buttons: grey at rest, so the red primary leads. */
   --btn-outline-border: #5a5a5a;
@@ -121,12 +127,8 @@
   --nav-link: #a0a0a0;
   --logo-bg: var(--brand-red);
   --logo-text: #ffffff;
-  --badge-bg: #1f1f1f;
-  --badge-border: #353535;
   --bullet: #ffffff;
   --line-width: 1px;
-  --grid-tile: rgba(255, 255, 255, 0.1);
-  --tooltip-divider: rgba(255, 255, 255, 0.15);
   --nav-bg: #000000;
   /* Canvas board behind the page */
   --ring-line: rgba(255, 255, 255, 0.12);

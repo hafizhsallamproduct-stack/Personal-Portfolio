@@ -21,56 +21,28 @@
   /* Rounded to the card's top corners, so it sits inside the card at the top
      of the page rather than squaring them off. */
   border-radius: var(--page-card-radius) var(--page-card-radius) 0 0;
-  /* Solid rather than see-through, so it stays black over the white and
-     coloured sections instead of turning grey. */
+  /* No fill at the top of the page, so the header sits on the hero's own
+     board. Once the page scrolls it fills solid black, so it stays black over
+     the white and coloured sections instead of turning grey. */
+  background-color: transparent;
+  transition: background-color 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.nav-top--scrolled {
   background-color: var(--nav-bg);
-}
-
-.nav-top .nav {
-  border-bottom: var(--line-width) solid var(--ring-line);
-}
-
-/* A segment of the header rule marking the section you are in. It slides along
-   the rule as the active section changes, so the marker tracks the scroll.
-
-   Navbar measures the active link and writes --beam-x/--beam-w onto the .nav. */
-.nav-top .nav::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: calc(-1 * var(--line-width));
-  width: var(--beam-w, 0);
-  height: 2px;
-  transform: translateX(var(--beam-x, 0));
-  opacity: var(--beam-opacity, 0);
-  pointer-events: none;
-  background-color: var(--btn-accent);
-  transition:
-    transform 0.45s cubic-bezier(0.25, 1, 0.5, 1),
-    width 0.45s cubic-bezier(0.25, 1, 0.5, 1),
-    opacity 0.25s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-/* The marker still tracks the section, it just stops sliding to get there. */
-@media (prefers-reduced-motion: reduce) {
-  .nav-top .nav::after {
-    transition: opacity 0.25s cubic-bezier(0.25, 1, 0.5, 1);
-  }
-}
-
-.exploration-nav .nav {
-  border-bottom: none;
-}
-
-/* No rule to sit on here, so no marker either. */
-.exploration-nav .nav::after {
-  display: none;
 }
 
 .nav-logo {
   display: flex;
   align-items: center;
   gap: 8px;
+}
+
+/* Clear of the page ruler, which runs down the card's left edge on desktop. */
+@media (min-width: 901px) {
+  .nav-top .nav-logo {
+    margin-left: 12px;
+  }
 }
 
 .nav-logo-icon {
@@ -144,7 +116,8 @@
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 32px;
+  /* With the links' own 12px side padding, the text stays 32px apart. */
+  gap: 8px;
 }
 
 /* Idle links sit back at --nav-link so the active one, which takes the accent,
@@ -156,7 +129,13 @@
   font-weight: 400;
   color: var(--nav-link);
   line-height: 18px;
-  transition: color 0.2s;
+  /* Every link carries the padding, so the active one's fill does not move
+     the others. */
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  transition:
+    color 0.2s,
+    background-color 0.2s;
 }
 
 @media (hover: hover) {
@@ -165,8 +144,31 @@
   }
 }
 
-.nav-link.active {
-  color: var(--btn-accent);
+/* The section you are in fills with the brand red. */
+.nav-link.active,
+.nav-link.active:hover {
+  background-color: var(--brand-red);
+  color: var(--btn-primary-on);
+}
+
+/* Across the header, the links run its full height, so the red fill of the
+   active one meets the header's top and bottom edges. The link list reaches
+   out through the header's vertical padding to do it. The stacked phone menu
+   keeps its rounded blocks. */
+@media (min-width: 641px) {
+  .nav-top .nav-links {
+    align-self: stretch;
+    align-items: stretch;
+    margin: calc(-1 * var(--nav-pad-y)) 0;
+  }
+
+  .nav-top .nav-link {
+    display: flex;
+    align-items: center;
+    padding-top: 0;
+    padding-bottom: 0;
+    border-radius: 0;
+  }
 }
 
 /* --- About --- */
@@ -188,10 +190,18 @@
   letter-spacing: -0.02em;
 }
 
-.about-subtitle {
+/* The hero subtitle and each section's intro line share one size, set here and
+   stepped down together in responsive.css. */
+.about-subtitle,
+.experience-description,
+.work-disclaimer,
+.cta-subtext {
   font-size: 20px;
-  font-weight: 400;
   line-height: 32px;
+}
+
+.about-subtitle {
+  font-weight: 400;
   color: var(--text-secondary);
   max-width: 720px;
   text-wrap: balance;
@@ -276,6 +286,68 @@
   object-fit: cover;
 }
 
+/* The photo turns over to the logo after the pointer rests on it (see
+   PhotoFlip in About). The turn overshoots and settles back, a small bounce,
+   on the way over and on the way back. */
+.about-photo-flip {
+  width: var(--photo);
+  height: var(--photo);
+  perspective: 900px;
+}
+
+.about-photo-flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.9s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.about-photo-flip.is-flipped .about-photo-flip-inner {
+  transform: rotateY(180deg);
+}
+
+.about-photo-face {
+  position: absolute;
+  inset: 0;
+  display: block;
+  border-radius: 50%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.about-photo-back {
+  transform: rotateY(180deg);
+}
+
+.about-photo-logo {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Once the turn has settled, the logo keeps spinning for as long as the
+   pointer stays. It stops when the photo turns back. */
+.about-photo-flip.is-flipped .about-photo-logo {
+  animation: about-logo-spin 3s linear 0.9s infinite;
+}
+
+@keyframes about-logo-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* No turn and no spin: the logo simply takes the photo's place. */
+@media (prefers-reduced-motion: reduce) {
+  .about-photo-flip-inner {
+    transition: none;
+  }
+  .about-photo-flip.is-flipped .about-photo-logo {
+    animation: none;
+  }
+}
+
 /* The photo with the availability message circling it. The drawing is laid
    out for a 200px photo in a 240 unit box, so the box is the photo size scaled
    by the same ratio. On desktop it runs past the 200px column into the gap
@@ -341,9 +413,10 @@
 
 .stat-number {
   font-size: 36px;
-  font-weight: 700;
+  /* Light, to match the figures in the Expertise stats. */
+  font-weight: 300;
   line-height: 44px;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em;
   color: var(--accent-text);
 }
 
@@ -430,9 +503,7 @@
 }
 
 .experience-description {
-  font-size: 16px;
   font-weight: 400;
-  line-height: 28px;
   color: var(--text-body);
 }
 
@@ -519,8 +590,9 @@
 }
 
 /* --- Skills ---
-   A white section between the blue and the red, opaque so the board's grid
-   stops at its edges, with its type and tags switched to dark ink to match. */
+   Label and title on the left; on the right a row of stats between hairlines,
+   then the chips. White and opaque, so the
+   board's grid stops at its edges. */
 #skills {
   background-color: var(--skills-bg);
 }
@@ -531,6 +603,55 @@
 
 #skills .section-title {
   color: var(--skills-text);
+}
+
+.skills-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  width: 100%;
+  list-style: none;
+  border-top: var(--line-width) solid var(--skills-rule);
+  border-bottom: var(--line-width) solid var(--skills-rule);
+}
+
+.skills-stat {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  /* No left padding, so each figure lines up with the start of its column
+     and the first with the chips below. */
+  padding: 36px 24px 36px 0;
+  text-align: left;
+  cursor: default;
+}
+
+/* A hovered stat stays in full ink while the others step back. */
+@media (hover: hover) {
+  .skills-stats:hover .skills-stat:not(:hover) .skills-stat-value {
+    color: var(--skills-stat-idle);
+  }
+  .skills-stats:hover .skills-stat:not(:hover) .skills-stat-label {
+    color: var(--skills-text-muted);
+  }
+}
+
+.skills-stat-value {
+  font-size: 48px;
+  font-weight: 300;
+  line-height: 56px;
+  letter-spacing: -0.02em;
+  color: var(--skills-text);
+  transition: color 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.skills-stat-label {
+  max-width: 220px;
+  font-size: 15px;
+  line-height: 22px;
+  color: var(--skills-text);
+  transition: color 0.3s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 /* Skill and tool chips look the same here, fills only. The borders stay,
@@ -544,6 +665,13 @@
 
 #skills .skills-row-label {
   color: var(--skills-text-muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skills-stat-value,
+  .skills-stat-label {
+    transition: none;
+  }
 }
 
 .skills-content {
@@ -594,6 +722,97 @@
 
 .tool-tag--strike {
   text-decoration: line-through;
+}
+
+/* Portfolio sits on bright yellow with black cards. Opaque, so the board's
+   grid stops at its edges. Its label, title and note go near-black: 13.9:1 on
+   this yellow. */
+#portfolio {
+  --bg-card: var(--bg-page);
+  background-color: var(--portfolio-bg);
+}
+
+#portfolio .section-tag,
+#portfolio .section-title,
+#portfolio .work-disclaimer {
+  color: var(--portfolio-text);
+}
+
+/* Running text across the top of the Portfolio section while it is being
+   reworked: brand red, scrolling left in a loop, paused on hover. It
+   sticks just below the header while the section is on screen, and leaves
+   with the section, since sticky stays within its parent. */
+.wip-banner {
+  position: sticky;
+  top: calc(var(--page-card-top) + var(--header-height));
+  /* Under the header (100), level with the floating actions. */
+  z-index: 99;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow: hidden;
+  background-color: var(--wip-bg);
+  color: var(--wip-text);
+}
+
+.wip-track {
+  display: flex;
+  width: max-content;
+  animation: wip-scroll 40s linear infinite;
+}
+
+@media (hover: hover) {
+  .wip-banner:hover .wip-track {
+    animation-play-state: paused;
+  }
+}
+
+.wip-group {
+  display: flex;
+  flex-shrink: 0;
+}
+
+.wip-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 32px 14px 0;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.wip-item .icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+@keyframes wip-scroll {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* No motion: one still, centred line. */
+@media (prefers-reduced-motion: reduce) {
+  .wip-track {
+    width: auto;
+    justify-content: center;
+    animation: none;
+  }
+  .wip-group + .wip-group,
+  .wip-item + .wip-item {
+    display: none;
+  }
+  .wip-item {
+    padding-right: 0;
+    white-space: normal;
+  }
 }
 
 /* --- Work Cards (List) --- */
@@ -713,9 +932,7 @@
 }
 
 .work-disclaimer {
-  font-size: 16px;
   font-weight: 400;
-  line-height: 28px;
   color: var(--text-body);
 }
 
@@ -750,17 +967,25 @@
 }
 
 .cta-subtext {
-  font-size: 16px;
   font-weight: 400;
-  line-height: 28px;
   text-align: left;
   color: var(--btn-primary-on);
 }
 
+/* On desktop the line ends on the fifth of the page's eight grid lines. The
+   section's content box is the card width less 48px padding each side, and
+   the text starts inside that padding, so five columns of the card, less the
+   48px the text is already in, is its width. */
+@media (min-width: 901px) {
+  .cta-subtext {
+    max-width: calc((100% + 96px) * 5 / 8 - 48px);
+  }
+}
+
+/* Three across, filling the row, so the cards match the section's width. */
 .side-projects {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 16px;
   width: 100%;
   margin-top: 16px;
@@ -769,11 +994,11 @@
 .side-project-card {
   display: flex;
   flex-direction: column;
-  width: 300px;
-  border-radius: calc(var(--radius-xl) * var(--corner-scale));
+  border-radius: calc(var(--radius-lg) * var(--corner-scale));
   overflow: hidden;
   /* White on the red closing section, the only place these cards appear. */
   background-color: var(--side-card-bg);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
   -webkit-tap-highlight-color: transparent;
   transition:
     transform 0.25s cubic-bezier(0.25, 1, 0.5, 1),
@@ -782,8 +1007,8 @@
 
 @media (hover: hover) {
   .side-project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--card-lift-shadow);
+    transform: translateY(-6px);
+    box-shadow: 0 18px 36px rgba(0, 0, 0, 0.28);
   }
 }
 
@@ -821,7 +1046,7 @@
 .side-project-body {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 10px;
   padding: 16px;
   text-align: left;
   flex: 1;
@@ -829,18 +1054,27 @@
 
 .side-project-title {
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 22px;
   color: var(--side-card-title);
 }
 
-.side-project-source {
+/* Where the link goes, in the brand red, with an arrow turned up and out. */
+.side-project-open {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   margin-top: auto;
-  padding-top: 8px;
   font-size: 14px;
-  font-weight: 400;
+  font-weight: 500;
   line-height: 18px;
-  color: var(--side-card-source);
+  color: var(--brand-red);
+}
+
+.side-project-open .icon {
+  width: 16px;
+  height: 16px;
+  transform: rotate(-45deg);
 }
 
 /* --- Footer --- */

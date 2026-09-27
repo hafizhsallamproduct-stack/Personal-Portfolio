@@ -1,10 +1,13 @@
-/* Tablet range (e.g. iPad Pro portrait, 1024px): keep the three Figma
-   Community cards on a single row by letting them shrink to fit. */
-@media (min-width: 901px) and (max-width: 1024px) {
-  .side-project-card {
-    width: auto;
-    flex: 1 1 0;
-    min-width: 0;
+/* The Figma Community cards: two across on tablets, one on phones. */
+@media (max-width: 900px) {
+  .side-projects {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .side-projects {
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
@@ -26,7 +29,10 @@
     font-size: 44px;
     line-height: 48px;
   }
-  .about-subtitle {
+  .about-subtitle,
+  .experience-description,
+  .work-disclaimer,
+  .cta-subtext {
     font-size: 18px;
     line-height: 28px;
   }
@@ -60,10 +66,13 @@
 
 /* --- Responsive (mobile) --- */
 @media (max-width: 640px) {
+  /* On a phone the card is the whole screen: no frame around it, no rounded
+     corners, and the header sticks to the very top. */
   :root {
     --header-height: 68px;
-    --page-card-inset: 8px;
-    --page-card-radius: calc(var(--radius-xl) * var(--corner-scale));
+    --page-card-inset: 0px;
+    --page-card-top: 0px;
+    --page-card-radius: 0px;
   }
   .section-title {
     font-size: 32px;
@@ -72,9 +81,6 @@
   .nav {
     padding: 16px 16px;
     position: relative;
-  }
-  .nav-top .nav {
-    border-bottom: none;
   }
   .nav-logo-text {
     display: none;
@@ -116,7 +122,10 @@
     font-size: 32px;
     line-height: 36px;
   }
-  .about-subtitle {
+  .about-subtitle,
+  .experience-description,
+  .work-disclaimer,
+  .cta-subtext {
     font-size: 18px;
     line-height: 26px;
   }
@@ -162,6 +171,21 @@
     align-items: center;
     gap: 24px;
   }
+
+  /* Centred on phones, with the rest of the section. */
+  .skills-stat {
+    align-items: center;
+    padding: 24px 12px;
+    text-align: center;
+  }
+  .skills-stat-value {
+    font-size: 36px;
+    line-height: 42px;
+  }
+  .skills-stat-label {
+    font-size: 13px;
+    line-height: 18px;
+  }
   /* Smaller chips on mobile so they take less space. */
   #skills .skills-row {
     justify-content: center;
@@ -199,10 +223,7 @@
     align-items: center;
   }
   /* Tighter body leading for the short mobile measure (matches card text). */
-  .about-text,
-  .experience-description,
-  .work-disclaimer,
-  .cta-subtext {
+  .about-text {
     line-height: 24px;
   }
   #about .about-stats {

@@ -3,8 +3,8 @@ import { LinkedinLogo, DownloadSimple } from './icons';
 
 // The hero's contact and resume actions, icon only, once the hero has scrolled
 // away. On a wide window they sit in a tab on the card's right edge, sliding out
-// from behind it; where the frame is too narrow for that, they float in the
-// bottom right corner instead (see sections.css).
+// from behind it; where the frame is too narrow for that, they sit inside the
+// card's top right corner, just below the header (see sections.css).
 const SideActions = () => {
   const [isVisible, setIsVisible] = useState(false);
 

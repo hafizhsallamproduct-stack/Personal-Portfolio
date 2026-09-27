@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react';
 import AvailabilityRing from './AvailabilityRing';
 import {
   Translate,
@@ -10,26 +11,64 @@ import {
   Money,
   Buildings,
   FigmaLogo,
+  HafizhLogo,
 } from './icons';
+
+// Holding the pointer on the photo this long turns it over to the logo.
+const FLIP_DELAY_MS = 2000;
+
+// The profile photo, with the logo on its back. It flips over after the
+// pointer has rested on it for FLIP_DELAY_MS, and back as soon as it leaves.
+const PhotoFlip = () => {
+  const [flipped, setFlipped] = useState(false);
+  const timer = useRef(0);
+
+  useEffect(() => () => clearTimeout(timer.current), []);
+
+  const onEnter = () => {
+    clearTimeout(timer.current);
+    timer.current = setTimeout(() => setFlipped(true), FLIP_DELAY_MS);
+  };
+
+  const onLeave = () => {
+    clearTimeout(timer.current);
+    setFlipped(false);
+  };
+
+  return (
+    <div
+      className={`about-photo-flip ${flipped ? 'is-flipped' : ''}`}
+      onPointerEnter={onEnter}
+      onPointerLeave={onLeave}
+    >
+      <div className="about-photo-flip-inner">
+        <picture className="about-photo-wrapper about-photo-face">
+          <source
+            type="image/webp"
+            srcSet="/assets/profile-256.webp 1x, /assets/profile-384.webp 1.5x"
+          />
+          <img
+            className="about-photo"
+            src="/assets/profile-384.jpg"
+            alt="Hafizh Sallam"
+            width="200"
+            height="200"
+          />
+        </picture>
+        <div className="about-photo-face about-photo-back" aria-hidden="true">
+          <HafizhLogo className="about-photo-logo" />
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const About = () => {
   return (
     <section id="about" className="section" tabIndex={0}>
       <div className="section-label-col">
         <AvailabilityRing>
-          <picture className="about-photo-wrapper">
-            <source
-              type="image/webp"
-              srcSet="/assets/profile-256.webp 1x, /assets/profile-384.webp 1.5x"
-            />
-            <img
-              className="about-photo"
-              src="/assets/profile-384.jpg"
-              alt="Hafizh Sallam"
-              width="200"
-              height="200"
-            />
-          </picture>
+          <PhotoFlip />
         </AvailabilityRing>
       </div>
       <div className="section-content-col">

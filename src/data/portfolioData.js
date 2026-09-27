@@ -94,7 +94,7 @@ export const experienceData = [
   {
     company: 'AirAsia Berhad',
     logo: '/assets/airasia-logo.svg',
-    logoSquare: '/assets/airasia-icon.webp',
+    logoSquare: '/assets/airasia-mark.png',
     location: 'Selangor, Malaysia',
     duration: 'Mar 2017 — Dec 2019',
     tenure: '2 years 10 months',

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { sideProjectsData } from '../data/portfolioData';
+import { ArrowRight } from './icons';
 
 const SideProjectThumb = ({ project }) => {
   const [imgFailed, setImgFailed] = useState(false);
@@ -37,7 +38,10 @@ const SideProjects = () => {
           <SideProjectThumb project={project} />
           <div className="side-project-body">
             <h3 className="side-project-title">{project.title}</h3>
-            {project.source && <span className="side-project-source">{project.source}</span>}
+            <span className="side-project-open">
+              {project.source ? `Open on ${project.source}` : 'Open file'}
+              <ArrowRight className="icon" aria-hidden="true" />
+            </span>
           </div>
         </a>
       ))}

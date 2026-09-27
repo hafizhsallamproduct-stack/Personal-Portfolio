@@ -58,13 +58,13 @@
   }
 }
 
-/* The reader sits on the card surface rather than the page, so opening a case
-   study reads as stepping onto a raised panel instead of onto the board. */
+/* The reader uses the page's own black, so a case study reads as part of the
+   same site rather than a separate panel. */
 .portfolio-modal-container {
   display: flex;
   width: 100%;
   height: 100vh;
-  background-color: var(--bg-card);
+  background-color: var(--bg-page);
   position: relative;
   overflow: hidden;
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
@@ -73,7 +73,7 @@
 /* Sidebar Left Constraint */
 .portfolio-modal-sidebar {
   flex-shrink: 0;
-  background-color: var(--bg-card);
+  background-color: var(--bg-page);
   border-right: var(--line-width) solid var(--ring-line);
   display: flex;
   flex-direction: column;
@@ -102,15 +102,6 @@
   display: flex;
   align-items: center;
   gap: 16px;
-}
-
-.portfolio-modal-sidebar-avatar {
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  background-color: var(--border); /* Fallback */
-  flex-shrink: 0;
-  overflow: hidden;
 }
 
 .portfolio-modal-sidebar-info h2 {
@@ -215,14 +206,6 @@
   }
 }
 
-.portfolio-modal-sidebar-footer {
-  margin-top: auto;
-  padding: 16px;
-  border-top: var(--line-width) solid var(--ring-line);
-  display: flex;
-  justify-content: flex-start;
-}
-
 .portfolio-modal-nav-item {
   padding: 16px;
   border-bottom: var(--line-width) solid var(--ring-line);
@@ -280,16 +263,16 @@
   }
 }
 
-/* The old fill alone was too weak to spot: in dark mode tag-bg sat 2/255 off
-   the sidebar, and in light mode the hover colour fell between the two. Bold
-   text carries the selected state instead. */
-.portfolio-modal-nav-item.active {
-  background-color: var(--accent-subtle);
-  color: var(--text-primary);
+/* The selected case study fills with the brand red, with white type. */
+.portfolio-modal-nav-item.active,
+.portfolio-modal-nav-item.active:hover {
+  background-color: var(--brand-red);
+  color: var(--btn-primary-on);
   font-weight: 600;
-  /* Inset rather than a real border, so the row content does not shift 3px
-     when it becomes the selected one. On the right, the edge facing the page. */
-  box-shadow: inset -3px 0 0 var(--accent);
+}
+
+.portfolio-modal-nav-item.active .portfolio-modal-nav-company {
+  color: var(--btn-primary-on);
 }
 
 /* Main Modal Panel */
@@ -300,7 +283,7 @@
   display: flex;
   justify-content: center;
   padding: 56px 64px;
-  background-color: var(--bg-card);
+  background-color: var(--bg-page);
 }
 
 /* No cap of its own: text blocks hold themselves to 768px, while images and
@@ -783,8 +766,7 @@
   user-select: none;
 }
 
-.portfolio-detail-img,
-.image-placeholder-inner {
+.portfolio-detail-img {
   display: block;
   width: 100%;
   height: auto;
