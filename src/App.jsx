@@ -11,6 +11,7 @@ import Footer from './components/Footer';
 import SideActions from './components/SideActions';
 import PageRuler from './components/PageRuler';
 import PortfolioModal from './components/PortfolioModal';
+import InboxCaseStudy from './components/InboxCaseStudy';
 import { useScrollReveal } from './hooks/useScrollReveal';
 
 function IndexPage() {
@@ -74,11 +75,14 @@ function App() {
 
       <Routes location={backgroundLocation || location}>
         <Route path="/" element={<IndexPage />} />
+        {/* A fixed path ranks above :slug, so this one never reaches the reader. */}
+        <Route path="/portfolio/rhb-inbox" element={<InboxCaseStudy isStandalone />} />
         <Route path="/portfolio/:slug" element={<PortfolioModal isStandalone />} />
       </Routes>
 
       {backgroundLocation && (
         <Routes>
+          <Route path="/portfolio/rhb-inbox" element={<InboxCaseStudy />} />
           <Route path="/portfolio/:slug" element={<PortfolioModal />} />
         </Routes>
       )}

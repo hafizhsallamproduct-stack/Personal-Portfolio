@@ -25,6 +25,11 @@ const REVEALS = [
   ['.skills-row', 0],
   ['.skills-row-group', 0.05],
   ['.work-card', 0],
+  // Only the Portfolio feature: the case study popup scrolls inside itself,
+  // which the window listeners here never see.
+  ['.inbox-showcase .inbox-feature-intro', 0],
+  ['.inbox-showcase .inbox-feature-media', 0.05],
+  ['.inbox-showcase .inbox-meta', 0.1],
   ['.cta-heading', 0],
   ['.cta-subtext', 0.1],
   ['.side-project-card', 0],

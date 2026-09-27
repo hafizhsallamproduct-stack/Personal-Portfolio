@@ -1,5 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import Button from './Button';
+import InboxShowcase from './InboxShowcase';
 import { workData } from '../data/portfolioData';
 import { Sparkle, Clock } from './icons';
 
@@ -36,7 +37,6 @@ const Work = () => {
 
   return (
     <section id="portfolio" tabIndex={0}>
-      <WipBanner />
       <div className="section section--header-only">
         <div className="section-label-col">
           <span className="section-tag">
@@ -52,6 +52,10 @@ const Work = () => {
           </p>
         </div>
       </div>
+
+      <InboxShowcase />
+
+      <WipBanner />
 
       <div className="work-cards">
         {workData

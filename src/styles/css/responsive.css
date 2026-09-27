@@ -56,6 +56,59 @@
   .work-card-placeholder {
     width: 300px;
   }
+  .inbox-showcase,
+  .inbox-modal {
+    --inbox-gutter: 40px;
+  }
+  .inbox-brandbar {
+    padding-block: 22px;
+  }
+  .inbox-modal .inbox-brandbar {
+    padding-right: 88px;
+  }
+  .inbox-modal-body {
+    padding: 48px 40px 60px;
+  }
+  .inbox-title {
+    font-size: 44px;
+    line-height: 48px;
+  }
+  .inbox-feature {
+    padding: 48px var(--inbox-gutter) 60px;
+  }
+  .inbox-feature .inbox-title {
+    font-size: 36px;
+    line-height: 40px;
+  }
+  /* The text above, the slider under it, still meeting the right edge. */
+  .inbox-feature-top {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 40px;
+  }
+  /* The row reaches the right edge for the slider; the text keeps its
+     gutter. */
+  .inbox-feature-intro {
+    padding-right: var(--inbox-gutter);
+  }
+  .inbox-meta {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .inbox-block {
+    margin-top: 72px;
+  }
+  .inbox-block-header {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .inbox-findings {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .inbox-block > .inbox-findings,
+  .inbox-block > .inbox-outcome,
+  .inbox-block > .inbox-timeline {
+    margin-left: 0;
+  }
   .cta-section {
     padding: 60px 40px;
   }
@@ -157,17 +210,6 @@
   #skills .skills-content {
     gap: 24px;
   }
-  .skills-stat {
-    padding: 24px 12px 24px 0;
-  }
-  .skills-stat-value {
-    font-size: 36px;
-    line-height: 42px;
-  }
-  .skills-stat-label {
-    font-size: 13px;
-    line-height: 18px;
-  }
   /* Smaller chips on mobile so they take less space. */
   #skills .skills-row {
     gap: 6px;
@@ -222,6 +264,97 @@
   }
   .education-icon {
     width: 40px;
+  }
+  .inbox-showcase,
+  .inbox-modal {
+    --inbox-gutter: 16px;
+  }
+  .inbox-brandbar {
+    padding-block: 16px;
+  }
+  .inbox-modal .inbox-brandbar {
+    padding-right: 64px;
+  }
+  .inbox-brandbar-logo {
+    height: 22px;
+  }
+  .inbox-slider-bar {
+    flex: 1;
+    width: auto;
+  }
+  .wip-banner {
+    margin-bottom: 32px;
+  }
+  .inbox-modal-body {
+    padding: 32px 16px 48px;
+  }
+  .inbox-title {
+    font-size: 32px;
+    line-height: 36px;
+  }
+  .inbox-feature .inbox-title {
+    font-size: 28px;
+    line-height: 32px;
+  }
+  .inbox-intro {
+    font-size: 18px;
+    line-height: 26px;
+  }
+  .inbox-feature-intro .inbox-intro {
+    line-height: 24px;
+  }
+  .inbox-feature {
+    padding: 40px var(--inbox-gutter) 48px;
+  }
+  .inbox-feature-top {
+    gap: 32px;
+  }
+  /* A smaller ring on a phone's smaller screen. */
+  .inbox-hotspot-ring {
+    top: -10px;
+    left: -10px;
+    width: 20px;
+    height: 20px;
+  }
+  .inbox-brand-logo {
+    height: 32px;
+    margin-bottom: 16px;
+  }
+  .inbox-meta {
+    margin-top: 32px;
+    gap: 20px 16px;
+  }
+  .inbox-block {
+    margin-top: 56px;
+  }
+  .inbox-block-title {
+    font-size: 24px;
+    line-height: 30px;
+  }
+  .inbox-block-text {
+    font-size: 16px;
+    line-height: 24px;
+  }
+  /* In the popup on a phone, tablet and phone share the width. */
+  .inbox-devices {
+    grid-template-columns: minmax(0, 2.27fr) minmax(0, 1fr);
+    gap: 24px 12px;
+  }
+  .inbox-device--tablet {
+    grid-column: 1;
+  }
+  .inbox-device--mobile {
+    grid-column: 2;
+  }
+  .inbox-device--tablet .inbox-device-frame {
+    padding: 4px;
+  }
+  .inbox-device--tablet .inbox-device-screen {
+    border-radius: calc(3px * var(--corner-scale));
+  }
+  .inbox-shots,
+  .inbox-cards {
+    grid-template-columns: minmax(0, 1fr);
   }
   .work-cards {
     padding: 0 16px 32px;
