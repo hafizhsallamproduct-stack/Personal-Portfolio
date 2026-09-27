@@ -10,19 +10,19 @@ export const experienceData = [
     caseStudies: [
       {
         slug: 'wego-design-system',
-        label: 'Wego Design System: Built & Maintained from the Ground Up',
+        label: 'Building a design system that scales with the product',
       },
       {
         slug: 'wego-flight-search-redesign',
-        label: 'Redesigning the First Step: The Journey of the Search Form',
+        label: 'Simplifying the first step of flight booking',
       },
       {
         slug: 'fare-families',
-        label: 'Fare Selection: Making the Upgrade Decision Clear',
+        label: 'Helping travelers make better fare decisions',
       },
       {
         slug: 'design-hub',
-        label: 'Design Hub: Using Claude Design for Exploration',
+        label: 'Making AI-generated designs feel like our product',
       },
       {
         slug: 'flight-booking-revamp',
@@ -199,7 +199,7 @@ export const toolsData = [
 
 export const workData = [
   {
-    title: 'Wego Design System: Built & Maintained from the Ground Up',
+    title: 'Building a design system that scales with the product',
     company: 'Wego',
     logo: '/assets/wego.svg',
     logoDark: '/assets/wego-dark.svg',
@@ -207,7 +207,7 @@ export const workData = [
     isLarge: true,
     image: '/assets/portfolio/portfolio-1.webp',
     description:
-      "Led the full rebuild of Wego's design system when transitioning from Sketch to Figma, establishing foundations, components, and documentation that scale across Flight and Hotel verticals on four touchpoints.",
+      "Led the evolution of Wego's design system from a legacy Sketch setup to a more scalable Figma-based system. I worked across foundations, components, platform needs, and designer–developer collaboration to make the system easier to maintain, adopt, and evolve.",
     intro:
       'This is the story of building and maintaining the design system, not its technical details. The system is still evolving, so what matters most is how decisions were made, how changes were introduced gradually, and how it stayed practical as our tools, workflows, and product needs changed.',
     slug: 'wego-design-system',
@@ -547,14 +547,14 @@ export const workData = [
     ],
   },
   {
-    title: 'Redesigning the First Step: The Journey of the Search Form',
+    title: 'Simplifying the first step of flight booking',
     company: 'Wego',
     logo: '/assets/wego.svg',
     logoDark: '/assets/wego-dark.svg',
     year: '2022 — 2025',
     image: '/assets/portfolio/portfolio-2.webp',
     description:
-      "Led the end-to-end redesign of Wego's flight search experience, improving usability and conversion.",
+      "Redesigned Wego's flight search experience to make one of the most important steps in the booking journey clearer and easier to complete. The work covered the end-to-end search flow across platforms, from destination and date selection to passenger and search preferences.",
     intro:
       'The flight search form is the first step of every booking. This case study walks through how we reviewed the form, what we found, what we changed, and what the changes mean for the business.',
     link: '#',
@@ -860,14 +860,14 @@ export const workData = [
     ],
   },
   {
-    title: 'Fare Selection: Making the Upgrade Decision Clear',
+    title: 'Helping travelers make better fare decisions',
     company: 'Wego',
     logo: '/assets/wego.svg',
     logoDark: '/assets/wego-dark.svg',
     year: '2023 — Present',
     image: '/assets/portfolio/portfolio-3.webp',
     description:
-      "Redesigned Wego's fare selection page across desktop and mobile so travelers can compare fares and trust what they see before they book.",
+      "Redesigned Wego's fare selection experience to make the differences between fare options easier to understand and compare. The work focused on simplifying complex airline fare information while helping travelers choose the option that best fits their needs.",
     intro:
       'Fare selection is where a traveler picks which version of a fare to buy: the basic one, or a higher tier with more baggage and flexibility. This case study covers the redesign and the later improvements that made the page clearer and easier to trust.',
     link: '#',
@@ -1114,14 +1114,14 @@ export const workData = [
     ],
   },
   {
-    title: 'Design Hub: Using Claude Design for Exploration',
+    title: 'Making AI-generated designs feel like our product',
     company: 'Wego',
     logo: '/assets/wego.svg',
     logoDark: '/assets/wego-dark.svg',
     year: '2026 — Present',
     image: '/assets/portfolio/portfolio-4.webp',
     description:
-      'A lite design system built in HTML and CSS, so AI generated screens come out looking like our product instead of a generic mockup.',
+      'Built a lightweight design system for AI-assisted design workflows, giving AI the product foundations, components, and visual language needed to generate more consistent Wego experiences. The project explores how designers can use AI to move faster without losing product context or design quality.',
     intro:
       'A side project I started before Claude Design existed: a lightweight design system in plain HTML and CSS, built so anyone generating UI with AI would get something close to the Wego Design System style.',
     link: '#',
