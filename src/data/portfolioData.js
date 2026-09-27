@@ -94,7 +94,7 @@ export const experienceData = [
   {
     company: 'AirAsia Berhad',
     logo: '/assets/airasia-logo.svg',
-    logoSquare: '/assets/airasia-icon.webp',
+    logoSquare: '/assets/airasia-mark.png',
     location: 'Selangor, Malaysia',
     duration: 'Mar 2017 — Dec 2019',
     tenure: '2 years 10 months',
@@ -153,6 +153,8 @@ export const experienceData = [
   },
   {
     company: 'Freelance Designer',
+    // Freelance work carries Hafizh's own mark in the Experience ledger.
+    mark: 'self',
     location: 'Anywhere',
     duration: '2012 — Apr 2015',
     roles: [

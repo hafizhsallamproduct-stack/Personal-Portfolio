@@ -1,15 +1,42 @@
 import { Link, useLocation } from 'react-router-dom';
 import Button from './Button';
 import { workData } from '../data/portfolioData';
-import { useTheme } from '../hooks/useTheme';
-import { Sparkle } from './icons';
+import { Sparkle, Clock } from './icons';
+
+const WIP_MESSAGE = 'I am currently working on this section, work in progress';
+
+// Running text across the top of the section while it is being reworked. The
+// track holds the message twice over and slides by half its width, so the
+// loop joins without a jump. Read out once, from the label.
+const WipBanner = () => {
+  const group = (
+    <span className="wip-group">
+      {/* Enough copies of the message to run past a wide window. */}
+      {Array.from({ length: 4 }, (unused, i) => (
+        <span key={i} className="wip-item">
+          <Clock className="icon" />
+          {WIP_MESSAGE}
+        </span>
+      ))}
+    </span>
+  );
+
+  return (
+    <div className="wip-banner" role="note" aria-label={WIP_MESSAGE}>
+      <div className="wip-track" aria-hidden="true">
+        {group}
+        {group}
+      </div>
+    </div>
+  );
+};
 
 const Work = () => {
   const location = useLocation();
-  const theme = useTheme();
 
   return (
     <section id="portfolio" tabIndex={0}>
+      <WipBanner />
       <div className="section section--header-only">
         <div className="section-label-col">
           <span className="section-tag">
@@ -55,7 +82,7 @@ const Work = () => {
               <div className="work-card-action">
                 {work.logo ? (
                   <img
-                    src={theme === 'dark' && work.logoDark ? work.logoDark : work.logo}
+                    src={work.logoDark || work.logo}
                     alt={`${work.company} logo`}
                     className="work-card-company-logo"
                     loading="lazy"

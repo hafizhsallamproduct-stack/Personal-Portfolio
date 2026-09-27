@@ -3,17 +3,18 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-sm);
   padding: 6px 12px;
-  background-color: var(--btn-accent);
-  background-image: linear-gradient(180deg, var(--btn-accent-hi) 0%, var(--btn-accent-lo) 100%);
-  border: 1.5px solid var(--btn-accent-border);
+  background-color: var(--brand-red);
+  /* Transparent rather than none, so it keeps the same size as the outlined
+     buttons beside it. */
+  border: 1px solid transparent;
   font-size: 16px;
   font-weight: 500;
-  color: var(--btn-accent-on);
+  color: var(--btn-primary-on);
   line-height: 16px;
   cursor: pointer;
-  transition: background-image 0.2s;
+  transition: background-color 0.2s;
   font-family: inherit;
 }
 
@@ -21,17 +22,13 @@
    a tap; the :active rules below still give tap feedback. */
 @media (hover: hover) {
   .btn-primary:hover {
-    background-image: linear-gradient(
-      180deg,
-      var(--btn-accent-hi-hover) 0%,
-      var(--btn-accent-lo-hover) 100%
-    );
+    background-color: var(--btn-primary-hover);
   }
 }
 
-/* Pressed reverses the light: darker at the top, as if pushed in. */
+/* Pressed goes a step darker, as if pushed in. */
 .btn-primary:active {
-  background-image: linear-gradient(180deg, var(--btn-accent-lo) 0%, var(--btn-accent-hi) 100%);
+  background-color: var(--btn-primary-active);
   transform: translateY(1px);
 }
 
@@ -43,56 +40,33 @@
   gap: 8px;
 }
 
-.btn-secondary {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  border-radius: var(--radius-md);
-  padding: 10px 20px;
-  background-color: var(--btn-secondary-bg);
-  /* The outline carries the accent while the fill stays neutral, so it reads as
-     a companion to the primary button rather than a separate family. */
-  border: 1px solid var(--btn-accent);
-  font-size: 16px;
-  font-weight: 500;
-  color: var(--text-primary);
-  line-height: 18px;
-  cursor: pointer;
-  transition:
-    background-color 0.2s,
-    border-color 0.2s;
-  font-family: inherit;
-}
-
-@media (hover: hover) {
-  .btn-secondary:hover {
-    background-color: var(--btn-secondary-hover);
-  }
-}
-
 .btn-outline {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-sm);
   padding: 10px 20px;
-  background-color: var(--btn-secondary-bg);
-  border: 1px solid var(--btn-accent);
-  color: var(--text-primary);
+  background-color: var(--bg-page);
+  border: 1px solid var(--btn-outline-border);
+  color: var(--btn-outline-text);
   font-size: 16px;
   font-weight: 500;
   line-height: 18px;
   cursor: pointer;
   transition:
     background-color 0.2s,
-    border-color 0.2s;
+    border-color 0.2s,
+    color 0.2s;
   font-family: inherit;
 }
 
-/* The edge already carries the accent, so hover lifts the fill instead. */
+/* Grey at rest so it sits back from the red primary; hover brings the edge
+   and label up to full strength. */
 @media (hover: hover) {
   .btn-outline:hover {
     background-color: var(--btn-secondary-hover);
+    border-color: var(--btn-outline-border-hover);
+    color: var(--text-primary);
   }
 }
 
@@ -173,20 +147,6 @@
   background-color: var(--ring-line);
 }
 
-.divider--spaced {
-  padding-top: 64px;
-}
-
-.divider--icons {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-}
-
-.divider--icons .divider-line {
-  flex: 1;
-}
-
 .divider-icons {
   display: flex;
   align-items: center;
@@ -210,12 +170,6 @@
   margin: 0 auto;
   padding: 64px 48px;
   gap: 120px;
-  scroll-margin-top: 64px;
-}
-
-/* Section wrappers that contain a header + content list (Experience, Work). */
-#experience,
-#portfolio {
   scroll-margin-top: 64px;
 }
 
@@ -243,18 +197,20 @@
   align-items: center;
   gap: 8px;
   font-family: var(--font-mono);
-  font-size: 12px;
+  /* Same size and line height as the header menu links. */
+  font-size: 16px;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.08em;
   color: var(--text-muted);
   font-weight: 500;
-  line-height: 16px;
+  line-height: 18px;
 }
 
 .section-tag .icon {
-  width: 14px;
-  height: 14px;
-  color: var(--accent-text);
+  width: 16px;
+  height: 16px;
+  /* Same colour as the label beside it, in every section. */
+  color: currentColor;
 }
 
 .section-title {
@@ -262,5 +218,5 @@
   font-size: 40px;
   font-weight: 700;
   line-height: 46px;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
 }

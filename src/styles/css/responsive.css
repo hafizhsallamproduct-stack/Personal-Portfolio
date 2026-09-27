@@ -1,29 +1,38 @@
-/* Tablet range (e.g. iPad Pro portrait, 1024px): keep the three Figma
-   Community cards on a single row by letting them shrink to fit. */
-@media (min-width: 901px) and (max-width: 1024px) {
-  .side-project-card {
-    width: auto;
-    flex: 1 1 0;
-    min-width: 0;
+/* The Figma Community cards: two across on tablets, one on phones. */
+@media (max-width: 900px) {
+  .side-projects {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .side-projects {
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
 /* --- Responsive (tablet) --- */
 @media (max-width: 900px) {
+  :root {
+    --header-height: 77px;
+  }
   .section-title {
     font-size: 36px;
     line-height: 42px;
   }
   .nav {
     --nav-pad-y: 20px;
-    padding: var(--nav-pad-y) 40px;
+    padding: var(--nav-pad-y) 24px;
   }
   .about-name,
   .cta-heading {
     font-size: 44px;
     line-height: 48px;
   }
-  .about-subtitle {
+  .about-subtitle,
+  .experience-description,
+  .work-disclaimer,
+  .cta-subtext {
     font-size: 18px;
     line-height: 28px;
   }
@@ -39,16 +48,6 @@
     padding-bottom: 20px;
   }
   .section-label-col {
-    width: 100%;
-  }
-  .experience-cards {
-    padding: 0 40px;
-  }
-  .experience-card {
-    flex-direction: column;
-    gap: 24px;
-  }
-  .experience-card-company {
     width: 100%;
   }
   .work-cards {
@@ -67,6 +66,14 @@
 
 /* --- Responsive (mobile) --- */
 @media (max-width: 640px) {
+  /* On a phone the card is the whole screen: no frame around it, no rounded
+     corners, and the header sticks to the very top. */
+  :root {
+    --header-height: 68px;
+    --page-card-inset: 0px;
+    --page-card-top: 0px;
+    --page-card-radius: 0px;
+  }
   .section-title {
     font-size: 32px;
     line-height: 38px;
@@ -75,19 +82,13 @@
     padding: 16px 16px;
     position: relative;
   }
-  .nav-top .nav,
-  .nav-fixed .nav {
-    border-bottom: none;
-  }
   .nav-logo-text {
     display: none;
   }
-  /* Only the scrolled header carries the name and role; the top header
-     stays as just the logo mark. */
-  .nav-fixed .nav-logo-identity {
+  .nav-logo-identity {
     display: flex;
   }
-  .nav-fixed .nav-logo {
+  .nav-top .nav-logo {
     min-width: 0;
     flex: 1;
     margin-right: 12px;
@@ -121,33 +122,33 @@
     font-size: 32px;
     line-height: 36px;
   }
-  .about-subtitle {
+  .about-subtitle,
+  .experience-description,
+  .work-disclaimer,
+  .cta-subtext {
     font-size: 18px;
     line-height: 26px;
   }
-  .about-subtitle-break {
-    display: none;
-  }
+  /* Three cells do not fit across a phone, so the strip stacks into rows. */
   .about-buttons {
-    flex-direction: column;
-    width: fit-content;
-    align-self: center;
+    grid-template-columns: 1fr;
+    row-gap: var(--about-links-gap);
+    align-self: stretch;
   }
-  .about-buttons .btn-primary-lg,
-  .about-buttons .btn-outline {
-    width: 300px;
-    justify-content: center;
+  .about-link + .about-link::before {
+    top: calc((var(--about-links-gap) + var(--line-width)) / -2);
+    bottom: auto;
+    left: 0;
+    right: 0;
+    width: auto;
+    height: var(--line-width);
   }
   .divider {
     padding: 0 16px;
     margin: 0;
   }
-  .divider--spaced {
-    padding: 0 16px;
-    margin: 0;
-  }
-  .divider--icons {
-    margin: 0;
+  .about-industries {
+    justify-content: center;
   }
   .section {
     padding: 32px 16px;
@@ -169,6 +170,21 @@
   #skills .skills-content {
     align-items: center;
     gap: 24px;
+  }
+
+  /* Centred on phones, with the rest of the section. */
+  .skills-stat {
+    align-items: center;
+    padding: 24px 12px;
+    text-align: center;
+  }
+  .skills-stat-value {
+    font-size: 36px;
+    line-height: 42px;
+  }
+  .skills-stat-label {
+    font-size: 13px;
+    line-height: 18px;
   }
   /* Smaller chips on mobile so they take less space. */
   #skills .skills-row {
@@ -207,11 +223,7 @@
     align-items: center;
   }
   /* Tighter body leading for the short mobile measure (matches card text). */
-  .about-text,
-  .experience-description,
-  .work-disclaimer,
-  .cta-subtext,
-  .experience-role-details li {
+  .about-text {
     line-height: 24px;
   }
   #about .about-stats {
@@ -248,73 +260,6 @@
   }
   .education-icon {
     width: 40px;
-  }
-  .experience-card {
-    padding: 16px;
-  }
-  .experience-cards {
-    padding: 0 16px 32px;
-  }
-  .experience-card-company {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-  }
-  /* Mobile swaps the wide wordmark for the square icon logo. */
-  .experience-card-company-logo {
-    display: none;
-  }
-  .experience-card-company-logo-square {
-    display: block;
-    order: 0;
-    width: 36px;
-    height: 36px;
-    border-radius: 8px;
-    object-fit: contain;
-    margin-right: 12px;
-  }
-  .experience-card-company-name {
-    order: 1;
-  }
-  .experience-card-company-location {
-    order: 2;
-    flex-basis: 100%;
-    margin-top: 2px;
-  }
-  .experience-card-company-duration {
-    order: 3;
-    flex-basis: 100%;
-    margin-top: 2px;
-    /* Time range and tenure share one line on mobile. */
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: baseline;
-    column-gap: 8px;
-  }
-  .experience-card-company-tenure::before {
-    content: '·';
-    margin-right: 8px;
-    color: var(--text-secondary);
-  }
-  .experience-role {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 8px;
-    /* Padding moves onto the header button below so the whole area taps. */
-    padding: 0;
-  }
-  /* Larger tap target for the accordion on mobile. */
-  /* Top padding only: the details below carry their own bottom padding. */
-  .experience-role-header {
-    padding: 20px 0 0;
-    align-items: center;
-  }
-  .experience-role-details,
-  .experience-role-summary {
-    padding-bottom: 20px;
-  }
-  .experience-role-info {
-    gap: 2px;
   }
   .work-cards {
     padding: 0 16px 32px;

@@ -13,25 +13,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&family=Ubuntu+Mono:wght@400;700&display=swap"
     />
-    <script>
-      // Resolve the saved theme before first paint, so switching to dark and
-      // reloading does not flash the light page first. Light is the default.
-      //
-      // Read from theme-3 rather than theme-2: the site saved the theme on
-      // every load while dark was the default, so every returning visitor
-      // carries theme-2: 'dark' that would otherwise override the new default.
-      (function () {
-        var theme = 'light';
-        try {
-          if (localStorage.getItem('theme-3') === 'dark') theme = 'dark';
-        } catch (e) {
-          /* private browsing: fall back to the default */
-        }
-        document.documentElement.setAttribute('data-theme', theme);
-      })();
-    </script>
   </head>
   <body id="top">
     <div id="root"></div>

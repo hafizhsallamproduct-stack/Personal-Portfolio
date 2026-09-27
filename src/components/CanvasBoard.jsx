@@ -1,9 +1,8 @@
 /*
  * The board behind the page: an 8 column grid of vertical hairlines.
  *
- * Only the seven inner lines are drawn. The outer edges already carry the
- * container boundary lines, and a guide there would make them read twice as
- * heavy. Positioned in percentages rather than a viewBox, so the columns stay
+ * Only the seven inner lines are drawn. The outer edges are the page card's
+ * own edges. Positioned in percentages rather than a viewBox, so the columns stay
  * equal at any window width instead of being cropped.
  */
 

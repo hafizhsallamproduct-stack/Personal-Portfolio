@@ -1,103 +1,6 @@
-import { Link, useLocation } from 'react-router-dom';
 import { experienceData } from '../data/portfolioData';
-import { useTheme } from '../hooks/useTheme';
 import { Briefcase } from './icons';
-
-const ExperienceRole = ({ role }) => {
-  // Roles without a title are shown as a plain summary, since the company card
-  // already carries the name and dates.
-  if (!role.title) {
-    return (
-      <div className="experience-role">
-        <p className="experience-role-summary experience-role-summary--standalone">
-          {role.summary}
-        </p>
-      </div>
-    );
-  }
-
-  return (
-    <div className="experience-role">
-      <div className="experience-role-header">
-        <div className="experience-role-info">
-          <div className="experience-role-title">{role.title}</div>
-          <div className="experience-role-date">{role.date}</div>
-        </div>
-      </div>
-      {role.details ? (
-        <ul className="experience-role-details">
-          {role.details.map((detail, j) => (
-            <li key={j}>{detail}</li>
-          ))}
-        </ul>
-      ) : (
-        <p className="experience-role-summary">{role.summary}</p>
-      )}
-    </div>
-  );
-};
-
-const ExperienceCard = ({ exp }) => {
-  const location = useLocation();
-  const theme = useTheme();
-  // Wordmarks with dark ink need a reversed copy on the dark page; brands whose
-  // logo is already coloured only ship the one file and fall through to it.
-  const logo = theme === 'dark' && exp.logoDark ? exp.logoDark : exp.logo;
-
-  return (
-    <div className="experience-card">
-      <div className="experience-card-company">
-        {logo && (
-          <img
-            className="experience-card-company-logo"
-            src={logo}
-            alt={`${exp.company} logo`}
-            loading="lazy"
-            style={exp.logoHeight ? { height: exp.logoHeight } : undefined}
-          />
-        )}
-        {exp.logoSquare && (
-          <img
-            className="experience-card-company-logo-square"
-            src={exp.logoSquare}
-            alt={`${exp.company} logo`}
-            loading="lazy"
-          />
-        )}
-        <div className="experience-card-company-name">{exp.company}</div>
-        {exp.location && <div className="experience-card-company-location">{exp.location}</div>}
-        <div className="experience-card-company-duration">
-          <span>{exp.duration}</span>
-          {exp.tenure && <span className="experience-card-company-tenure">{exp.tenure}</span>}
-        </div>
-      </div>
-      <div className="experience-card-roles">
-        {exp.roles.map((role, i) => (
-          <ExperienceRole key={i} role={role} />
-        ))}
-        {(() => {
-          const visibleCaseStudies = (exp.caseStudies || []).filter((cs) => !cs.hidden);
-          if (visibleCaseStudies.length === 0) return null;
-          return (
-            <div className="experience-card-work">
-              <h3 className="experience-card-work-title">My Work</h3>
-              {visibleCaseStudies.map((caseStudy) => (
-                <Link
-                  key={caseStudy.slug}
-                  to={`/portfolio/${caseStudy.slug}`}
-                  state={{ backgroundLocation: location }}
-                  className="experience-role-case-study"
-                >
-                  {caseStudy.label}
-                </Link>
-              ))}
-            </div>
-          );
-        })()}
-      </div>
-    </div>
-  );
-};
+import ExperienceLedger from './ExperienceLedger';
 
 const Experience = () => {
   return (
@@ -117,10 +20,8 @@ const Experience = () => {
         </div>
       </div>
 
-      <div className="experience-cards">
-        {experienceData.map((exp, index) => (
-          <ExperienceCard key={index} exp={exp} />
-        ))}
+      <div className="ledger-wrap">
+        <ExperienceLedger data={experienceData} />
       </div>
     </section>
   );

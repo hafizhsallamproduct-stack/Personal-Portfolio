@@ -20,7 +20,7 @@ const REVEALS = [
   ['.about-details-group', 0.05],
   ['.experience-description', 0.1],
   ['.work-disclaimer', 0.1],
-  ['.experience-card', 0],
+  ['.ledger-row', 0],
   ['.education-card', 0],
   ['.skills-row', 0],
   ['.skills-row-group', 0.05],

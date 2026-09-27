@@ -1,71 +1,115 @@
-import Button from './Button';
+import { useEffect, useRef, useState } from 'react';
 import AvailabilityRing from './AvailabilityRing';
-import ScrambleText from './ScrambleText';
-import { Translate, LinkedinLogo, ArrowDown, DownloadSimple } from './icons';
+import {
+  Translate,
+  LinkedinLogo,
+  ArrowDown,
+  DownloadSimple,
+  AirplaneTilt,
+  ShoppingBag,
+  Bank,
+  Money,
+  Buildings,
+  FigmaLogo,
+  HafizhLogo,
+} from './icons';
+
+// Holding the pointer on the photo this long turns it over to the logo.
+const FLIP_DELAY_MS = 2000;
+
+// The profile photo, with the logo on its back. It flips over after the
+// pointer has rested on it for FLIP_DELAY_MS, and back as soon as it leaves.
+const PhotoFlip = () => {
+  const [flipped, setFlipped] = useState(false);
+  const timer = useRef(0);
+
+  useEffect(() => () => clearTimeout(timer.current), []);
+
+  const onEnter = () => {
+    clearTimeout(timer.current);
+    timer.current = setTimeout(() => setFlipped(true), FLIP_DELAY_MS);
+  };
+
+  const onLeave = () => {
+    clearTimeout(timer.current);
+    setFlipped(false);
+  };
+
+  return (
+    <div
+      className={`about-photo-flip ${flipped ? 'is-flipped' : ''}`}
+      onPointerEnter={onEnter}
+      onPointerLeave={onLeave}
+    >
+      <div className="about-photo-flip-inner">
+        <picture className="about-photo-wrapper about-photo-face">
+          <source
+            type="image/webp"
+            srcSet="/assets/profile-256.webp 1x, /assets/profile-384.webp 1.5x"
+          />
+          <img
+            className="about-photo"
+            src="/assets/profile-384.jpg"
+            alt="Hafizh Sallam"
+            width="200"
+            height="200"
+          />
+        </picture>
+        <div className="about-photo-face about-photo-back" aria-hidden="true">
+          <HafizhLogo className="about-photo-logo" />
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const About = () => {
   return (
     <section id="about" className="section" tabIndex={0}>
       <div className="section-label-col">
         <AvailabilityRing>
-          <picture className="about-photo-wrapper">
-            <source
-              type="image/webp"
-              srcSet="/assets/profile-256.webp 1x, /assets/profile-384.webp 1.5x"
-            />
-            <img
-              className="about-photo"
-              src="/assets/profile-384.jpg"
-              alt="Hafizh Sallam"
-              width="200"
-              height="200"
-            />
-          </picture>
+          <PhotoFlip />
         </AvailabilityRing>
       </div>
       <div className="section-content-col">
         <div className="about-intro">
-          <h1 className="about-name">
-            <ScrambleText text="Hafizh Sallam" stagger={0.04} />
-          </h1>
-          <p className="about-subtitle">
-            <ScrambleText
-              text="Senior Product Designer crafting digital experiences across"
-              delay={0.2}
-              stagger={0.012}
-            />
-            <br className="about-subtitle-break" />{' '}
-            <ScrambleText text="E-Commerce, Airlines, and Banking." delay={0.5} stagger={0.012} />
-          </p>
+          <h1 className="about-name">Hafizh Sallam</h1>
+          <p className="about-subtitle">Senior Product Designer shaping complex digital products</p>
         </div>
         <div className="about-buttons">
-          <Button href="#portfolio" icon={ArrowDown} iconClassName="icon bounce">
+          <a href="#portfolio" className="about-link about-link--lead">
             View portfolio
-          </Button>
-          <Button
-            variant="outline"
+            <ArrowDown className="icon bounce" aria-hidden="true" />
+          </a>
+          <a
             href="https://www.linkedin.com/in/hafizh-s-b7299420a/"
+            className="about-link"
             target="_blank"
             rel="noopener noreferrer"
-            icon={LinkedinLogo}
           >
             Get in touch
-          </Button>
-          <Button variant="outline" href="/Hafizh-Sallam-Resume.pdf" download icon={DownloadSimple}>
+            <LinkedinLogo className="icon" aria-hidden="true" />
+          </a>
+          <a href="/Hafizh-Sallam-Resume.pdf" className="about-link" download>
             Download Resume
-          </Button>
+            <DownloadSimple className="icon" aria-hidden="true" />
+          </a>
+        </div>
+        <div className="divider-icons about-industries" aria-hidden="true">
+          <AirplaneTilt className="icon" />
+          <ShoppingBag className="icon" />
+          <Bank className="icon" />
+          <Money className="icon" />
+          <Buildings className="icon" />
+          <FigmaLogo className="icon" />
         </div>
         <p className="about-text">
-          A Senior Product Designer based in Kuala Lumpur, Malaysia with over 10 years of experience
-          working on digital products. I've worked across different industries including e-commerce,
-          travel, and banking, which has helped me understand different types of users and product
-          needs.
-        </p>
-        <p className="about-text">
-          Currently at Wego.com, I'm the Design Lead for two areas: the design system, and flight
-          booking, which covers the full checkout flow. I report to the Product Design Director. Our
-          team is flat, so I also guide three senior designers on craft and direction. Lately, I've
-          been exploring how AI can improve my design process and simplify day-to-day work.
+          With 10+ years in product design, I've worked across travel, banking, and e-commerce,
+          designing products from early problem definition through to implementation. At Wego, I own
+          the end-to-end flight booking experience across platforms, influence product direction,
+          and lead the evolution of our design system. Alongside product work, I collaborate closely
+          with product, engineering, and other designers to improve design quality, workflows, and
+          ways of working, including integrating AI into the design process.
         </p>
         <div className="about-stats">
           <div className="stat">

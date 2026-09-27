@@ -1,12 +1,12 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import { HafizhLogo, List, X } from './icons';
 
 const SECTION_LINKS = [
   { href: '#about', label: 'About' },
+  { href: '#portfolio', label: 'Portfolio' },
   { href: '#experience', label: 'Experience' },
   { href: '#education', label: 'Education' },
   { href: '#skills', label: 'Expertise' },
-  { href: '#portfolio', label: 'Portfolio' },
 ];
 
 const SectionLinks = ({ activeHash, onLinkClick }) => {
@@ -40,21 +40,16 @@ const SectionLinks = ({ activeHash, onLinkClick }) => {
 };
 
 const Navbar = () => {
-  const [isFixedVisible, setIsFixedVisible] = useState(false);
   const [activeHash, setActiveHash] = useState('');
+  const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const navTopRef = useRef(null);
-  const navFixedRef = useRef(null);
 
+  // The name joins the logo only once the page has scrolled, while the hero
+  // below already shows it large.
   useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 120) {
-        setIsFixedVisible(true);
-      } else {
-        setIsFixedVisible(false);
-      }
-    };
-    window.addEventListener('scroll', handleScroll);
+    const handleScroll = () => setIsScrolled(window.scrollY > 120);
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -83,42 +78,6 @@ const Navbar = () => {
     };
   }, []);
 
-  // Point the lit segment of the header rule at the active link. Each header is
-  // measured on its own: the fixed one carries a wider logo, so its links do
-  // not line up with the top one's.
-  useEffect(() => {
-    const positionBeam = (header) => {
-      const nav = header?.querySelector('.nav');
-      if (!nav) return;
-
-      const active = nav.querySelector('.nav-link.active');
-      // No active section yet, or the links are stacked in the mobile menu
-      // rather than laid out along the rule.
-      if (!active || active.offsetParent === null) {
-        nav.style.setProperty('--beam-opacity', '0');
-        return;
-      }
-
-      const navBox = nav.getBoundingClientRect();
-      const linkBox = active.getBoundingClientRect();
-      nav.style.setProperty('--beam-x', `${linkBox.left - navBox.left}px`);
-      nav.style.setProperty('--beam-w', `${linkBox.width}px`);
-      nav.style.setProperty('--beam-opacity', '1');
-    };
-
-    const update = () => {
-      positionBeam(navTopRef.current);
-      positionBeam(navFixedRef.current);
-    };
-
-    update();
-    // Fonts land after first paint and shift the links sideways, so measure
-    // again once they are ready.
-    document.fonts?.ready.then(update).catch(() => {});
-    window.addEventListener('resize', update);
-    return () => window.removeEventListener('resize', update);
-  }, [activeHash, isMobileMenuOpen]);
-
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
@@ -132,13 +91,18 @@ const Navbar = () => {
   );
 
   return (
-    <>
-      <header className="nav-top" ref={navTopRef}>
-        <nav className="nav">
-          <a href="#top" className="nav-logo" aria-label="Back to home">
-            <HafizhLogo className="nav-logo-icon" />
-          </a>
+    <header className={`nav-top ${isScrolled ? 'nav-top--scrolled' : ''}`}>
+      <nav className="nav">
+        <a href="#top" className="nav-logo" aria-label="Back to home">
+          <HafizhLogo className="nav-logo-icon" />
+          <span className="nav-logo-text">Hafizh Sallam</span>
+          <span className="nav-logo-identity" aria-hidden="true">
+            <span className="nav-logo-identity-name">Hafizh Sallam</span>
+            <span className="nav-logo-identity-role">Senior Product Designer</span>
+          </span>
+        </a>
 
+        <div className="nav-controls-mobile">
           <button
             className="hamburger-menu"
             onClick={toggleMobileMenu}
@@ -147,45 +111,13 @@ const Navbar = () => {
           >
             {hamburgerIcon}
           </button>
+        </div>
 
-          <div className={`nav-links ${isMobileMenuOpen ? 'nav-links--open' : ''}`}>
-            <SectionLinks onLinkClick={closeMobileMenu} />
-          </div>
-        </nav>
-      </header>
-
-      <header
-        className={`nav-fixed ${isFixedVisible ? 'visible' : ''}`}
-        id="navFixed"
-        ref={navFixedRef}
-      >
-        <nav className="nav">
-          <a href="#top" className="nav-logo" aria-label="Back to home">
-            <HafizhLogo className="nav-logo-icon" />
-            <span className="nav-logo-text">Hafizh Sallam</span>
-            <span className="nav-logo-identity" aria-hidden="true">
-              <span className="nav-logo-identity-name">Hafizh Sallam</span>
-              <span className="nav-logo-identity-role">Senior Product Designer</span>
-            </span>
-          </a>
-
-          <div className="nav-controls-mobile">
-            <button
-              className="hamburger-menu"
-              onClick={toggleMobileMenu}
-              aria-label="Toggle menu"
-              aria-expanded={isMobileMenuOpen}
-            >
-              {hamburgerIcon}
-            </button>
-          </div>
-
-          <div className={`nav-links ${isMobileMenuOpen ? 'nav-links--open' : ''}`}>
-            <SectionLinks activeHash={activeHash} onLinkClick={closeMobileMenu} />
-          </div>
-        </nav>
-      </header>
-    </>
+        <div className={`nav-links ${isMobileMenuOpen ? 'nav-links--open' : ''}`}>
+          <SectionLinks activeHash={activeHash} onLinkClick={closeMobileMenu} />
+        </div>
+      </nav>
+    </header>
   );
 };
 

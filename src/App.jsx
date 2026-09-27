@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import About from './components/About';
@@ -9,118 +8,72 @@ import Work from './components/Work';
 import SideProjects from './components/SideProjects';
 import CanvasBoard from './components/CanvasBoard';
 import Footer from './components/Footer';
+import SideActions from './components/SideActions';
+import PageRuler from './components/PageRuler';
 import PortfolioModal from './components/PortfolioModal';
 import { useScrollReveal } from './hooks/useScrollReveal';
-import { AirplaneTilt, ShoppingBag, Bank, Money, Buildings, FigmaLogo } from './components/icons';
 
-function IndexPage({ theme, toggleTheme }) {
+function IndexPage() {
   return (
     <>
       <a href="#main" className="skip-link">
         Skip to content
       </a>
-      <Navbar theme={theme} />
-      <main id="main">
-        <About />
+      <div className="page-card-mask" aria-hidden="true"></div>
+      <div className="page-card">
+        <PageRuler />
+        <Navbar />
+        <main id="main">
+          <About />
 
-        <div className="divider divider--icons">
-          <div className="divider-line"></div>
-          <div className="divider-icons">
-            <AirplaneTilt className="icon" aria-hidden="true" />
-            <ShoppingBag className="icon" aria-hidden="true" />
-            <Bank className="icon" aria-hidden="true" />
-            <Money className="icon" aria-hidden="true" />
-            <Buildings className="icon" aria-hidden="true" />
-            <FigmaLogo className="icon" aria-hidden="true" />
+          <div className="divider">
+            <div className="divider-line"></div>
           </div>
-          <div className="divider-line"></div>
-        </div>
 
-        <Experience />
+          <Work />
 
-        <div className="divider divider--spaced">
-          <div className="divider-line"></div>
-        </div>
+          <div className="divider">
+            <div className="divider-line"></div>
+          </div>
 
-        <Education />
+          <Experience />
 
-        <div className="divider">
-          <div className="divider-line"></div>
-        </div>
+          <Education />
 
-        <Skills />
+          <Skills />
 
-        <div className="divider">
-          <div className="divider-line"></div>
-        </div>
+          <section id="contact" className="cta-section">
+            <h2 className="cta-heading">
+              Let's build something
+              <br />
+              great together.
+            </h2>
+            <p className="cta-subtext">
+              I also share a few free files on the Figma Community. Take a look: they give a sense
+              of how I work and organize a working file.
+            </p>
+            <SideProjects />
+          </section>
+        </main>
 
-        <Work />
-
-        <div className="divider">
-          <div className="divider-line"></div>
-        </div>
-
-        <section id="contact" className="cta-section">
-          <h2 className="cta-heading">
-            Let's build something
-            <br />
-            great together.
-          </h2>
-          <p className="cta-subtext">
-            I also share a few free files on the Figma Community. Take a look: they give a sense of
-            how I work and organize a working file.
-          </p>
-          <SideProjects />
-        </section>
-      </main>
-
-      <div className="divider">
-        <div className="divider-line"></div>
+        <Footer />
       </div>
-
-      <Footer theme={theme} toggleTheme={toggleTheme} />
+      <SideActions />
     </>
   );
 }
 
-// Must match the key the pre-paint script in index.html reads.
-const THEME_KEY = 'theme-3';
-
-// The inline script in index.html has already resolved and applied the theme
-// before first paint, so read that back rather than deciding again here. Doing
-// it twice is how the two end up disagreeing on the first render.
-const getInitialTheme = () => {
-  const applied = document.documentElement.getAttribute('data-theme');
-  return applied === 'dark' ? 'dark' : 'light';
-};
-
 function App() {
-  const [theme, setTheme] = useState(getInitialTheme);
   useScrollReveal();
   const location = useLocation();
   const backgroundLocation = location.state?.backgroundLocation;
-
-  useEffect(() => {
-    document.documentElement.setAttribute('data-theme', theme);
-    try {
-      localStorage.setItem(THEME_KEY, theme);
-      // Drop the older keys so they cannot be read by anything later.
-      localStorage.removeItem('theme');
-      localStorage.removeItem('theme-2');
-    } catch {
-      // Storage can throw in private browsing; the theme still applies for
-      // this session, it just will not be remembered.
-    }
-  }, [theme]);
-
-  const toggleTheme = () => setTheme((current) => (current === 'dark' ? 'light' : 'dark'));
 
   return (
     <>
       <CanvasBoard />
 
       <Routes location={backgroundLocation || location}>
-        <Route path="/" element={<IndexPage theme={theme} toggleTheme={toggleTheme} />} />
+        <Route path="/" element={<IndexPage />} />
         <Route path="/portfolio/:slug" element={<PortfolioModal isStandalone />} />
       </Routes>
 

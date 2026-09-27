@@ -15,29 +15,82 @@
   --space-5xl: 80px;
 
   /* Type families */
-  /* Inter, loaded in index.html with its optical size axis. Text follows its
-     own size along that axis; titles are pinned to Inter Display, see base.css.
-     The system stack is only the fallback while it loads. */
-  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  /* Ubuntu for everything, with Ubuntu Mono for the monospace labels, both
+     loaded in index.html. Ubuntu loads 300, 400, 500 and 700; a 600 in the styles
+     resolves to the 700 cut. The system stacks are only the fallback while they
+     load. */
+  --font-body: 'Ubuntu', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-heading: var(--font-body);
-  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace;
+  --font-mono:
+    'Ubuntu Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
+    monospace;
 
   /* Corner radii */
   --radius-sm: 4px;
   --radius-md: 6px;
   --radius-lg: 8px;
   --radius-xl: 12px;
+
+  /* The page card and the frame around it */
+  --page-card-inset: 12px;
+  /* The gap above the card, which the sticky header also keeps. */
+  --page-card-top: 24px;
+  /* Corners are drawn as Apple style continuous curves (squircles) where the
+     browser supports corner-shape, see base.css. A squircle reads tighter than
+     a circular arc at the same radius, so the radius scales up with it. */
+  --corner-scale: 1;
+  --page-card-radius: calc(16px * var(--corner-scale));
+  /* The sticky header's height, for things placed just below it. */
+  --header-height: 68px;
 }
 
 /* ============================================
-   Theme Variables — dark is the default
+   Theme Variables: one dark theme for the whole site
    ============================================ */
 
-:root,
-[data-theme='dark'] {
-  /* Page sits at the Forge base of #202020; cards are raised a step above it
+:root {
+  /* The page is a black card on a grey frame. Cards are raised a step above it
      rather than sunk below, which is what gives the surfaces depth. */
-  --bg-page: #121212;
+  --bg-page: #000000;
+  --bg-frame: #e0e0e0;
+  /* Brand red, for the buttons and the logo. White ink on it reads at 5:1, so text on red stays full white. */
+  --brand-red: #e00808;
+  --btn-primary-hover: #ee1c25;
+  --btn-primary-active: #c80202;
+  --btn-primary-on: #ffffff;
+  /* The white Skills section: dark ink and light grey chips. Muted text is
+     5.3:1 on white. */
+  --skills-bg: #ffffff;
+  --skills-text: #121212;
+  --skills-text-muted: #6b6b6b;
+  --skills-tag-bg: #f0f0f0;
+  --skills-rule: #e6e6e6;
+  /* Large stat figures when not highlighted: 3.5:1, fine at 48px. */
+  --skills-stat-idle: #8a8a8a;
+  /* The Portfolio section: bright yellow with near-black type. */
+  --portfolio-bg: #ffdd00;
+  --portfolio-text: #121212;
+  /* The running work-in-progress banner on Portfolio. */
+  --wip-bg: var(--brand-red);
+  --wip-text: #ffffff;
+  /* Figma Community cards on the red closing section. */
+  --side-card-bg: #ffffff;
+  --side-card-title: #121212;
+  /* The resume half of the floating actions, a step darker than the red. */
+  --side-action-dark: #c40404;
+  --side-action-dark-hover: #d20606;
+  /* Hover labels on the floating actions. */
+  --tip-bg: #ffffff;
+  --tip-text: #121212;
+  /* Education, in the colours of the Universiti Utara Malaysia crest. */
+  --uum-blue: #21409a;
+  --uum-blue-deep: #1a3380;
+  --uum-gold: #f5c623;
+  --uum-white: #ffffff;
+  --uum-text-soft: #d3dbf2;
+  /* The university mark in the Education background, a clearly deeper navy
+     than the fill. */
+  --uum-mark: #12296b;
   --bg-card: #1f1f1f;
   --bg-card-hover: #262626;
   --bg-placeholder: #1f1f1f;
@@ -57,108 +110,31 @@
      on this page reads at 17.5:1, the strongest contrast available. */
   --accent: #ffffff;
   --accent-bright: #ffffff;
-  --accent-hover: #ffffff;
   --accent-text: #ffffff;
   --accent-border: rgba(255, 255, 255, 0.4);
   --accent-subtle: rgba(255, 255, 255, 0.1);
-  /* Matches --bg-card, so the fill reads as the same surface family and the
-     accent outline is what carries the button. */
-  --btn-secondary-bg: #1f1f1f;
-  --btn-secondary-border: #3d3d3d;
   --btn-secondary-hover: #262626;
+  /* Outlined buttons: grey at rest, so the red primary leads. */
+  --btn-outline-border: #5a5a5a;
+  --btn-outline-border-hover: #9a9a9a;
+  --btn-outline-text: #b8b8b8;
   --btn-accent: #ffffff;
-  /* A slight fall from pure white to a soft grey; the deep end still reads at
-     14.6:1 against the dark ink on top. */
-  --btn-accent-hi: #ffffff;
-  --btn-accent-lo: #e2e2e2;
-  --btn-accent-hi-hover: #ffffff;
-  --btn-accent-lo-hover: #f2f2f2;
-  --btn-accent-hover: #ffffff;
   --btn-accent-on: #121212;
-  --btn-accent-border: rgba(255, 255, 255, 0.5);
-  --btn-accent-subtle: rgba(255, 255, 255, 0.1);
   --tag-bg: #1f1f1f;
   --tag-border: #3a3a3a;
   --tag-text: #e8e8e8;
   --tag-tool-text: #a0a0a0;
   --nav-link: #a0a0a0;
-  --logo-bg: #ffffff;
-  --logo-text: #121212;
-  --badge-bg: #1f1f1f;
-  --badge-border: #353535;
+  --logo-bg: var(--brand-red);
+  --logo-text: #ffffff;
   --bullet: #ffffff;
   --line-width: 1px;
-  --grid-tile: rgba(255, 255, 255, 0.1);
-  --tooltip-divider: rgba(255, 255, 255, 0.15);
-  --nav-glass: rgba(18, 18, 18, 0.72);
+  --nav-bg: #000000;
   /* Canvas board behind the page */
-  --ring-line: rgba(255, 255, 255, 0.075);
+  --ring-line: rgba(255, 255, 255, 0.12);
   /* Fainter than ring-line, so the column grid sits behind the section borders. */
-  --board-line: rgba(255, 255, 255, 0.04);
+  --board-line: rgba(255, 255, 255, 0.08);
   --card-lift-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
   /* Floating chip over artwork, where the page background cannot be relied on. */
   --chip-glass: rgba(20, 20, 20, 0.92);
-}
-
-[data-theme='light'] {
-  --bg-page: #f5f5f5;
-  --bg-card: #ffffff;
-  /* Steps down from the white card rather than up, since white has nowhere
-     above it to go. The old value sat on the new page colour and would have
-     made a hovered row blend into the background. */
-  --bg-card-hover: #f0f0f0;
-  --bg-placeholder: #ededed;
-  --border: #dadade;
-  --border-hover: #d0d0d4;
-  --divider: #e7e7ea;
-  /* Same reasoning inverted: the light accent is #171717, so ordinary text
-     sits a step lighter to leave it room. */
-  --text-primary: #262626;
-  --text-secondary: #565656;
-  --text-muted: #7a7a7a;
-  --text-faint: #7a7a7a;
-  --text-body: #333333;
-  --text-footer: #7a7a7a;
-  /* A white accent has nowhere to go on a white page, so the light theme
-     mirrors it: near-black fills carrying white ink. */
-  --accent: #171717;
-  --accent-bright: #171717;
-  --accent-hover: #171717;
-  --accent-text: #171717;
-  --accent-border: rgba(23, 23, 23, 0.35);
-  --accent-subtle: rgba(23, 23, 23, 0.08);
-  --btn-secondary-bg: #ffffff;
-  --btn-secondary-border: #e2e2e2;
-  --btn-secondary-hover: #f0f0f0;
-  --btn-accent: #171717;
-  --btn-accent-hi: #2e2e2e;
-  --btn-accent-lo: #171717;
-  --btn-accent-hi-hover: #3a3a3a;
-  --btn-accent-lo-hover: #212121;
-  --btn-accent-hover: #000000;
-  --btn-accent-on: #ffffff;
-  --btn-accent-border: rgba(23, 23, 23, 0.3);
-  --btn-accent-subtle: rgba(23, 23, 23, 0.08);
-  --tag-bg: #f0f0f0;
-  --tag-border: #dcdcdc;
-  --tag-text: #171717;
-  --tag-tool-text: #565656;
-  --nav-link: #565656;
-  --logo-bg: #171717;
-  --logo-text: #ffffff;
-  --badge-bg: #f0f0f0;
-  --badge-border: #e7e7ea;
-  --bullet: #171717;
-  --grid-tile: rgba(0, 0, 0, 0.1);
-  --tooltip-divider: rgba(255, 255, 255, 0.15);
-  --nav-glass: rgba(245, 245, 245, 0.72);
-  /* Black on a light page needs more alpha than white on a dark one to land at
-     the same contrast. At 0.03 the board and the hairline borders were roughly a
-     third of the weight the dark theme carries; 0.085 puts the two themes at the
-     same 1.22:1 against their own page colour. Still lighter than --divider, so
-     the ordering of the line weights holds. */
-  --ring-line: rgba(0, 0, 0, 0.085);
-  --board-line: rgba(0, 0, 0, 0.045);
-  --card-lift-shadow: 0 6px 16px rgba(0, 0, 0, 0.07);
-  --chip-glass: rgba(255, 255, 255, 0.92);
 }
