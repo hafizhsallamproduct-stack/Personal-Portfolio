@@ -147,9 +147,6 @@
     padding: 0 16px;
     margin: 0;
   }
-  .about-industries {
-    justify-content: center;
-  }
   .section {
     padding: 32px 16px;
     gap: 24px;
@@ -157,26 +154,11 @@
   .section--header-only {
     padding-bottom: 32px;
   }
-  .section-label-col {
-    text-align: center;
-    align-items: center;
-  }
-  .section-tag {
-    justify-content: center;
-  }
-  .experience-description {
-    text-align: center;
-  }
   #skills .skills-content {
-    align-items: center;
     gap: 24px;
   }
-
-  /* Centred on phones, with the rest of the section. */
   .skills-stat {
-    align-items: center;
-    padding: 24px 12px;
-    text-align: center;
+    padding: 24px 12px 24px 0;
   }
   .skills-stat-value {
     font-size: 36px;
@@ -188,7 +170,6 @@
   }
   /* Smaller chips on mobile so they take less space. */
   #skills .skills-row {
-    justify-content: center;
     gap: 6px;
   }
   #skills .skill-tag,
@@ -197,11 +178,15 @@
     font-size: 13px;
     line-height: 16px;
   }
-  #skills .skills-row-group {
-    align-items: center;
+  /* Four columns on the board rather than eight. */
+  .canvas-board-line--fine {
+    display: none;
   }
-  #skills .skills-row-label {
-    text-align: center;
+  /* The hero's links read from the left, like the rest of the page. */
+  .about-link {
+    justify-content: flex-start;
+    padding-left: 0;
+    padding-right: 0;
   }
   .about-photo-ring {
     --photo: 140px;
@@ -218,39 +203,16 @@
   .about-details {
     padding-top: 4px;
   }
-  .section-content-col {
-    text-align: center;
-    align-items: center;
-  }
   /* Tighter body leading for the short mobile measure (matches card text). */
   .about-text {
     line-height: 24px;
   }
   #about .about-stats {
-    justify-content: center;
     gap: 24px;
-  }
-  #about .stat {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  #about .about-details {
-    align-items: center;
-  }
-  #about .about-details-group {
-    align-items: center;
-  }
-  #about .about-details-title {
-    justify-content: center;
   }
   #about .languages-groups {
     flex-direction: column;
     gap: 20px;
-    align-items: center;
-  }
-  #about .language-group {
-    align-items: center;
   }
   .education-card {
     padding: 16px;
@@ -295,6 +257,5 @@
     flex-direction: column;
     gap: 16px;
     padding: 32px 16px;
-    text-align: center;
   }
 }

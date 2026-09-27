@@ -71,7 +71,8 @@ html {
 .page-card {
   position: relative;
   width: min(1200px, 100% - 2 * var(--page-card-inset));
-  margin: var(--page-card-top) auto var(--page-card-inset);
+  /* The same gap above and below the card. */
+  margin: var(--page-card-top) auto;
   border-radius: var(--page-card-radius);
 }
 
