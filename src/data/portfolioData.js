@@ -153,6 +153,8 @@ export const experienceData = [
   },
   {
     company: 'Freelance Designer',
+    // Freelance work carries Hafizh's own mark in the Experience ledger.
+    mark: 'self',
     location: 'Anywhere',
     duration: '2012 — Apr 2015',
     roles: [

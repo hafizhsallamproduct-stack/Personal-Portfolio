@@ -1,0 +1,316 @@
+/* ============================================
+   Experience ledger (ExperienceLedger)
+   One row per company, folding open to its roles, on the page's dark
+   palette, with the brand red for the open state.
+   ============================================ */
+
+.ledger-wrap {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 48px 64px;
+  /* Where the section's content column starts: the 200px label column plus
+     the 120px gap. The ledger lines its text up to it. */
+  --ledger-content-start: 320px;
+}
+
+/* --- Shared: the fold, the company mark and the role details --- */
+
+/* Folds open by animating its row from 0fr to 1fr, so the height follows the
+   content without measuring it. */
+.exp-fold {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.exp-fold.is-open {
+  grid-template-rows: 1fr;
+}
+
+.exp-fold-inner {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.exp-mark {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  border-radius: calc(var(--radius-lg) * var(--corner-scale));
+  corner-shape: squircle;
+  object-fit: cover;
+}
+
+.exp-mark--initials {
+  /* A true circle: the squircle corner shape on .exp-mark would square it off. */
+  border-radius: 50%;
+  corner-shape: round;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--brand-red);
+  color: var(--btn-primary-on);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.exp-details {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.exp-role-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 4px 16px;
+  margin-bottom: 10px;
+}
+
+.exp-role-title {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 24px;
+  color: var(--text-primary);
+}
+
+.exp-role-date {
+  font-size: 15px;
+  line-height: 20px;
+  color: var(--text-secondary);
+}
+
+.exp-role-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.exp-role-list li {
+  position: relative;
+  padding-left: 20px;
+  font-size: 16px;
+  line-height: 28px;
+  color: var(--text-body);
+}
+
+.exp-role-list li::before {
+  content: '';
+  position: absolute;
+  left: 2px;
+  top: 12px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--brand-red);
+}
+
+.exp-role-summary {
+  font-size: 16px;
+  line-height: 28px;
+  color: var(--text-body);
+}
+
+.exp-work {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.exp-work-label {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.exp-work-links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+/* A plain list of links, one per line, underlined faintly until hovered. */
+.exp-work-link {
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--text-primary);
+  text-decoration: underline;
+  text-decoration-color: var(--accent-border);
+  text-underline-offset: 4px;
+  transition: text-decoration-color 0.2s;
+}
+
+@media (hover: hover) {
+  .exp-work-link:hover {
+    text-decoration-color: currentColor;
+  }
+}
+
+/* --- Ledger --- */
+.ledger {
+  list-style: none;
+  border-top: var(--line-width) solid var(--divider);
+}
+
+.ledger-row {
+  border-bottom: var(--line-width) solid var(--divider);
+}
+
+.ledger-head {
+  display: grid;
+  /* The years column plus its gap end where the section content starts, so
+     the company names line up under the description. */
+  grid-template-columns: calc(var(--ledger-content-start) - 24px) minmax(0, 1fr) minmax(0, 1fr) 40px;
+  column-gap: 24px;
+  align-items: center;
+  width: 100%;
+  padding: 24px 0;
+  border: none;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.ledger-years {
+  font-size: 15px;
+  line-height: 20px;
+  color: var(--text-secondary);
+}
+
+.ledger-company {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+}
+
+.ledger-company-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.ledger-name {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 26px;
+  color: var(--text-primary);
+}
+
+.ledger-location {
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--text-secondary);
+}
+
+.ledger-role {
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+  line-height: 22px;
+  color: var(--text-primary);
+}
+
+.ledger-more {
+  font-size: 13px;
+  line-height: 18px;
+  color: var(--text-muted);
+}
+
+.ledger-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: var(--text-primary);
+  transition:
+    background-color 0.25s cubic-bezier(0.25, 1, 0.5, 1),
+    color 0.25s cubic-bezier(0.25, 1, 0.5, 1),
+    transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.ledger-toggle .icon {
+  width: 18px;
+  height: 18px;
+}
+
+@media (hover: hover) {
+  .ledger-head:hover .ledger-toggle {
+    background-color: var(--bg-card);
+  }
+}
+
+.ledger-row[data-open] .ledger-toggle {
+  transform: rotate(45deg);
+  background-color: var(--brand-red);
+  color: var(--btn-primary-on);
+}
+
+.ledger-head:focus-visible {
+  outline-offset: -2px;
+}
+
+.ledger-panel {
+  padding: 0 64px 32px var(--ledger-content-start);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .exp-fold,
+  .ledger-toggle {
+    transition: none;
+  }
+}
+
+/* --- Tablet --- */
+@media (max-width: 900px) {
+  .ledger-wrap {
+    --ledger-content-start: 184px;
+    padding: 0 40px 60px;
+  }
+  .ledger-panel {
+    padding-right: 0;
+  }
+}
+
+/* --- Mobile --- */
+@media (max-width: 640px) {
+  .ledger-wrap {
+    padding: 0 16px 32px;
+  }
+  .ledger-head {
+    grid-template-columns: minmax(0, 1fr) 40px;
+    grid-template-areas:
+      'years toggle'
+      'company toggle'
+      'role toggle';
+    row-gap: 8px;
+    padding: 20px 0;
+  }
+  .ledger-years {
+    grid-area: years;
+    font-size: 14px;
+  }
+  .ledger-company {
+    grid-area: company;
+  }
+  .ledger-role {
+    grid-area: role;
+  }
+  .ledger-toggle {
+    grid-area: toggle;
+  }
+  .ledger-panel {
+    padding: 0 0 24px;
+  }
+}

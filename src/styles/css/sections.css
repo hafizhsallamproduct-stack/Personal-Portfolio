@@ -1,26 +1,3 @@
-/* --- Container boundary lines ---
-   Part of the board rather than the content, so they carry the same stroke as
-   the rings and guides behind them. */
-body::before,
-body::after {
-  content: '';
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  width: 0;
-  border-left: var(--line-width) solid var(--ring-line);
-  pointer-events: none;
-  z-index: 101;
-}
-
-body::before {
-  left: calc(50% - 600px);
-}
-
-body::after {
-  left: calc(50% + 600px);
-}
-
 /* --- Nav --- */
 .nav {
   --nav-pad-y: 16px;
@@ -30,30 +7,34 @@ body::after {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: var(--nav-pad-y) 48px;
+  padding: var(--nav-pad-y) 24px;
   position: relative;
   background-color: transparent;
 }
 
 .nav-top {
-  background-color: var(--nav-glass);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  position: sticky;
+  /* Sticks below the frame's top gap rather than at the window edge, so the
+     card keeps its inset while scrolling; see .page-card-mask. */
+  top: var(--page-card-top);
+  z-index: 100;
+  /* Rounded to the card's top corners, so it sits inside the card at the top
+     of the page rather than squaring them off. */
+  border-radius: var(--page-card-radius) var(--page-card-radius) 0 0;
+  /* Solid rather than see-through, so it stays black over the white and
+     coloured sections instead of turning grey. */
+  background-color: var(--nav-bg);
 }
 
-.nav-top .nav,
-.nav-fixed .nav {
+.nav-top .nav {
   border-bottom: var(--line-width) solid var(--ring-line);
 }
 
 /* A segment of the header rule marking the section you are in. It slides along
    the rule as the active section changes, so the marker tracks the scroll.
 
-   Navbar measures the active link and writes --beam-x/--beam-w onto each .nav,
-   which is why the two headers can carry different positions: the fixed one
-   has a wider logo, so its links do not sit where the top one's do. */
-.nav-top .nav::after,
-.nav-fixed .nav::after {
+   Navbar measures the active link and writes --beam-x/--beam-w onto the .nav. */
+.nav-top .nav::after {
   content: '';
   position: absolute;
   left: 0;
@@ -72,8 +53,7 @@ body::after {
 
 /* The marker still tracks the section, it just stops sliding to get there. */
 @media (prefers-reduced-motion: reduce) {
-  .nav-top .nav::after,
-  .nav-fixed .nav::after {
+  .nav-top .nav::after {
     transition: opacity 0.25s cubic-bezier(0.25, 1, 0.5, 1);
   }
 }
@@ -85,32 +65,6 @@ body::after {
 /* No rule to sit on here, so no marker either. */
 .exploration-nav .nav::after {
   display: none;
-}
-
-.nav-fixed {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
-  background-color: var(--nav-glass);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  transform: translateY(-100%);
-  opacity: 0;
-  visibility: hidden;
-  transition:
-    transform 0.25s ease,
-    opacity 0.2s ease,
-    visibility 0.2s ease;
-  pointer-events: none;
-}
-
-.nav-fixed.visible {
-  transform: translateY(0);
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
 }
 
 .nav-logo {
@@ -125,14 +79,38 @@ body::after {
   flex-shrink: 0;
 }
 
+/* Hidden until the page scrolls (see Navbar). Faded rather than removed, so
+   the name keeps its space and nothing beside it shifts when it appears. */
+.nav-logo-text,
+.nav-logo-identity {
+  opacity: 0;
+  transform: translateX(-4px);
+  transition:
+    opacity 0.3s cubic-bezier(0.25, 1, 0.5, 1),
+    transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.nav-top--scrolled .nav-logo-text,
+.nav-top--scrolled .nav-logo-identity {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-logo-text,
+  .nav-logo-identity {
+    transform: none;
+  }
+}
+
 .nav-logo-text {
   font-size: 20px;
-  font-weight: 700;
+  font-weight: 500;
   color: var(--text-primary);
   line-height: 20px;
 }
 
-/* Name and role stacked, shown in the scrolled header on mobile only,
+/* Name and role stacked, shown in the header on mobile only,
    where the single-line nav-logo-text is hidden. */
 .nav-logo-identity {
   display: none;
@@ -144,7 +122,7 @@ body::after {
 
 .nav-logo-identity-name {
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 500;
   line-height: 18px;
   color: var(--text-primary);
 }
@@ -191,41 +169,6 @@ body::after {
   color: var(--btn-accent);
 }
 
-.theme-toggle {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  width: 34px;
-  height: 34px;
-  padding: 0;
-  border-radius: var(--radius-md);
-  background-color: var(--btn-secondary-bg);
-  /* Same treatment as the secondary buttons, since it sits in the footer beside
-     the same family of controls. */
-  border: 1px solid var(--btn-accent);
-  color: var(--text-secondary);
-  cursor: pointer;
-  transition:
-    background-color 0.2s,
-    border-color 0.2s,
-    color 0.2s;
-}
-
-.theme-toggle .icon {
-  width: 18px;
-  height: 18px;
-  vertical-align: 0;
-}
-
-@media (hover: hover) {
-  .theme-toggle:hover {
-    background-color: var(--btn-secondary-hover);
-    border-color: var(--btn-accent);
-    color: var(--text-primary);
-  }
-}
-
 /* --- About --- */
 .about-intro {
   display: flex;
@@ -240,9 +183,9 @@ body::after {
 .cta-heading {
   font-family: var(--font-heading);
   font-size: 64px;
-  font-weight: 700;
+  font-weight: 300;
   line-height: 66px;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.02em;
 }
 
 .about-subtitle {
@@ -254,17 +197,75 @@ body::after {
   text-wrap: balance;
 }
 
+/* The hero's three actions as one ruled strip rather than buttons: a line
+   above and below, equal cells split by hairlines. */
 .about-buttons {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding-bottom: 8px;
+  --about-links-gap: 16px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: var(--about-links-gap);
+  /* Air between the cells and the rules, so the red cell sits inside the strip
+     rather than pressing on its lines. */
+  padding: 8px 0;
+  border-top: var(--line-width) solid var(--border);
+  border-bottom: var(--line-width) solid var(--border);
 }
 
-.about-buttons a {
-  min-width: 160px;
+.about-link {
+  position: relative;
+  display: flex;
+  align-items: center;
   justify-content: center;
+  gap: 8px;
+  padding: 16px 12px;
+  /* Rounds the hover fill, and the red one on View portfolio. */
+  border-radius: var(--radius-sm);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 18px;
+  color: var(--btn-outline-text);
   text-align: center;
+  transition:
+    color 0.2s,
+    background-color 0.2s;
+}
+
+/* The dividers sit in the middle of the gap between cells rather than on
+   their edges, so a hovered or filled cell never runs into one. */
+.about-link + .about-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: calc((var(--about-links-gap) + var(--line-width)) / -2);
+  width: var(--line-width);
+  background-color: var(--border);
+  pointer-events: none;
+}
+
+@media (hover: hover) {
+  .about-link:hover {
+    color: var(--text-primary);
+    background-color: var(--bg-card);
+  }
+}
+
+/* The first action looks like the others at rest and fills with the brand red
+   on hover. */
+@media (hover: hover) {
+  .about-link--lead:hover {
+    color: var(--btn-primary-on);
+    background-color: var(--brand-red);
+  }
+}
+
+.about-link--lead:active {
+  color: var(--btn-primary-on);
+  background-color: var(--btn-primary-active);
+}
+
+.about-link:focus-visible {
+  outline-offset: -2px;
 }
 
 .about-photo {
@@ -422,6 +423,12 @@ body::after {
 }
 
 /* --- Experience --- */
+/* Opaque black, so the board's column grid stops at this section's edges
+   instead of running through the ledger. */
+#experience {
+  background-color: var(--bg-page);
+}
+
 .experience-description {
   font-size: 16px;
   font-weight: 400;
@@ -429,204 +436,51 @@ body::after {
   color: var(--text-body);
 }
 
-.experience-cards {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 48px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.experience-card {
-  display: flex;
-  width: 100%;
-  border-radius: var(--radius-xl);
-  padding: 32px;
-  gap: 88px;
-  background-color: var(--bg-card);
-}
-
-.experience-card-company {
-  flex-shrink: 0;
-  width: 200px;
-}
-
-.experience-card-company-name {
-  font-size: 18px;
-  font-weight: 700;
-  line-height: 24px;
-}
-
-.experience-card-company-location {
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 22px;
-  color: var(--text-secondary);
-  margin-top: 2px;
-}
-
-.experience-card-company-logo {
-  display: block;
-  width: auto;
-  height: 28px;
-  max-width: 160px;
-  object-fit: contain;
-  object-position: left;
-  margin-bottom: 12px;
-}
-
-/* Square icon logo is used on mobile only; hidden on desktop. */
-.experience-card-company-logo-square {
-  display: none;
-}
-
-.experience-card-company-duration {
-  display: flex;
-  flex-direction: column;
-  font-size: 16px;
-  font-weight: 400;
-  color: var(--text-secondary);
-  margin-top: 2px;
-  line-height: 22px;
-}
-
-.experience-card-roles {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.experience-role {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: 20px 0;
-}
-
-.experience-role-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  width: 100%;
-  text-align: left;
-}
-
-.experience-role:first-child {
-  padding-top: 0;
-}
-
-.experience-role:last-child {
-  padding-bottom: 0;
-}
-
-.experience-role + .experience-role {
-  border-top: var(--line-width) solid var(--divider);
-}
-
-.experience-role-info {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.experience-role-title {
-  font-size: 18px;
-  font-weight: 700;
-  line-height: 24px;
-  color: var(--tag-text);
-}
-
-.experience-role-date {
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 24px;
-  color: var(--text-secondary);
-}
-
-.experience-role-summary {
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 24px;
-  color: var(--text-primary);
-  margin-top: 8px;
-}
-
-.experience-role-summary--standalone {
-  margin-top: 0;
-}
-
-.experience-role-details {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  margin-top: 8px;
-}
-
-.experience-role-details li {
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 28px;
-  color: var(--text-primary);
-  padding-left: 12px;
-  position: relative;
-}
-
-.experience-role-details li::before {
-  content: '•';
-  position: absolute;
-  left: 0;
-  color: var(--bullet);
-}
-
-.experience-card-work {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 8px;
-  padding: 20px 0;
-  border-top: var(--line-width) solid var(--divider);
-}
-
-.experience-card-work-title {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  font-weight: 500;
-  line-height: 16px;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--text-muted);
-}
-
-.experience-role-case-study {
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 20px;
-  color: var(--text-primary);
-  text-decoration: underline;
-  text-decoration-color: var(--accent-border);
-  text-underline-offset: 3px;
-  transition: color 0.2s;
-}
-
-@media (hover: hover) {
-  .experience-role-case-study:hover {
-    color: var(--accent-text);
-    text-decoration-color: var(--accent-text);
-  }
-}
-
 /* --- Education --- */
+/* Education takes the colours of the university's crest: its navy as the
+   section fill, with white and its gold as accents. Opaque, so the board's grid
+   stops at its edges, as on the red closing section. */
+#education {
+  position: relative;
+  isolation: isolate;
+  background-color: var(--uum-blue);
+}
+
+/* The university's mark, cropped at the right edge as on its own site, in a
+   deeper navy than the section. The PNG is only used as a mask for its shape
+   (public/assets/uum-mark.png), so the colour comes from --uum-mark. */
+#education::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-color: var(--uum-mark);
+  -webkit-mask: url('/assets/uum-mark.png') no-repeat right center / auto 170%;
+  mask: url('/assets/uum-mark.png') no-repeat right center / auto 170%;
+  pointer-events: none;
+}
+
+#education > * {
+  position: relative;
+  z-index: 1;
+}
+
+#education .section-tag {
+  color: var(--uum-gold);
+}
+
+#education .section-title {
+  color: var(--uum-white);
+}
+
 .education-card {
   display: flex;
   flex: 1;
   align-items: center;
-  border-radius: var(--radius-xl);
+  border-radius: calc(var(--radius-xl) * var(--corner-scale));
   padding: 32px;
   gap: 32px;
-  background-color: var(--bg-card);
+  background-color: var(--uum-blue-deep);
 }
 
 .education-icon {
@@ -646,24 +500,52 @@ body::after {
   font-size: 18px;
   font-weight: 700;
   line-height: 24px;
+  color: var(--uum-white);
 }
 
 .education-degree {
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
-  color: var(--text-secondary);
+  color: var(--uum-text-soft);
 }
 
 .education-year {
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
-  color: var(--text-secondary);
+  color: var(--uum-gold);
   margin-top: 2px;
 }
 
-/* --- Skills --- */
+/* --- Skills ---
+   A white section between the blue and the red, opaque so the board's grid
+   stops at its edges, with its type and tags switched to dark ink to match. */
+#skills {
+  background-color: var(--skills-bg);
+}
+
+#skills .section-tag {
+  color: var(--skills-text-muted);
+}
+
+#skills .section-title {
+  color: var(--skills-text);
+}
+
+/* Skill and tool chips look the same here, fills only. The borders stay,
+   transparent, so the chips keep their size. */
+#skills .skill-tag,
+#skills .tool-tag {
+  background-color: var(--skills-tag-bg);
+  border-color: transparent;
+  color: var(--skills-text);
+}
+
+#skills .skills-row-label {
+  color: var(--skills-text-muted);
+}
+
 .skills-content {
   display: flex;
   flex-direction: column;
@@ -726,7 +608,7 @@ body::after {
 }
 
 .work-card {
-  border-radius: var(--radius-xl);
+  border-radius: calc(var(--radius-xl) * var(--corner-scale));
   background-color: var(--bg-card);
   /* No grey flash on tap; the card is a link, so mobile browsers would
      otherwise paint their default highlight over the whole thing. */
@@ -842,31 +724,43 @@ body::after {
   position: relative;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   padding: 64px 48px;
   gap: 32px;
   scroll-margin-top: 64px;
+  /* The closing call to action sits on the brand red, opaque so the board's
+     grid stops at its edges. Over it, square boxes in slightly different shades
+     of red, eight to a row so each one spans a column of the page grid. The
+     tile is exactly one row wide and six rows tall, scaled to the section's
+     width and repeated down it. Every shade is at or below the brand red, so
+     the white text keeps at least its contrast on the plain fill. */
+  background-color: var(--brand-red);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 600' width='800' height='600' shape-rendering='crispEdges'%3E%3Crect x='0' y='0' width='100' height='100' fill='%23cb0505'/%3E%3Crect x='100' y='0' width='100' height='100' fill='%23c40404'/%3E%3Crect x='200' y='0' width='100' height='100' fill='%23cb0505'/%3E%3Crect x='300' y='0' width='100' height='100' fill='%23d90707'/%3E%3Crect x='400' y='0' width='100' height='100' fill='%23d20606'/%3E%3Crect x='500' y='0' width='100' height='100' fill='%23c40404'/%3E%3Crect x='600' y='0' width='100' height='100' fill='%23d90707'/%3E%3Crect x='700' y='0' width='100' height='100' fill='%23e00808'/%3E%3Crect x='0' y='100' width='100' height='100' fill='%23c40404'/%3E%3Crect x='100' y='100' width='100' height='100' fill='%23d20606'/%3E%3Crect x='200' y='100' width='100' height='100' fill='%23e00808'/%3E%3Crect x='300' y='100' width='100' height='100' fill='%23d20606'/%3E%3Crect x='400' y='100' width='100' height='100' fill='%23e00808'/%3E%3Crect x='500' y='100' width='100' height='100' fill='%23cb0505'/%3E%3Crect x='600' y='100' width='100' height='100' fill='%23d20606'/%3E%3Crect x='700' y='100' width='100' height='100' fill='%23cb0505'/%3E%3Crect x='0' y='200' width='100' height='100' fill='%23d90707'/%3E%3Crect x='100' y='200' width='100' height='100' fill='%23c40404'/%3E%3Crect x='200' y='200' width='100' height='100' fill='%23d90707'/%3E%3Crect x='300' y='200' width='100' height='100' fill='%23c40404'/%3E%3Crect x='400' y='200' width='100' height='100' fill='%23d90707'/%3E%3Crect x='500' y='200' width='100' height='100' fill='%23e00808'/%3E%3Crect x='600' y='200' width='100' height='100' fill='%23d90707'/%3E%3Crect x='700' y='200' width='100' height='100' fill='%23e00808'/%3E%3Crect x='0' y='300' width='100' height='100' fill='%23d20606'/%3E%3Crect x='100' y='300' width='100' height='100' fill='%23cb0505'/%3E%3Crect x='200' y='300' width='100' height='100' fill='%23e00808'/%3E%3Crect x='300' y='300' width='100' height='100' fill='%23d20606'/%3E%3Crect x='400' y='300' width='100' height='100' fill='%23cb0505'/%3E%3Crect x='500' y='300' width='100' height='100' fill='%23d20606'/%3E%3Crect x='600' y='300' width='100' height='100' fill='%23c40404'/%3E%3Crect x='700' y='300' width='100' height='100' fill='%23d90707'/%3E%3Crect x='0' y='400' width='100' height='100' fill='%23d90707'/%3E%3Crect x='100' y='400' width='100' height='100' fill='%23c40404'/%3E%3Crect x='200' y='400' width='100' height='100' fill='%23d20606'/%3E%3Crect x='300' y='400' width='100' height='100' fill='%23c40404'/%3E%3Crect x='400' y='400' width='100' height='100' fill='%23e00808'/%3E%3Crect x='500' y='400' width='100' height='100' fill='%23c40404'/%3E%3Crect x='600' y='400' width='100' height='100' fill='%23e00808'/%3E%3Crect x='700' y='400' width='100' height='100' fill='%23cb0505'/%3E%3Crect x='0' y='500' width='100' height='100' fill='%23c40404'/%3E%3Crect x='100' y='500' width='100' height='100' fill='%23d20606'/%3E%3Crect x='200' y='500' width='100' height='100' fill='%23d90707'/%3E%3Crect x='300' y='500' width='100' height='100' fill='%23cb0505'/%3E%3Crect x='400' y='500' width='100' height='100' fill='%23d90707'/%3E%3Crect x='500' y='500' width='100' height='100' fill='%23cb0505'/%3E%3Crect x='600' y='500' width='100' height='100' fill='%23c40404'/%3E%3Crect x='700' y='500' width='100' height='100' fill='%23d20606'/%3E%3C/svg%3E");
+  background-size: 100% auto;
+  background-repeat: repeat-y;
+  background-position: left top;
 }
 
 .cta-heading {
-  text-align: center;
+  text-align: left;
+  color: var(--btn-primary-on);
 }
 
 .cta-subtext {
   font-size: 16px;
   font-weight: 400;
   line-height: 28px;
-  text-align: center;
-  color: var(--text-secondary);
+  text-align: left;
+  color: var(--btn-primary-on);
 }
 
 .side-projects {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 16px;
   width: 100%;
   margin-top: 16px;
@@ -876,9 +770,10 @@ body::after {
   display: flex;
   flex-direction: column;
   width: 300px;
-  border-radius: var(--radius-xl);
+  border-radius: calc(var(--radius-xl) * var(--corner-scale));
   overflow: hidden;
-  background-color: var(--bg-card);
+  /* White on the red closing section, the only place these cards appear. */
+  background-color: var(--side-card-bg);
   -webkit-tap-highlight-color: transparent;
   transition:
     transform 0.25s cubic-bezier(0.25, 1, 0.5, 1),
@@ -936,7 +831,7 @@ body::after {
   font-size: 16px;
   font-weight: 600;
   line-height: 22px;
-  color: var(--text-primary);
+  color: var(--side-card-title);
 }
 
 .side-project-source {
@@ -945,13 +840,13 @@ body::after {
   font-size: 14px;
   font-weight: 400;
   line-height: 18px;
-  color: var(--text-muted);
+  color: var(--side-card-source);
 }
 
 /* --- Footer --- */
 /* Opaque in the page colour rather than transparent, so the board's rings and
    guides stop at the footer instead of running behind it. Held to the container
-   width, which keeps it aligned with the boundary lines either side. */
+   width, which is the page card's width. */
 .footer {
   display: flex;
   align-items: center;
@@ -961,6 +856,8 @@ body::after {
   margin: 0 auto;
   padding: 32px 48px;
   background-color: var(--bg-page);
+  /* The last thing on the card, so it carries the card's bottom corners. */
+  border-radius: 0 0 var(--page-card-radius) var(--page-card-radius);
 }
 
 .footer-copyright {
@@ -968,4 +865,189 @@ body::after {
   font-weight: 400;
   line-height: 16px;
   color: var(--text-footer);
+}
+
+/* --- Side actions ---
+   Contact and resume, icon only, once the hero has scrolled away (SideActions).
+   The two sit together as one block, contact in the brand red over resume in
+   a slightly darker red, rounded only on the block's outer corners.
+   Narrow windows: the block sits inside the card's top right corner, just
+   below the header.
+   Wide windows, where the frame beside the card has room: it is a tab on the
+   card's right edge that slides out from behind the card. */
+.side-actions {
+  --side-btn: 48px;
+  --side-gap: 0px;
+  --side-radius: calc(var(--radius-lg) * var(--corner-scale));
+  position: fixed;
+  top: calc(var(--page-card-top) + var(--header-height) + 16px);
+  /* 16px in from the card's right edge, wherever the card ends. */
+  right: calc(max(var(--page-card-inset), (100% - 1200px) / 2) + 16px);
+  /* Under the header (100), so its open mobile menu covers these. */
+  z-index: 99;
+  pointer-events: none;
+}
+
+.side-actions-inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--side-gap);
+  opacity: 0;
+  transform: translateY(-8px);
+  transition:
+    opacity 0.3s cubic-bezier(0.25, 1, 0.5, 1),
+    transform 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.side-actions.visible .side-actions-inner {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+
+.side-action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--side-btn);
+  height: var(--side-btn);
+  corner-shape: squircle;
+  color: var(--btn-primary-on);
+  transition: background-color 0.2s;
+}
+
+/* One shadow for the block rather than one per button, so the seam between
+   them stays clean. */
+.side-actions-inner {
+  border-radius: var(--side-radius);
+  corner-shape: squircle;
+}
+
+.side-actions.visible .side-actions-inner {
+  box-shadow: var(--card-lift-shadow);
+}
+
+.side-action--contact {
+  border-radius: var(--side-radius) var(--side-radius) 0 0;
+  background-color: var(--brand-red);
+}
+
+.side-action--resume {
+  border-radius: 0 0 var(--side-radius) var(--side-radius);
+  background-color: var(--side-action-dark);
+}
+
+.side-action-icon {
+  width: 26px;
+  height: 26px;
+}
+
+@media (hover: hover) {
+  .side-action--contact:hover {
+    background-color: var(--btn-primary-hover);
+  }
+  .side-action--resume:hover {
+    background-color: var(--side-action-dark-hover);
+  }
+}
+
+.side-action:focus-visible {
+  outline-offset: -4px;
+  outline-color: var(--btn-primary-on);
+}
+
+/* The card is its full 1200px here, so its right edge is 600px right of centre
+   and the frame beside it has room for the tab. The tab is clipped at the card's
+   edge, so sliding in from the left reads as coming out from behind the card. */
+@media (min-width: 1320px) {
+  .side-actions {
+    --side-tab-radius: calc(var(--radius-xl) * var(--corner-scale));
+    --side-btn: 64px;
+    right: auto;
+    left: calc(50% + 600px);
+    /* Above .page-card-mask, whose frame-coloured strip covers the top of the
+       window beside the card and would otherwise square off the tab's top. */
+    z-index: 102;
+  }
+
+  .side-actions-clip {
+    overflow: hidden;
+  }
+
+  .side-action-icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .side-actions-inner {
+    opacity: 1;
+    transform: translateX(-100%);
+  }
+
+  /* Square where it meets the card, rounded on the block's outer corners. */
+  .side-actions.visible .side-actions-inner {
+    box-shadow: none;
+  }
+
+  .side-action--contact {
+    border-radius: 0 var(--side-tab-radius) 0 0;
+  }
+
+  .side-action--resume {
+    border-radius: 0 0 var(--side-tab-radius) 0;
+  }
+}
+
+/* Labels for the icon-only actions, to their left: over the card beside the
+   tab, or over the page beside the floating buttons. Each is centred on its
+   button from the shared button size and gap. */
+.side-tip {
+  position: absolute;
+  right: calc(100% + 12px);
+  top: calc(var(--side-btn) / 2);
+  padding: 6px 10px;
+  border-radius: var(--radius-md);
+  background-color: var(--tip-bg);
+  color: var(--tip-text);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 16px;
+  white-space: nowrap;
+  box-shadow: var(--card-lift-shadow);
+  opacity: 0;
+  transform: translate(4px, -50%);
+  transition:
+    opacity 0.2s cubic-bezier(0.25, 1, 0.5, 1),
+    transform 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+  pointer-events: none;
+}
+
+.side-tip--resume {
+  top: calc(var(--side-btn) * 1.5 + var(--side-gap));
+}
+
+.side-actions.visible:has(.side-action--contact:focus-visible) .side-tip--contact,
+.side-actions.visible:has(.side-action--resume:focus-visible) .side-tip--resume {
+  opacity: 1;
+  transform: translate(0, -50%);
+}
+
+@media (hover: hover) {
+  .side-actions.visible:has(.side-action--contact:hover) .side-tip--contact,
+  .side-actions.visible:has(.side-action--resume:hover) .side-tip--resume {
+    opacity: 1;
+    transform: translate(0, -50%);
+  }
+}
+
+/* No slide: the actions fade in place, in both layouts. */
+@media (prefers-reduced-motion: reduce) {
+  .side-actions-inner {
+    opacity: 0;
+    transform: none;
+  }
+  .side-actions.visible .side-actions-inner {
+    opacity: 1;
+    transform: none;
+  }
 }

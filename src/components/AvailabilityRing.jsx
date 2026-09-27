@@ -11,7 +11,7 @@
  * copies; CSS shows one or the other. Read out once, from the label.
  */
 
-const MESSAGE = 'Always available for new opportunities';
+const MESSAGE = 'Always open for new opportunity';
 
 const NBSP = String.fromCharCode(0xa0);
 

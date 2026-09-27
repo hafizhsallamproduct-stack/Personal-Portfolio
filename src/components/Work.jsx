@@ -1,12 +1,10 @@
 import { Link, useLocation } from 'react-router-dom';
 import Button from './Button';
 import { workData } from '../data/portfolioData';
-import { useTheme } from '../hooks/useTheme';
 import { Sparkle } from './icons';
 
 const Work = () => {
   const location = useLocation();
-  const theme = useTheme();
 
   return (
     <section id="portfolio" tabIndex={0}>
@@ -55,7 +53,7 @@ const Work = () => {
               <div className="work-card-action">
                 {work.logo ? (
                   <img
-                    src={theme === 'dark' && work.logoDark ? work.logoDark : work.logo}
+                    src={work.logoDark || work.logo}
                     alt={`${work.company} logo`}
                     className="work-card-company-logo"
                     loading="lazy"

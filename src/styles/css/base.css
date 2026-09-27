@@ -25,7 +25,7 @@ select {
 /* Offset anchored sections so their tops clear the fixed header. */
 main > section[id],
 main > [id] {
-  scroll-margin-top: 80px;
+  scroll-margin-top: calc(80px + var(--page-card-top));
 }
 
 /* The canvas board, drawn by CanvasBoard. Clipped to the 1200px container, so
@@ -33,8 +33,7 @@ main > [id] {
    rather than the window.
 
    Fixed and composited on its own layer, so scrolling the page over it costs
-   nothing. No guide sits at 0 or 1200: one there would stack on a container
-   boundary line and make that edge read twice as heavy as every other line. */
+   nothing. No guide sits at 0 or 1200: those are the page card's edges. */
 .canvas-board {
   position: fixed;
   top: 0;
@@ -59,22 +58,83 @@ body {
 }
 
 html {
+  background-color: var(--bg-frame);
+  color-scheme: dark;
+}
+
+/* --- Page card ---
+   The whole page sits on one rounded card the width of the 1200px container,
+   on a grey frame, with the sticky header inside it. The card's fill is drawn on a pseudo-element
+   stacked below the canvas board (z-index -1), so the grid still shows over
+   it. The card itself sets no z-index, so that pseudo-element joins the root
+   stacking order rather than being trapped above the board. */
+.page-card {
+  position: relative;
+  width: min(1200px, 100% - 2 * var(--page-card-inset));
+  margin: var(--page-card-top) auto var(--page-card-inset);
+  border-radius: var(--page-card-radius);
+}
+
+/* Keeps the frame's top gap clear while the page scrolls under the sticky
+   header. A fixed strip as tall as the gap plus the corner radius, painted in
+   the frame colour everywhere except a card-width box with the card's rounded
+   top corners, cut out by that box's spread shadow. At the top of the page it
+   lines up exactly with the card, so it only shows once content scrolls up. */
+.page-card-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: calc(var(--page-card-top) + var(--page-card-radius));
+  z-index: 101;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.page-card-mask::before {
+  content: '';
+  position: absolute;
+  top: var(--page-card-top);
+  left: 50%;
+  width: min(1200px, 100% - 2 * var(--page-card-inset));
+  height: 200%;
+  transform: translateX(-50%);
+  border-radius: var(--page-card-radius) var(--page-card-radius) 0 0;
+  box-shadow: 0 0 0 100vmax var(--bg-frame);
+}
+
+/* Apple style continuous corners on the card and the surfaces on it. Browsers
+   without corner-shape keep plain round corners at the base radius. Round
+   things (the photo, the logo, pills) are left alone: a squircle would square
+   them off. */
+@supports (corner-shape: squircle) {
+  :root {
+    --corner-scale: 1.75;
+  }
+}
+
+.page-card,
+.page-card::before,
+.page-card-mask::before,
+.nav-top,
+.footer,
+.education-card,
+.work-card,
+.side-project-card {
+  corner-shape: squircle;
+}
+
+.page-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  border-radius: inherit;
   background-color: var(--bg-page);
+  pointer-events: none;
 }
 
-/* Inter Display for every title set in the heading font: the top of Inter's
-   optical size axis, with tighter spacing and finer detail than the text cut.
-   Pinned rather than left to follow the size, so a small title still gets it. */
-.section-title,
-.about-name,
-.cta-heading,
-.portfolio-modal-title {
-  font-optical-sizing: none;
-  font-variation-settings: 'opsz' 32;
-}
-
-/* The primary button's colours: the accent fill with its own ink. A fixed dark
-   ink went black on black in the light theme, where the accent is #171717. */
+/* The primary button's colours: the accent fill with its own ink. */
 ::selection {
   background-color: var(--accent);
   color: var(--btn-accent-on);
@@ -144,17 +204,4 @@ a {
   clip-path: inset(50%);
   white-space: nowrap;
   border: 0;
-}
-
-/* --- Scramble text ---
-   Letters held at their real widths while random characters cycle through
-   them (ScrambleText). Words do not break, so lines wrap where the finished
-   text wraps. */
-.scramble-word {
-  white-space: nowrap;
-}
-
-.scramble-char {
-  display: inline-block;
-  text-align: center;
 }

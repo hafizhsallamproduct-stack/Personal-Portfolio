@@ -1,7 +1,16 @@
-import Button from './Button';
 import AvailabilityRing from './AvailabilityRing';
-import ScrambleText from './ScrambleText';
-import { Translate, LinkedinLogo, ArrowDown, DownloadSimple } from './icons';
+import {
+  Translate,
+  LinkedinLogo,
+  ArrowDown,
+  DownloadSimple,
+  AirplaneTilt,
+  ShoppingBag,
+  Bank,
+  Money,
+  Buildings,
+  FigmaLogo,
+} from './icons';
 
 const About = () => {
   return (
@@ -25,47 +34,43 @@ const About = () => {
       </div>
       <div className="section-content-col">
         <div className="about-intro">
-          <h1 className="about-name">
-            <ScrambleText text="Hafizh Sallam" stagger={0.04} />
-          </h1>
-          <p className="about-subtitle">
-            <ScrambleText
-              text="Senior Product Designer crafting digital experiences across"
-              delay={0.2}
-              stagger={0.012}
-            />
-            <br className="about-subtitle-break" />{' '}
-            <ScrambleText text="E-Commerce, Airlines, and Banking." delay={0.5} stagger={0.012} />
-          </p>
+          <h1 className="about-name">Hafizh Sallam</h1>
+          <p className="about-subtitle">Senior Product Designer shaping complex digital products</p>
         </div>
         <div className="about-buttons">
-          <Button href="#portfolio" icon={ArrowDown} iconClassName="icon bounce">
+          <a href="#portfolio" className="about-link about-link--lead">
             View portfolio
-          </Button>
-          <Button
-            variant="outline"
+            <ArrowDown className="icon bounce" aria-hidden="true" />
+          </a>
+          <a
             href="https://www.linkedin.com/in/hafizh-s-b7299420a/"
+            className="about-link"
             target="_blank"
             rel="noopener noreferrer"
-            icon={LinkedinLogo}
           >
             Get in touch
-          </Button>
-          <Button variant="outline" href="/Hafizh-Sallam-Resume.pdf" download icon={DownloadSimple}>
+            <LinkedinLogo className="icon" aria-hidden="true" />
+          </a>
+          <a href="/Hafizh-Sallam-Resume.pdf" className="about-link" download>
             Download Resume
-          </Button>
+            <DownloadSimple className="icon" aria-hidden="true" />
+          </a>
+        </div>
+        <div className="divider-icons about-industries" aria-hidden="true">
+          <AirplaneTilt className="icon" />
+          <ShoppingBag className="icon" />
+          <Bank className="icon" />
+          <Money className="icon" />
+          <Buildings className="icon" />
+          <FigmaLogo className="icon" />
         </div>
         <p className="about-text">
-          A Senior Product Designer based in Kuala Lumpur, Malaysia with over 10 years of experience
-          working on digital products. I've worked across different industries including e-commerce,
-          travel, and banking, which has helped me understand different types of users and product
-          needs.
-        </p>
-        <p className="about-text">
-          Currently at Wego.com, I'm the Design Lead for two areas: the design system, and flight
-          booking, which covers the full checkout flow. I report to the Product Design Director. Our
-          team is flat, so I also guide three senior designers on craft and direction. Lately, I've
-          been exploring how AI can improve my design process and simplify day-to-day work.
+          With 10+ years in product design, I've worked across travel, banking, and e-commerce,
+          designing products from early problem definition through to implementation. At Wego, I own
+          the end-to-end flight booking experience across platforms, influence product direction,
+          and lead the evolution of our design system. Alongside product work, I collaborate closely
+          with product, engineering, and other designers to improve design quality, workflows, and
+          ways of working, including integrating AI into the design process.
         </p>
         <div className="about-stats">
           <div className="stat">
