@@ -1740,3 +1740,224 @@ export const sideProjectsData = [
     source: 'UI8',
   },
 ];
+
+// The RHB Inbox, featured inside the Portfolio section with a short summary,
+// and opened as its own case study popup at /portfolio/rhb-inbox. A device
+// without an image yet shows an empty frame, so dropping the file in and
+// filling `image` is all it takes.
+const INBOX = '/assets/portfolio/portfolio-rhbinbox';
+
+export const inboxShowcase = {
+  slug: 'rhb-inbox',
+  company: 'RHB Banking Group',
+  logo: '/assets/rhb-logo-white.svg',
+  title: 'Inbox: every bank message in one place',
+  // In the case study: the home page with the inbox icon to click, which opens
+  // the panel. The icon's centre is in shares of the screen (1440 by 1024).
+  opening: {
+    closed: {
+      image: `${INBOX}-home.webp`,
+      alt: 'RHB online banking home page on desktop, with the inbox icon in the top bar',
+    },
+    open: {
+      image: `${INBOX}-panel.webp`,
+      alt: 'RHB online banking home page on desktop with the Inbox side panel open on the right',
+    },
+    hotspot: { x: 1314 / 1440, y: 35 / 1024 },
+    caption: 'Click the inbox icon in the top bar to open the panel',
+  },
+  // The Portfolio feature: the title's lead in bold, a tag line, and the
+  // slides of its image slider.
+  titleLead: 'Inbox',
+  titleRest: 'every bank message in one place',
+  tags: 'UI/UX Design, Banking App',
+  slides: [
+    {
+      label: 'The Inbox side panel on desktop',
+      devices: [
+        {
+          key: 'desktop',
+          label: 'Desktop',
+          image: `${INBOX}-panel.webp`,
+          alt: 'RHB online banking home page on desktop with the Inbox side panel open on the right',
+        },
+      ],
+    },
+    {
+      label: 'Filtering by a date range',
+      devices: [
+        {
+          key: 'desktop',
+          label: 'Desktop',
+          image: `${INBOX}-date-range.webp`,
+          alt: 'Inbox date filter with a range from 18 October to 2 November selected',
+        },
+      ],
+    },
+    {
+      label: 'An announcement with an image and a button',
+      devices: [
+        {
+          key: 'desktop',
+          label: 'Desktop',
+          image: `${INBOX}-detail-message.webp`,
+          alt: 'Inbox message detail with a banner image, body text and a primary button',
+        },
+      ],
+    },
+    {
+      label: 'A payment receipt',
+      devices: [
+        {
+          key: 'desktop',
+          label: 'Desktop',
+          image: `${INBOX}-detail-transaction.webp`,
+          alt: 'Inbox transaction detail showing a successful payment of MYR 500.00',
+        },
+      ],
+    },
+  ],
+  summary: [
+    'A new Inbox for the RHB banking app, so customers find alerts, payment results, product updates and offers in one place. It opens as a side panel from the inbox icon, without leaving the page they are on.',
+    'I designed the date and type filters, a card for each kind of message, and the full message view, for desktop, tablet and mobile.',
+  ],
+  intro:
+    'I designed a new Inbox for the RHB banking app: one place for alerts, payment results, product updates and offers. It opens as a side panel from the inbox icon, so customers can read a message without leaving the page they are on.',
+  meta: [
+    { label: 'Company', value: 'RHB Banking Group' },
+    { label: 'Role', value: 'UI/UX Designer' },
+    { label: 'Platforms', value: 'Desktop, tablet, mobile' },
+    { label: 'Scope', value: 'New inbox behaviour, filters, message types, message details' },
+  ],
+  background: {
+    heading: 'Background',
+    text: 'This was a migration project rather than a response to one user problem. RHB was moving from its old internet banking platform to the new IBK internet banking platform, and the inbox had to come across. The old app already had one, but it was missing features and had no clear structure. The work started from a basic user story from the product manager, based on the old app, and along the way we found more problems with the old inbox, which we fixed in the new version.',
+  },
+  research: {
+    heading: 'Research',
+    text: 'Before designing, we reviewed how other banks handle messages in their apps. Three things stood out.',
+    findings: [
+      {
+        title: 'Many types of message',
+        text: 'Banks send many kinds of messages, from transfers and bills to cards, investments, offers and support.',
+      },
+      {
+        title: 'Two ways to organise them',
+        text: 'Some competitors split message types across separate pages. Others keep everything on a single page.',
+      },
+      {
+        title: 'Levels of importance',
+        text: 'Some messages need attention right away, while others can wait.',
+      },
+    ],
+    outcome:
+      'The design keeps every message in one panel and uses filter chips to narrow it by type. Each type has its own card, and important notices are tinted red so they stand out.',
+  },
+  process: {
+    heading: 'Design process',
+    text: 'The PM’s user story was the starting point. We completed it with what the competitor review showed, then designed the inbox for desktop, tablet and mobile, adding fixes for the problems we found along the way. About 2 months from start to handoff.',
+    // Approximate weeks, not from project records.
+    steps: [
+      {
+        when: 'Week 1',
+        title: 'User story',
+        text: 'Started from a basic user story from the product manager, based on the old app.',
+      },
+      {
+        when: 'Weeks 1 to 2',
+        title: 'Competitor review',
+        text: 'Looked at how other banks organise and show their messages.',
+      },
+      {
+        when: 'Week 3',
+        title: 'Complete the user story',
+        text: 'Added the message types and importance levels the review found.',
+      },
+      {
+        when: 'Weeks 4 to 7',
+        title: 'Design',
+        text: 'The side panel, filters, message cards and full message view, for desktop, tablet and mobile.',
+      },
+      {
+        when: 'Week 8',
+        title: 'Review and handoff',
+        text: 'Final review of the designs and handoff to development.',
+      },
+    ],
+  },
+  devices: {
+    heading: 'Opens from the inbox icon',
+    text: 'The inbox slides in as a side panel over the home page. Messages are grouped by day, starting with today and yesterday, and the same panel is designed for desktop, tablet and mobile. The support bar at the bottom belongs to a separate support feature, where customers send a message and get the reply in the inbox. That feature was not part of this project.',
+    items: [
+      {
+        key: 'desktop',
+        label: 'Desktop',
+        image: `${INBOX}-panel.webp`,
+        alt: 'RHB online banking home page on desktop with the Inbox side panel open on the right',
+      },
+      {
+        key: 'tablet',
+        label: 'Tablet',
+        image: `${INBOX}-tablet.webp`,
+        alt: 'RHB banking on a portrait tablet with the Inbox side panel covering most of the screen',
+      },
+      {
+        key: 'mobile',
+        label: 'Mobile',
+        image: `${INBOX}-mobile.webp`,
+        alt: 'The Inbox on mobile, full screen, with filter chips and messages grouped by day',
+      },
+    ],
+  },
+  filter: {
+    heading: 'Filter by date and type',
+    text: 'Search, or narrow the list with filter chips: Dates, Alerts, Payment, Deposit, Investment, Support and Offer. Dates opens a calendar with two months side by side, so a customer can pick a range that crosses the end of a month. Apply stays off until dates are picked.',
+    images: [
+      {
+        image: `${INBOX}-date-single.webp`,
+        caption: 'The calendar as it opens',
+        alt: 'Inbox date filter open with empty start and end dates',
+      },
+      {
+        image: `${INBOX}-date-range.webp`,
+        caption: 'A date range across two months',
+        alt: 'Inbox date filter with a range from 18 October to 2 November selected',
+      },
+    ],
+  },
+  messages: {
+    heading: 'A card for every kind of message',
+    text: 'Messages come from many products: transfers, bill payments, cards, deposits, investments, loans, offers and support. Each one has its own icon, so customers can tell them apart at a glance. Payment messages show the amount in the preview, and notices that need attention get a red tint.',
+    cards: [
+      { image: `${INBOX}-card-notice.webp`, alt: 'Important Notice message, tinted red' },
+      {
+        image: `${INBOX}-card-duitnow.webp`,
+        alt: 'Fund Transfer and DuitNow message with an amount',
+      },
+      { image: `${INBOX}-card-overseas.webp`, alt: 'Overseas Transfer message with an amount' },
+      { image: `${INBOX}-card-jompay.webp`, alt: 'JomPay and RHB Biller message' },
+      { image: `${INBOX}-card-cards.webp`, alt: 'Credit, debit and prepaid card message' },
+      { image: `${INBOX}-card-deposit.webp`, alt: 'Term Deposit and Fixed Deposit message' },
+      { image: `${INBOX}-card-unittrust.webp`, alt: 'Unit Trust message' },
+      { image: `${INBOX}-card-mortgage.webp`, alt: 'Mortgage message' },
+      { image: `${INBOX}-card-offer.webp`, alt: 'Offer message' },
+      { image: `${INBOX}-card-support.webp`, alt: 'Support Messenger message' },
+    ],
+  },
+  details: {
+    heading: 'Read the full message',
+    text: 'Opening a message keeps it in the same panel, with a back arrow to return to the list. Announcements and offers show an image, the full text and a button to act on. Payment messages show the receipt: amount, reference, both accounts, bank and payment type, with options to view, download or print it.',
+    images: [
+      {
+        image: `${INBOX}-detail-message.webp`,
+        caption: 'Announcement with an image and a button',
+        alt: 'Inbox message detail with a banner image, body text and a primary button',
+      },
+      {
+        image: `${INBOX}-detail-transaction.webp`,
+        caption: 'Payment receipt',
+        alt: 'Inbox transaction detail showing a successful payment of MYR 500.00',
+      },
+    ],
+  },
+};

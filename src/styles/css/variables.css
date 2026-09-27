@@ -54,31 +54,50 @@
   --bg-page: #000000;
   --bg-frame: #e0e0e0;
   /* Brand red, for the buttons and the logo. White ink on it reads at 5:1, so text on red stays full white. */
-  --brand-red: #e00808;
+  --brand-red: #d40808;
   --btn-primary-hover: #ee1c25;
   --btn-primary-active: #c80202;
   --btn-primary-on: #ffffff;
-  /* The white Skills section: dark ink and light grey chips. Muted text is
-     5.3:1 on white. */
-  --skills-bg: #ffffff;
+  /* The cream Skills section: dark ink and warm chips a step deeper than the
+     cream. Muted text is a warm grey, 5.8:1 on the cream and 5.1:1 on a chip. */
+  --skills-bg: #f6f0e1;
   --skills-text: #121212;
-  --skills-text-muted: #6b6b6b;
-  --skills-tag-bg: #f0f0f0;
-  --skills-rule: #e6e6e6;
-  /* Large stat figures when not highlighted: 3.5:1, fine at 48px. */
-  --skills-stat-idle: #8a8a8a;
-  /* The Portfolio section: bright yellow with near-black type. */
-  --portfolio-bg: #ffdd00;
-  --portfolio-text: #121212;
-  /* The running work-in-progress banner on Portfolio. */
-  --wip-bg: var(--brand-red);
-  --wip-text: #ffffff;
+  --skills-text-muted: #615d55;
+  --skills-tag-bg: #ebe3cf;
+  /* The Portfolio section: brand red with white type, 4.9:1. */
+  --portfolio-bg: var(--brand-red);
+  --portfolio-text: #ffffff;
+  /* The RHB Inbox showcase inside Portfolio, in RHB's own blues (from the
+     tokens on their online banking site). Soft text is their pale blue, 9:1
+     on the navy; the sky blue labels are 6:1. The bezel is a step below the navy.
+     The sky blue is also the bar the logo sits on, as in RHB's app header;
+     navy text on it is 6:1. */
+  --rhb-navy: #003362;
+  --rhb-navy-raised: #003d75;
+  --rhb-blue: #0067b1;
+  /* The button's hover fill, a deeper blue than the navy behind it. White
+     on it is 15:1. */
+  --rhb-blue-deep: #00214f;
+  --rhb-sky: #5bc2e7;
+  --rhb-text: #ffffff;
+  --rhb-text-soft: #bbe3ff;
+  --rhb-line: rgba(187, 227, 255, 0.18);
+  /* The grid lines over the navy, fainter than the rules. */
+  --rhb-grid-line: rgba(187, 227, 255, 0.1);
+  --rhb-bezel: #001f3d;
+  /* The page ruler over the navy: the same lightness step as the ruler on
+     every other section, but bluer than a plain darkening. */
+  --rhb-ruler: #001a48;
+  /* The running work-in-progress banner on Portfolio: bright yellow with
+     near-black type, 13.9:1. */
+  --wip-bg: #ffdd00;
+  --wip-text: #121212;
   /* Figma Community cards on the red closing section. */
   --side-card-bg: #ffffff;
   --side-card-title: #121212;
   /* The resume half of the floating actions, a step darker than the red. */
   --side-action-dark: #c40404;
-  --side-action-dark-hover: #d20606;
+  --side-action-dark-hover: #bd0505;
   /* Hover labels on the floating actions. */
   --tip-bg: #ffffff;
   --tip-text: #121212;

@@ -8,30 +8,46 @@ import { useEffect, useRef, useState } from 'react';
  *
  * It is drawn in one segment per section, each in a quiet tone of that
  * section's own background: lighter on the black sections, darker on the
- * coloured ones (yellow, blue, red and white), so it sits into every colour
- * rather than over it.
- * The ticks and numbers stay continuous across the segments.
+ * coloured ones (yellow, blue, red and white), always by the same step in lightness, so
+ * it sits into every colour rather than over it.
+ * The ticks and numbers stay continuous across the segments. An area inside a
+ * section with its own background (marked data-ruler) gets its own segment
+ * too, so the ruler follows it rather than the section around it. An area can
+ * name its own tone in the attribute, where the mixed one would read wrong.
  */
 
 const MAJOR = 100;
 
-// A tone of a background colour. Towards white on black; towards black on
-// everything else, gently on the light yellow and white, and more on the
-// deep blue and red, where a small step would not show.
+// Perceived lightness (CIELAB L*, 0 to 100) of a colour.
+const lightnessOf = (rgb) => {
+  const [r, g, b] = rgb.map((c) => {
+    const v = c / 255;
+    return v <= 0.04045 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4;
+  });
+  const y = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+  return y > 216 / 24389 ? 116 * Math.cbrt(y) - 16 : (24389 / 27) * y;
+};
+
+// How much lighter or darker the ruler is than the section behind it, the
+// same step on every colour so it reads equally quiet on each.
+const RULER_STEP = 12;
+
+// A tone of a background colour: towards white on black, towards black on
+// everything else, mixed until it is RULER_STEP lighter or darker.
 const toneOf = (rgb) => {
-  const [r, g, b] = rgb;
-  const luminance = (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255;
-  const isBlack = Math.max(r, g, b) < 24;
-  let target = 0;
-  let amount = 0.14;
-  if (isBlack) {
-    target = 255;
-    amount = 0.24;
-  } else if (luminance < 0.5) {
-    amount = 0.4;
+  const isBlack = Math.max(...rgb) < 24;
+  const target = isBlack ? 255 : 0;
+  const base = lightnessOf(rgb);
+  const mixed = (amount) => rgb.map((c) => Math.round(c + (target - c) * amount));
+  let low = 0;
+  let high = 1;
+  for (let i = 0; i < 16; i += 1) {
+    const mid = (low + high) / 2;
+    if (Math.abs(lightnessOf(mixed(mid)) - base) < RULER_STEP) low = mid;
+    else high = mid;
   }
-  const mix = (c) => Math.round(c + (target - c) * amount);
-  return `rgb(${mix(r)}, ${mix(g)}, ${mix(b)})`;
+  const [r, g, b] = mixed(high);
+  return `rgb(${r}, ${g}, ${b})`;
 };
 
 const parseRgb = (value) => {
@@ -46,16 +62,39 @@ const measure = (card) => {
   // The sections only: the footer is left clear.
   const blocks = [...card.querySelectorAll(':scope > main > *')];
 
+  const span = (el, fallback) => {
+    const rect = el.getBoundingClientRect();
+    const rgb = parseRgb(getComputedStyle(el).backgroundColor) || fallback;
+    return {
+      top: Math.round(rect.top - cardTop),
+      bottom: Math.round(rect.bottom - cardTop),
+      tone: el.dataset?.ruler || toneOf(rgb),
+      rgb,
+    };
+  };
+
+  // Each marked area is painted over the spans before it, in document order,
+  // so an area inside another one lands on top of it.
+  const paint = (spans, area) => {
+    const cut = spans.flatMap((s) => {
+      if (s.bottom <= area.top || s.top >= area.bottom) return [s];
+      const pieces = [];
+      if (s.top < area.top) pieces.push({ ...s, bottom: area.top });
+      if (s.bottom > area.bottom) pieces.push({ ...s, top: area.bottom });
+      return pieces;
+    });
+    return [...cut, area].sort((a, b) => a.top - b.top);
+  };
+
   return blocks
-    .map((el) => {
-      const rect = el.getBoundingClientRect();
-      const rgb = parseRgb(getComputedStyle(el).backgroundColor) || pageRgb;
-      return {
-        top: Math.round(rect.top - cardTop),
-        height: Math.round(rect.height),
-        tone: toneOf(rgb),
-      };
+    .flatMap((el) => {
+      const block = span(el, pageRgb);
+      return [...el.querySelectorAll('[data-ruler]')].reduce(
+        (spans, area) => paint(spans, span(area, block.rgb)),
+        [block]
+      );
     })
+    .map(({ top, bottom, tone }) => ({ top, height: bottom - top, tone }))
     .filter((segment) => segment.height > 0);
 };
 

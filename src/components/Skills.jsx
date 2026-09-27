@@ -1,17 +1,6 @@
 import { skillsData, toolsData } from '../data/portfolioData';
 import { MagicWand } from './icons';
 
-// The figures in the row of stats. Years and industries match the About
-// section; the skill and tool counts come straight from the lists below.
-const STATS = [
-  { value: '10+', label: 'years in product design' },
-  {
-    value: `${skillsData.length} + ${toolsData.filter((tool) => !tool.strike).length}`,
-    label: 'core skills & tools',
-  },
-  { value: '3', label: 'industries' },
-];
-
 const Skills = () => {
   return (
     <section id="skills" className="section" tabIndex={0}>
@@ -23,15 +12,6 @@ const Skills = () => {
       </div>
 
       <div className="skills-content">
-        <ul className="skills-stats">
-          {STATS.map((stat) => (
-            <li key={stat.label} className="skills-stat">
-              <span className="skills-stat-value">{stat.value}</span>
-              <span className="skills-stat-label">{stat.label}</span>
-            </li>
-          ))}
-        </ul>
-
         <div className="skills-row">
           {skillsData.map((skill) => (
             <span key={skill} className="skill-tag">

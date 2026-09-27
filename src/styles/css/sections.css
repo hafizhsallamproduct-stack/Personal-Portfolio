@@ -590,8 +590,7 @@
 }
 
 /* --- Skills ---
-   Label and title on the left; on the right a row of stats between hairlines,
-   then the chips. White and opaque, so the
+   Label and title on the left, the chips on the right. Cream and opaque, so the
    board's grid stops at its edges. */
 #skills {
   background-color: var(--skills-bg);
@@ -605,55 +604,6 @@
   color: var(--skills-text);
 }
 
-.skills-stats {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  width: 100%;
-  list-style: none;
-  border-top: var(--line-width) solid var(--skills-rule);
-  border-bottom: var(--line-width) solid var(--skills-rule);
-}
-
-.skills-stat {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 6px;
-  /* No left padding, so each figure lines up with the start of its column
-     and the first with the chips below. */
-  padding: 36px 24px 36px 0;
-  text-align: left;
-  cursor: default;
-}
-
-/* A hovered stat stays in full ink while the others step back. */
-@media (hover: hover) {
-  .skills-stats:hover .skills-stat:not(:hover) .skills-stat-value {
-    color: var(--skills-stat-idle);
-  }
-  .skills-stats:hover .skills-stat:not(:hover) .skills-stat-label {
-    color: var(--skills-text-muted);
-  }
-}
-
-.skills-stat-value {
-  font-size: 48px;
-  font-weight: 300;
-  line-height: 56px;
-  letter-spacing: -0.02em;
-  color: var(--skills-text);
-  transition: color 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-.skills-stat-label {
-  max-width: 220px;
-  font-size: 15px;
-  line-height: 22px;
-  color: var(--skills-text);
-  transition: color 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
 /* Skill and tool chips look the same here, fills only. The borders stay,
    transparent, so the chips keep their size. */
 #skills .skill-tag,
@@ -665,13 +615,6 @@
 
 #skills .skills-row-label {
   color: var(--skills-text-muted);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .skills-stat-value,
-  .skills-stat-label {
-    transition: none;
-  }
 }
 
 .skills-content {
@@ -724,9 +667,9 @@
   text-decoration: line-through;
 }
 
-/* Portfolio sits on bright yellow with black cards. Opaque, so the board's
-   grid stops at its edges. Its label, title and note go near-black: 13.9:1 on
-   this yellow. */
+/* Portfolio sits on brand red with black cards. Opaque, so the board's
+   grid stops at its edges. Its label, title and note go white: 4.9:1 on
+   this red. */
 #portfolio {
   --bg-card: var(--bg-page);
   background-color: var(--portfolio-bg);
@@ -738,10 +681,10 @@
   color: var(--portfolio-text);
 }
 
-/* Running text across the top of the Portfolio section while it is being
-   reworked: brand red, scrolling left in a loop, paused on hover. It
-   sticks just below the header while the section is on screen, and leaves
-   with the section, since sticky stays within its parent. */
+/* Running text in the Portfolio section, between the RHB feature and the
+   case study cards, while those are being reworked: bright yellow, scrolling left
+   in a loop, paused on hover. It sticks just below the header once reached,
+   and leaves with the section, since sticky stays within its parent. */
 .wip-banner {
   position: sticky;
   top: calc(var(--page-card-top) + var(--header-height));
@@ -749,7 +692,7 @@
   z-index: 99;
   width: 100%;
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 0 auto 40px;
   overflow: hidden;
   background-color: var(--wip-bg);
   color: var(--wip-text);
@@ -936,6 +879,795 @@
   color: var(--text-body);
 }
 
+/* --- RHB Inbox --- */
+/* Featured full width inside Portfolio, between its header and the cards, on
+   RHB's dark blue: a short summary, the screens on each device, and a button
+   to the case study. The case study popup below shares these styles. */
+.inbox-showcase,
+.inbox-modal {
+  /* Side padding, narrowed on tablet and phone in responsive.css. */
+  --inbox-gutter: 48px;
+}
+
+.inbox-showcase {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  width: 100%;
+  background-color: var(--rhb-navy);
+  color: var(--rhb-text);
+}
+
+/* Four of the page grid's vertical lines, every other one (the first, third,
+   fifth and seventh), drawn over the navy behind the content. The layer is
+   as wide as the grid and centred like it, so the lines match it exactly. */
+.inbox-showcase::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  z-index: -1;
+  width: min(1200px, 100vw);
+  transform: translateX(-50%);
+  background-image:
+    linear-gradient(var(--rhb-grid-line), var(--rhb-grid-line)),
+    linear-gradient(var(--rhb-grid-line), var(--rhb-grid-line)),
+    linear-gradient(var(--rhb-grid-line), var(--rhb-grid-line)),
+    linear-gradient(var(--rhb-grid-line), var(--rhb-grid-line));
+  background-position:
+    12.5% 0,
+    37.5% 0,
+    62.5% 0,
+    87.5% 0;
+  background-size: var(--line-width) 100%;
+  background-repeat: no-repeat;
+  pointer-events: none;
+}
+
+/* The popup's top bar, with the logo in white. */
+.inbox-brandbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  /* The sides follow the 1104px content column, so the logo lines up with
+     the title below it at any width. */
+  padding: 24px max(var(--inbox-gutter), calc((100% - 1104px) / 2));
+  border-bottom: var(--line-width) solid var(--rhb-line);
+  background-color: var(--rhb-navy);
+}
+
+.inbox-brandbar-logo {
+  display: block;
+  height: 28px;
+  width: auto;
+}
+
+.inbox-hero,
+.inbox-block {
+  max-width: 1104px;
+  margin: 0 auto;
+}
+
+.inbox-eyebrow,
+.inbox-block-index,
+.inbox-meta dt,
+.inbox-caption {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--rhb-sky);
+}
+
+.inbox-eyebrow {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 18px;
+}
+
+.inbox-title {
+  text-wrap: balance;
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 60px;
+  letter-spacing: -0.02em;
+  color: var(--rhb-text);
+}
+
+.inbox-intro {
+  max-width: 760px;
+  margin-top: 24px;
+  font-size: 20px;
+  line-height: 30px;
+  color: var(--rhb-text-soft);
+}
+
+.inbox-meta {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 64px;
+}
+
+.inbox-meta dt {
+  font-size: 13px;
+  line-height: 16px;
+}
+
+.inbox-meta dd {
+  margin-top: 8px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22px;
+}
+
+.inbox-block {
+  margin-top: 96px;
+}
+
+.inbox-block-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  gap: 48px;
+  margin-bottom: 40px;
+}
+
+.inbox-block-heading {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.inbox-block-index {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 16px;
+}
+
+.inbox-block-title {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 34px;
+  color: var(--rhb-text);
+}
+
+.inbox-block-text {
+  font-size: 18px;
+  line-height: 28px;
+  color: var(--rhb-text-soft);
+}
+
+.inbox-caption {
+  margin-top: 12px;
+  font-size: 13px;
+  line-height: 16px;
+}
+
+/* Devices: desktop across the top, tablet and phone centred below it, with an
+   empty column either side so they stay a readable size. The tablet and phone
+   columns are in the ratio of the tablet to the phone, each with its browser
+   bar, so both frames come out about the same height. */
+.inbox-devices {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2.6fr) minmax(0, 1.14fr) minmax(0, 1fr);
+  gap: 32px 24px;
+  align-items: start;
+}
+
+.inbox-device--desktop {
+  grid-column: 1 / -1;
+}
+
+.inbox-device--tablet {
+  grid-column: 2;
+}
+
+.inbox-device--mobile {
+  grid-column: 3;
+}
+
+/* Every frame has the same small corners. */
+.inbox-device-frame {
+  overflow: hidden;
+  border-radius: calc(var(--radius-md) * var(--corner-scale));
+  background-color: var(--rhb-bezel);
+  box-shadow: 0 24px 48px rgba(0, 20, 40, 0.45);
+}
+
+.inbox-device-bar {
+  display: flex;
+  gap: 8px;
+  padding: 12px 16px;
+}
+
+.inbox-device-bar span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--rhb-line);
+}
+
+/* The tablet keeps a thin bezel, as deep as the frame's corner. */
+.inbox-device--tablet .inbox-device-frame {
+  padding: calc(var(--radius-md) * var(--corner-scale));
+}
+
+/* The phone is never taller than 500px: its height follows its width, so the
+   width stops at 500px times the phone's width over its height (360 by 1166
+   with the browser bar). */
+.inbox-device--mobile .inbox-device-frame {
+  max-width: calc(500px * 360 / 1166);
+}
+
+/* Tablet and phone browser bars are sized in widths of the device, so they
+   scale with it. */
+.inbox-device--tablet .inbox-device-frame,
+.inbox-device--mobile .inbox-device-frame {
+  container-type: inline-size;
+}
+
+.inbox-device-screen {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--rhb-navy-raised);
+}
+
+.inbox-device--desktop .inbox-device-screen {
+  aspect-ratio: 2880 / 2048;
+}
+
+.inbox-device--tablet .inbox-device-screen {
+  aspect-ratio: 3 / 4;
+  /* A slight rounding inside the bezel, softer than the frame's corners. */
+  border-radius: calc(4px * var(--corner-scale));
+}
+
+.inbox-device--mobile .inbox-device-screen {
+  /* The phone design is one tall screen, shown whole. */
+  aspect-ratio: 360 / 1076;
+}
+
+.inbox-device-screen img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+/* Mobile web: a status bar and the address bar above the screen, in the
+   frame's dark like the desktop's tab bar. Everything is in em of one base
+   size, set in widths of the device, so the bars keep their proportions at any
+   size, and the tablet's are the same size as the phone's in design terms. */
+.inbox-browser-top {
+  font-size: 3.2cqw;
+  color: var(--rhb-text-soft);
+}
+
+.inbox-device--tablet .inbox-browser-top {
+  /* 360 / 768 of the phone's, so both read at the same design size. */
+  font-size: 1.5cqw;
+}
+
+.inbox-browser-status {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 2.2em;
+  padding: 0 1.9em;
+  font-weight: 700;
+  color: var(--rhb-text);
+}
+
+/* Taller on the phone, with the island between the time and the battery. */
+.inbox-browser-status--island {
+  height: 3.9em;
+}
+
+.inbox-browser-island {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 8.1em;
+  height: 2.3em;
+  border-radius: 999px;
+  background-color: #000000;
+  transform: translate(-50%, -50%);
+}
+
+.inbox-browser-battery {
+  width: 1.9em;
+  height: 0.9em;
+  padding: 0.1em;
+  border: 0.12em solid currentColor;
+  border-radius: 0.25em;
+  background: linear-gradient(to right, currentColor 70%, transparent 70%) no-repeat;
+  background-clip: content-box;
+}
+
+.inbox-browser-url {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.44em;
+  height: 2.65em;
+  margin: 0.45em 0.95em 0.8em;
+  overflow: hidden;
+  border-radius: 0.62em;
+  background-color: rgba(255, 255, 255, 0.1);
+  white-space: nowrap;
+}
+
+.inbox-browser-lock {
+  width: 0.88em;
+  height: 0.88em;
+  flex-shrink: 0;
+}
+
+/* Read Case Study: a blue deeper than the section's navy with white text,
+   turning white with navy text on hover and press. */
+.inbox-read-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border-radius: var(--radius-sm);
+  background-color: var(--rhb-blue-deep);
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 18px;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    background-color 0.2s,
+    color 0.2s;
+}
+
+@media (hover: hover) {
+  .inbox-read-btn:hover {
+    background-color: #ffffff;
+    color: var(--rhb-navy);
+  }
+}
+
+.inbox-read-btn:active {
+  background-color: #ffffff;
+  color: var(--rhb-navy);
+  transform: translateY(1px);
+}
+
+.inbox-read-btn:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+}
+
+/* The case study popup: the reader's slide and close button, on the navy,
+   scrolling inside itself. */
+.portfolio-modal-container.inbox-modal {
+  display: block;
+  background-color: var(--rhb-navy);
+  color: var(--rhb-text);
+}
+
+.inbox-modal-scroll {
+  height: 100%;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.inbox-modal-body {
+  padding: 64px 48px 96px;
+}
+
+/* In the popup the bar stays at the top while the study scrolls under it, and
+   leaves room on the right for the close button, which sits on it. */
+.inbox-modal .inbox-brandbar {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  padding-right: max(96px, calc((100% - 1104px) / 2));
+}
+
+/* A raised blue close button with a white cross, a deeper blue on hover. */
+.portfolio-modal-close.inbox-modal-close {
+  background-color: var(--rhb-navy-raised);
+  color: var(--rhb-text);
+}
+
+@media (hover: hover) {
+  .portfolio-modal-close.inbox-modal-close:hover {
+    background-color: var(--rhb-blue-deep);
+  }
+}
+
+/* The findings, outcome and timeline sit in the right two thirds, under the
+   block's text, with the heading alone in the first third. */
+.inbox-block > .inbox-findings,
+.inbox-block > .inbox-outcome,
+.inbox-block > .inbox-timeline {
+  margin-left: calc((100% + 96px) / 3);
+}
+
+/* The opening demo under the intro: the home page, the inbox icon to click. */
+.inbox-opening {
+  margin-top: 48px;
+}
+
+/* The hint above it, as a yellow banner like the one on Portfolio, joined to
+   the top of the screen. */
+.inbox-opening-hint {
+  padding: 12px 16px;
+  border-radius: calc(var(--radius-md) * var(--corner-scale))
+    calc(var(--radius-md) * var(--corner-scale)) 0 0;
+  background-color: var(--wip-bg);
+  color: var(--wip-text);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 16px;
+  letter-spacing: 0.08em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.inbox-opening-screen {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0 0 calc(var(--radius-md) * var(--corner-scale))
+    calc(var(--radius-md) * var(--corner-scale));
+}
+
+.inbox-opening-screen img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.inbox-opening-close {
+  position: absolute;
+  inset: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.inbox-opening-close:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: -2px;
+}
+
+/* Research findings, three across, each on a raised panel. */
+.inbox-findings {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  list-style: none;
+}
+
+.inbox-finding {
+  padding: 24px;
+  border-radius: calc(var(--radius-md) * var(--corner-scale));
+  background-color: var(--rhb-navy-raised);
+}
+
+.inbox-finding-title {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 24px;
+  color: var(--rhb-text);
+}
+
+.inbox-finding-text {
+  margin-top: 8px;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--rhb-text-soft);
+}
+
+/* How the design answers the findings, under them. */
+.inbox-outcome {
+  max-width: 760px;
+  margin-top: 32px;
+  padding-left: 20px;
+  border-left: 3px solid var(--rhb-sky);
+  font-size: 18px;
+  line-height: 28px;
+  color: var(--rhb-text);
+}
+
+/* The process as a timeline down the left: a line, a dot on it for each
+   step, and the weeks above the step's title. */
+.inbox-timeline {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  list-style: none;
+}
+
+.inbox-timeline-step {
+  position: relative;
+  padding: 0 0 32px 32px;
+  border-left: 2px solid var(--rhb-line);
+}
+
+.inbox-timeline-step:last-child {
+  padding-bottom: 0;
+}
+
+.inbox-timeline-step::before {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: -7px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--rhb-sky);
+}
+
+.inbox-timeline-when {
+  display: block;
+  margin-bottom: 8px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 16px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--rhb-sky);
+}
+
+/* Full screens, two across. */
+.inbox-shots {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.inbox-shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: calc(var(--radius-md) * var(--corner-scale));
+  box-shadow: 0 16px 32px rgba(0, 20, 40, 0.4);
+}
+
+/* Message cards, as they appear in the list, on white tiles. The crop trims
+   the list divider along the bottom of each export. */
+.inbox-cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  list-style: none;
+}
+
+.inbox-card {
+  overflow: hidden;
+  border-radius: calc(var(--radius-md) * var(--corner-scale));
+  background-color: #ffffff;
+}
+
+.inbox-card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1020 / 232;
+  object-fit: cover;
+  object-position: top;
+}
+
+/* --- RHB Inbox: the Portfolio feature --- */
+/* The logo, title, summary and button on the left; on the right an image
+   slider on RHB's light blue, five of the page's eight grid columns wide and
+   running to the section's right edge, with a bar per slide under it. The
+   project facts run across below. */
+.inbox-feature {
+  padding: 64px var(--inbox-gutter) 72px;
+}
+
+.inbox-feature-top {
+  display: grid;
+  /* The slider starts on the third grid line and ends at the section's edge:
+     half the section (this row plus the gutter it pulls back) and an eighth
+     of the grid, which is as wide as the window up to 1200px. */
+  grid-template-columns: minmax(0, 1fr) calc(
+      (100% + var(--inbox-gutter)) / 2 + min(1200px, 100vw) / 8
+    );
+  gap: 48px;
+  align-items: center;
+  /* No padding on the right: the slider meets the section's edge. */
+  margin-right: calc(var(--inbox-gutter) * -1);
+}
+
+.inbox-feature-intro {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.inbox-slider {
+  position: relative;
+  overflow: hidden;
+  /* Square where it meets the section's edge. */
+  border-radius: calc(var(--radius-md) * var(--corner-scale)) 0 0
+    calc(var(--radius-md) * var(--corner-scale));
+  background-color: var(--rhb-sky);
+}
+
+.inbox-slider-track {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+}
+
+.inbox-slider-track::-webkit-scrollbar {
+  display: none;
+}
+
+.inbox-slider-track:focus-visible {
+  outline: 2px solid var(--rhb-text);
+  outline-offset: -4px;
+}
+
+/* One slide per view, in the desktop screens' own shape, so they fill the
+   window edge to edge with no frame around them. */
+.inbox-slide {
+  flex: 0 0 100%;
+  min-width: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3%;
+  aspect-ratio: 2880 / 2048;
+  scroll-snap-align: start;
+}
+
+.inbox-slide-img {
+  display: block;
+}
+
+/* A slide with a highlight sits the highlight over its screen. */
+.inbox-slide {
+  position: relative;
+}
+
+/* A quiet hint on the inbox icon: a thin white ring that softly pulses out,
+   placed by the icon's centre. */
+.inbox-hotspot {
+  position: absolute;
+  z-index: 1;
+  width: 0;
+  height: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.inbox-hotspot-ring {
+  position: absolute;
+  top: -16px;
+  left: -16px;
+  width: 32px;
+  height: 32px;
+  border: 1.5px solid rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+}
+
+.inbox-hotspot-ring::after {
+  content: '';
+  position: absolute;
+  inset: -1.5px;
+  border: 1.5px solid rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  animation: inbox-hotspot-pulse 2.4s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+}
+
+@keyframes inbox-hotspot-pulse {
+  from {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(1.6);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .inbox-hotspot-ring::after {
+    animation: none;
+    opacity: 0;
+  }
+}
+
+@media (hover: hover) {
+  .inbox-hotspot:hover .inbox-hotspot-ring {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+}
+
+.inbox-hotspot:focus-visible {
+  outline: none;
+}
+
+.inbox-hotspot:focus-visible .inbox-hotspot-ring {
+  outline: 2px solid #ffffff;
+  outline-offset: 3px;
+}
+
+.inbox-slide-img--desktop {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* A bar per slide, the current one full white. */
+.inbox-slider-bars {
+  display: flex;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.inbox-slider-bar {
+  width: 56px;
+  height: 20px;
+  padding: 0;
+  border: none;
+  background: linear-gradient(var(--rhb-line), var(--rhb-line)) center / 100% 3px no-repeat;
+  cursor: pointer;
+  transition: background-size 0.2s;
+}
+
+.inbox-slider-bar.is-active {
+  background-image: linear-gradient(var(--rhb-text), var(--rhb-text));
+}
+
+@media (hover: hover) {
+  .inbox-slider-bar:hover {
+    background-size: 100% 5px;
+  }
+}
+
+.inbox-brand-logo {
+  display: block;
+  height: 40px;
+  width: auto;
+  margin-bottom: 8px;
+}
+
+/* Kept below the name in the hero (64px): the lead in bold, the rest
+   regular. */
+.inbox-feature .inbox-title {
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 44px;
+  letter-spacing: -0.02em;
+}
+
+.inbox-feature .inbox-title strong {
+  font-weight: 700;
+}
+
+.inbox-feature-tags {
+  margin-top: -8px;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--rhb-text-soft);
+}
+
+/* The same size as the hero's body text. */
+.inbox-feature-intro .inbox-intro {
+  margin-top: 0;
+  font-size: 16px;
+  line-height: 28px;
+}
+
 /* --- CTA --- */
 .cta-section {
   position: relative;
@@ -955,7 +1687,7 @@
      width and repeated down it. Every shade is at or below the brand red, so
      the white text keeps at least its contrast on the plain fill. */
   background-color: var(--brand-red);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 600' width='800' height='600' shape-rendering='crispEdges'%3E%3Crect x='0' y='0' width='100' height='100' fill='%23cb0505'/%3E%3Crect x='100' y='0' width='100' height='100' fill='%23c40404'/%3E%3Crect x='200' y='0' width='100' height='100' fill='%23cb0505'/%3E%3Crect x='300' y='0' width='100' height='100' fill='%23d90707'/%3E%3Crect x='400' y='0' width='100' height='100' fill='%23d20606'/%3E%3Crect x='500' y='0' width='100' height='100' fill='%23c40404'/%3E%3Crect x='600' y='0' width='100' height='100' fill='%23d90707'/%3E%3Crect x='700' y='0' width='100' height='100' fill='%23e00808'/%3E%3Crect x='0' y='100' width='100' height='100' fill='%23c40404'/%3E%3Crect x='100' y='100' width='100' height='100' fill='%23d20606'/%3E%3Crect x='200' y='100' width='100' height='100' fill='%23e00808'/%3E%3Crect x='300' y='100' width='100' height='100' fill='%23d20606'/%3E%3Crect x='400' y='100' width='100' height='100' fill='%23e00808'/%3E%3Crect x='500' y='100' width='100' height='100' fill='%23cb0505'/%3E%3Crect x='600' y='100' width='100' height='100' fill='%23d20606'/%3E%3Crect x='700' y='100' width='100' height='100' fill='%23cb0505'/%3E%3Crect x='0' y='200' width='100' height='100' fill='%23d90707'/%3E%3Crect x='100' y='200' width='100' height='100' fill='%23c40404'/%3E%3Crect x='200' y='200' width='100' height='100' fill='%23d90707'/%3E%3Crect x='300' y='200' width='100' height='100' fill='%23c40404'/%3E%3Crect x='400' y='200' width='100' height='100' fill='%23d90707'/%3E%3Crect x='500' y='200' width='100' height='100' fill='%23e00808'/%3E%3Crect x='600' y='200' width='100' height='100' fill='%23d90707'/%3E%3Crect x='700' y='200' width='100' height='100' fill='%23e00808'/%3E%3Crect x='0' y='300' width='100' height='100' fill='%23d20606'/%3E%3Crect x='100' y='300' width='100' height='100' fill='%23cb0505'/%3E%3Crect x='200' y='300' width='100' height='100' fill='%23e00808'/%3E%3Crect x='300' y='300' width='100' height='100' fill='%23d20606'/%3E%3Crect x='400' y='300' width='100' height='100' fill='%23cb0505'/%3E%3Crect x='500' y='300' width='100' height='100' fill='%23d20606'/%3E%3Crect x='600' y='300' width='100' height='100' fill='%23c40404'/%3E%3Crect x='700' y='300' width='100' height='100' fill='%23d90707'/%3E%3Crect x='0' y='400' width='100' height='100' fill='%23d90707'/%3E%3Crect x='100' y='400' width='100' height='100' fill='%23c40404'/%3E%3Crect x='200' y='400' width='100' height='100' fill='%23d20606'/%3E%3Crect x='300' y='400' width='100' height='100' fill='%23c40404'/%3E%3Crect x='400' y='400' width='100' height='100' fill='%23e00808'/%3E%3Crect x='500' y='400' width='100' height='100' fill='%23c40404'/%3E%3Crect x='600' y='400' width='100' height='100' fill='%23e00808'/%3E%3Crect x='700' y='400' width='100' height='100' fill='%23cb0505'/%3E%3Crect x='0' y='500' width='100' height='100' fill='%23c40404'/%3E%3Crect x='100' y='500' width='100' height='100' fill='%23d20606'/%3E%3Crect x='200' y='500' width='100' height='100' fill='%23d90707'/%3E%3Crect x='300' y='500' width='100' height='100' fill='%23cb0505'/%3E%3Crect x='400' y='500' width='100' height='100' fill='%23d90707'/%3E%3Crect x='500' y='500' width='100' height='100' fill='%23cb0505'/%3E%3Crect x='600' y='500' width='100' height='100' fill='%23c40404'/%3E%3Crect x='700' y='500' width='100' height='100' fill='%23d20606'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 600' width='800' height='600' shape-rendering='crispEdges'%3E%3Crect x='0' y='0' width='100' height='100' fill='%23c00505'/%3E%3Crect x='100' y='0' width='100' height='100' fill='%23ba0404'/%3E%3Crect x='200' y='0' width='100' height='100' fill='%23c00505'/%3E%3Crect x='300' y='0' width='100' height='100' fill='%23cd0707'/%3E%3Crect x='400' y='0' width='100' height='100' fill='%23c70606'/%3E%3Crect x='500' y='0' width='100' height='100' fill='%23ba0404'/%3E%3Crect x='600' y='0' width='100' height='100' fill='%23cd0707'/%3E%3Crect x='700' y='0' width='100' height='100' fill='%23d40808'/%3E%3Crect x='0' y='100' width='100' height='100' fill='%23ba0404'/%3E%3Crect x='100' y='100' width='100' height='100' fill='%23c70606'/%3E%3Crect x='200' y='100' width='100' height='100' fill='%23d40808'/%3E%3Crect x='300' y='100' width='100' height='100' fill='%23c70606'/%3E%3Crect x='400' y='100' width='100' height='100' fill='%23d40808'/%3E%3Crect x='500' y='100' width='100' height='100' fill='%23c00505'/%3E%3Crect x='600' y='100' width='100' height='100' fill='%23c70606'/%3E%3Crect x='700' y='100' width='100' height='100' fill='%23c00505'/%3E%3Crect x='0' y='200' width='100' height='100' fill='%23cd0707'/%3E%3Crect x='100' y='200' width='100' height='100' fill='%23ba0404'/%3E%3Crect x='200' y='200' width='100' height='100' fill='%23cd0707'/%3E%3Crect x='300' y='200' width='100' height='100' fill='%23ba0404'/%3E%3Crect x='400' y='200' width='100' height='100' fill='%23cd0707'/%3E%3Crect x='500' y='200' width='100' height='100' fill='%23d40808'/%3E%3Crect x='600' y='200' width='100' height='100' fill='%23cd0707'/%3E%3Crect x='700' y='200' width='100' height='100' fill='%23d40808'/%3E%3Crect x='0' y='300' width='100' height='100' fill='%23c70606'/%3E%3Crect x='100' y='300' width='100' height='100' fill='%23c00505'/%3E%3Crect x='200' y='300' width='100' height='100' fill='%23d40808'/%3E%3Crect x='300' y='300' width='100' height='100' fill='%23c70606'/%3E%3Crect x='400' y='300' width='100' height='100' fill='%23c00505'/%3E%3Crect x='500' y='300' width='100' height='100' fill='%23c70606'/%3E%3Crect x='600' y='300' width='100' height='100' fill='%23ba0404'/%3E%3Crect x='700' y='300' width='100' height='100' fill='%23cd0707'/%3E%3Crect x='0' y='400' width='100' height='100' fill='%23cd0707'/%3E%3Crect x='100' y='400' width='100' height='100' fill='%23ba0404'/%3E%3Crect x='200' y='400' width='100' height='100' fill='%23c70606'/%3E%3Crect x='300' y='400' width='100' height='100' fill='%23ba0404'/%3E%3Crect x='400' y='400' width='100' height='100' fill='%23d40808'/%3E%3Crect x='500' y='400' width='100' height='100' fill='%23ba0404'/%3E%3Crect x='600' y='400' width='100' height='100' fill='%23d40808'/%3E%3Crect x='700' y='400' width='100' height='100' fill='%23c00505'/%3E%3Crect x='0' y='500' width='100' height='100' fill='%23ba0404'/%3E%3Crect x='100' y='500' width='100' height='100' fill='%23c70606'/%3E%3Crect x='200' y='500' width='100' height='100' fill='%23cd0707'/%3E%3Crect x='300' y='500' width='100' height='100' fill='%23c00505'/%3E%3Crect x='400' y='500' width='100' height='100' fill='%23cd0707'/%3E%3Crect x='500' y='500' width='100' height='100' fill='%23c00505'/%3E%3Crect x='600' y='500' width='100' height='100' fill='%23ba0404'/%3E%3Crect x='700' y='500' width='100' height='100' fill='%23c70606'/%3E%3C/svg%3E");
   background-size: 100% auto;
   background-repeat: repeat-y;
   background-position: left top;
