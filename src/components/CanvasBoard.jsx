@@ -15,8 +15,17 @@ const CanvasBoard = () => (
     {/* crispEdges snaps each 1px stroke to one pixel. Antialiased across two at
         half strength, the guides would read fainter than their colour. */}
     <g stroke="var(--board-line)" strokeWidth="1" shapeRendering="crispEdges">
-      {GUIDES.map((x) => (
-        <line key={x} x1={x} y1="0" x2={x} y2="100%" />
+      {GUIDES.map((x, i) => (
+        // Every other line is marked, so phones can drop them and keep four
+        // columns (see responsive.css).
+        <line
+          key={x}
+          className={i % 2 === 0 ? 'canvas-board-line--fine' : undefined}
+          x1={x}
+          y1="0"
+          x2={x}
+          y2="100%"
+        />
       ))}
     </g>
   </svg>
