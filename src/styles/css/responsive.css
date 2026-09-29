@@ -6,6 +6,28 @@
 }
 
 @media (max-width: 640px) {
+  .wego-feature {
+    gap: 32px;
+    padding: 48px 16px;
+  }
+  .wego-feature-title {
+    font-size: 30px;
+    line-height: 34px;
+  }
+  .wego-feature-summary {
+    font-size: 16px;
+    line-height: 24px;
+  }
+  .stf-line {
+    --stf-length: 80px;
+  }
+  .ds-foundations {
+    flex-direction: column;
+    gap: 32px;
+  }
+  .stf-logo {
+    height: 40px;
+  }
   .side-projects {
     grid-template-columns: minmax(0, 1fr);
   }
@@ -284,9 +306,6 @@
   .inbox-slider-bar {
     flex: 1;
     width: auto;
-  }
-  .wip-banner {
-    margin-bottom: 32px;
   }
   .inbox-modal-body {
     padding: 32px 16px 48px;

@@ -75,7 +75,7 @@ const InboxShowcase = ({ data, label, reverse = false, showLogo = true }) => {
             <h3 id={titleId} className="inbox-title">
               <strong>{data.titleLead}</strong>: {data.titleRest}
             </h3>
-            <p className="inbox-feature-tags">{data.tags}</p>
+            {data.tags && <p className="inbox-feature-tags">{data.tags}</p>}
             {data.summary.map((text) => (
               <p className="inbox-intro" key={text}>
                 {text}

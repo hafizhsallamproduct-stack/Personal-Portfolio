@@ -674,83 +674,6 @@
   color: var(--portfolio-text);
 }
 
-/* Running text in the Portfolio section, between the RHB feature and the
-   case study cards, while those are being reworked: bright yellow, scrolling left
-   in a loop, paused on hover. It sticks just below the header once reached,
-   and leaves with the section, since sticky stays within its parent. */
-.wip-banner {
-  position: sticky;
-  top: calc(var(--page-card-top) + var(--header-height));
-  /* Under the header (100), level with the floating actions. */
-  z-index: 99;
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto 40px;
-  overflow: hidden;
-  background-color: var(--wip-bg);
-  color: var(--wip-text);
-}
-
-.wip-track {
-  display: flex;
-  width: max-content;
-  animation: wip-scroll 40s linear infinite;
-}
-
-@media (hover: hover) {
-  .wip-banner:hover .wip-track {
-    animation-play-state: paused;
-  }
-}
-
-.wip-group {
-  display: flex;
-  flex-shrink: 0;
-}
-
-.wip-item {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 14px 32px 14px 0;
-  font-family: var(--font-mono);
-  font-size: 14px;
-  font-weight: 700;
-  line-height: 20px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-
-.wip-item .icon {
-  width: 18px;
-  height: 18px;
-  flex-shrink: 0;
-}
-
-@keyframes wip-scroll {
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-/* No motion: one still, centred line. */
-@media (prefers-reduced-motion: reduce) {
-  .wip-track {
-    width: auto;
-    justify-content: center;
-    animation: none;
-  }
-  .wip-group + .wip-group,
-  .wip-item + .wip-item {
-    display: none;
-  }
-  .wip-item {
-    padding-right: 0;
-    white-space: normal;
-  }
-}
-
 /* --- Work Cards (List) --- */
 .work-cards {
   display: flex;
@@ -2052,6 +1975,373 @@
   min-height: 0;
   border-radius: 0;
   box-shadow: none;
+}
+
+/* --- Wego features --- */
+/* Each Wego case study is one full-width block on a fade from pale green to
+   white: the text on top, the cover across the block, then the facts and
+   the button. */
+.wego-features {
+  width: 100%;
+}
+
+.wego-feature {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 72px 48px;
+  /* Green over the top half only, fading to white by the middle. */
+  background: linear-gradient(180deg, var(--wego-fade-top) 0%, var(--wego-fade-bottom) 50%);
+  color: var(--wego-ink);
+}
+
+.wego-feature-head {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  max-width: 860px;
+}
+
+.wego-feature-logo {
+  height: 48px;
+  width: auto;
+  margin-bottom: 8px;
+}
+
+.wego-feature-label,
+.wego-feature-meta dt {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 16px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--wego-label);
+}
+
+.wego-feature-title {
+  text-wrap: balance;
+  font-size: 40px;
+  font-weight: 300;
+  line-height: 44px;
+  letter-spacing: -0.02em;
+}
+
+.wego-feature-title strong {
+  font-weight: 700;
+}
+
+.wego-feature-summary {
+  max-width: 760px;
+  font-size: 18px;
+  line-height: 28px;
+  color: var(--wego-ink-soft);
+}
+
+.wego-feature-cover {
+  display: block;
+  width: 100%;
+  height: auto;
+  /* Wider than the covers' own 16 by 10, so the block stays short; the
+     cover is cropped top and bottom, around its centre. */
+  aspect-ratio: 2.2 / 1;
+  object-fit: cover;
+  border-radius: calc(var(--radius-md) * var(--corner-scale));
+  box-shadow: 0 24px 48px rgba(7, 117, 13, 0.14);
+}
+
+/* A centred block: the text and the logos down the middle. */
+.wego-feature--centered .wego-feature-head {
+  align-items: center;
+  align-self: center;
+  text-align: center;
+}
+
+/* Sketch, then Figma, joined by a hairline. With motion allowed, a small
+   diamond in Sketch's yellow travels along it and turns into a circle in
+   Figma's purple, the line filling in behind it, then fades and starts
+   again. */
+.sketch-to-figma {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-top: 16px;
+}
+
+.stf-logo {
+  flex: none;
+  width: auto;
+  height: 48px;
+}
+
+.stf-line {
+  --stf-length: 140px;
+  position: relative;
+  width: var(--stf-length);
+  height: 1px;
+  background-color: var(--wego-line);
+}
+
+.stf-fill,
+.stf-token {
+  display: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .stf-fill {
+    display: block;
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, #fdb300, #a259ff);
+    opacity: 0.5;
+    transform-origin: left;
+    animation: stf-fill 4s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+  }
+
+  .stf-token {
+    display: block;
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    width: 9px;
+    height: 9px;
+    animation: stf-token 4s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+  }
+}
+
+@keyframes stf-fill {
+  0% {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  10% {
+    opacity: 0.5;
+  }
+  65% {
+    opacity: 0.5;
+    transform: scaleX(1);
+  }
+  85%,
+  100% {
+    opacity: 0;
+    transform: scaleX(1);
+  }
+}
+
+@keyframes stf-token {
+  0% {
+    opacity: 0;
+    border-radius: 1px;
+    background-color: #fdb300;
+    transform: translateX(0) rotate(45deg);
+  }
+  10% {
+    opacity: 1;
+  }
+  65% {
+    opacity: 1;
+    border-radius: 50%;
+    background-color: #a259ff;
+    transform: translateX(var(--stf-length)) rotate(0deg);
+  }
+  85%,
+  100% {
+    opacity: 0;
+    border-radius: 50%;
+    background-color: #a259ff;
+    transform: translateX(var(--stf-length)) rotate(0deg) scale(0.6);
+  }
+}
+
+/* The design system's foundations: three columns, each as wide as its
+   content, 48px apart, centred in the block and lined up along the bottom,
+   straight on the background. */
+.ds-foundations {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 48px;
+}
+
+.ds-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: left;
+}
+
+/* The lists in the cards are plain rows and grids. */
+.ds-card ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Typography: Inter set large, with its weights under it, and guide lines
+   through it as on a type specimen: cap height, x-height and baseline,
+   placed in shares of the type size and checked against the rendered
+   letters. */
+.ds-type-specimen {
+  --ds-type-size: 120px;
+  position: relative;
+}
+
+.ds-type-guide {
+  position: absolute;
+  right: -12px;
+  left: -12px;
+  height: 0;
+  border-top: 1px dashed var(--wego-line);
+}
+
+.ds-type-guide--cap {
+  top: calc(var(--ds-type-size) * 0.128);
+}
+
+.ds-type-guide--x {
+  top: calc(var(--ds-type-size) * 0.312);
+}
+
+.ds-type-guide--base {
+  top: calc(var(--ds-type-size) * 0.866);
+  border-top-style: solid;
+}
+
+.ds-type-sample {
+  position: relative;
+  font-family: 'Inter', sans-serif;
+  font-size: var(--ds-type-size);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  background: linear-gradient(135deg, var(--wego-ink) 40%, var(--wego-button-hover));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.ds-type-name {
+  font-family: 'Inter', sans-serif;
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 36px;
+  letter-spacing: -0.02em;
+}
+
+.ds-type-weights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--wego-ink-soft);
+}
+
+.ds-type-weights li:nth-child(1) {
+  font-weight: 400;
+}
+
+.ds-type-weights li:nth-child(2) {
+  font-weight: 500;
+}
+
+.ds-type-weights li:nth-child(3) {
+  font-weight: 600;
+}
+
+.ds-type-weights li:nth-child(4) {
+  font-weight: 700;
+}
+
+/* Colour: a column per hue, touching, on one base, the heights rising and
+   falling unevenly. Each swatch is 48 by 32, and each column's top is
+   only slightly rounded. */
+.ds-mountain {
+  display: flex;
+  align-items: flex-end;
+}
+
+.ds-mountain-column {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 2px 2px 0 0;
+}
+
+.ds-mountain-column:first-child {
+  border-bottom-left-radius: 2px;
+}
+
+.ds-mountain-column:last-child {
+  border-bottom-right-radius: 2px;
+}
+
+.ds-swatch {
+  width: 48px;
+  height: 32px;
+}
+
+/* Icons: placeholders at 48 by 48. */
+.ds-icons {
+  display: grid;
+  grid-template-columns: repeat(4, 48px);
+  gap: 16px;
+}
+
+.ds-icon-placeholder {
+  width: 48px;
+  height: 48px;
+  border: 1px dashed var(--wego-line);
+  border-radius: 8px;
+  background-color: var(--wego-fade-top);
+}
+
+.wego-feature-foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding-top: 24px;
+  border-top: var(--line-width) solid var(--wego-line);
+}
+
+.wego-feature-meta {
+  display: flex;
+  gap: 48px;
+}
+
+.wego-feature-meta dd {
+  margin-top: 4px;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.wego-feature-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border-radius: var(--radius-sm);
+  background-color: var(--wego-button);
+  color: #ffffff;
+  font-size: 16px;
+  line-height: 18px;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+@media (hover: hover) {
+  .wego-feature-btn:hover {
+    background-color: var(--wego-button-hover);
+  }
+}
+
+.wego-feature-btn:focus-visible {
+  outline: 2px solid var(--wego-button-hover);
+  outline-offset: 2px;
 }
 
 /* --- CTA --- */
