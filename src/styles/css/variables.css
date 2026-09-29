@@ -52,7 +52,7 @@
   /* The page is a black card on a grey frame. Cards are raised a step above it
      rather than sunk below, which is what gives the surfaces depth. */
   --bg-page: #000000;
-  --bg-frame: #e0e0e0;
+  --bg-frame: #d4d4d4;
   /* Brand red, for the buttons and the logo. White ink on it reads at 5:1, so text on red stays full white. */
   --brand-red: #d40808;
   --btn-primary-hover: #ee1c25;
@@ -82,12 +82,11 @@
   --rhb-text: #ffffff;
   --rhb-text-soft: #bbe3ff;
   --rhb-line: rgba(187, 227, 255, 0.18);
+  /* The slider's other bars: a control, so 3.5:1 on the navy. */
+  --rhb-bar: rgba(187, 227, 255, 0.5);
   /* The grid lines over the navy, fainter than the rules. */
   --rhb-grid-line: rgba(187, 227, 255, 0.1);
   --rhb-bezel: #001f3d;
-  /* The page ruler over the navy: the same lightness step as the ruler on
-     every other section, but bluer than a plain darkening. */
-  --rhb-ruler: #001a48;
   /* The running work-in-progress banner on Portfolio: bright yellow with
      near-black type, 13.9:1. */
   --wip-bg: #ffdd00;

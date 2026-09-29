@@ -9,9 +9,9 @@ import SideProjects from './components/SideProjects';
 import CanvasBoard from './components/CanvasBoard';
 import Footer from './components/Footer';
 import SideActions from './components/SideActions';
-import PageRuler from './components/PageRuler';
 import PortfolioModal from './components/PortfolioModal';
 import InboxCaseStudy from './components/InboxCaseStudy';
+import OverseasCaseStudy from './components/OverseasCaseStudy';
 import { useScrollReveal } from './hooks/useScrollReveal';
 
 function IndexPage() {
@@ -22,7 +22,6 @@ function IndexPage() {
       </a>
       <div className="page-card-mask" aria-hidden="true"></div>
       <div className="page-card">
-        <PageRuler />
         <Navbar />
         <main id="main">
           <About />
@@ -75,14 +74,19 @@ function App() {
 
       <Routes location={backgroundLocation || location}>
         <Route path="/" element={<IndexPage />} />
-        {/* A fixed path ranks above :slug, so this one never reaches the reader. */}
+        {/* Fixed paths rank above :slug, so these never reach the reader. */}
         <Route path="/portfolio/rhb-inbox" element={<InboxCaseStudy isStandalone />} />
+        <Route
+          path="/portfolio/rhb-overseas-transfer"
+          element={<OverseasCaseStudy isStandalone />}
+        />
         <Route path="/portfolio/:slug" element={<PortfolioModal isStandalone />} />
       </Routes>
 
       {backgroundLocation && (
         <Routes>
           <Route path="/portfolio/rhb-inbox" element={<InboxCaseStudy />} />
+          <Route path="/portfolio/rhb-overseas-transfer" element={<OverseasCaseStudy />} />
           <Route path="/portfolio/:slug" element={<PortfolioModal />} />
         </Routes>
       )}

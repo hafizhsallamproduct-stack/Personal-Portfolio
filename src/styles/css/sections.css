@@ -38,13 +38,6 @@
   gap: 8px;
 }
 
-/* Clear of the page ruler, which runs down the card's left edge on desktop. */
-@media (min-width: 901px) {
-  .nav-top .nav-logo {
-    margin-left: 12px;
-  }
-}
-
 .nav-logo-icon {
   width: 36px;
   height: 36px;
@@ -184,9 +177,9 @@
 .about-name,
 .cta-heading {
   font-family: var(--font-heading);
-  font-size: 64px;
+  font-size: 72px;
   font-weight: 300;
-  line-height: 66px;
+  line-height: 76px;
   letter-spacing: -0.02em;
 }
 
@@ -889,7 +882,9 @@
   --inbox-gutter: 48px;
 }
 
-.inbox-showcase {
+/* The RHB case studies share one navy section, with the diamond behind
+   both. */
+.inbox-showcases {
   position: relative;
   isolation: isolate;
   overflow: hidden;
@@ -898,30 +893,64 @@
   color: var(--rhb-text);
 }
 
-/* Four of the page grid's vertical lines, every other one (the first, third,
-   fifth and seventh), drawn over the navy behind the content. The layer is
-   as wide as the grid and centred like it, so the lines match it exactly. */
-.inbox-showcase::before {
+.inbox-showcase {
+  width: 100%;
+}
+
+/* On scroll in, each case study's screens slide in from the side they sit
+   on: the first from the right, the mirrored second from the left. The rest
+   of the scroll reveal is in base.css. */
+.inbox-showcase .inbox-feature-media[data-reveal].is-revealed {
+  animation-name: reveal-from-right;
+}
+
+.inbox-showcase--reverse .inbox-feature-media[data-reveal].is-revealed {
+  animation-name: reveal-from-left;
+}
+
+@keyframes reveal-from-right {
+  from {
+    opacity: 0;
+    translate: 120px 0;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+@keyframes reveal-from-left {
+  from {
+    opacity: 0;
+    translate: -120px 0;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+/* RHB's diamond, drawn behind the content in the grid line colour: two
+   lines each way at 45 degrees, crossing in a diamond 280px across near the
+   top left of the grid and running out past the section's edges. Drawn on a
+   square larger than the section, so the angles stay at 45 at any size. The
+   SVG is only a mask, so the colour comes from --rhb-grid-line. The case
+   study popup has the same diamond, mirrored to the top right. */
+.inbox-showcases::before,
+.inbox-modal-body::before {
   content: '';
   position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 50%;
+  top: 200px;
+  left: calc(50% - min(1200px, 100%) / 2 + 240px);
   z-index: -1;
-  width: min(1200px, 100vw);
-  transform: translateX(-50%);
-  background-image:
-    linear-gradient(var(--rhb-grid-line), var(--rhb-grid-line)),
-    linear-gradient(var(--rhb-grid-line), var(--rhb-grid-line)),
-    linear-gradient(var(--rhb-grid-line), var(--rhb-grid-line)),
-    linear-gradient(var(--rhb-grid-line), var(--rhb-grid-line));
-  background-position:
-    12.5% 0,
-    37.5% 0,
-    62.5% 0,
-    87.5% 0;
-  background-size: var(--line-width) 100%;
-  background-repeat: no-repeat;
+  width: 3000px;
+  height: 3000px;
+  transform: translate(-50%, -50%);
+  background-color: var(--rhb-grid-line);
+  -webkit-mask: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3000 3000'><g stroke='%23000' stroke-width='1'><path d='M0 2860L2860 0'/><path d='M140 3000L3000 140'/><path d='M140 0L3000 2860'/><path d='M0 140L2860 3000'/></g></svg>")
+    no-repeat 0 0 / 100% 100%;
+  mask: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3000 3000'><g stroke='%23000' stroke-width='1'><path d='M0 2860L2860 0'/><path d='M140 3000L3000 140'/><path d='M140 0L3000 2860'/><path d='M0 140L2860 3000'/></g></svg>")
+    no-repeat 0 0 / 100% 100%;
   pointer-events: none;
 }
 
@@ -951,6 +980,7 @@
 }
 
 .inbox-eyebrow,
+.inbox-group-label,
 .inbox-block-index,
 .inbox-meta dt,
 .inbox-caption {
@@ -966,11 +996,14 @@
   line-height: 18px;
 }
 
+/* The case study title, over two lines: the lead in bold, the rest light,
+   as in the Portfolio feature. */
 .inbox-title {
   text-wrap: balance;
-  font-size: 56px;
-  font-weight: 700;
-  line-height: 60px;
+  max-width: 860px;
+  font-size: 72px;
+  font-weight: 300;
+  line-height: 76px;
   letter-spacing: -0.02em;
   color: var(--rhb-text);
 }
@@ -1025,17 +1058,23 @@
   line-height: 16px;
 }
 
+/* A line break in the heading's text is kept, to choose where it wraps. */
 .inbox-block-title {
   font-size: 28px;
   font-weight: 700;
   line-height: 34px;
   color: var(--rhb-text);
+  white-space: pre-line;
 }
 
 .inbox-block-text {
-  font-size: 18px;
+  font-size: 16px;
   line-height: 28px;
   color: var(--rhb-text-soft);
+}
+
+.inbox-block-note {
+  margin-top: 16px;
 }
 
 .inbox-caption {
@@ -1044,19 +1083,21 @@
   line-height: 16px;
 }
 
-/* Devices: desktop across the top, tablet and phone centred below it, with an
-   empty column either side so they stay a readable size. The tablet and phone
-   columns are in the ratio of the tablet to the phone, each with its browser
-   bar, so both frames come out about the same height. */
+/* Devices: desktop, tablet and phone in one row. The columns are in the ratio
+   of each frame's width to its height, with the desktop's tab bar and the
+   tablet and phone browser bars, so all three come out about the same
+   height. */
 .inbox-devices {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 2.6fr) minmax(0, 1.14fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 5.2fr) minmax(0, 2.86fr) minmax(0, 1.23fr);
   gap: 32px 24px;
-  align-items: start;
+  /* Lined up along the bottom, so any small difference in height shows at
+     the top. */
+  align-items: end;
 }
 
 .inbox-device--desktop {
-  grid-column: 1 / -1;
+  grid-column: 1;
 }
 
 .inbox-device--tablet {
@@ -1255,10 +1296,20 @@
   height: 100%;
   overflow-y: auto;
   overscroll-behavior: contain;
+  /* Lets a strip break out of the content column to the popup's edges. */
+  container-type: inline-size;
 }
 
 .inbox-modal-body {
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
   padding: 64px 48px 96px;
+}
+
+/* The diamond on the right, near the title (drawn with the showcase's). */
+.inbox-modal-body::before {
+  left: calc(50% + min(1104px, 100%) / 2 - 240px);
 }
 
 /* In the popup the bar stays at the top while the study scrolls under it, and
@@ -1363,7 +1414,7 @@
 .inbox-finding-text {
   margin-top: 8px;
   font-size: 16px;
-  line-height: 24px;
+  line-height: 28px;
   color: var(--rhb-text-soft);
 }
 
@@ -1373,7 +1424,7 @@
   margin-top: 32px;
   padding-left: 20px;
   border-left: 3px solid var(--rhb-sky);
-  font-size: 18px;
+  font-size: 16px;
   line-height: 28px;
   color: var(--rhb-text);
 }
@@ -1431,6 +1482,61 @@
   height: auto;
   border-radius: calc(var(--radius-md) * var(--corner-scale));
   box-shadow: 0 16px 32px rgba(0, 20, 40, 0.4);
+}
+
+/* A small label over a group of screens, such as Web or Mobile app, when a
+   block shows more than one platform. */
+.inbox-group-label {
+  margin-bottom: 16px;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 16px;
+}
+
+.inbox-shots + .inbox-group-label,
+.inbox-app-screens + .inbox-group-label {
+  margin-top: 48px;
+}
+
+.inbox-method-group + .inbox-method-group {
+  margin-top: 48px;
+}
+
+.inbox-psychology {
+  margin-top: 48px;
+}
+
+/* Mobile app screens, four across, each at the phone's 720 by 1280. The
+   longer inbox list scrolls inside its frame. */
+.inbox-app-screens {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 32px 24px;
+}
+
+.inbox-app-frame {
+  overflow: hidden;
+  aspect-ratio: 720 / 1280;
+  border-radius: calc(var(--radius-md) * var(--corner-scale));
+  background-color: #ffffff;
+  box-shadow: 0 16px 32px rgba(0, 20, 40, 0.4);
+}
+
+.inbox-app-frame--scroll {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+}
+
+.inbox-app-frame--scroll:focus-visible {
+  outline: 2px solid var(--rhb-sky);
+  outline-offset: 4px;
+}
+
+.inbox-app-frame img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 /* Message cards, as they appear in the list, on white tiles. The crop trims
@@ -1607,7 +1713,8 @@
   object-fit: cover;
 }
 
-/* A bar per slide, the current one full white. */
+/* A bar per slide, the current one full white, the others pale blue at
+   3.5:1 on the navy. */
 .inbox-slider-bars {
   display: flex;
   gap: 6px;
@@ -1619,7 +1726,7 @@
   height: 20px;
   padding: 0;
   border: none;
-  background: linear-gradient(var(--rhb-line), var(--rhb-line)) center / 100% 3px no-repeat;
+  background: linear-gradient(var(--rhb-bar), var(--rhb-bar)) center / 100% 3px no-repeat;
   cursor: pointer;
   transition: background-size 0.2s;
 }
@@ -1634,6 +1741,11 @@
   }
 }
 
+.inbox-slider-bar:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+}
+
 .inbox-brand-logo {
   display: block;
   height: 40px;
@@ -1641,16 +1753,22 @@
   margin-bottom: 8px;
 }
 
+/* The case study's number over its title, smaller than the popup's eyebrow. */
+.inbox-feature-label {
+  font-size: 13px;
+  line-height: 16px;
+}
+
 /* Kept below the name in the hero (64px): the lead in bold, the rest
    regular. */
 .inbox-feature .inbox-title {
   font-size: 40px;
-  font-weight: 400;
+  font-weight: 300;
   line-height: 44px;
   letter-spacing: -0.02em;
 }
 
-.inbox-feature .inbox-title strong {
+.inbox-title strong {
   font-weight: 700;
 }
 
@@ -1666,6 +1784,274 @@
   margin-top: 0;
   font-size: 16px;
   line-height: 28px;
+}
+
+/* --- RHB Overseas Transfer --- */
+/* Its Portfolio feature follows the Inbox's in the same section. On desktop
+   it is mirrored: the slider on the left, meeting the section's left edge,
+   and the text on the right. */
+/* A rule under each case study's facts, save the last, marks where the
+   next begins. It takes the place of the feature's bottom padding. */
+.inbox-showcase:not(:last-child) .inbox-feature {
+  padding-bottom: 0;
+}
+
+.inbox-showcase:not(:last-child) .inbox-meta {
+  padding-bottom: 64px;
+}
+
+/* The line between the case studies runs the window's full width, past the
+   centred content. The section clips anything wider. */
+.inbox-showcase:not(:last-child) {
+  position: relative;
+}
+
+.inbox-showcase:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 100vw;
+  height: var(--line-width);
+  transform: translateX(-50%);
+  background-color: var(--rhb-line);
+}
+
+@media (min-width: 901px) {
+  .inbox-showcase--reverse .inbox-feature-top {
+    grid-template-columns:
+      calc((100% + var(--inbox-gutter)) / 2 + min(1200px, 100vw) / 8)
+      minmax(0, 1fr);
+    margin-right: 0;
+    margin-left: calc(var(--inbox-gutter) * -1);
+  }
+
+  .inbox-showcase--reverse .inbox-feature-media {
+    order: -1;
+  }
+
+  .inbox-showcase--reverse .inbox-slider {
+    border-radius: 0 calc(var(--radius-md) * var(--corner-scale))
+      calc(var(--radius-md) * var(--corner-scale)) 0;
+  }
+
+  /* The bars line up with the slider's inner edge. */
+  .inbox-showcase--reverse .inbox-slider-bars {
+    justify-content: flex-end;
+  }
+
+  /* A bare strip starts by the text too: the first screen at the slider's
+     right edge, the rest running out to the left, with the bars in the same
+     order. */
+  .inbox-showcase--reverse .inbox-slider--bare .inbox-slider-track,
+  .inbox-showcase--reverse .inbox-slider--bare + .inbox-slider-bars {
+    direction: rtl;
+  }
+
+  .inbox-showcase--reverse .inbox-slider--bare .inbox-slide {
+    direction: ltr;
+  }
+
+  /* Right to left, the start is the right edge. */
+  .inbox-showcase--reverse .inbox-slider--bare + .inbox-slider-bars {
+    justify-content: flex-start;
+  }
+}
+
+/* A bare slider: no light blue frame, just the tablet screens side by side
+   at one height, each its own width, snapping to the start of each. */
+.inbox-slider.inbox-slider--bare {
+  border-radius: 0;
+  background-color: transparent;
+}
+
+.inbox-slider--bare .inbox-slider-track {
+  gap: 16px;
+}
+
+/* Not a carousel: the screens stay put, and the one past the edge is cut
+   off. */
+.inbox-slider--static .inbox-slider-track {
+  overflow-x: hidden;
+}
+
+.inbox-slider--bare .inbox-slide {
+  flex: 0 0 auto;
+  aspect-ratio: auto;
+  height: clamp(320px, 40vw, 560px);
+}
+
+.inbox-slider--bare .inbox-slide-img {
+  height: 100%;
+  width: auto;
+  border-radius: calc(var(--radius-md) * var(--corner-scale));
+}
+
+/* The screen under the intro, whole. */
+.inbox-hero-shot {
+  margin-top: 48px;
+}
+
+.inbox-hero-shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: calc(var(--radius-md) * var(--corner-scale));
+  box-shadow: 0 24px 48px rgba(0, 20, 40, 0.45);
+}
+
+.inbox-findings--two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+/* The way in: a screen per step in the wide strip, each with a ring on what
+   to click next. The ring is RHB's blue, so it shows on the white pages too.
+   The screens are 1440 by 1024 and as tall as the payment method screens,
+   narrower than the popup on a phone. */
+.inbox-flow {
+  --flow-height: min(58vh, 640px, (100cqw - 48px) * 1024 / 1440);
+  display: flex;
+  gap: 24px;
+  list-style: none;
+}
+
+.inbox-flow-step {
+  flex: 0 0 auto;
+  width: calc(var(--flow-height) * 1440 / 1024);
+  scroll-snap-align: start;
+}
+
+/* Not clipped, so a ring by the screen's edge shows whole. */
+.inbox-flow-screen {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.inbox-flow-screen img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: calc(var(--radius-md) * var(--corner-scale));
+  box-shadow: 0 16px 32px rgba(0, 20, 40, 0.4);
+}
+
+.inbox-flow-marker {
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+.inbox-flow-marker .inbox-hotspot-ring {
+  top: -14px;
+  left: -14px;
+  width: 28px;
+  height: 28px;
+  border-color: var(--rhb-navy);
+}
+
+.inbox-flow-marker .inbox-hotspot-ring::after {
+  border-color: var(--rhb-navy);
+}
+
+.inbox-flow-step .inbox-timeline-when {
+  display: block;
+  margin-bottom: 4px;
+}
+
+/* Large screens in a strip wider than the content column, running to the
+   popup's edges and scrolling sideways. The first one lines up with the
+   text above. Each is a little over half the window's height, up to
+   640px, and narrower than the popup on a phone. */
+.inbox-strip {
+  /* The space beside the content column: the popup's gutter, or more once
+     the popup is wider than the column. */
+  --strip-inset: max(var(--inbox-gutter), (100cqw - 1104px) / 2);
+  display: flex;
+  gap: 24px;
+  margin-inline: calc(var(--strip-inset) * -1);
+  padding-inline: var(--strip-inset);
+  padding-bottom: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: var(--strip-inset);
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+}
+
+.inbox-strip::-webkit-scrollbar {
+  display: none;
+}
+
+.inbox-strip:focus-visible {
+  outline: 2px solid var(--rhb-text);
+  outline-offset: 4px;
+}
+
+.inbox-strip .inbox-shot {
+  flex: 0 0 auto;
+  /* As wide as its screen, so the text under it wraps to the screen. */
+  width: min-content;
+  scroll-snap-align: start;
+}
+
+/* Under a payment method screen: the same label, title and text as a step
+   in the way in. */
+.inbox-strip .inbox-shot figcaption {
+  margin-top: 16px;
+}
+
+.inbox-strip .inbox-shot figcaption > span {
+  display: block;
+}
+
+.inbox-strip .inbox-shot .inbox-timeline-when {
+  margin-bottom: 4px;
+}
+
+.inbox-strip .inbox-shot img {
+  width: auto;
+  height: min(58vh, 640px, (100cqw - 48px) * 4 / 3 * 0.75);
+  min-height: 300px;
+}
+
+/* A framed screen: the tablet's 3 by 4 at the same height, with a taller
+   screen scrolling inside. Scrolls chain on, so a sideways swipe over it
+   still moves the strip and the page scrolls on past its end. */
+.inbox-strip-frame {
+  overflow-y: auto;
+  scrollbar-width: thin;
+  --frame-height: max(min(58vh, 640px, (100cqw - 48px) * 4 / 3 * 0.75), 300px);
+  width: calc(var(--frame-height) * 3 / 4);
+  aspect-ratio: 3 / 4;
+  border-radius: calc(var(--radius-md) * var(--corner-scale));
+  background-color: #ffffff;
+  box-shadow: 0 16px 32px rgba(0, 20, 40, 0.4);
+}
+
+/* A desktop screen at 1440 by 1024, as tall as a tablet one and no wider
+   than the popup. */
+.inbox-strip-frame--desktop {
+  width: min(calc(var(--frame-height) * 1440 / 1024), 100cqw - 48px);
+  aspect-ratio: 1440 / 1024;
+}
+
+/* A phone screen at the app's 720 by 1280, as tall as a tablet one. */
+.inbox-strip-frame--phone {
+  width: calc(var(--frame-height) * 720 / 1280);
+  aspect-ratio: 720 / 1280;
+}
+
+.inbox-strip-frame:focus-visible {
+  outline: 2px solid var(--rhb-sky);
+  outline-offset: 4px;
+}
+
+.inbox-strip .inbox-strip-frame img {
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  border-radius: 0;
+  box-shadow: none;
 }
 
 /* --- CTA --- */
