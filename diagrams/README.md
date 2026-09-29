@@ -21,7 +21,7 @@ Regenerate after editing:
   "file://$PWD/diagrams/design-hub-skills.html"
 
 cwebp -q 94 -m 6 -sharp_yuv /tmp/skills.png \
-  -o public/assets/portfolio/portfolio-designhub-skills.webp
+  -o public/assets/portfolio/design-hub/designhub-skills.webp
 ```
 
 Render at the size it will be displayed. A much larger image gets downscaled by

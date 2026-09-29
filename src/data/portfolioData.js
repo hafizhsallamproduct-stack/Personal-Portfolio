@@ -205,7 +205,7 @@ export const workData = [
     logoDark: '/assets/wego-dark.svg',
     year: '2022 — Present',
     isLarge: true,
-    image: '/assets/portfolio/portfolio-1.webp',
+    image: '/assets/portfolio/wego-design-system/cover.webp',
     description:
       "Led the evolution of Wego's design system from a legacy Sketch setup to a more scalable Figma-based system. I worked across foundations, components, platform needs, and designer–developer collaboration to make the system easier to maintain, adopt, and evolve.",
     intro:
@@ -215,7 +215,7 @@ export const workData = [
     content: [
       {
         type: 'image',
-        url: '/assets/portfolio/portfolio-wegodesignsystem-7.webp',
+        url: '/assets/portfolio/wego-design-system/7.webp',
       },
       {
         type: 'paragraph',
@@ -300,7 +300,7 @@ export const workData = [
       },
       {
         type: 'image',
-        url: '/assets/portfolio/portfolio-wegodesignsystem-5.webp',
+        url: '/assets/portfolio/wego-design-system/5.webp',
         alt: 'Background context for the Wego Design System rebuild',
         caption: 'Early concept for design change',
       },
@@ -345,7 +345,7 @@ export const workData = [
       },
       {
         type: 'image',
-        url: '/assets/portfolio/portfolio-wegodesignsystem-2.webp',
+        url: '/assets/portfolio/wego-design-system/2.webp',
         alt: 'Wego 2022 design concept, before and after UI comparisons across platforms',
         caption:
           'Presentation slide for approval showing the before-and-after design. This slide was made by my director, applying the tokens and design direction we agreed on.',
@@ -382,19 +382,19 @@ export const workData = [
       },
       {
         type: 'image',
-        url: '/assets/portfolio/portfolio-wegodesignsystem-1.webp',
+        url: '/assets/portfolio/wego-design-system/1.webp',
         alt: 'Design foundation variables and text styles in Figma',
         caption: 'Foundation structure for typography and color',
       },
       {
         type: 'image',
-        url: '/assets/portfolio/portfolio-wegodesignsystem-3.webp',
+        url: '/assets/portfolio/wego-design-system/3.webp',
         alt: 'Documentation for each component',
         caption: 'Documentation for each component, where to use it and how to use it',
       },
       {
         type: 'image',
-        url: '/assets/portfolio/portfolio-wegodesignsystem-4.webp',
+        url: '/assets/portfolio/wego-design-system/4.webp',
         alt: 'Example of component description',
         caption: 'Example of component description',
       },
@@ -422,14 +422,14 @@ export const workData = [
       },
       {
         type: 'image',
-        url: '/assets/portfolio/portfolio-wegodesignsystem-8.webp',
+        url: '/assets/portfolio/wego-design-system/8.webp',
         alt: 'Wego Design System structure diagram',
         caption:
           'Original structure: separate desktop and mobile component libraries connected to each product touchpoint and development output.',
       },
       {
         type: 'image',
-        url: '/assets/portfolio/portfolio-wegodesignsystem-9.webp',
+        url: '/assets/portfolio/wego-design-system/9.webp',
         alt: 'Wego Design System structure diagram',
         caption:
           'Updated structure: one shared component library for desktop and mobile, with platform-specific documentation where needed.',
@@ -504,42 +504,42 @@ export const workData = [
       { type: 'heading', text: 'Visual Outcomes' },
       {
         type: 'image',
-        url: '/assets/portfolio/portfolio-wegodesignsystem-10.webp',
+        url: '/assets/portfolio/wego-design-system/10.webp',
         alt: 'Wego Design System icon set',
         caption:
           'A refreshed icon set designed to align with the updated foundations and visual language of the component system.',
       },
       {
         type: 'image',
-        url: '/assets/portfolio/portfolio-wegodesignsystem-11.webp',
+        url: '/assets/portfolio/wego-design-system/11.webp',
         alt: 'Search form evolution across three generations',
         caption:
           'The flight search form across three generations, from the original dense layout to a cleaner, more structured form that applies the updated design system foundations.',
       },
       {
         type: 'image',
-        url: '/assets/portfolio/portfolio-wegodesignsystem-12.webp',
+        url: '/assets/portfolio/wego-design-system/12.webp',
         alt: 'Fare selection screen evolution',
         caption:
           'Fare selection redesigned to improve clarity and scannability. The updated layout uses consistent card patterns from the design system, making it easier to compare fare tiers at a glance.',
       },
       {
         type: 'image',
-        url: '/assets/portfolio/portfolio-wegodesignsystem-13.webp',
+        url: '/assets/portfolio/wego-design-system/13.webp',
         alt: 'Booking form evolution across three generations',
         caption:
           'The booking flow updated to reflect the new design system: cleaner step indicators, improved information hierarchy, and consistent form components across passenger details and payment.',
       },
       {
         type: 'image',
-        url: '/assets/portfolio/portfolio-wegodesignsystem-14.webp',
+        url: '/assets/portfolio/wego-design-system/14.webp',
         alt: 'SEO marketing page before and after redesign',
         caption:
           'An SEO marketing page updated as part of the design system rollout, applying refreshed typography, spacing, and component patterns to improve readability and visual consistency across content-heavy pages.',
       },
       {
         type: 'image',
-        url: '/assets/portfolio/portfolio-wegodesignsystem-15.webp',
+        url: '/assets/portfolio/wego-design-system/15.webp',
         alt: 'Responsive grid implementation across breakpoints',
         caption:
           'The responsive grid system applied across multiple breakpoints, showing how the design system foundations adapt consistently from desktop down to mobile across complex content layouts.',
@@ -552,7 +552,7 @@ export const workData = [
     logo: '/assets/wego.svg',
     logoDark: '/assets/wego-dark.svg',
     year: '2022 — 2025',
-    image: '/assets/portfolio/portfolio-2.webp',
+    image: '/assets/portfolio/wego-flight-search-redesign/cover.webp',
     description:
       "Redesigned Wego's flight search experience to make one of the most important steps in the booking journey clearer and easier to complete. The work covered the end-to-end search flow across platforms, from destination and date selection to passenger and search preferences.",
     intro:
@@ -562,7 +562,7 @@ export const workData = [
     content: [
       {
         type: 'image',
-        url: '/assets/portfolio/portfolio-wegodesignsystem-11.webp',
+        url: '/assets/portfolio/wego-design-system/11.webp',
         alt: 'The flight search form across three generations',
       },
       {
@@ -580,7 +580,7 @@ export const workData = [
       },
       {
         type: 'image',
-        url: '/assets/portfolio/portfolio-searchform-1.webp',
+        url: '/assets/portfolio/wego-flight-search-redesign/1.webp',
         alt: 'Audit of the Wego flight search form in July 2022',
         caption:
           'Our starting point in July 2022: what the form contained and the main issues we logged, including the iOS and Android inconsistencies.',
@@ -598,13 +598,13 @@ export const workData = [
         type: 'carousel',
         items: [
           {
-            url: '/assets/portfolio/portfolio-searchform-research-wego-2.webp',
+            url: '/assets/portfolio/wego-flight-search-redesign/research-wego-2.webp',
             alt: 'Audit of the Wego search form, part 1',
             caption:
               'Auditing our own form: what it has, and the questions it raised, starting with inconsistency between iOS and Android.',
           },
           {
-            url: '/assets/portfolio/portfolio-searchform-research-wego-3.webp',
+            url: '/assets/portfolio/wego-flight-search-redesign/research-wego-3.webp',
             alt: 'Audit of the Wego search form, part 2',
             caption: 'Auditing our own form: what it has and the questions it raised.',
           },
@@ -614,37 +614,37 @@ export const workData = [
         type: 'carousel',
         items: [
           {
-            url: '/assets/portfolio/portfolio-searchform-research-mapping.webp',
+            url: '/assets/portfolio/wego-flight-search-redesign/research-mapping.webp',
             alt: 'Feature mapping of Wego against MakeMyTrip, Almosafer, Kayak, Hopper, and Kiwi',
             caption:
               'Mapping every search form feature against five competitors to see where we stood and what to borrow.',
           },
           {
-            url: '/assets/portfolio/portfolio-searchform-research-mmt-1.webp',
+            url: '/assets/portfolio/wego-flight-search-redesign/research-mmt-1.webp',
             alt: 'MakeMyTrip search page teardown, part 1',
             caption:
               'Competitor teardown: MakeMyTrip search page, what they have and the key takeaways.',
           },
           {
-            url: '/assets/portfolio/portfolio-searchform-research-mmt-2.webp',
+            url: '/assets/portfolio/wego-flight-search-redesign/research-mmt-2.webp',
             alt: 'MakeMyTrip search page teardown, part 2',
             caption:
               'Competitor teardown: MakeMyTrip search page, what they have and the key takeaways.',
           },
           {
-            url: '/assets/portfolio/portfolio-searchform-research-mmt-3.webp',
+            url: '/assets/portfolio/wego-flight-search-redesign/research-mmt-3.webp',
             alt: 'MakeMyTrip search page teardown, part 3',
             caption:
               'Competitor teardown: MakeMyTrip search page, what they have and the key takeaways.',
           },
           {
-            url: '/assets/portfolio/portfolio-searchform-research-mmt-4.webp',
+            url: '/assets/portfolio/wego-flight-search-redesign/research-mmt-4.webp',
             alt: 'MakeMyTrip search page teardown, part 4',
             caption:
               'Competitor teardown: MakeMyTrip search page, what they have and the key takeaways.',
           },
           {
-            url: '/assets/portfolio/portfolio-searchform-research-mmt-5.webp',
+            url: '/assets/portfolio/wego-flight-search-redesign/research-mmt-5.webp',
             alt: 'MakeMyTrip search page teardown, part 5',
             caption:
               'Competitor teardown: MakeMyTrip search page, what they have and the key takeaways.',
@@ -675,7 +675,7 @@ export const workData = [
       },
       {
         type: 'image',
-        url: '/assets/portfolio/portfolio-searchform-5.webp',
+        url: '/assets/portfolio/wego-flight-search-redesign/5.webp',
         alt: 'Comparison of traveler and cabin class selection across travel apps',
         caption:
           'The comparison that led to one of the changes: combining travelers and cabin class into a single selection means fewer taps.',
@@ -705,8 +705,8 @@ export const workData = [
       },
       {
         type: 'image',
-        url: '/assets/portfolio/portfolio-searchform-7-light.webp',
-        urlDark: '/assets/portfolio/portfolio-searchform-7-dark.webp',
+        url: '/assets/portfolio/wego-flight-search-redesign/7-light.webp',
+        urlDark: '/assets/portfolio/wego-flight-search-redesign/7-dark.webp',
         alt: 'Quick change for trip type in the return date field',
         caption:
           'Quick change for trip type in the return date field. A/B tested on iOS, our highest-traffic platform; rejected after the numbers came back flat or negative.',
@@ -719,56 +719,56 @@ export const workData = [
       },
       {
         type: 'image',
-        url: '/assets/portfolio/portfolio-searchform-10-light.webp',
-        urlDark: '/assets/portfolio/portfolio-searchform-10-dark.webp',
+        url: '/assets/portfolio/wego-flight-search-redesign/10-light.webp',
+        urlDark: '/assets/portfolio/wego-flight-search-redesign/10-dark.webp',
         alt: 'The search form across iOS, Android, and mobile web',
         caption:
           'One design, three platforms: the same form on iOS, Android, and mobile web, built from a single set of rules so it looks and behaves the same everywhere.',
       },
       {
         type: 'image',
-        url: '/assets/portfolio/portfolio-searchform-1-light.webp',
-        urlDark: '/assets/portfolio/portfolio-searchform-1-dark.webp',
+        url: '/assets/portfolio/wego-flight-search-redesign/1-light.webp',
+        urlDark: '/assets/portfolio/wego-flight-search-redesign/1-dark.webp',
         alt: 'The redesigned search form for first-time users',
         caption:
           'The form for a first-time user, across one-way, round-trip, and multi-city. The common path is ready to search with defaults already filled.',
       },
       {
         type: 'image',
-        url: '/assets/portfolio/portfolio-searchform-2-light.webp',
-        urlDark: '/assets/portfolio/portfolio-searchform-2-dark.webp',
+        url: '/assets/portfolio/wego-flight-search-redesign/2-light.webp',
+        urlDark: '/assets/portfolio/wego-flight-search-redesign/2-dark.webp',
         alt: 'The search form for returning users with recent searches',
         caption:
           'The returning-user version, with recent searches one tap away. The recent searches section is the work of another designer on the team.',
       },
       {
         type: 'image',
-        url: '/assets/portfolio/portfolio-searchform-3-light.webp',
-        urlDark: '/assets/portfolio/portfolio-searchform-3-dark.webp',
+        url: '/assets/portfolio/wego-flight-search-redesign/3-light.webp',
+        urlDark: '/assets/portfolio/wego-flight-search-redesign/3-dark.webp',
         alt: 'Search form field states',
         caption:
           'Field states are specified in detail, so one set of rules builds the same way on iOS and Android.',
       },
       {
         type: 'image',
-        url: '/assets/portfolio/portfolio-searchform-4-light.webp',
-        urlDark: '/assets/portfolio/portfolio-searchform-4-dark.webp',
+        url: '/assets/portfolio/wego-flight-search-redesign/4-light.webp',
+        urlDark: '/assets/portfolio/wego-flight-search-redesign/4-dark.webp',
         alt: 'Departure and arrival bottom sheet',
         caption:
           'The departure and arrival bottom sheet: recent searches, nearby airports, and popular destinations before the traveler even types.',
       },
       {
         type: 'image',
-        url: '/assets/portfolio/portfolio-searchform-5-light.webp',
-        urlDark: '/assets/portfolio/portfolio-searchform-5-dark.webp',
+        url: '/assets/portfolio/wego-flight-search-redesign/5-light.webp',
+        urlDark: '/assets/portfolio/wego-flight-search-redesign/5-dark.webp',
         alt: 'Calendar bottom sheet with public holidays',
         caption:
           'The calendar bottom sheet, with public holidays listed to help travelers plan around them.',
       },
       {
         type: 'image',
-        url: '/assets/portfolio/portfolio-searchform-6-light.webp',
-        urlDark: '/assets/portfolio/portfolio-searchform-6-dark.webp',
+        url: '/assets/portfolio/wego-flight-search-redesign/6-light.webp',
+        urlDark: '/assets/portfolio/wego-flight-search-redesign/6-dark.webp',
         alt: 'Passengers, cabin class, and payment type sheets',
         caption:
           'Passengers and cabin class grouped into one sheet. Payment types keep their own sheet.',
@@ -802,8 +802,8 @@ export const workData = [
       },
       {
         type: 'image',
-        url: '/assets/portfolio/portfolio-searchform-9-light.webp',
-        urlDark: '/assets/portfolio/portfolio-searchform-9-dark.webp',
+        url: '/assets/portfolio/wego-flight-search-redesign/9-light.webp',
+        urlDark: '/assets/portfolio/wego-flight-search-redesign/9-dark.webp',
         alt: 'Nearby airport option on the search form',
         caption:
           'The nearby airport option appears on the form only when the chosen airport has one close by.',
@@ -822,8 +822,8 @@ export const workData = [
       },
       {
         type: 'image',
-        url: '/assets/portfolio/portfolio-searchform-8-light.webp',
-        urlDark: '/assets/portfolio/portfolio-searchform-8-dark.webp',
+        url: '/assets/portfolio/wego-flight-search-redesign/8-light.webp',
+        urlDark: '/assets/portfolio/wego-flight-search-redesign/8-dark.webp',
         alt: 'Price calendar showing fare levels per day',
         caption:
           'The price calendar, colored by fare level. Accepted on every platform after A/B testing, with converted sessions up {{4.1%}} on desktop web.',
@@ -842,7 +842,7 @@ export const workData = [
       },
       {
         type: 'image',
-        url: '/assets/portfolio/portfolio-searchform-11-light.webp',
+        url: '/assets/portfolio/wego-flight-search-redesign/11-light.webp',
         alt: 'Two upcoming improvements: a unified search form widget and an improved date selection UI',
         caption:
           'Two changes I believe will make a difference: a unified search form widget (left) and an improved date selection UI (right).',
@@ -865,7 +865,7 @@ export const workData = [
     logo: '/assets/wego.svg',
     logoDark: '/assets/wego-dark.svg',
     year: '2023 — Present',
-    image: '/assets/portfolio/portfolio-3.webp',
+    image: '/assets/portfolio/fare-families/cover.webp',
     description:
       "Redesigned Wego's fare selection experience to make the differences between fare options easier to understand and compare. The work focused on simplifying complex airline fare information while helping travelers choose the option that best fits their needs.",
     intro:
@@ -875,8 +875,8 @@ export const workData = [
     content: [
       {
         type: 'image',
-        url: '/assets/portfolio/portfolio-farefamilies-light-01.webp',
-        urlDark: '/assets/portfolio/portfolio-farefamilies-dark-01.webp',
+        url: '/assets/portfolio/fare-families/light-01.webp',
+        urlDark: '/assets/portfolio/fare-families/dark-01.webp',
         alt: 'The fare selection page across three generations, from before the design system to the latest design',
         caption:
           'The fare selection page over time: the version before the design system, the first change after it, and the latest design.',
@@ -915,7 +915,7 @@ export const workData = [
       },
       {
         type: 'image',
-        url: '/assets/portfolio/portfolio-farefamilies-light-04.webp',
+        url: '/assets/portfolio/fare-families/light-04.webp',
         alt: 'The earlier flight details card across single passenger, multiple passengers, and a schedule change',
         caption:
           'The earlier flight details card. Schedule changes pushed extra lines into the card, which made it feel crowded.',
@@ -939,8 +939,8 @@ export const workData = [
       },
       {
         type: 'image',
-        url: '/assets/portfolio/portfolio-farefamilies-light-02.webp',
-        urlDark: '/assets/portfolio/portfolio-farefamilies-dark-02.webp',
+        url: '/assets/portfolio/fare-families/light-02.webp',
+        urlDark: '/assets/portfolio/fare-families/dark-02.webp',
         alt: 'The flight details card across its scenarios: trip types, stops, self-transfer, other transport, banners, schedule change, and loading',
         caption:
           'One flight details card, specified for every case: trip types, stops, self-transfer, other transport, schedule changes, banners, and the loading state.',
@@ -963,7 +963,7 @@ export const workData = [
       },
       {
         type: 'image',
-        url: '/assets/portfolio/portfolio-farefamilies-light-05.webp',
+        url: '/assets/portfolio/fare-families/light-05.webp',
         alt: 'The fare card across three versions, from before the booking revamp to the current design',
         caption:
           'The fare card over time: the version before the booking revamp, an early revamp version, and the current design.',
@@ -974,7 +974,7 @@ export const workData = [
       },
       {
         type: 'table',
-        mobileImage: '/assets/portfolio/portfolio-farefamilies-light-research.webp',
+        mobileImage: '/assets/portfolio/fare-families/light-research.webp',
         columns: ['Site', 'Indicator', 'Trigger', 'Disclosure UI', 'Notes'],
         rows: [
           [
@@ -1039,36 +1039,36 @@ export const workData = [
       },
       {
         type: 'image',
-        url: '/assets/portfolio/portfolio-farefamilies-light-06.webp',
+        url: '/assets/portfolio/fare-families/light-06.webp',
         alt: 'The fare card attributes across three stages of improvement',
         caption:
           'Improving the fare attributes in three stages. Original: still using the old icons. First improvement: clearer icons for a quick scan, based on competitor analysis, so it is obvious what is included and what is not. Second improvement: after internal feedback, an underline on the change and refundable status, making it clear those open more detail.',
       },
       {
         type: 'image',
-        url: '/assets/portfolio/portfolio-farefamilies-light-07.webp',
+        url: '/assets/portfolio/fare-families/light-07.webp',
         alt: 'The current fare card for single passenger, multiple passengers, and mixed fare',
         caption:
           'The current fare card across scenarios: single passenger, multiple passengers, and a mixed fare where each leg has its own tier.',
       },
       {
         type: 'image',
-        url: '/assets/portfolio/portfolio-farefamilies-light-03.webp',
-        urlDark: '/assets/portfolio/portfolio-farefamilies-dark-03.webp',
+        url: '/assets/portfolio/fare-families/light-03.webp',
+        urlDark: '/assets/portfolio/fare-families/dark-03.webp',
         alt: 'The full fare selection page for single passenger, multiple passengers, and multiple passengers with infant',
         caption:
           'The full page in context, with the fare cards adapting to the passenger count: single passenger, multiple passengers, and multiple passengers with an infant.',
       },
       {
         type: 'image',
-        url: '/assets/portfolio/portfolio-farefamilies-light-08.webp',
+        url: '/assets/portfolio/fare-families/light-08.webp',
         alt: 'The multiple fare flow: pick the departure fare, a loading state, then the return fare, then both selected',
         caption:
           'The multiple fare flow, for when each leg is priced separately. The traveler picks the departure fare, the return options load, they pick the return fare, and both selections roll up into one total. The loading state is intentional: it marks the handover from one fare to the next, so the traveler understands they are now choosing for a different leg.',
       },
       {
         type: 'image',
-        url: '/assets/portfolio/portfolio-farefamilies-light-09.webp',
+        url: '/assets/portfolio/fare-families/light-09.webp',
         alt: 'The banner scenarios: infant baggage notice, travel advisory, and combined ticket disclaimer',
         caption:
           'The different banners that can appear on the card, depending on the trip and the moment: an infant baggage notice, a travel advisory during regional disruptions, and a combined ticket disclaimer for two one-way tickets.',
@@ -1119,7 +1119,7 @@ export const workData = [
     logo: '/assets/wego.svg',
     logoDark: '/assets/wego-dark.svg',
     year: '2026 — Present',
-    image: '/assets/portfolio/portfolio-4.webp',
+    image: '/assets/portfolio/design-hub/cover.webp',
     description:
       'Built a lightweight design system for AI-assisted design workflows, giving AI the product foundations, components, and visual language needed to generate more consistent Wego experiences. The project explores how designers can use AI to move faster without losing product context or design quality.',
     intro:
@@ -1166,7 +1166,7 @@ export const workData = [
       },
       {
         type: 'image',
-        url: '/assets/portfolio/portfolio-designhub-skills.webp',
+        url: '/assets/portfolio/design-hub/designhub-skills.webp',
         alt: 'The nine skills in three groups, with arrows showing which skill hands off to which',
         caption:
           'The nine skills and how they connect. A component lands as Draft when added, and only the audit can mark it Stable, so nothing certifies its own work. Tokens are checked first, since every component builds on them.',
@@ -1188,13 +1188,13 @@ export const workData = [
         type: 'carousel',
         items: [
           {
-            url: '/assets/portfolio/portfolio-claudedesign-1.webp',
+            url: '/assets/portfolio/design-hub/claudedesign-1.webp',
             alt: 'The Claude Design start screen with Wego Design System Lite selected as the design system',
             caption:
               'Starting a design in Claude Design. The Wego Design System Lite is selected as the design system, so anything generated from here follows our foundations by default.',
           },
           {
-            url: '/assets/portfolio/portfolio-claudedesign-2.webp',
+            url: '/assets/portfolio/design-hub/claudedesign-2.webp',
             alt: 'The imported design system, showing foundations, primitives, and composites alongside the repository structure',
             caption:
               'The system once imported, grouped into foundations, primitives, and composites. The readme carries the repository structure, so both a designer and Claude can see where each token and component lives.',
@@ -1207,7 +1207,7 @@ export const workData = [
       },
       {
         type: 'image',
-        url: '/assets/portfolio/portfolio-claudedesign-3.webp',
+        url: '/assets/portfolio/design-hub/claudedesign-3.webp',
         alt: 'Three starting templates: Wego Meta, Wego Booking, and Booking Fare Selection',
         caption:
           'The templates you can start from: Wego Meta, Wego Booking, and Fare Selection. Each one already has the shell and structure of that page, so the work starts from something on brand instead of a blank screen.',
@@ -1220,19 +1220,19 @@ export const workData = [
         type: 'carousel',
         items: [
           {
-            url: '/assets/portfolio/portfolio-claudedesign-4.webp',
+            url: '/assets/portfolio/design-hub/claudedesign-4.webp',
             alt: 'A generated money transfer comparison landing page in the Wego style',
           },
           {
-            url: '/assets/portfolio/portfolio-claudedesign-5.webp',
+            url: '/assets/portfolio/design-hub/claudedesign-5.webp',
             alt: 'The same page scrolled to a provider comparison table with rates, fees, and delivery speed',
           },
           {
-            url: '/assets/portfolio/portfolio-claudedesign-6.webp',
+            url: '/assets/portfolio/design-hub/claudedesign-6.webp',
             alt: 'A generated travel guide page in dark mode, for coffee spots in Dubai',
           },
           {
-            url: '/assets/portfolio/portfolio-claudedesign-7.webp',
+            url: '/assets/portfolio/design-hub/claudedesign-7.webp',
             alt: 'A generated restaurant orders dashboard with live order queues and stats',
           },
         ],
@@ -1250,25 +1250,25 @@ export const workData = [
         type: 'carousel',
         items: [
           {
-            url: '/assets/portfolio/portfolio-designhub-1.webp',
+            url: '/assets/portfolio/design-hub/designhub-1.webp',
             alt: 'The Design Hub landing page, showing the three ways to work and the design work table',
             caption:
               'The Design Hub landing page. Three ways to work: generate in Claude Design, explore in HTML, or hand off a live prototype. Below that, every page of design work with its platform, Figma file, exploration, and status.',
           },
           {
-            url: '/assets/portfolio/portfolio-designhub-2.webp',
+            url: '/assets/portfolio/design-hub/designhub-2.webp',
             alt: 'The colour foundation documented with every token in light and dark mode',
             caption:
               'The foundations, documented from the same source the components read. Every colour token is shown in light and dark with its hex value, so nobody has to open the CSS to check one.',
           },
           {
-            url: '/assets/portfolio/portfolio-designhub-3.webp',
+            url: '/assets/portfolio/design-hub/designhub-3.webp',
             alt: 'The Card News component documentation with example prompts above each layout',
             caption:
               'A component page. Each layout has an example prompt above it, so a designer can copy the phrasing that produces this result rather than working out how to ask.',
           },
           {
-            url: '/assets/portfolio/portfolio-designhub-4.webp',
+            url: '/assets/portfolio/design-hub/designhub-4.webp',
             alt: 'The phone number input documented with its sizes, states, and a live interactive example',
             caption:
               'The same for a smaller component, down to every state: valid, auto-filled, disabled, keyboard focus, and error. The top example is live, not a picture, so the behaviour can be checked in the browser.',
@@ -1283,13 +1283,13 @@ export const workData = [
         type: 'carousel',
         items: [
           {
-            url: '/assets/portfolio/portfolio-claudedesign-10.webp',
+            url: '/assets/portfolio/design-hub/claudedesign-10.webp',
             alt: 'The goal for live prototypes: clickable, always current, no tool barrier, and hand-off ready',
             caption:
               'What I am aiming for: one link that opens the real thing in a browser, so a reviewer walks the flow instead of reading a Figma frame. Design stays exploration, the prototype becomes the hand-off, and the same code ships.',
           },
           {
-            url: '/assets/portfolio/portfolio-claudedesign-8.webp',
+            url: '/assets/portfolio/design-hub/claudedesign-8.webp',
             alt: 'The live prototype plan, running on the production packages, alongside the repository skill files',
             caption:
               'How it gets there: the prototype runs on the same packages engineering ships, so what we design is what production renders. The remaining blocker is read access to those repositories.',
@@ -1602,20 +1602,20 @@ export const workData = [
       },
       {
         type: 'image',
-        url: '/assets/portfolio/portfolio-schedulechange-1.webp',
+        url: '/assets/portfolio/schedule-change-display/1.webp',
         alt: 'Desktop fare page with the schedule updated banner and old and new times',
         caption:
           'The desktop fare page: a banner announces the update, old times are struck through next to the new ones, and each leg states its difference.',
       },
       {
         type: 'image',
-        url: '/assets/portfolio/portfolio-schedulechange-2.webp',
+        url: '/assets/portfolio/schedule-change-display/2.webp',
         alt: 'Mobile fare page with the schedule updated banner',
         caption: 'The same system on mobile, with the difference called out per leg.',
       },
       {
         type: 'image',
-        url: '/assets/portfolio/portfolio-schedulechange-3.webp',
+        url: '/assets/portfolio/schedule-change-display/3.webp',
         alt: 'Flight summary showing per-segment schedule changes and layover impact',
         caption:
           'The flight summary handles the hardest case: per-segment changes and the layover impact, here a connection that grew by 1h 30m.',
@@ -1745,22 +1745,22 @@ export const sideProjectsData = [
 // and opened as its own case study popup at /portfolio/rhb-inbox. A device
 // without an image yet shows an empty frame, so dropping the file in and
 // filling `image` is all it takes.
-const INBOX = '/assets/portfolio/portfolio-rhbinbox';
+const INBOX = '/assets/portfolio/rhb-inbox';
 
 export const inboxShowcase = {
   slug: 'rhb-inbox',
   company: 'RHB Banking Group',
   logo: '/assets/rhb-logo-white.svg',
-  title: 'Inbox: every bank message in one place',
+  title: 'Inbox: every bank communication in one place',
   // In the case study: the home page with the inbox icon to click, which opens
   // the panel. The icon's centre is in shares of the screen (1440 by 1024).
   opening: {
     closed: {
-      image: `${INBOX}-home.webp`,
+      image: `${INBOX}/home.webp`,
       alt: 'RHB online banking home page on desktop, with the inbox icon in the top bar',
     },
     open: {
-      image: `${INBOX}-panel.webp`,
+      image: `${INBOX}/panel.webp`,
       alt: 'RHB online banking home page on desktop with the Inbox side panel open on the right',
     },
     hotspot: { x: 1314 / 1440, y: 35 / 1024 },
@@ -1769,7 +1769,7 @@ export const inboxShowcase = {
   // The Portfolio feature: the title's lead in bold, a tag line, and the
   // slides of its image slider.
   titleLead: 'Inbox',
-  titleRest: 'every bank message in one place',
+  titleRest: 'every bank communication in one place',
   tags: 'UI/UX Design, Banking App',
   slides: [
     {
@@ -1778,7 +1778,7 @@ export const inboxShowcase = {
         {
           key: 'desktop',
           label: 'Desktop',
-          image: `${INBOX}-panel.webp`,
+          image: `${INBOX}/panel.webp`,
           alt: 'RHB online banking home page on desktop with the Inbox side panel open on the right',
         },
       ],
@@ -1789,7 +1789,7 @@ export const inboxShowcase = {
         {
           key: 'desktop',
           label: 'Desktop',
-          image: `${INBOX}-date-range.webp`,
+          image: `${INBOX}/date-range.webp`,
           alt: 'Inbox date filter with a range from 18 October to 2 November selected',
         },
       ],
@@ -1800,7 +1800,7 @@ export const inboxShowcase = {
         {
           key: 'desktop',
           label: 'Desktop',
-          image: `${INBOX}-detail-message.webp`,
+          image: `${INBOX}/detail-message.webp`,
           alt: 'Inbox message detail with a banner image, body text and a primary button',
         },
       ],
@@ -1811,23 +1811,38 @@ export const inboxShowcase = {
         {
           key: 'desktop',
           label: 'Desktop',
-          image: `${INBOX}-detail-transaction.webp`,
+          image: `${INBOX}/detail-transaction.webp`,
           alt: 'Inbox transaction detail showing a successful payment of MYR 500.00',
+        },
+      ],
+    },
+    {
+      label: 'Announcements on the login page',
+      devices: [
+        {
+          key: 'desktop',
+          label: 'Desktop',
+          image: `${INBOX}/announce-web-list.webp`,
+          alt: 'RHB online banking login page with the Announcement side panel open, listing an important notice, a service announcement and an information notice',
         },
       ],
     },
   ],
   summary: [
-    'A new Inbox for the RHB banking app, so customers find alerts, payment results, product updates and offers in one place. It opens as a side panel from the inbox icon, without leaving the page they are on.',
-    'I designed the date and type filters, a card for each kind of message, and the full message view, for desktop, tablet and mobile.',
+    'Alerts, payments, updates and offers in one place, in a side panel that opens from the inbox icon.',
+    'Later expanded to announcements before login, such as security alerts and planned downtime.',
   ],
   intro:
-    'I designed a new Inbox for the RHB banking app: one place for alerts, payment results, product updates and offers. It opens as a side panel from the inbox icon, so customers can read a message without leaving the page they are on.',
+    'I designed a new Inbox for the RHB banking app: one place for alerts, payment results, product updates and offers. It opens as a side panel from the inbox icon, so customers can read a message without leaving the page they are on. I also worked on the back office for it, which helped me understand what the new feature could do and where its limits were.',
   meta: [
     { label: 'Company', value: 'RHB Banking Group' },
     { label: 'Role', value: 'UI/UX Designer' },
     { label: 'Platforms', value: 'Desktop, tablet, mobile' },
-    { label: 'Scope', value: 'New inbox behaviour, filters, message types, message details' },
+    {
+      label: 'Scope',
+      value:
+        'New inbox behaviour, filters, message types, message details, announcements before login',
+    },
   ],
   background: {
     heading: 'Background',
@@ -1855,7 +1870,7 @@ export const inboxShowcase = {
   },
   process: {
     heading: 'Design process',
-    text: 'The PM’s user story was the starting point. We completed it with what the competitor review showed, then designed the inbox for desktop, tablet and mobile, adding fixes for the problems we found along the way. About 2 months from start to handoff.',
+    text: 'The PM’s user story was the starting point. We fixed it and filled in what was missing from the competitor review, then designed the inbox for desktop, tablet and mobile, tested it internally and reviewed it with stakeholders, adding fixes for the problems we found along the way. About 2 months from start to handoff.',
     // Approximate weeks, not from project records.
     steps: [
       {
@@ -1871,12 +1886,12 @@ export const inboxShowcase = {
       {
         when: 'Week 3',
         title: 'Complete the user story',
-        text: 'Added the message types and importance levels the review found.',
+        text: 'Fixed the user story and added what was missing, based on the research: the message types, their importance levels, and keeping them all on one page.',
       },
       {
         when: 'Weeks 4 to 7',
         title: 'Design',
-        text: 'The side panel, filters, message cards and full message view, for desktop, tablet and mobile.',
+        text: 'The side panel, filters, message cards and full message view, for desktop, tablet and mobile. Usability tested internally, since external testing was not possible during COVID, and reviewed with stakeholders across teams.',
       },
       {
         when: 'Week 8',
@@ -1886,25 +1901,25 @@ export const inboxShowcase = {
     ],
   },
   devices: {
-    heading: 'Opens from the inbox icon',
+    heading: 'Entry point to the inbox',
     text: 'The inbox slides in as a side panel over the home page. Messages are grouped by day, starting with today and yesterday, and the same panel is designed for desktop, tablet and mobile. The support bar at the bottom belongs to a separate support feature, where customers send a message and get the reply in the inbox. That feature was not part of this project.',
     items: [
       {
         key: 'desktop',
         label: 'Desktop',
-        image: `${INBOX}-panel.webp`,
+        image: `${INBOX}/panel.webp`,
         alt: 'RHB online banking home page on desktop with the Inbox side panel open on the right',
       },
       {
         key: 'tablet',
         label: 'Tablet',
-        image: `${INBOX}-tablet.webp`,
+        image: `${INBOX}/tablet.webp`,
         alt: 'RHB banking on a portrait tablet with the Inbox side panel covering most of the screen',
       },
       {
         key: 'mobile',
         label: 'Mobile',
-        image: `${INBOX}-mobile.webp`,
+        image: `${INBOX}/mobile.webp`,
         alt: 'The Inbox on mobile, full screen, with filter chips and messages grouped by day',
       },
     ],
@@ -1914,13 +1929,15 @@ export const inboxShowcase = {
     text: 'Search, or narrow the list with filter chips: Dates, Alerts, Payment, Deposit, Investment, Support and Offer. Dates opens a calendar with two months side by side, so a customer can pick a range that crosses the end of a month. Apply stays off until dates are picked.',
     images: [
       {
-        image: `${INBOX}-date-single.webp`,
-        caption: 'The calendar as it opens',
+        image: `${INBOX}/date-single.webp`,
+        title: 'The calendar',
+        text: 'Two months side by side. Apply stays off until dates are picked.',
         alt: 'Inbox date filter open with empty start and end dates',
       },
       {
-        image: `${INBOX}-date-range.webp`,
-        caption: 'A date range across two months',
+        image: `${INBOX}/date-range.webp`,
+        title: 'A date range',
+        text: 'A range can cross the end of a month.',
         alt: 'Inbox date filter with a range from 18 October to 2 November selected',
       },
     ],
@@ -1929,19 +1946,19 @@ export const inboxShowcase = {
     heading: 'A card for every kind of message',
     text: 'Messages come from many products: transfers, bill payments, cards, deposits, investments, loans, offers and support. Each one has its own icon, so customers can tell them apart at a glance. Payment messages show the amount in the preview, and notices that need attention get a red tint.',
     cards: [
-      { image: `${INBOX}-card-notice.webp`, alt: 'Important Notice message, tinted red' },
+      { image: `${INBOX}/card-notice.webp`, alt: 'Important Notice message, tinted red' },
       {
-        image: `${INBOX}-card-duitnow.webp`,
+        image: `${INBOX}/card-duitnow.webp`,
         alt: 'Fund Transfer and DuitNow message with an amount',
       },
-      { image: `${INBOX}-card-overseas.webp`, alt: 'Overseas Transfer message with an amount' },
-      { image: `${INBOX}-card-jompay.webp`, alt: 'JomPay and RHB Biller message' },
-      { image: `${INBOX}-card-cards.webp`, alt: 'Credit, debit and prepaid card message' },
-      { image: `${INBOX}-card-deposit.webp`, alt: 'Term Deposit and Fixed Deposit message' },
-      { image: `${INBOX}-card-unittrust.webp`, alt: 'Unit Trust message' },
-      { image: `${INBOX}-card-mortgage.webp`, alt: 'Mortgage message' },
-      { image: `${INBOX}-card-offer.webp`, alt: 'Offer message' },
-      { image: `${INBOX}-card-support.webp`, alt: 'Support Messenger message' },
+      { image: `${INBOX}/card-overseas.webp`, alt: 'Overseas Transfer message with an amount' },
+      { image: `${INBOX}/card-jompay.webp`, alt: 'JomPay and RHB Biller message' },
+      { image: `${INBOX}/card-cards.webp`, alt: 'Credit, debit and prepaid card message' },
+      { image: `${INBOX}/card-deposit.webp`, alt: 'Term Deposit and Fixed Deposit message' },
+      { image: `${INBOX}/card-unittrust.webp`, alt: 'Unit Trust message' },
+      { image: `${INBOX}/card-mortgage.webp`, alt: 'Mortgage message' },
+      { image: `${INBOX}/card-offer.webp`, alt: 'Offer message' },
+      { image: `${INBOX}/card-support.webp`, alt: 'Support Messenger message' },
     ],
   },
   details: {
@@ -1949,14 +1966,615 @@ export const inboxShowcase = {
     text: 'Opening a message keeps it in the same panel, with a back arrow to return to the list. Announcements and offers show an image, the full text and a button to act on. Payment messages show the receipt: amount, reference, both accounts, bank and payment type, with options to view, download or print it.',
     images: [
       {
-        image: `${INBOX}-detail-message.webp`,
-        caption: 'Announcement with an image and a button',
+        image: `${INBOX}/detail-message.webp`,
+        title: 'Announcement',
+        text: 'An image, the full text and a button to act on.',
         alt: 'Inbox message detail with a banner image, body text and a primary button',
       },
       {
-        image: `${INBOX}-detail-transaction.webp`,
-        caption: 'Payment receipt',
+        image: `${INBOX}/detail-transaction.webp`,
+        title: 'Payment receipt',
+        text: 'The amount, reference, both accounts, bank and payment type, to view, download or print.',
         alt: 'Inbox transaction detail showing a successful payment of MYR 500.00',
+      },
+    ],
+  },
+  // An expansion of the project: announcements for customers who have not
+  // logged in, on the web login page. The app's login screen is under
+  // Mobile Banking.
+  announcements: {
+    heading: 'Announcements before login',
+    text: 'An expansion of the inbox project, for customers who have not logged in yet. Announcements carry important information, such as security alerts and planned downtime, and show on the login page so customers see them before they log in. They use the same patterns as the inbox: an icon for each type, a red tint for important notices, and a full page for each announcement.',
+    groups: [
+      {
+        images: [
+          {
+            image: `${INBOX}/announce-web-list.webp`,
+            title: 'On the login page',
+            text: 'Announcements open in a side panel, before customers log in.',
+            alt: 'RHB online banking login page with the Announcement side panel open, listing an important notice, a service announcement and an information notice',
+          },
+          {
+            image: `${INBOX}/announce-web-downtime.webp`,
+            title: 'Planned downtime',
+            text: 'The dates and the services affected.',
+            alt: 'Service announcement listing two downtime dates, each with the affected services and channels',
+          },
+          {
+            image: `${INBOX}/announce-web-scam.webp`,
+            title: 'Scam warning',
+            text: 'An image and a Learn More link.',
+            alt: 'Announcement warning about scam calls and messages, with an image, body text, lists and a Learn More link',
+          },
+          {
+            image: `${INBOX}/announce-web-safety.webp`,
+            title: 'Safety tips',
+            text: 'Tips with a highlighted box.',
+            alt: 'Announcement with safety tips against internet banking fraud, including a highlighted Scam Awareness box',
+          },
+        ],
+      },
+    ],
+  },
+  // The inbox and the announcements in the RHB mobile app. Screens taller
+  // than the phone scroll inside their frame.
+  app: {
+    heading: 'Mobile Banking',
+    text: 'The mobile app version continued the same project. The inbox works the same way as on web and mobile web, with the same search, filter chips, message types and full message view. Only the UI changed, to match the RHB mobile app. The inbox has its own tab in the bottom bar, messages that need an action get a full-width button, and the date range and payment receipt open as full screens. Announcements before login come to the app too, in a sheet over the login screen.',
+    groups: [
+      {
+        label: 'Inbox',
+        images: [
+          {
+            image: `${INBOX}/app-notification.webp`,
+            title: 'New messages',
+            text: 'A red dot on the Inbox tab in the bottom bar.',
+            alt: 'RHB mobile app home screen with a red dot on the Inbox tab in the bottom bar',
+          },
+          {
+            image: `${INBOX}/app-inbox.webp`,
+            title: 'The inbox tab',
+            text: 'Search, filter chips and messages grouped by day. Scroll to see the full list.',
+            alt: 'The Inbox in the RHB mobile app, with search, filter chips and messages grouped by day, some with a View Detail or Pay Now button',
+          },
+          {
+            image: `${INBOX}/app-filter.webp`,
+            title: 'Filtered to payments',
+            text: 'The same filter chips as on the web.',
+            alt: 'Inbox with the Payment chip selected, showing one successful payment of RM 500.00',
+          },
+          {
+            image: `${INBOX}/app-search.webp`,
+            title: 'Search by name',
+            text: 'Search finds messages by a payee name.',
+            alt: 'Inbox search by a payee name, showing the matching payment message',
+          },
+          {
+            image: `${INBOX}/app-search-empty.webp`,
+            title: 'No results',
+            text: 'When a search finds nothing, the page says to try again.',
+            alt: 'Inbox search with no results, showing an empty box and a message to try searching again',
+          },
+          {
+            image: `${INBOX}/app-date-picker.webp`,
+            title: 'Picking a date range',
+            text: 'The date range opens as a full screen.',
+            alt: 'Full-screen date range picker with 18 June to 4 July 2019 selected, and Clear All and Apply buttons',
+          },
+          {
+            image: `${INBOX}/app-date-applied.webp`,
+            title: 'Range applied',
+            text: 'The range shows in the Dates chip.',
+            alt: 'Inbox with a date range filter applied, shown in the first chip',
+          },
+          {
+            image: `${INBOX}/app-detail.webp`,
+            title: 'A message with an image',
+            text: 'The subject, date, image and full text.',
+            alt: 'Message detail with a subject, date, banner image and body text',
+          },
+          {
+            image: `${INBOX}/app-detail-button.webp`,
+            title: 'One button',
+            text: 'Messages that need an action get a full-width button.',
+            alt: 'Message detail with a primary button fixed at the bottom',
+          },
+          {
+            image: `${INBOX}/app-detail-buttons.webp`,
+            title: 'Two buttons',
+            text: 'A secondary and a primary button, fixed at the bottom.',
+            alt: 'Message detail with secondary and primary buttons fixed at the bottom',
+          },
+          {
+            image: `${INBOX}/app-receipt.webp`,
+            title: 'Payment receipt',
+            text: 'A full screen receipt, with Share.',
+            alt: 'Full-screen payment receipt for MYR 500.00 with reference, accounts, bank and payment type, and a Share button',
+          },
+        ],
+      },
+      {
+        label: 'Announcements before login',
+        images: [
+          {
+            image: `${INBOX}/announce-app-login.webp`,
+            title: 'New announcements',
+            text: 'A red dot on the bell.',
+            alt: 'RHB mobile app login screen with a red dot on the bell icon in the top bar',
+          },
+          {
+            image: `${INBOX}/announce-app-sheet.webp`,
+            title: 'A sheet over login',
+            text: 'Announcements open in a sheet over the login screen.',
+            alt: 'Announcement sheet over the login screen with an important notice, a service announcement and a View More link',
+          },
+          {
+            image: `${INBOX}/announce-app-sheet-single.webp`,
+            title: 'One announcement',
+            text: 'The sheet with a single announcement.',
+            alt: 'Announcement sheet over the login screen with one service announcement',
+          },
+          {
+            image: `${INBOX}/announce-app-list.webp`,
+            title: 'All announcements',
+            text: 'Important notices are tinted red.',
+            alt: 'Announcement page listing an important notice tinted red, a service announcement and an information notice',
+          },
+          {
+            image: `${INBOX}/announce-app-article.webp`,
+            title: 'Scam warning',
+            text: 'Scroll to read it all.',
+            alt: 'Announcement page warning about scam calls and messages, with an image, body text, lists and a Learn More link',
+          },
+          {
+            image: `${INBOX}/announce-app-downtime.webp`,
+            title: 'Planned downtime',
+            text: 'The dates and the services affected.',
+            alt: 'Service announcement page listing two downtime dates, each with the affected services and channels',
+          },
+        ],
+      },
+    ],
+  },
+};
+
+// The second RHB case study, featured below the Inbox in Portfolio (mirrored,
+// the slider on the left) and opened as its own popup at
+// /portfolio/rhb-overseas-transfer. It starts with how customers reach the
+// transfer and their first choice there: how the money arrives.
+const OVERSEAS = '/assets/portfolio/rhb-payment';
+
+export const overseasShowcase = {
+  slug: 'rhb-overseas-transfer',
+  company: 'RHB Banking Group',
+  logo: '/assets/rhb-logo-white.svg',
+  title: 'Overseas Transfer: send money abroad, to an account or as cash',
+  titleLead: 'Overseas Transfer',
+  titleRest: 'send money abroad, to an account or as cash',
+  tags: 'UI/UX Design, Banking App',
+  hero: {
+    image: `${OVERSEAS}/details-desktop.webp`,
+    alt: 'Overseas Transfer Details on desktop, with the payment method, country, account and the amount in both currencies',
+  },
+  // The Portfolio feature's screens: two tablet screens side by side, without
+  // the slider's frame, and not a carousel. The second runs off the edge.
+  bareSlides: true,
+  staticSlides: true,
+  slides: [
+    {
+      label: 'Pay to Account on tablet',
+      devices: [
+        {
+          key: 'tablet',
+          label: 'Tablet',
+          image: `${OVERSEAS}/details-tablet.webp`,
+          alt: 'Overseas Transfer Details on a portrait tablet with Pay to Account selected',
+        },
+      ],
+    },
+    {
+      label: 'Pay in Cash through Western Union',
+      devices: [
+        {
+          key: 'tablet',
+          label: 'Tablet',
+          image: `${OVERSEAS}/cash.webp`,
+          alt: 'Pay in Cash to the United States, sending MYR 4,000.00 for USD 1,000.00 with a MYR 5.00 charge',
+        },
+      ],
+    },
+  ],
+  summary: [
+    'I designed overseas transfer for RHB’s new online banking platform from scratch, with Pay in Cash through Western Union and the new Pay to Account.',
+    'Our key decision: ask how the money arrives first, because it shapes the rest of the form.',
+  ],
+  intro:
+    'As part of RHB’s move to its new IBK internet banking platform, I designed overseas transfer from scratch, using the old platform only as a reference. I also worked on other payment flows, FPX and prepaid top-up. Those two are more straightforward, and Overseas Transfer was the most complicated one. It offers two ways to send money abroad: Pay in Cash through Western Union, and the new Pay to Account. The question behind the design: how can RHB’s transfer be a better experience than the other options on the market? I also worked on the back office for it, which helped me understand what the new feature could do and where its limits were.',
+  meta: [
+    { label: 'Company', value: 'RHB Banking Group' },
+    { label: 'Role', value: 'UI/UX Designer' },
+    { label: 'Platforms', value: 'Banking web, mobile app' },
+    { label: 'Scope', value: 'Entry from Pay, payment method, transfer details' },
+  ],
+  // From the user: part of the IBK migration. The old website offered only
+  // Western Union (Pay in Cash); IBK had no overseas transfer, so it was a new
+  // project with the old website as reference only. Pay to Account is a new
+  // product.
+  background: {
+    heading: 'Background',
+    text: 'This was part of RHB’s move from its old internet banking platform to the new IBK platform. The old website only offered Western Union, where the recipient collects the money as cash at an agent. IBK had no overseas transfer at all, so in practice it was a new project, with the old website only as a reference. It also brought a new product, Pay to Account, which sends the money straight to the recipient’s bank account. The two methods have different rules, so my task was to design how they work side by side, on banking web and the mobile app.',
+  },
+  // From the user's research: two groups of customers who think about the
+  // amount differently.
+  research: {
+    heading: 'Research',
+    text: 'We ran internal interviews and online interviews, and asked foreigners in Malaysia how they actually send money home. This was during COVID, when many money transfer platforms were gaining traction, and we also did a competitor analysis. A key question came up: how should the money arrive, to an account or as cash? We also found two kinds of customers, who think about the amount from opposite ends.',
+    findings: [
+      {
+        title: 'Sending to someone else',
+        text: 'Customers who send money to someone else overseas prefer to set the amount the recipient gets. They know what their family needs on the other side.',
+      },
+      {
+        title: 'Sending to themselves',
+        text: 'Customers whose recipient is mostly themselves, in transfers that are not direct payments, prefer to set the amount they send.',
+      },
+    ],
+    outcome:
+      'So we decided to make both amounts editable. Customers type in either You Send or Recipient Gets, and the other is worked out from the exchange rate. Each group starts from the amount they know, and neither has to do the conversion in their head.',
+  },
+  // DRAFT: an approximate timeline, not from project records. Still to be
+  // corrected by the user.
+  process: {
+    heading: 'Design process',
+    text: 'I designed the flow for banking web and the mobile app, starting from where customers come in, then the choices on the transfer page. About 7 weeks from start to handoff.',
+    steps: [
+      {
+        when: 'Week 1',
+        title: 'Requirements and user stories',
+        text: 'I went through the requirements with the product manager, using the old website’s Western Union transfer as a reference, and the rules of the new Pay to Account. Together we wrote proper user stories to cover every scenario.',
+      },
+      {
+        when: 'Weeks 2 to 3',
+        title: 'Research',
+        text: 'Internal interviews, online interviews, and asking foreigners in Malaysia how they send money home, plus a competitor analysis of the transfer platforms that grew during COVID.',
+      },
+      {
+        when: 'Weeks 4 to 6',
+        title: 'Flow and design',
+        text: 'I mapped where customers start, from the Pay button on the home page to the transfer page, then designed the payment method choice and the transfer details for desktop, tablet and mobile, and reviewed them with stakeholders.',
+      },
+      {
+        when: 'Week 7',
+        title: 'Review and handoff',
+        text: 'I did a final review of the designs and handed them to development.',
+      },
+    ],
+  },
+  // Where customers come from: each step's screen, with a ring on what they
+  // click next. The ring's centre is in shares of the screen.
+  flow: {
+    heading: 'Where customers come from',
+    text: 'Overseas Transfer sits where customers already make payments: under Pay, next to DuitNow and Bills. From the home page it takes two clicks to reach the transfer page, and the first thing they see there is the payment method.',
+    steps: [
+      {
+        title: 'Home',
+        text: 'Click Pay in the top bar.',
+        image: '/assets/portfolio/rhb-inbox/home.webp',
+        alt: 'RHB online banking home page on desktop, with Pay in the top bar',
+        hotspot: { x: 977 / 1440, y: 35 / 1024 },
+      },
+      {
+        title: 'Pay',
+        text: 'Pick Overseas Transfer, next to DuitNow and Bills.',
+        image: `${OVERSEAS}/pay-flow.webp`,
+        alt: 'The Pay page with recent payments, accounts and favourites, and DuitNow, Bills and Overseas Transfer buttons at the bottom',
+        hotspot: { x: 1189 / 1440, y: 983 / 1024 },
+      },
+      {
+        title: 'Overseas Transfer',
+        text: 'Choose the payment method first.',
+        image: `${OVERSEAS}/details-flow.webp`,
+        alt: 'Overseas Transfer Details on desktop with the payment method at the top',
+        hotspot: { x: 976 / 1440, y: 165 / 1024 },
+      },
+    ],
+  },
+  method: {
+    heading: 'Pay to account or\npay in cash',
+    text: 'We decided to put the payment method first, before the country, account and amount, because it changes the rest of the form. We made Pay to Account the default, because it is the method RHB wants customers to use, following the product and company direction. Each option explains itself in one line, so the difference is clear without reading the terms. With Pay in Cash, we chose to show the charges before Next, and a note when Pay to Account would cost less. It helps customers save, and it points them to the method RHB prefers.',
+    note: 'The screens above are desktop, but here I show them in tablet view so the details are easier to see.',
+    // DRAFT: the psychology behind these decisions, for the user to confirm.
+    psychology: [
+      {
+        title: 'Saving, not cost',
+        text: 'People care more about losing money than gaining it. The note says how much customers could save with Pay to Account, not how much Pay in Cash costs.',
+      },
+      {
+        title: 'No surprises',
+        text: 'Charges and the total show before Next, so customers know exactly what they pay before they go on.',
+      },
+    ],
+    // A carousel per method.
+    groups: [
+      {
+        label: 'Pay to Account',
+        images: [
+          {
+            image: `${OVERSEAS}/account-details.webp`,
+            title: 'Pay to Account',
+            text: 'The default, and the method RHB wants customers to use.',
+            alt: 'Overseas Transfer Details on a portrait tablet with Pay to Account selected',
+          },
+          {
+            image: `${OVERSEAS}/account-country.webp`,
+            title: 'Pick the country',
+            text: 'A list of countries with a search at the top.',
+            alt: 'To Country open, with a Search Country field above a list starting at Afghanistan',
+          },
+          {
+            image: `${OVERSEAS}/account-currency.webp`,
+            title: 'Pick the currency',
+            text: 'Each currency shows its rate to MYR.',
+            alt: 'Recipient Gets currency list open, showing US Dollar, UAE Dirham, Australian, Bruneian and Canadian Dollar with their rates',
+          },
+          {
+            image: `${OVERSEAS}/account-amount.webp`,
+            title: 'Set either amount',
+            text: 'Customers type what they send or what the recipient gets, and the other is worked out from the rate.',
+            alt: 'Sending MYR 4,000.00 for USD 1,000.00, with MYR 25.00 charges and a total of MYR 4,027.00',
+          },
+          {
+            image: `${OVERSEAS}/account-limit.webp`,
+            title: 'Over the daily limit',
+            text: 'Both amounts turn red and Next is off.',
+            alt: 'Both amount fields in red with a message that the daily limit of MYR 20,000.00 is exceeded, and Next turned off',
+          },
+          {
+            image: `${OVERSEAS}/account-promo.webp`,
+            title: 'Promo code',
+            text: 'Customers can add a promo code before Next.',
+            alt: 'A promo code field with an Apply button under the amounts',
+          },
+          {
+            image: `${OVERSEAS}/account-promo-applied.webp`,
+            title: 'Promo code applied',
+            text: 'The saving shows in the charges and the total.',
+            alt: 'A green note saying the promo code is applied and saves MYR 25.00, with charges now MYR 0.00 and a total of MYR 4,000.00',
+          },
+        ],
+      },
+      {
+        label: 'Pay in Cash',
+        images: [
+          {
+            image: `${OVERSEAS}/cash-options.webp`,
+            title: 'The two payment methods',
+            text: 'Each option explains itself in one line.',
+            alt: 'Payment method options open, showing Pay to Account and Pay in Cash with Western Union',
+          },
+          {
+            image: `${OVERSEAS}/cash-details.webp`,
+            title: 'Pay in Cash',
+            text: 'Only savings and current accounts can pay in cash, and the charges show before Next.',
+            alt: 'Pay in Cash to the United States from a savings account, with a note that only savings and current accounts can pay in cash, and a MYR 5.00 charge',
+          },
+          {
+            image: `${OVERSEAS}/cash-saving.webp`,
+            title: 'A note to save',
+            text: 'When Pay to Account would cost less, a note says how much customers could save.',
+            alt: 'Pay in Cash with a green note saying the customer could save up to MYR 25.00 with Pay to Account, and a Change link',
+          },
+        ],
+      },
+    ],
+  },
+  // After the amount: the long form, one section at a time, then review and
+  // the result. Tall screens scroll inside their frame.
+  form: {
+    heading: 'Simplify the\ncomplexity',
+    text: 'After the amount, the next step is quite tedious: a long form about the recipient, their bank and the payment. The form is long because the regulator requires it. We could make it shorter, but that needs time to discuss with the regulator. So we shipped it with every field first, and will remove fields once they approve. In the meantime, we split the form into sections and show them one at a time, so customers never face the whole form at once.',
+    // DRAFT: the psychology behind these decisions, for the user to confirm.
+    psychology: [
+      {
+        title: 'Reduce cognitive load',
+        text: 'A long form feels lighter in parts. Showing one section at a time, with a tick when each is done, lets customers see their progress and keeps them going.',
+      },
+      {
+        title: 'A clear ending',
+        text: 'The review shows everything before Submit. After it, customers see when the money will arrive and get a receipt, so they are not left wondering.',
+      },
+    ],
+    // A carousel per method, like the payment method above.
+    groups: [
+      {
+        label: 'Pay to Account',
+        images: [
+          {
+            image: `${OVERSEAS}/form-recipient.webp`,
+            title: 'Recipient details',
+            text: 'Who the money goes to. A tick shows when a section is done.',
+            alt: 'Pay to Account form with Recipient Details open: resident of Malaysia, relationship, name and address, with Recipient Bank Details and Payment Declarations closed below',
+          },
+          {
+            image: `${OVERSEAS}/form-bank.webp`,
+            title: 'Recipient bank details',
+            text: 'Search for the bank by name or SWIFT code.',
+            alt: 'Recipient Bank Details open, with a Branch City field and a search by bank name or SWIFT code',
+          },
+          {
+            image: `${OVERSEAS}/form-bank-terms.webp`,
+            title: 'Know the terms',
+            text: 'The help icon explains SWIFT code and IBAN in plain words.',
+            alt: 'A Know The Terms popup explaining SWIFT Code and IBAN over the bank details',
+          },
+          {
+            image: `${OVERSEAS}/form-declarations.webp`,
+            title: 'Payment declarations',
+            text: 'Whose behalf, the source of funds and the purpose of the payment.',
+            alt: 'Payment Declarations open, with on behalf of, source of fund, purpose of payment and payment details filled in, and the declarations to agree to',
+          },
+          {
+            image: `${OVERSEAS}/form-review.webp`,
+            title: 'Review',
+            text: 'Everything on one page before Submit.',
+            alt: 'Overseas Transfer Review listing the amount, charges, promo code, recipient, bank and declarations, with Cancel and Submit',
+          },
+          {
+            image: `${OVERSEAS}/form-success.webp`,
+            title: 'Submitted',
+            text: 'The page says when the money will arrive, 1 to 3 working days.',
+            alt: 'Overseas Transfer Successfully Submitted, with a note that the recipient will receive the money in 1 to 3 working days, and the full details',
+          },
+          {
+            image: `${OVERSEAS}/form-receipt.webp`,
+            title: 'Receipt',
+            text: 'A short receipt customers can download.',
+            alt: 'A receipt with the reference ID, country, total, amount in USD, recipient and bank, and a Download link',
+          },
+          {
+            image: `${OVERSEAS}/form-failed.webp`,
+            title: 'Unsuccessful',
+            text: 'If the transfer fails, the details stay on screen and customers can try again.',
+            alt: 'Overseas Transfer Unsuccessful, with a red message asking to try again, the details, and Make New Payment',
+          },
+        ],
+      },
+      {
+        label: 'Pay in Cash',
+        images: [
+          {
+            image: `${OVERSEAS}/cash-form.webp`,
+            title: 'Sender and recipient',
+            text: 'Sender details, recipient details and the purpose of the payment.',
+            alt: 'Pay in Cash form with Western Union, with sender details, recipient details, purpose of payment and the declarations',
+          },
+          {
+            image: `${OVERSEAS}/cash-form-id.webp`,
+            title: 'Accepted ID',
+            text: 'The help icon lists the IDs the recipient can show to collect the cash.',
+            alt: 'An Accepted ID Number popup listing the government issued IDs the recipient can show at a Western Union agent',
+          },
+          {
+            image: `${OVERSEAS}/cash-form-card.webp`,
+            title: 'Western Union card',
+            text: 'Customers can add their Western Union card to earn points.',
+            alt: 'Add My Western Union Card Details turned on, with the card number and 10 points earned',
+          },
+          {
+            image: `${OVERSEAS}/cash-review.webp`,
+            title: 'Review',
+            text: 'Everything on one page before Submit.',
+            alt: 'Overseas Transfer Review for Pay in Cash, with the amount, MYR 5.00 charges, sender, recipient, purpose and Western Union card, with Cancel and Submit',
+          },
+          {
+            image: `${OVERSEAS}/cash-success.webp`,
+            title: 'Successful',
+            text: 'The page shows the MTCN, the number the recipient needs to collect the cash.',
+            alt: 'Overseas Transfer is Successful, with the reference ID, MTCN ID and the full details',
+          },
+          {
+            image: `${OVERSEAS}/cash-receipt.webp`,
+            title: 'Receipt',
+            text: 'A short receipt customers can download.',
+            alt: 'A receipt with the reference ID, MTCN ID, country, amounts, sender and recipient names, and a Download link',
+          },
+          {
+            image: `${OVERSEAS}/cash-failed.webp`,
+            title: 'Unsuccessful',
+            text: 'If the transfer fails, the details stay on screen and customers can try again.',
+            alt: 'Overseas Transfer Unsuccessful for Pay in Cash, with a red message asking to try again and the details',
+          },
+        ],
+      },
+    ],
+  },
+  // The same flows in the mobile banking app (MBK). Phone screens scroll
+  // inside their frame.
+  mobile: {
+    heading: 'Mobile Banking',
+    text: 'The same flows in the RHB mobile banking app. On a phone the fields stack in one column, and Pay to Account keeps its form in sections, one open at a time.',
+    groups: [
+      {
+        label: 'Pay to Account',
+        images: [
+          {
+            image: `${OVERSEAS}/mbk-account-amount-empty.webp`,
+            title: 'Transfer details',
+            text: 'The amounts stack in one column on a phone.',
+            alt: 'Overseas Transfer Details in the mobile app, with You Send above Recipient Gets and Next turned off',
+          },
+          {
+            image: `${OVERSEAS}/mbk-account-amount.webp`,
+            title: 'Amount and charges',
+            text: 'Charges, the total and when the money arrives show before Next.',
+            alt: 'Sending MYR 4,000.00 for USD 1,000.00 in the mobile app, with MYR 25.00 charges, a total of MYR 4,025.00 and 1 to 3 working days',
+          },
+          {
+            image: `${OVERSEAS}/mbk-account-recipient.webp`,
+            title: 'Recipient details',
+            text: 'The same sections as on the web, one open at a time.',
+            alt: 'Pay to Account in the mobile app with Recipient Details open, and Recipient Bank Details and Payment Declarations closed below',
+          },
+          {
+            image: `${OVERSEAS}/mbk-account-bank.webp`,
+            title: 'Recipient bank details',
+            text: 'A tick shows when a section is done.',
+            alt: 'Recipient Bank Details open in the mobile app, with the bank, branch, address and account number',
+          },
+          {
+            image: `${OVERSEAS}/mbk-account-declarations.webp`,
+            title: 'Payment declarations',
+            text: 'The last section, then the declarations to agree to.',
+            alt: 'Payment Declarations open in the mobile app, with on behalf of, source of fund, purpose and payment details, and the declarations agreed',
+          },
+          {
+            image: `${OVERSEAS}/mbk-account-review.webp`,
+            title: 'Review',
+            text: 'Everything on one page before Submit.',
+            alt: 'Overseas Transfer Review in the mobile app, with the amount, promo code, recipient, bank and declarations, and Submit',
+          },
+          {
+            image: `${OVERSEAS}/mbk-account-success.webp`,
+            title: 'Submitted',
+            text: 'The total comes first, with when the money will arrive.',
+            alt: 'Overseas Transfer Successfully Submitted in the mobile app, with a MYR 4,000.00 total, up to 3 working days, and the full details',
+          },
+        ],
+      },
+      {
+        label: 'Pay in Cash',
+        images: [
+          {
+            image: `${OVERSEAS}/mbk-cash-amount-empty.webp`,
+            title: 'Transfer details',
+            text: 'A note says only savings and current accounts can pay in cash.',
+            alt: 'Pay in Cash transfer details in the mobile app with Western Union, a note on eligible accounts, and empty amounts',
+          },
+          {
+            image: `${OVERSEAS}/mbk-cash-amount.webp`,
+            title: 'Amount and charges',
+            text: 'Charges and the total show before Next.',
+            alt: 'Pay in Cash in the mobile app, sending MYR 4,000.00 for USD 1,000.00 with MYR 5.00 charges and a total of MYR 4,005.00',
+          },
+          {
+            image: `${OVERSEAS}/mbk-cash-form.webp`,
+            title: 'Sender and recipient',
+            text: 'Sender, recipient and purpose, with the Western Union card to earn points.',
+            alt: 'Pay in Cash form in the mobile app, with sender details, recipient details, purpose of payment, Western Union card and declarations',
+          },
+          {
+            image: `${OVERSEAS}/mbk-cash-review.webp`,
+            title: 'Review',
+            text: 'Everything on one page before Submit.',
+            alt: 'Overseas Transfer Review for Pay in Cash in the mobile app, with the amounts, sender, recipient, purpose and Western Union card',
+          },
+          {
+            image: `${OVERSEAS}/mbk-cash-success.webp`,
+            title: 'Submitted',
+            text: 'The MTCN shows near the top, for the recipient to collect the cash.',
+            alt: 'Overseas Transfer Successfully Submitted for Pay in Cash in the mobile app, with a MYR 4,005.00 total, the reference ID and MTCN',
+          },
+        ],
       },
     ],
   },

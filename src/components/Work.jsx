@@ -1,7 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
 import Button from './Button';
 import InboxShowcase from './InboxShowcase';
-import { workData } from '../data/portfolioData';
+import { inboxShowcase, overseasShowcase, workData } from '../data/portfolioData';
 import { Sparkle, Clock } from './icons';
 
 const WIP_MESSAGE = 'I am currently working on this section, work in progress';
@@ -53,7 +53,11 @@ const Work = () => {
         </div>
       </div>
 
-      <InboxShowcase />
+      {/* The RHB case studies, one after the other on the same navy. */}
+      <div className="inbox-showcases">
+        <InboxShowcase data={inboxShowcase} label="Case study 1" />
+        <InboxShowcase data={overseasShowcase} label="Case study 2" reverse showLogo={false} />
+      </div>
 
       <WipBanner />
 
