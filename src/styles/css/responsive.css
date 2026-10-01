@@ -24,9 +24,101 @@
   .stf-line {
     --stf-length: 56px;
   }
+  /* On a phone the three foundations are cards in a row that scrolls
+     sideways, snapping to each, and runs to the screen's edges. */
   .ds-foundations {
-    flex-direction: column;
-    gap: 32px;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 12px;
+    position: relative;
+    width: calc(100% + 32px);
+    min-width: 0;
+    margin-inline: -16px;
+    padding: 0 16px 4px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 16px;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+  }
+  .ds-foundations::-webkit-scrollbar {
+    display: none;
+  }
+  .ds-card {
+    width: 84vw;
+    padding: 20px;
+    justify-content: center;
+    border: var(--line-width) solid var(--wego-line);
+    border-radius: calc(var(--radius-md) * var(--corner-scale));
+    background-color: var(--wego-button);
+    scroll-snap-align: start;
+  }
+  /* The icon frames a step lighter than their card, so they show. */
+  .ds-card .ds-icon {
+    background-color: var(--wego-fade-top);
+  }
+  /* Typography: a smaller Aa beside the typeface's name and weights. */
+  .ds-card:first-child {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-rows: auto auto;
+    column-gap: 20px;
+    row-gap: 8px;
+    align-items: end;
+    align-content: center;
+  }
+  .ds-card:first-child .ds-type-specimen {
+    --ds-type-size: 88px;
+    grid-row: 1 / span 2;
+  }
+  .ds-card:first-child .ds-type-name {
+    align-self: end;
+  }
+  .ds-card:first-child .ds-type-weights {
+    align-self: start;
+    gap: 2px 12px;
+    font-size: 13px;
+  }
+  /* Colour: the columns share the card's width. */
+  .ds-mountain {
+    width: 100%;
+  }
+  .ds-mountain-column {
+    flex: 1;
+  }
+  .ds-mountain .ds-swatch {
+    width: auto;
+    height: 28px;
+  }
+  /* Each block keeps its own height in the column. */
+  .ds-card {
+    flex: none;
+  }
+  /* Icons: two full rows of seven, no gaps left. */
+  .ds-icons {
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 8px;
+  }
+  /* Square, sized from the card's width (84vw less its 20px padding and six
+     8px gaps), so the rows keep their height. */
+  .ds-icon {
+    width: auto;
+    height: calc((84vw - 40px - 48px) / 7);
+  }
+  .ds-icon:first-child {
+    grid-column-start: auto;
+  }
+  .ds-icon img {
+    width: 66%;
+    height: 66%;
+  }
+  /* On a phone the centred block reads from the left, like the rest. */
+  .wego-feature--centered .wego-feature-head {
+    align-items: flex-start;
+    align-self: stretch;
+    text-align: left;
   }
   .wego-rows {
     padding: 0 16px 48px;
@@ -413,12 +505,6 @@
   }
   .inbox-device--mobile {
     grid-column: 2;
-  }
-  .inbox-device--tablet .inbox-device-frame {
-    padding: 4px;
-  }
-  .inbox-device--tablet .inbox-device-screen {
-    border-radius: calc(3px * var(--corner-scale));
   }
   .inbox-shots,
   .inbox-cards {
