@@ -2529,14 +2529,14 @@
 
 /* --- Wego case studies in the RHB layout --- */
 /* The RHB popup and its blocks on a dark, cool pine green: white titles,
-   pale mint text, and mint for labels, markers and the index, with no
-   diamond behind. White is 15:1 on the green, the soft text 11:1 and the
-   mint 8:1. */
+   pale mint text, and the same soft green as the Portfolio labels for
+   labels, markers and the index, with no diamond behind. White is 15:1 on
+   the green, the soft text 11:1 and the soft green 7.6:1. */
 .wego-cs {
   --rhb-navy: #0f2c27;
   --rhb-navy-raised: #17392f;
   --rhb-blue-deep: #0a211c;
-  --rhb-sky: #6fd3b0;
+  --rhb-sky: #86c97a;
   --rhb-text: #ffffff;
   --rhb-text-soft: #c6e0d8;
   --rhb-line: rgba(198, 224, 216, 0.16);
