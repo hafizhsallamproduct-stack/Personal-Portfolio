@@ -207,7 +207,7 @@ export const workData = [
     isLarge: true,
     image: '/assets/portfolio/wego-design-system/cover.webp',
     description:
-      "Led the evolution of Wego's design system from a legacy Sketch setup to a more scalable Figma-based system. I worked across foundations, components, platform needs, and designer–developer collaboration to make the system easier to maintain, adopt, and evolve.",
+      "Led the evolution of Wego's design system from a legacy Sketch setup to a more scalable Figma-based system, and now we are moving it to Claude Design for faster iteration and development. I worked across foundations, components, platform needs, and designer–developer collaboration to make the system easier to maintain, adopt, and evolve.",
     intro:
       'This is the story of building and maintaining the design system, not its technical details. The system is still evolving, so what matters most is how decisions were made, how changes were introduced gradually, and how it stayed practical as our tools, workflows, and product needs changed.',
     slug: 'wego-design-system',
@@ -424,6 +424,8 @@ export const workData = [
         type: 'image',
         url: '/assets/portfolio/wego-design-system/8.webp',
         alt: 'Wego Design System structure diagram',
+        // Stacked one above the other in the popup, not in a strip.
+        stack: true,
         caption:
           'Original structure: separate desktop and mobile component libraries connected to each product touchpoint and development output.',
       },
@@ -431,6 +433,8 @@ export const workData = [
         type: 'image',
         url: '/assets/portfolio/wego-design-system/9.webp',
         alt: 'Wego Design System structure diagram',
+        // Stacked one above the other in the popup, not in a strip.
+        stack: true,
         caption:
           'Updated structure: one shared component library for desktop and mobile, with platform-specific documentation where needed.',
       },
@@ -1041,6 +1045,8 @@ export const workData = [
         type: 'image',
         url: '/assets/portfolio/fare-families/light-06.webp',
         alt: 'The fare card attributes across three stages of improvement',
+        // Shown on its own at full width in the popup, not in a strip.
+        stack: true,
         caption:
           'Improving the fare attributes in three stages. Original: still using the old icons. First improvement: clearer icons for a quick scan, based on competitor analysis, so it is obvious what is included and what is not. Second improvement: after internal feedback, an underline on the change and refundable status, making it clear those open more detail.',
       },
@@ -1716,7 +1722,7 @@ export const workData = [
 // sidebar, so people can see what is coming without a page to open yet.
 // The Wego Design System's foundations on its Portfolio feature: the
 // typeface, a sample of the colour tokens (from the system's palette), and
-// room for the icons. The colours stand in columns, one per hue.
+// the product icons. The colours stand in columns, one per hue.
 export const wegoFoundations = {
   typeface: 'Inter',
   weights: ['Regular', 'Medium', 'Semibold', 'Bold'],
@@ -1790,8 +1796,12 @@ export const wegoFoundations = {
       ],
     },
   ],
-  // Placeholders until the icons are ready.
-  iconCount: 8,
+  // The product icons, each 48 by 48.
+  icons: Array.from(
+    { length: 14 },
+    (unused, i) =>
+      `/assets/portfolio/wego-design-system/icons/icon-${String(i + 1).padStart(2, '0')}.svg`
+  ),
 };
 
 // The Wego case studies as Portfolio features, each a full-width block on a
@@ -1806,6 +1816,7 @@ const WEGO_FEATURES = [
     centered: true,
     sketchToFigma: true,
     foundations: true,
+    platforms: 'Desktop, tablet, mobile web, mobile app',
   },
   { slug: 'wego-flight-search-redesign', titleLead: 'Flight Search' },
   { slug: 'fare-families', titleLead: 'Fare Families' },
@@ -1813,13 +1824,20 @@ const WEGO_FEATURES = [
 ];
 
 export const wegoShowcases = WEGO_FEATURES.map(
-  ({ slug, titleLead, centered = false, sketchToFigma = false, foundations = false }) => {
+  ({
+    slug,
+    titleLead,
+    centered = false,
+    sketchToFigma = false,
+    foundations = false,
+    platforms,
+  }) => {
     const work = workData.find((w) => w.slug === slug);
     return {
       slug,
       logo: '/assets/wego.svg',
       titleLead,
-      titleRest: work.title.charAt(0).toLowerCase() + work.title.slice(1),
+      titleRest: work.title,
       summary: [work.description],
       cover: work.image,
       centered,
@@ -1828,6 +1846,7 @@ export const wegoShowcases = WEGO_FEATURES.map(
       coverAlt: `${titleLead} cover`,
       meta: [
         { label: 'Company', value: 'Wego' },
+        ...(platforms ? [{ label: 'Platforms', value: platforms }] : []),
         { label: 'Year', value: work.year },
       ],
     };
@@ -1889,7 +1908,7 @@ export const inboxShowcase = {
   // The Portfolio feature: the title's lead in bold, a tag line, and the
   // slides of its image slider.
   titleLead: 'Inbox',
-  titleRest: 'every bank communication in one place',
+  titleRest: 'Every bank communication in one place',
   tags: 'UI/UX Design, Banking App',
   slides: [
     {
@@ -1957,7 +1976,7 @@ export const inboxShowcase = {
   meta: [
     { label: 'Company', value: 'RHB Banking Group' },
     { label: 'Role', value: 'UI/UX Designer' },
-    { label: 'Platforms', value: 'Desktop, tablet, mobile' },
+    { label: 'Platforms', value: 'Desktop, tablet, mobile web, mobile app' },
     {
       label: 'Scope',
       value:
@@ -2270,7 +2289,7 @@ export const overseasShowcase = {
   logo: '/assets/rhb-logo-white.svg',
   title: 'Overseas Transfer: send money abroad, to an account or as cash',
   titleLead: 'Overseas Transfer',
-  titleRest: 'send money abroad, to an account or as cash',
+  titleRest: 'Send money abroad, to an account or as cash',
   tags: 'UI/UX Design, Banking App',
   hero: {
     image: `${OVERSEAS}/details-desktop.webp`,
@@ -2313,7 +2332,7 @@ export const overseasShowcase = {
   meta: [
     { label: 'Company', value: 'RHB Banking Group' },
     { label: 'Role', value: 'UI/UX Designer' },
-    { label: 'Platforms', value: 'Banking web, mobile app' },
+    { label: 'Platforms', value: 'Desktop, tablet, mobile web, mobile app' },
     { label: 'Scope', value: 'Entry from Pay, payment method, transfer details' },
   ],
   // From the user: part of the IBK migration. The old website offered only

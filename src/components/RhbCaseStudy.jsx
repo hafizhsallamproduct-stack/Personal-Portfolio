@@ -7,6 +7,15 @@ const FOCUSABLE_SELECTOR =
 
 // A numbered heading with its explanation beside it, the way each part of an
 // RHB case study opens.
+// A case study's title in its popup: the bold lead alone on the first line,
+// the rest from the second, starting with a capital as a line of its own.
+export const CaseStudyTitle = ({ id, lead, rest }) => (
+  <h1 id={id} className="inbox-title">
+    <strong className="inbox-title-lead">{lead}:</strong>{' '}
+    {rest.charAt(0).toUpperCase() + rest.slice(1)}
+  </h1>
+);
+
 // `note` adds a short line of its own under the text.
 export const BlockHeader = ({ index, heading, text, note }) => (
   <div className="inbox-block-header">
@@ -15,7 +24,7 @@ export const BlockHeader = ({ index, heading, text, note }) => (
       <h2 className="inbox-block-title">{heading}</h2>
     </div>
     <div>
-      <p className="inbox-block-text">{text}</p>
+      {text && <p className="inbox-block-text">{text}</p>}
       {note && <p className="inbox-block-text inbox-block-note">{note}</p>}
     </div>
   </div>

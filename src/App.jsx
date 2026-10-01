@@ -1,4 +1,4 @@
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Navigate, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import About from './components/About';
 import Experience from './components/Experience';
@@ -9,9 +9,9 @@ import SideProjects from './components/SideProjects';
 import CanvasBoard from './components/CanvasBoard';
 import Footer from './components/Footer';
 import SideActions from './components/SideActions';
-import PortfolioModal from './components/PortfolioModal';
 import InboxCaseStudy from './components/InboxCaseStudy';
 import OverseasCaseStudy from './components/OverseasCaseStudy';
+import WegoCaseStudy from './components/WegoCaseStudy';
 import { useScrollReveal } from './hooks/useScrollReveal';
 
 function IndexPage() {
@@ -80,14 +80,42 @@ function App() {
           path="/portfolio/rhb-overseas-transfer"
           element={<OverseasCaseStudy isStandalone />}
         />
-        <Route path="/portfolio/:slug" element={<PortfolioModal isStandalone />} />
+        <Route
+          path="/portfolio/wego-design-system"
+          element={<WegoCaseStudy slug="wego-design-system" isStandalone />}
+        />
+        <Route
+          path="/portfolio/wego-flight-search-redesign"
+          element={<WegoCaseStudy slug="wego-flight-search-redesign" isStandalone />}
+        />
+        <Route
+          path="/portfolio/fare-families"
+          element={<WegoCaseStudy slug="fare-families" isStandalone />}
+        />
+        <Route
+          path="/portfolio/design-hub"
+          element={<WegoCaseStudy slug="design-hub" isStandalone />}
+        />
+        {/* Every shown case study has a popup of its own above; any other
+            case study link goes back to the home page. */}
+        <Route path="/portfolio/:slug" element={<Navigate to="/" replace />} />
       </Routes>
 
       {backgroundLocation && (
         <Routes>
           <Route path="/portfolio/rhb-inbox" element={<InboxCaseStudy />} />
           <Route path="/portfolio/rhb-overseas-transfer" element={<OverseasCaseStudy />} />
-          <Route path="/portfolio/:slug" element={<PortfolioModal />} />
+          <Route
+            path="/portfolio/wego-design-system"
+            element={<WegoCaseStudy slug="wego-design-system" />}
+          />
+          <Route
+            path="/portfolio/wego-flight-search-redesign"
+            element={<WegoCaseStudy slug="wego-flight-search-redesign" />}
+          />
+          <Route path="/portfolio/fare-families" element={<WegoCaseStudy slug="fare-families" />} />
+          <Route path="/portfolio/design-hub" element={<WegoCaseStudy slug="design-hub" />} />
+          <Route path="/portfolio/:slug" element={<Navigate to="/" replace />} />
         </Routes>
       )}
     </>

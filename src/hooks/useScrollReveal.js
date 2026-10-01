@@ -33,6 +33,7 @@ const REVEALS = [
   ['.wego-feature-head', 0],
   ['.wego-feature-cover', 0.05],
   ['.ds-card', 0.05],
+  ['.wego-row', 0],
   ['.wego-feature-foot', 0.1],
   ['.cta-heading', 0],
   ['.cta-subtext', 0.1],

@@ -1,5 +1,5 @@
 import InboxShowcase from './InboxShowcase';
-import WegoShowcase from './WegoShowcase';
+import WegoShowcase, { WegoRow } from './WegoShowcase';
 import { inboxShowcase, overseasShowcase, wegoShowcases } from '../data/portfolioData';
 import { Sparkle } from './icons';
 
@@ -28,17 +28,16 @@ const Work = () => {
         <InboxShowcase data={overseasShowcase} label="Case study 2" reverse showLogo={false} />
       </div>
 
-      {/* The Wego case studies, one full-width block each. The logo shows on
-          the first only. */}
+      {/* The Wego case studies on the dark green of their case study popup:
+          the design system as a full-width block with the logo, then the rest
+          as rows of a list, split by dividers. */}
       <div className="wego-features">
-        {wegoShowcases.map((showcase, i) => (
-          <WegoShowcase
-            data={showcase}
-            label={`Case study ${i + 3}`}
-            showLogo={i === 0}
-            key={showcase.slug}
-          />
-        ))}
+        <WegoShowcase data={wegoShowcases[0]} label="Case study 3" showLogo dark />
+        <div className="wego-rows wego-rows--dark">
+          {wegoShowcases.slice(1).map((showcase, i) => (
+            <WegoRow data={showcase} label={`Case study ${i + 4}`} key={showcase.slug} />
+          ))}
+        </div>
       </div>
     </section>
   );
