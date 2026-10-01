@@ -301,8 +301,10 @@ export const workData = [
       {
         type: 'image',
         url: '/assets/portfolio/wego-design-system/5.webp',
+        title: 'Early concept',
         alt: 'Background context for the Wego Design System rebuild',
-        caption: 'Early concept for design change',
+        caption:
+          'The first direction for the refresh, kept close to the existing system so the change could roll out gradually instead of all at once.',
       },
       { type: 'heading', text: 'Design Research and Exploration' },
       {
@@ -346,9 +348,10 @@ export const workData = [
       {
         type: 'image',
         url: '/assets/portfolio/wego-design-system/2.webp',
+        title: 'Approval slide',
         alt: 'Wego 2022 design concept, before and after UI comparisons across platforms',
         caption:
-          'Presentation slide for approval showing the before-and-after design. This slide was made by my director, applying the tokens and design direction we agreed on.',
+          'Before and after, side by side, so stakeholders could see the change at a glance before approving it. My director made this slide using the tokens and design direction we agreed on.',
       },
       { type: 'heading', text: 'Development, Testing and Documentation' },
       {
@@ -383,20 +386,26 @@ export const workData = [
       {
         type: 'image',
         url: '/assets/portfolio/wego-design-system/1.webp',
+        title: 'Foundation structure',
         alt: 'Design foundation variables and text styles in Figma',
-        caption: 'Foundation structure for typography and color',
+        caption:
+          'Typography and colour set up as shared variables and styles in Figma, so every component and screen draws from the same values.',
       },
       {
         type: 'image',
         url: '/assets/portfolio/wego-design-system/3.webp',
+        title: 'Component documentation',
         alt: 'Documentation for each component',
-        caption: 'Documentation for each component, where to use it and how to use it',
+        caption:
+          'Each component comes with notes on where and how to use it, so designers apply it the same way without having to ask.',
       },
       {
         type: 'image',
         url: '/assets/portfolio/wego-design-system/4.webp',
+        title: 'Component description',
         alt: 'Example of component description',
-        caption: 'Example of component description',
+        caption:
+          'What a component page covers, so designers and developers find its rules in one place.',
       },
       { type: 'heading', text: 'Structure, Maintenance & Documentation' },
       { type: 'subheading', text: 'Structure' },
@@ -422,21 +431,23 @@ export const workData = [
       },
       {
         type: 'image',
-        url: '/assets/portfolio/wego-design-system/8.webp',
+        url: '/assets/portfolio/wego-design-system/8-v2.webp',
+        title: 'Original structure',
         alt: 'Wego Design System structure diagram',
         // Stacked one above the other in the popup, not in a strip.
         stack: true,
         caption:
-          'Original structure: separate desktop and mobile component libraries connected to each product touchpoint and development output.',
+          'Separate desktop and mobile libraries, each linked to every product touchpoint and development output. It looked scalable at first, but it became hard to maintain.',
       },
       {
         type: 'image',
-        url: '/assets/portfolio/wego-design-system/9.webp',
+        url: '/assets/portfolio/wego-design-system/9-v2.webp',
+        title: 'Updated structure',
         alt: 'Wego Design System structure diagram',
         // Stacked one above the other in the popup, not in a strip.
         stack: true,
         caption:
-          'Updated structure: one shared component library for desktop and mobile, with platform-specific documentation where needed.',
+          'One shared library for desktop and mobile, with platform documentation only where it is needed, so there is less to keep in sync and the system is easier to maintain.',
       },
       { type: 'subheading', text: 'Maintenance' },
       {
@@ -509,44 +520,50 @@ export const workData = [
       {
         type: 'image',
         url: '/assets/portfolio/wego-design-system/10.webp',
+        title: 'Refreshed icon set',
         alt: 'Wego Design System icon set',
         caption:
-          'A refreshed icon set designed to align with the updated foundations and visual language of the component system.',
+          'Icons redrawn to match the updated foundations, so they sit naturally next to the new components.',
       },
       {
         type: 'image',
         url: '/assets/portfolio/wego-design-system/11.webp',
+        title: 'Flight search form',
         alt: 'Search form evolution across three generations',
         caption:
-          'The flight search form across three generations, from the original dense layout to a cleaner, more structured form that applies the updated design system foundations.',
+          'Three generations, from the original dense layout to a cleaner, more structured form built on the new foundations, giving travelers a clearer first step.',
       },
       {
         type: 'image',
         url: '/assets/portfolio/wego-design-system/12.webp',
+        title: 'Fare selection',
         alt: 'Fare selection screen evolution',
         caption:
-          'Fare selection redesigned to improve clarity and scannability. The updated layout uses consistent card patterns from the design system, making it easier to compare fare tiers at a glance.',
+          'Consistent card patterns from the system, so travelers can compare fare tiers at a glance.',
       },
       {
         type: 'image',
         url: '/assets/portfolio/wego-design-system/13.webp',
+        title: 'Booking flow',
         alt: 'Booking form evolution across three generations',
         caption:
-          'The booking flow updated to reflect the new design system: cleaner step indicators, improved information hierarchy, and consistent form components across passenger details and payment.',
+          'Cleaner step indicators, a clearer hierarchy, and the same form components from passenger details to payment, so the whole flow feels like one product.',
       },
       {
         type: 'image',
         url: '/assets/portfolio/wego-design-system/14.webp',
+        title: 'SEO marketing page',
         alt: 'SEO marketing page before and after redesign',
         caption:
-          'An SEO marketing page updated as part of the design system rollout, applying refreshed typography, spacing, and component patterns to improve readability and visual consistency across content-heavy pages.',
+          'Refreshed type, spacing, and components on a content-heavy page, so long pages are easier to read and match the rest of the product.',
       },
       {
         type: 'image',
         url: '/assets/portfolio/wego-design-system/15.webp',
+        title: 'Responsive grid',
         alt: 'Responsive grid implementation across breakpoints',
         caption:
-          'The responsive grid system applied across multiple breakpoints, showing how the design system foundations adapt consistently from desktop down to mobile across complex content layouts.',
+          'The same foundations from desktop down to mobile, so complex layouts stay consistent at every screen size.',
       },
     ],
   },
@@ -585,9 +602,10 @@ export const workData = [
       {
         type: 'image',
         url: '/assets/portfolio/wego-flight-search-redesign/1.webp',
+        title: 'Our starting point',
         alt: 'Audit of the Wego flight search form in July 2022',
         caption:
-          'Our starting point in July 2022: what the form contained and the main issues we logged, including the iOS and Android inconsistencies.',
+          'The form as it was in July 2022, with the main issues we logged, including the differences between iOS and Android. It set the baseline for every change that followed.',
       },
       {
         type: 'paragraph',
@@ -603,14 +621,16 @@ export const workData = [
         items: [
           {
             url: '/assets/portfolio/wego-flight-search-redesign/research-wego-2.webp',
+            title: 'Auditing our own form, part 1',
             alt: 'Audit of the Wego search form, part 1',
             caption:
-              'Auditing our own form: what it has, and the questions it raised, starting with inconsistency between iOS and Android.',
+              'What the form had and the questions it raised, starting with how iOS and Android had drifted apart.',
           },
           {
             url: '/assets/portfolio/wego-flight-search-redesign/research-wego-3.webp',
+            title: 'Auditing our own form, part 2',
             alt: 'Audit of the Wego search form, part 2',
-            caption: 'Auditing our own form: what it has and the questions it raised.',
+            caption: 'The rest of the audit, and the questions to answer before changing anything.',
           },
         ],
       },
@@ -619,39 +639,40 @@ export const workData = [
         items: [
           {
             url: '/assets/portfolio/wego-flight-search-redesign/research-mapping.webp',
+            title: 'Feature mapping',
             alt: 'Feature mapping of Wego against MakeMyTrip, Almosafer, Kayak, Hopper, and Kiwi',
             caption:
-              'Mapping every search form feature against five competitors to see where we stood and what to borrow.',
+              'Every search form feature mapped against five competitors, to see where we stood and what was worth borrowing.',
           },
           {
             url: '/assets/portfolio/wego-flight-search-redesign/research-mmt-1.webp',
+            title: 'MakeMyTrip teardown, part 1',
             alt: 'MakeMyTrip search page teardown, part 1',
-            caption:
-              'Competitor teardown: MakeMyTrip search page, what they have and the key takeaways.',
+            caption: "What MakeMyTrip's search page has, and the key takeaways for ours.",
           },
           {
             url: '/assets/portfolio/wego-flight-search-redesign/research-mmt-2.webp',
+            title: 'MakeMyTrip teardown, part 2',
             alt: 'MakeMyTrip search page teardown, part 2',
-            caption:
-              'Competitor teardown: MakeMyTrip search page, what they have and the key takeaways.',
+            caption: "What MakeMyTrip's search page has, and the key takeaways for ours.",
           },
           {
             url: '/assets/portfolio/wego-flight-search-redesign/research-mmt-3.webp',
+            title: 'MakeMyTrip teardown, part 3',
             alt: 'MakeMyTrip search page teardown, part 3',
-            caption:
-              'Competitor teardown: MakeMyTrip search page, what they have and the key takeaways.',
+            caption: "What MakeMyTrip's search page has, and the key takeaways for ours.",
           },
           {
             url: '/assets/portfolio/wego-flight-search-redesign/research-mmt-4.webp',
+            title: 'MakeMyTrip teardown, part 4',
             alt: 'MakeMyTrip search page teardown, part 4',
-            caption:
-              'Competitor teardown: MakeMyTrip search page, what they have and the key takeaways.',
+            caption: "What MakeMyTrip's search page has, and the key takeaways for ours.",
           },
           {
             url: '/assets/portfolio/wego-flight-search-redesign/research-mmt-5.webp',
+            title: 'MakeMyTrip teardown, part 5',
             alt: 'MakeMyTrip search page teardown, part 5',
-            caption:
-              'Competitor teardown: MakeMyTrip search page, what they have and the key takeaways.',
+            caption: "What MakeMyTrip's search page has, and the key takeaways for ours.",
           },
         ],
       },
@@ -680,9 +701,10 @@ export const workData = [
       {
         type: 'image',
         url: '/assets/portfolio/wego-flight-search-redesign/5.webp',
+        title: 'Travelers and cabin class',
         alt: 'Comparison of traveler and cabin class selection across travel apps',
         caption:
-          'The comparison that led to one of the changes: combining travelers and cabin class into a single selection means fewer taps.',
+          'How other travel apps handle travelers and cabin class. It led us to combine them into one selection, so travelers need fewer taps.',
       },
       {
         type: 'paragraph',
@@ -710,10 +732,11 @@ export const workData = [
       {
         type: 'image',
         url: '/assets/portfolio/wego-flight-search-redesign/7-light.webp',
+        title: 'Quick trip type change',
         urlDark: '/assets/portfolio/wego-flight-search-redesign/7-dark.webp',
         alt: 'Quick change for trip type in the return date field',
         caption:
-          'Quick change for trip type in the return date field. A/B tested on iOS, our highest-traffic platform; rejected after the numbers came back flat or negative.',
+          'A shortcut to change the trip type from the return date field. We A/B tested it on iOS, our highest-traffic platform, and dropped it when the numbers came back flat or negative, so a change that did not help stayed out of the product.',
       },
       // TODO image: the form across its generations (original, cleanup, design system). Export and add here.
       { type: 'heading', text: 'The Final Design' },
@@ -724,58 +747,65 @@ export const workData = [
       {
         type: 'image',
         url: '/assets/portfolio/wego-flight-search-redesign/10-light.webp',
+        title: 'One design, three platforms',
         urlDark: '/assets/portfolio/wego-flight-search-redesign/10-dark.webp',
         alt: 'The search form across iOS, Android, and mobile web',
         caption:
-          'One design, three platforms: the same form on iOS, Android, and mobile web, built from a single set of rules so it looks and behaves the same everywhere.',
+          'The same form on iOS, Android, and mobile web, built from one set of rules, so travelers get the same experience everywhere and the rules are defined only once.',
       },
       {
         type: 'image',
         url: '/assets/portfolio/wego-flight-search-redesign/1-light.webp',
+        title: 'First-time user',
         urlDark: '/assets/portfolio/wego-flight-search-redesign/1-dark.webp',
         alt: 'The redesigned search form for first-time users',
         caption:
-          'The form for a first-time user, across one-way, round-trip, and multi-city. The common path is ready to search with defaults already filled.',
+          'One-way, round-trip, and multi-city for someone searching for the first time. Defaults are already filled, so the most common search is ready to go.',
       },
       {
         type: 'image',
         url: '/assets/portfolio/wego-flight-search-redesign/2-light.webp',
+        title: 'Returning user',
         urlDark: '/assets/portfolio/wego-flight-search-redesign/2-dark.webp',
         alt: 'The search form for returning users with recent searches',
         caption:
-          'The returning-user version, with recent searches one tap away. The recent searches section is the work of another designer on the team.',
+          'Recent searches one tap away, so a returning traveler can repeat a search quickly. The recent searches section is the work of another designer on the team.',
       },
       {
         type: 'image',
         url: '/assets/portfolio/wego-flight-search-redesign/3-light.webp',
+        title: 'Field states',
         urlDark: '/assets/portfolio/wego-flight-search-redesign/3-dark.webp',
         alt: 'Search form field states',
         caption:
-          'Field states are specified in detail, so one set of rules builds the same way on iOS and Android.',
+          'Every field state specified in detail, so iOS and Android build it the same way from one set of rules.',
       },
       {
         type: 'image',
         url: '/assets/portfolio/wego-flight-search-redesign/4-light.webp',
+        title: 'Departure and arrival sheet',
         urlDark: '/assets/portfolio/wego-flight-search-redesign/4-dark.webp',
         alt: 'Departure and arrival bottom sheet',
         caption:
-          'The departure and arrival bottom sheet: recent searches, nearby airports, and popular destinations before the traveler even types.',
+          'Recent searches, nearby airports, and popular destinations show before the traveler types, so they can often pick without typing.',
       },
       {
         type: 'image',
         url: '/assets/portfolio/wego-flight-search-redesign/5-light.webp',
+        title: 'Calendar sheet',
         urlDark: '/assets/portfolio/wego-flight-search-redesign/5-dark.webp',
         alt: 'Calendar bottom sheet with public holidays',
         caption:
-          'The calendar bottom sheet, with public holidays listed to help travelers plan around them.',
+          'Public holidays listed in the calendar, so travelers can plan their dates around them.',
       },
       {
         type: 'image',
         url: '/assets/portfolio/wego-flight-search-redesign/6-light.webp',
+        title: 'Passengers and cabin class',
         urlDark: '/assets/portfolio/wego-flight-search-redesign/6-dark.webp',
         alt: 'Passengers, cabin class, and payment type sheets',
         caption:
-          'Passengers and cabin class grouped into one sheet. Payment types keep their own sheet.',
+          'Passengers and cabin class in one sheet, with payment types kept in their own, so related choices sit together.',
       },
       { type: 'heading', text: 'The Result' },
       {
@@ -807,10 +837,11 @@ export const workData = [
       {
         type: 'image',
         url: '/assets/portfolio/wego-flight-search-redesign/9-light.webp',
+        title: 'Nearby airport',
         urlDark: '/assets/portfolio/wego-flight-search-redesign/9-dark.webp',
         alt: 'Nearby airport option on the search form',
         caption:
-          'The nearby airport option appears on the form only when the chosen airport has one close by.',
+          'Shown on the form only when the chosen airport has one close by, so the form stays simple for everyone else.',
       },
       {
         type: 'paragraph',
@@ -827,10 +858,11 @@ export const workData = [
       {
         type: 'image',
         url: '/assets/portfolio/wego-flight-search-redesign/8-light.webp',
+        title: 'Price calendar',
         urlDark: '/assets/portfolio/wego-flight-search-redesign/8-dark.webp',
         alt: 'Price calendar showing fare levels per day',
         caption:
-          'The price calendar, colored by fare level. Accepted on every platform after A/B testing, with converted sessions up {{4.1%}} on desktop web.',
+          'Each day colored by fare level, so travelers can spot cheaper dates. Accepted on every platform after A/B testing, with converted sessions up {{4.1%}} on desktop web.',
       },
       { type: 'heading', text: 'How to Make It Better' },
       {
@@ -847,9 +879,10 @@ export const workData = [
       {
         type: 'image',
         url: '/assets/portfolio/wego-flight-search-redesign/11-light.webp',
+        title: 'Two upcoming changes',
         alt: 'Two upcoming improvements: a unified search form widget and an improved date selection UI',
         caption:
-          'Two changes I believe will make a difference: a unified search form widget (left) and an improved date selection UI (right).',
+          'A unified search form widget (left) and an improved date selection UI (right), two changes I believe will make a difference.',
       },
       { type: 'heading', text: 'What I Learned' },
       {
@@ -880,10 +913,11 @@ export const workData = [
       {
         type: 'image',
         url: '/assets/portfolio/fare-families/light-01.webp',
+        title: 'Fare selection over time',
         urlDark: '/assets/portfolio/fare-families/dark-01.webp',
         alt: 'The fare selection page across three generations, from before the design system to the latest design',
         caption:
-          'The fare selection page over time: the version before the design system, the first change after it, and the latest design.',
+          'The page before the design system, the first change after it, and the latest design, as it became clearer and easier to trust.',
       },
       { type: 'heading', text: 'Background and Problem' },
       {
@@ -920,9 +954,10 @@ export const workData = [
       {
         type: 'image',
         url: '/assets/portfolio/fare-families/light-04.webp',
+        title: 'Earlier flight details card',
         alt: 'The earlier flight details card across single passenger, multiple passengers, and a schedule change',
         caption:
-          'The earlier flight details card. Schedule changes pushed extra lines into the card, which made it feel crowded.',
+          'Schedule changes pushed extra lines into the card, which made it feel crowded and harder to read.',
       },
       {
         type: 'paragraph',
@@ -944,10 +979,11 @@ export const workData = [
       {
         type: 'image',
         url: '/assets/portfolio/fare-families/light-02.webp',
+        title: 'Flight details card',
         urlDark: '/assets/portfolio/fare-families/dark-02.webp',
         alt: 'The flight details card across its scenarios: trip types, stops, self-transfer, other transport, banners, schedule change, and loading',
         caption:
-          'One flight details card, specified for every case: trip types, stops, self-transfer, other transport, schedule changes, banners, and the loading state.',
+          'One card specified for every case: trip types, stops, self-transfer, other transport, schedule changes, banners, and the loading state, so every case uses the same structure.',
       },
       { type: 'subheading', text: 'Updating Fare Card' },
       {
@@ -968,9 +1004,10 @@ export const workData = [
       {
         type: 'image',
         url: '/assets/portfolio/fare-families/light-05.webp',
+        title: 'Fare card over time',
         alt: 'The fare card across three versions, from before the booking revamp to the current design',
         caption:
-          'The fare card over time: the version before the booking revamp, an early revamp version, and the current design.',
+          'Before the booking revamp, an early revamp version, and the current design, side by side.',
       },
       {
         type: 'paragraph',
@@ -1044,40 +1081,45 @@ export const workData = [
       {
         type: 'image',
         url: '/assets/portfolio/fare-families/light-06.webp',
+        title: 'Fare attributes',
         alt: 'The fare card attributes across three stages of improvement',
         // Shown on its own at full width in the popup, not in a strip.
         stack: true,
         caption:
-          'Improving the fare attributes in three stages. Original: still using the old icons. First improvement: clearer icons for a quick scan, based on competitor analysis, so it is obvious what is included and what is not. Second improvement: after internal feedback, an underline on the change and refundable status, making it clear those open more detail.',
+          'Three stages. Original: still the old icons. First: clearer icons for a quick scan, based on competitor analysis, so it is obvious what is included and what is not. Second: after internal feedback, an underline on the change and refundable status, so travelers can tell those open more detail.',
       },
       {
         type: 'image',
         url: '/assets/portfolio/fare-families/light-07.webp',
+        title: 'Current fare card',
         alt: 'The current fare card for single passenger, multiple passengers, and mixed fare',
         caption:
-          'The current fare card across scenarios: single passenger, multiple passengers, and a mixed fare where each leg has its own tier.',
+          'Single passenger, multiple passengers, and a mixed fare where each leg has its own tier, so the card holds up in every case.',
       },
       {
         type: 'image',
         url: '/assets/portfolio/fare-families/light-03.webp',
+        title: 'Full page in context',
         urlDark: '/assets/portfolio/fare-families/dark-03.webp',
         alt: 'The full fare selection page for single passenger, multiple passengers, and multiple passengers with infant',
         caption:
-          'The full page in context, with the fare cards adapting to the passenger count: single passenger, multiple passengers, and multiple passengers with an infant.',
+          'The fare cards adapting to the passenger count: single passenger, multiple passengers, and multiple passengers with an infant.',
       },
       {
         type: 'image',
         url: '/assets/portfolio/fare-families/light-08.webp',
+        title: 'Multiple fare flow',
         alt: 'The multiple fare flow: pick the departure fare, a loading state, then the return fare, then both selected',
         caption:
-          'The multiple fare flow, for when each leg is priced separately. The traveler picks the departure fare, the return options load, they pick the return fare, and both selections roll up into one total. The loading state is intentional: it marks the handover from one fare to the next, so the traveler understands they are now choosing for a different leg.',
+          'For when each leg is priced separately. The traveler picks the departure fare, the return options load, they pick the return fare, and both roll up into one total. The loading state marks the handover between legs, so the traveler knows they are now choosing for a different one.',
       },
       {
         type: 'image',
         url: '/assets/portfolio/fare-families/light-09.webp',
+        title: 'Card banners',
         alt: 'The banner scenarios: infant baggage notice, travel advisory, and combined ticket disclaimer',
         caption:
-          'The different banners that can appear on the card, depending on the trip and the moment: an infant baggage notice, a travel advisory during regional disruptions, and a combined ticket disclaimer for two one-way tickets.',
+          'An infant baggage notice, a travel advisory during regional disruptions, and a combined ticket disclaimer for two one-way tickets, each shown only when the trip and the moment call for it.',
       },
       { type: 'heading', text: 'The Rollout' },
       {
@@ -1172,10 +1214,11 @@ export const workData = [
       },
       {
         type: 'image',
-        url: '/assets/portfolio/design-hub/designhub-skills.webp',
+        url: '/assets/portfolio/design-hub/designhub-skills-v2.webp',
+        title: 'The nine skills',
         alt: 'The nine skills in three groups, with arrows showing which skill hands off to which',
         caption:
-          'The nine skills and how they connect. A component lands as Draft when added, and only the audit can mark it Stable, so nothing certifies its own work. Tokens are checked first, since every component builds on them.',
+          'How the nine skills connect. A component lands as Draft when added, and only the audit can mark it Stable, so nothing certifies its own work. Tokens are checked first, since every component builds on them.',
       },
       { type: 'heading', text: 'Then Claude Design Launched' },
       {
@@ -1195,15 +1238,17 @@ export const workData = [
         items: [
           {
             url: '/assets/portfolio/design-hub/claudedesign-1.webp',
+            title: 'Starting in Claude Design',
             alt: 'The Claude Design start screen with Wego Design System Lite selected as the design system',
             caption:
-              'Starting a design in Claude Design. The Wego Design System Lite is selected as the design system, so anything generated from here follows our foundations by default.',
+              'Wego Design System Lite selected as the design system, so anything generated from here follows our foundations by default.',
           },
           {
             url: '/assets/portfolio/design-hub/claudedesign-2.webp',
+            title: 'The imported system',
             alt: 'The imported design system, showing foundations, primitives, and composites alongside the repository structure',
             caption:
-              'The system once imported, grouped into foundations, primitives, and composites. The readme carries the repository structure, so both a designer and Claude can see where each token and component lives.',
+              'Grouped into foundations, primitives, and composites. The readme carries the repository structure, so both a designer and Claude can see where each token and component lives.',
           },
         ],
       },
@@ -1213,10 +1258,19 @@ export const workData = [
       },
       {
         type: 'image',
-        url: '/assets/portfolio/design-hub/claudedesign-3.webp',
-        alt: 'Three starting templates: Wego Meta, Wego Booking, and Booking Fare Selection',
+        url: '/assets/portfolio/design-hub/template-meta.webp',
+        title: 'Wego Meta template',
+        alt: 'The Wego Meta starting template: the meta header with Flights selected, an empty page body, and the full site footer',
         caption:
-          'The templates you can start from: Wego Meta, Wego Booking, and Fare Selection. Each one already has the shell and structure of that page, so the work starts from something on brand instead of a blank screen.',
+          'The meta page shell, with the full header and footer, so the work starts on brand instead of from a blank screen.',
+      },
+      {
+        type: 'image',
+        url: '/assets/portfolio/design-hub/template-booking.webp',
+        title: 'Wego Booking template',
+        alt: 'The Wego Booking starting template: the slim booking header, an empty page body, and the short booking footer',
+        caption:
+          'The booking page shell, with its slimmer header and footer, so a booking screen starts from the right structure.',
       },
       {
         type: 'paragraph',
@@ -1257,27 +1311,31 @@ export const workData = [
         items: [
           {
             url: '/assets/portfolio/design-hub/designhub-1.webp',
+            title: 'Design Hub landing page',
             alt: 'The Design Hub landing page, showing the three ways to work and the design work table',
             caption:
-              'The Design Hub landing page. Three ways to work: generate in Claude Design, explore in HTML, or hand off a live prototype. Below that, every page of design work with its platform, Figma file, exploration, and status.',
+              'Three ways to work: generate in Claude Design, explore in HTML, or hand off a live prototype. Below that, every page of design work with its platform, Figma file, exploration, and status, all in one place.',
           },
           {
             url: '/assets/portfolio/design-hub/designhub-2.webp',
+            title: 'Foundations',
             alt: 'The colour foundation documented with every token in light and dark mode',
             caption:
-              'The foundations, documented from the same source the components read. Every colour token is shown in light and dark with its hex value, so nobody has to open the CSS to check one.',
+              'Documented from the same source the components read. Every colour token is shown in light and dark with its hex value, so nobody has to open the CSS to check one.',
           },
           {
             url: '/assets/portfolio/design-hub/designhub-3.webp',
+            title: 'A component page',
             alt: 'The Card News component documentation with example prompts above each layout',
             caption:
-              'A component page. Each layout has an example prompt above it, so a designer can copy the phrasing that produces this result rather than working out how to ask.',
+              'An example prompt above each layout, so a designer can copy the phrasing that produces the result instead of working out how to ask.',
           },
           {
             url: '/assets/portfolio/design-hub/designhub-4.webp',
+            title: 'A smaller component',
             alt: 'The phone number input documented with its sizes, states, and a live interactive example',
             caption:
-              'The same for a smaller component, down to every state: valid, auto-filled, disabled, keyboard focus, and error. The top example is live, not a picture, so the behaviour can be checked in the browser.',
+              'Every state, from valid and auto-filled to disabled, keyboard focus, and error. The top example is live, not a picture, so the behaviour can be checked in the browser.',
           },
         ],
       },
@@ -1289,16 +1347,48 @@ export const workData = [
         type: 'carousel',
         items: [
           {
-            url: '/assets/portfolio/design-hub/claudedesign-10.webp',
-            alt: 'The goal for live prototypes: clickable, always current, no tool barrier, and hand-off ready',
+            url: '/assets/portfolio/design-hub/handoff-aim.webp',
+            title: 'The aim',
+            alt: 'What we want to achieve: four goals for the live prototype, and the flow from design to hand-off to ship',
             caption:
-              'What I am aiming for: one link that opens the real thing in a browser, so a reviewer walks the flow instead of reading a Figma frame. Design stays exploration, the prototype becomes the hand-off, and the same code ships.',
+              'One link that opens the real thing in a browser, so a reviewer walks the flow instead of reading a Figma frame. Design stays exploration, the prototype becomes the hand-off, and the same code ships.',
           },
           {
-            url: '/assets/portfolio/design-hub/claudedesign-8.webp',
-            alt: 'The live prototype plan, running on the production packages, alongside the repository skill files',
+            url: '/assets/portfolio/design-hub/handoff-how.webp',
+            title: 'How it gets there',
+            alt: 'Live prototype on production packages: four points on the left and the skills folder on the right',
             caption:
-              'How it gets there: the prototype runs on the same packages engineering ships, so what we design is what production renders. The remaining blocker is read access to those repositories.',
+              'The prototype runs on the same packages engineering ships, so what we design is what production renders. Read access to those packages is now in place.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        text: 'The hand-off version is already producing real pages. They are built in React from the published component library engineering uses, so each one renders the way production does. Every page also carries a Scenarios panel, opened from the button at the bottom, so every state and variation of the page can be reached and reviewed in one place instead of across separate screens.',
+      },
+      {
+        type: 'carousel',
+        items: [
+          {
+            url: '/assets/portfolio/design-hub/handoff-fare-families.webp',
+            title: 'Fare Families',
+            alt: 'The fare selection page built in the hand-off version, with the Scenarios panel open showing trip type, mixed fare, passengers, badge and banner options',
+            caption:
+              'The fare selection page, with the Scenarios panel open: trip type, mixed fare, passengers, badges and banners are all switched from one panel.',
+          },
+          {
+            url: '/assets/portfolio/design-hub/handoff-fbow-payment.webp',
+            title: 'Payment page',
+            alt: 'The payment step built in the hand-off version, with the Scenarios panel open listing the Qitaf and Mokafaa flow scenarios',
+            caption:
+              'The payment step, with the Scenarios panel open. Each scenario, from an applied promo code to the wallet errors, opens with one click and lists the steps to reach it.',
+          },
+          {
+            url: '/assets/portfolio/design-hub/handoff-fbow-booking-status.webp',
+            title: 'Booking confirmation',
+            alt: 'The booking confirmation page built in the hand-off version, showing the Manage Booking section with Change Flight and Cancel Flight, and the Scenarios panel open',
+            caption:
+              'The booking confirmation with the new Manage Booking section, Change Flight and Cancel Flight above the price. The panel switches between the Manage Booking options, the guest view and the other booking states.',
           },
         ],
       },

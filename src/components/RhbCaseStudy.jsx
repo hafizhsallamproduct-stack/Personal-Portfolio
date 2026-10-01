@@ -30,11 +30,11 @@ export const BlockHeader = ({ index, heading, text, note }) => (
   </div>
 );
 
-// A screen in a strip, with a label, title and a line of text under it.
+// A screen in a strip, with a title and a line of text under it.
 // With `frame` ('desktop', 'tablet' or 'phone'), the screen sits in a frame of that
 // device's shape and a taller one scrolls inside it, so every screen in the
 // strip is the same size.
-export const StripShot = ({ shot, index, frame }) => (
+export const StripShot = ({ shot, frame }) => (
   <figure className="inbox-shot">
     {frame ? (
       // Focusable so the arrow keys scroll a tall screen.
@@ -51,7 +51,6 @@ export const StripShot = ({ shot, index, frame }) => (
       <img src={shot.image} alt={shot.alt} loading="lazy" decoding="async" />
     )}
     <figcaption>
-      <span className="inbox-timeline-when">Screen {index + 1}</span>
       <span className="inbox-finding-title">{shot.title}</span>
       <span className="inbox-finding-text">{shot.text}</span>
     </figcaption>
@@ -73,8 +72,8 @@ export const Strips = ({ groups, frame, name }) =>
         role="region"
         aria-label={group.label ? `${group.label} ${name}` : name}
       >
-        {group.images.map((shot, i) => (
-          <StripShot shot={shot} index={i} key={shot.image} frame={group.frame ?? frame} />
+        {group.images.map((shot) => (
+          <StripShot shot={shot} key={shot.image} frame={group.frame ?? frame} />
         ))}
       </div>
     </div>

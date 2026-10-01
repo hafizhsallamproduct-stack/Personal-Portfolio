@@ -1016,7 +1016,7 @@
    height. */
 .inbox-devices {
   display: grid;
-  grid-template-columns: minmax(0, 5.2fr) minmax(0, 2.86fr) minmax(0, 1.23fr);
+  grid-template-columns: minmax(0, 5.2fr) minmax(0, 2.79fr) minmax(0, 1.23fr);
   gap: 32px 24px;
   /* Lined up along the bottom, so any small difference in height shows at
      the top. */
@@ -1056,11 +1056,6 @@
   background-color: var(--rhb-line);
 }
 
-/* The tablet keeps a thin bezel, as deep as the frame's corner. */
-.inbox-device--tablet .inbox-device-frame {
-  padding: calc(var(--radius-md) * var(--corner-scale));
-}
-
 /* The phone is never taller than 500px: its height follows its width, so the
    width stops at 500px times the phone's width over its height (360 by 1166
    with the browser bar). */
@@ -1086,9 +1081,9 @@
 }
 
 .inbox-device--tablet .inbox-device-screen {
+  /* Like the phone: the screen runs to the frame's edges under the browser
+     bar, with no bezel at the sides or bottom. */
   aspect-ratio: 3 / 4;
-  /* A slight rounding inside the bezel, softer than the frame's corners. */
-  border-radius: calc(4px * var(--corner-scale));
 }
 
 .inbox-device--mobile .inbox-device-screen {
@@ -1942,10 +1937,6 @@
   display: block;
 }
 
-.inbox-strip .inbox-shot .inbox-timeline-when {
-  margin-bottom: 4px;
-}
-
 .inbox-strip .inbox-shot img {
   width: auto;
   height: min(66vh, 720px, (100cqw - 48px) * 4 / 3 * 0.75);
@@ -2708,9 +2699,22 @@
   border-radius: calc(var(--radius-md) * var(--corner-scale));
 }
 
-.wego-cs-stack figcaption {
+/* Every caption under an image, in every case study popup, keeps to the
+   body text's width: the right two thirds of the 1104px column, 704px.
+   Under a narrower image it still wraps to the image. */
+.wego-cs-stack figcaption,
+.wego-cs-hero-caption {
   display: block;
   margin-top: 12px;
+}
+
+/* (Not the yellow hint joined to the Inbox demo's screen, which spans it.) */
+.inbox-modal figcaption:not(.inbox-opening-hint),
+.inbox-modal .wego-cs-hero-caption,
+.inbox-flow-step .inbox-timeline-when,
+.inbox-flow-step .inbox-finding-title,
+.inbox-flow-step .inbox-finding-text {
+  max-width: 704px;
 }
 
 .wego-cs-body + .wego-cs-stack,
@@ -2730,6 +2734,15 @@
 .wego-cs-strip figcaption {
   display: block;
   margin-top: 12px;
+}
+
+/* Under an image: its title and the caption, each on a line of its own. */
+.wego-cs figcaption > span {
+  display: block;
+}
+
+.wego-cs figcaption .inbox-finding-title + .inbox-finding-text {
+  margin-top: 8px;
 }
 
 /* --- CTA --- */

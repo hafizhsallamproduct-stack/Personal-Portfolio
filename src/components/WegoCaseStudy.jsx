@@ -115,6 +115,8 @@ const StripImage = ({ image }) => {
       </div>
       {image.caption && (
         <figcaption>
+          {/* A short title and the caption under it. */}
+          {image.title && <span className="inbox-finding-title">{image.title}</span>}
           <span className="inbox-finding-text">{renderText(image.caption)}</span>
         </figcaption>
       )}
@@ -172,7 +174,10 @@ const WegoCaseStudy = ({ slug, isStandalone }) => {
               <img src={heroImage.url} alt={heroImage.alt || ''} decoding="async" />
               {heroImage.caption && (
                 <figcaption className="wego-cs-hero-caption">
-                  {renderText(heroImage.caption)}
+                  {heroImage.title && (
+                    <span className="inbox-finding-title">{heroImage.title}</span>
+                  )}
+                  <span className="inbox-finding-text">{renderText(heroImage.caption)}</span>
                 </figcaption>
               )}
             </figure>
