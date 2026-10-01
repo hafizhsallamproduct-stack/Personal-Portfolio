@@ -1,6 +1,8 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useParams, useNavigate, Link, useLocation } from 'react-router-dom';
 import { workData, wipData } from '../data/portfolioData';
+import { TableBlock } from './caseStudyShared';
+import { OWN_POPUP, renderText } from './caseStudyText';
 import {
   X,
   HafizhLogo,
@@ -15,29 +17,6 @@ import {
 
 const FOCUSABLE_SELECTOR =
   'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
-
-// Text wrapped in {{...}} keeps its real value in the data but renders blurred,
-// so figures are hidden on screen without being lost.
-const BLUR_RE = /\{\{(.+?)\}\}/g;
-
-const renderText = (text) => {
-  if (typeof text !== 'string' || !text.includes('{{')) return text;
-  const parts = [];
-  let lastIndex = 0;
-  let match;
-  let key = 0;
-  while ((match = BLUR_RE.exec(text)) !== null) {
-    if (match.index > lastIndex) parts.push(text.slice(lastIndex, match.index));
-    parts.push(
-      <span key={key++} className="portfolio-blur">
-        {match[1]}
-      </span>
-    );
-    lastIndex = BLUR_RE.lastIndex;
-  }
-  if (lastIndex < text.length) parts.push(text.slice(lastIndex));
-  return parts;
-};
 
 const ImageBlock = ({ block, onImageClick }) => {
   const [imageTheme, setImageTheme] = useState('light');
@@ -393,40 +372,6 @@ const Lightbox = ({ source, onClose }) => {
 // Renders a table on desktop. On mobile, if the block has a mobileImage, the
 // table is swapped for that image (a wide table is easier to read as a graphic
 // on small screens).
-const TableBlock = ({ block, onImageClick }) => (
-  <figure className="portfolio-table-wrap">
-    <table className="portfolio-table">
-      <thead>
-        <tr>
-          {block.columns.map((col, i) => (
-            <th key={i}>{col}</th>
-          ))}
-        </tr>
-      </thead>
-      <tbody>
-        {block.rows.map((row, i) => (
-          <tr key={i}>
-            {row.map((cell, j) => (
-              <td key={j}>{renderText(cell)}</td>
-            ))}
-          </tr>
-        ))}
-      </tbody>
-    </table>
-    {block.mobileImage && (
-      // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions
-      <img
-        src={block.mobileImage}
-        alt={block.caption || ''}
-        className="portfolio-table-mobile-img"
-        loading="lazy"
-        decoding="async"
-        onClick={() => onImageClick?.(block.mobileImage)}
-      />
-    )}
-    {block.caption && <figcaption className="portfolio-image-caption">{block.caption}</figcaption>}
-  </figure>
-);
 
 const ContentBlock = ({ block, onImageClick }) => {
   switch (block.type) {
@@ -505,7 +450,8 @@ const PortfolioModal = ({ isStandalone }) => {
   const previouslyFocusedRef = useRef(null);
   const isClosingRef = useRef(false);
 
-  const visibleProjects = workData.filter((w) => !w.hidden);
+  // Case studies with a popup of their own are left out of this reader.
+  const visibleProjects = workData.filter((w) => !w.hidden && !OWN_POPUP.includes(w.slug));
   const matchedProject = workData.find((w) => w.slug === slug);
   // Hidden case studies are not reachable by direct URL: fall back to the first visible one.
   const selectedProject =

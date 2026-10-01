@@ -87,6 +87,21 @@
   /* The grid lines over the navy, fainter than the rules. */
   --rhb-grid-line: rgba(187, 227, 255, 0.1);
   --rhb-bezel: #001f3d;
+  /* The Wego features inside Portfolio: a fade from a pale Wego green to
+     white, with near-black text. The labels are a deep Wego green, 5.5:1 on
+     the pale green; the soft text is 8:1. */
+  --wego-fade-top: #ecfce1;
+  --wego-fade-bottom: #ffffff;
+  --wego-ink: #1d1d1d;
+  --wego-ink-soft: #4a4a4a;
+  --wego-label: #07750d;
+  --wego-line: rgba(29, 29, 29, 0.12);
+  /* A subtle button: the design system's green-100 with deep green text
+     (5.5:1), turning the primary green-400 with white text on hover. */
+  --wego-button: #e7fddc;
+  --wego-button-hover: #44b50c;
+  --wego-button-text: #07750d;
+  --wego-button-hover-text: #ffffff;
   /* The running work-in-progress banner on Portfolio: bright yellow with
      near-black type, 13.9:1. */
   --wip-bg: #ffdd00;

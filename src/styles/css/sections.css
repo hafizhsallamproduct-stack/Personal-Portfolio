@@ -437,10 +437,12 @@
 
 .about-details-title {
   font-family: var(--font-mono);
-  font-size: 12px;
+  /* The same type as the section tags, such as Portfolio. */
+  font-size: 16px;
   font-weight: 500;
+  line-height: 18px;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.08em;
   color: var(--text-muted);
   display: flex;
   align-items: center;
@@ -672,83 +674,6 @@
 #portfolio .section-title,
 #portfolio .work-disclaimer {
   color: var(--portfolio-text);
-}
-
-/* Running text in the Portfolio section, between the RHB feature and the
-   case study cards, while those are being reworked: bright yellow, scrolling left
-   in a loop, paused on hover. It sticks just below the header once reached,
-   and leaves with the section, since sticky stays within its parent. */
-.wip-banner {
-  position: sticky;
-  top: calc(var(--page-card-top) + var(--header-height));
-  /* Under the header (100), level with the floating actions. */
-  z-index: 99;
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto 40px;
-  overflow: hidden;
-  background-color: var(--wip-bg);
-  color: var(--wip-text);
-}
-
-.wip-track {
-  display: flex;
-  width: max-content;
-  animation: wip-scroll 40s linear infinite;
-}
-
-@media (hover: hover) {
-  .wip-banner:hover .wip-track {
-    animation-play-state: paused;
-  }
-}
-
-.wip-group {
-  display: flex;
-  flex-shrink: 0;
-}
-
-.wip-item {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 14px 32px 14px 0;
-  font-family: var(--font-mono);
-  font-size: 14px;
-  font-weight: 700;
-  line-height: 20px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-
-.wip-item .icon {
-  width: 18px;
-  height: 18px;
-  flex-shrink: 0;
-}
-
-@keyframes wip-scroll {
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-/* No motion: one still, centred line. */
-@media (prefers-reduced-motion: reduce) {
-  .wip-track {
-    width: auto;
-    justify-content: center;
-    animation: none;
-  }
-  .wip-group + .wip-group,
-  .wip-item + .wip-item {
-    display: none;
-  }
-  .wip-item {
-    padding-right: 0;
-    white-space: normal;
-  }
 }
 
 /* --- Work Cards (List) --- */
@@ -1024,8 +949,10 @@
 }
 
 .inbox-meta dt {
-  font-size: 13px;
-  line-height: 16px;
+  /* The same type as the section tags, such as Portfolio. */
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 18px;
 }
 
 .inbox-meta dd {
@@ -1346,8 +1273,7 @@
   margin-top: 48px;
 }
 
-/* The hint above it, as a yellow banner like the one on Portfolio, joined to
-   the top of the screen. */
+/* The hint above it, as a yellow banner joined to the top of the screen. */
 .inbox-opening-hint {
   padding: 12px 16px;
   border-radius: calc(var(--radius-md) * var(--corner-scale))
@@ -1755,8 +1681,10 @@
 
 /* The case study's number over its title, smaller than the popup's eyebrow. */
 .inbox-feature-label {
-  font-size: 13px;
-  line-height: 16px;
+  /* The same type as the section tags, such as Portfolio. */
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 18px;
 }
 
 /* Kept below the name in the hero (64px): the lead in bold, the rest
@@ -1766,6 +1694,16 @@
   font-weight: 300;
   line-height: 44px;
   letter-spacing: -0.02em;
+}
+
+/* In a popup the title's bold lead takes the first line alone, and the rest
+   has room to fit on two lines. */
+.inbox-title-lead {
+  display: block;
+}
+
+.inbox-hero .inbox-title {
+  max-width: 960px;
 }
 
 .inbox-title strong {
@@ -1909,7 +1847,7 @@
    The screens are 1440 by 1024 and as tall as the payment method screens,
    narrower than the popup on a phone. */
 .inbox-flow {
-  --flow-height: min(58vh, 640px, (100cqw - 48px) * 1024 / 1440);
+  --flow-height: min(66vh, 720px, (100cqw - 48px) * 1024 / 1440);
   display: flex;
   gap: 24px;
   list-style: none;
@@ -1960,8 +1898,8 @@
 
 /* Large screens in a strip wider than the content column, running to the
    popup's edges and scrolling sideways. The first one lines up with the
-   text above. Each is a little over half the window's height, up to
-   640px, and narrower than the popup on a phone. */
+   text above. Each is about two thirds of the window's height, up to
+   720px, and narrower than the popup on a phone. */
 .inbox-strip {
   /* The space beside the content column: the popup's gutter, or more once
      the popup is wider than the column. */
@@ -2010,8 +1948,8 @@
 
 .inbox-strip .inbox-shot img {
   width: auto;
-  height: min(58vh, 640px, (100cqw - 48px) * 4 / 3 * 0.75);
-  min-height: 300px;
+  height: min(66vh, 720px, (100cqw - 48px) * 4 / 3 * 0.75);
+  min-height: 320px;
 }
 
 /* A framed screen: the tablet's 3 by 4 at the same height, with a taller
@@ -2020,7 +1958,7 @@
 .inbox-strip-frame {
   overflow-y: auto;
   scrollbar-width: thin;
-  --frame-height: max(min(58vh, 640px, (100cqw - 48px) * 4 / 3 * 0.75), 300px);
+  --frame-height: max(min(66vh, 720px, (100cqw - 48px) * 4 / 3 * 0.75), 320px);
   width: calc(var(--frame-height) * 3 / 4);
   aspect-ratio: 3 / 4;
   border-radius: calc(var(--radius-md) * var(--corner-scale));
@@ -2052,6 +1990,746 @@
   min-height: 0;
   border-radius: 0;
   box-shadow: none;
+}
+
+/* --- Wego features --- */
+/* Each Wego case study is one full-width block on a fade from pale green to
+   white: the text on top, the cover across the block, then the facts and
+   the button. */
+.wego-features {
+  width: 100%;
+}
+
+.wego-feature {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 72px 48px;
+  /* Green over the top half only, fading to white by the middle. */
+  background: linear-gradient(180deg, var(--wego-fade-top) 0%, var(--wego-fade-bottom) 50%);
+  color: var(--wego-ink);
+}
+
+.wego-feature-head {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  max-width: 860px;
+}
+
+.wego-feature-logo {
+  height: 48px;
+  width: auto;
+  margin-bottom: 8px;
+}
+
+/* The case study label takes the section tags' type, such as Portfolio. */
+.wego-feature-label {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 18px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--wego-label);
+}
+
+.wego-feature-meta dt {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 18px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--wego-label);
+}
+
+.wego-feature-title {
+  text-wrap: balance;
+  font-size: 40px;
+  font-weight: 300;
+  line-height: 44px;
+  letter-spacing: -0.02em;
+}
+
+.wego-feature-title strong {
+  font-weight: 700;
+}
+
+.wego-feature-summary {
+  max-width: 760px;
+  font-size: 18px;
+  line-height: 28px;
+  color: var(--wego-ink-soft);
+}
+
+.wego-feature-cover {
+  display: block;
+  width: 100%;
+  height: auto;
+  /* Wider than the covers' own 16 by 10, so the block stays short; the
+     cover is cropped top and bottom, around its centre. */
+  aspect-ratio: 2.2 / 1;
+  object-fit: cover;
+  border-radius: calc(var(--radius-md) * var(--corner-scale));
+  box-shadow: 0 24px 48px rgba(7, 117, 13, 0.14);
+}
+
+/* A centred block: the text and the logos down the middle. */
+.wego-feature--centered .wego-feature-head {
+  align-items: center;
+  align-self: center;
+  text-align: center;
+}
+
+/* Sketch, then Figma, joined by a hairline. With motion allowed, the line
+   takes a faint yellow-to-purple tint, and three small shapes travel along
+   it a third of a loop apart, each a diamond in Sketch's yellow that turns
+   into a circle in Figma's purple, fading in and out at the ends. */
+.sketch-to-figma {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-top: 16px;
+}
+
+.stf-logo {
+  flex: none;
+  width: auto;
+  height: 48px;
+}
+
+.stf-line {
+  --stf-length: 140px;
+  position: relative;
+  width: var(--stf-length);
+  height: 1px;
+  background-color: var(--wego-line);
+}
+
+.stf-fill,
+.stf-token {
+  display: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .stf-fill {
+    display: block;
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, #fdb300, #a259ff);
+    opacity: 0.35;
+  }
+
+  .stf-token {
+    display: block;
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    width: 9px;
+    height: 9px;
+    animation: stf-token 4.5s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  }
+
+  /* Started partway through, so all three are on the line from the start. */
+  .stf-token:nth-of-type(3) {
+    animation-delay: -1.5s;
+  }
+
+  .stf-token:nth-of-type(4) {
+    animation-delay: -3s;
+  }
+}
+
+@keyframes stf-token {
+  0% {
+    opacity: 0;
+    border-radius: 1px;
+    background-color: #fdb300;
+    transform: translateX(0) rotate(45deg) scale(0.6);
+  }
+  12% {
+    opacity: 1;
+    transform: translateX(calc(var(--stf-length) * 0.12)) rotate(45deg) scale(1);
+  }
+  88% {
+    opacity: 1;
+    border-radius: 50%;
+    background-color: #a259ff;
+    transform: translateX(calc(var(--stf-length) * 0.88)) rotate(0deg) scale(1);
+  }
+  100% {
+    opacity: 0;
+    border-radius: 50%;
+    background-color: #a259ff;
+    transform: translateX(var(--stf-length)) rotate(0deg) scale(0.6);
+  }
+}
+
+/* The design system's foundations: three columns, each as wide as its
+   content, 48px apart, centred in the block and lined up along the bottom,
+   straight on the background. */
+.ds-foundations {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 48px;
+}
+
+.ds-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: left;
+}
+
+/* The lists in the cards are plain rows and grids. */
+.ds-card ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* The second line, from Figma on to Claude: purple to Claude's orange, the
+   circle turning into a diamond. */
+.stf-line--claude .stf-fill {
+  background: linear-gradient(90deg, #a259ff, #d97757);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .stf-line--claude .stf-token {
+    animation-name: stf-token-claude;
+  }
+}
+
+@keyframes stf-token-claude {
+  0% {
+    opacity: 0;
+    border-radius: 50%;
+    background-color: #a259ff;
+    transform: translateX(0) rotate(0deg) scale(0.6);
+  }
+  12% {
+    opacity: 1;
+    transform: translateX(calc(var(--stf-length) * 0.12)) rotate(0deg) scale(1);
+  }
+  88% {
+    opacity: 1;
+    border-radius: 1px;
+    background-color: #d97757;
+    transform: translateX(calc(var(--stf-length) * 0.88)) rotate(45deg) scale(1);
+  }
+  100% {
+    opacity: 0;
+    border-radius: 1px;
+    background-color: #d97757;
+    transform: translateX(var(--stf-length)) rotate(45deg) scale(0.6);
+  }
+}
+
+/* Typography: Inter set large, with its weights under it, and guide lines
+   through it as on a type specimen: cap height, x-height and baseline,
+   placed in shares of the type size and checked against the rendered
+   letters. */
+.ds-type-specimen {
+  --ds-type-size: 120px;
+  position: relative;
+}
+
+/* Thin solid lines, the baseline a little darker, kept to the column's width
+   so the gaps between the three columns look even. */
+.ds-type-guide {
+  position: absolute;
+  right: 0;
+  left: 0;
+  height: 0;
+  border-top: 1px solid var(--wego-line);
+}
+
+.ds-type-guide--cap {
+  top: calc(var(--ds-type-size) * 0.128);
+}
+
+.ds-type-guide--x {
+  top: calc(var(--ds-type-size) * 0.312);
+}
+
+.ds-type-guide--base {
+  top: calc(var(--ds-type-size) * 0.866);
+  border-top-color: rgba(29, 29, 29, 0.24);
+}
+
+.ds-type-sample {
+  position: relative;
+  font-family: 'Inter', sans-serif;
+  font-size: var(--ds-type-size);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  background: linear-gradient(135deg, var(--wego-ink) 40%, var(--wego-label));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.ds-type-name {
+  font-family: 'Inter', sans-serif;
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 36px;
+  letter-spacing: -0.02em;
+}
+
+.ds-type-weights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--wego-ink-soft);
+}
+
+.ds-type-weights li:nth-child(1) {
+  font-weight: 400;
+}
+
+.ds-type-weights li:nth-child(2) {
+  font-weight: 500;
+}
+
+.ds-type-weights li:nth-child(3) {
+  font-weight: 600;
+}
+
+.ds-type-weights li:nth-child(4) {
+  font-weight: 700;
+}
+
+/* Colour: a column per hue, touching, on one base, the heights rising and
+   falling unevenly. Each swatch is 48 by 32, and each column's top is
+   only slightly rounded. */
+.ds-mountain {
+  display: flex;
+  align-items: flex-end;
+}
+
+.ds-mountain-column {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 2px 2px 0 0;
+}
+
+.ds-mountain-column:first-child {
+  border-bottom-left-radius: 2px;
+}
+
+.ds-mountain-column:last-child {
+  border-bottom-right-radius: 2px;
+}
+
+.ds-swatch {
+  width: 48px;
+  height: 32px;
+}
+
+/* Icons: the product icons, four across, each in a 48 by 48 square frame in
+   the button's green. */
+.ds-icons {
+  display: grid;
+  grid-template-columns: repeat(4, 48px);
+  gap: 16px;
+}
+
+.ds-icon {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  background-color: var(--wego-icon-frame, #f4f4f4);
+}
+
+/* 14 icons in rows of four leave two gaps; they go in the top row, so the
+   bottom row is full and lines up with the other columns. */
+.ds-icon:first-child {
+  grid-column-start: 3;
+}
+
+.ds-icon img {
+  display: block;
+  width: 32px;
+  height: 32px;
+}
+
+.wego-feature-foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding-top: 24px;
+  border-top: var(--line-width) solid var(--wego-line);
+}
+
+.wego-feature-meta {
+  display: flex;
+  gap: 48px;
+}
+
+.wego-feature-meta dd {
+  margin-top: 4px;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.wego-feature-btn {
+  display: inline-flex;
+  white-space: nowrap;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border-radius: var(--radius-sm);
+  background-color: var(--wego-button);
+  color: var(--wego-button-text);
+  font-size: 16px;
+  line-height: 18px;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    background-color 0.3s cubic-bezier(0.25, 1, 0.5, 1),
+    color 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+@media (hover: hover) {
+  .wego-feature-btn:hover {
+    background-color: var(--wego-button-hover);
+    color: var(--wego-button-hover-text);
+  }
+}
+
+.wego-feature-btn:focus-visible {
+  outline: 2px solid var(--wego-button-text);
+  outline-offset: 2px;
+}
+
+/* The features and the rows below them on the dark, cool pine green of
+   the Wego case study popup, with white text, pale mint for the summary and
+   labels in a soft green, a muted take on Wego's (7.6:1). The button is a
+   green a little darker than the background, with the same soft green text
+   (8.2:1), and keeps its Wego primary green hover. */
+.wego-feature--dark,
+.wego-rows--dark {
+  --wego-fade-top: #0f2c27;
+  --wego-fade-bottom: #0f2c27;
+  --wego-ink: #ffffff;
+  --wego-ink-soft: #c6e0d8;
+  --wego-label: #86c97a;
+  --wego-line: rgba(198, 224, 216, 0.16);
+  --wego-icon-frame: #0c2521;
+  --wego-button: #0c2521;
+  --wego-button-text: #86c97a;
+}
+
+/* On the dark green, the baseline guide in the pale mint, a little stronger
+   than the other two. */
+.wego-feature--dark .ds-type-guide--base {
+  border-top-color: rgba(198, 224, 216, 0.32);
+}
+
+/* The Wego case studies after the design system, as rows of a list: the
+   cover, the text and the button, each row split
+   from the next by a line. On white, following the design system's fade. */
+.wego-rows {
+  display: flex;
+  flex-direction: column;
+  padding: 0 48px 72px;
+  background-color: var(--wego-fade-bottom);
+  color: var(--wego-ink);
+}
+
+.wego-row {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  padding: 32px 0;
+  border-top: var(--line-width) solid var(--wego-line);
+  color: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.wego-row:last-child {
+  border-bottom: var(--line-width) solid var(--wego-line);
+}
+
+.wego-row-cover {
+  /* As tall as the text beside it at its fullest (the label, two lines of
+     title and three of summary, 182px), in the covers' 16 by 10. */
+  flex-shrink: 0;
+  width: 292px;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-radius: calc(var(--radius-md) * var(--corner-scale));
+  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.wego-row-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+
+.wego-row-title {
+  text-wrap: balance;
+  font-size: 28px;
+  font-weight: 300;
+  line-height: 34px;
+  letter-spacing: -0.01em;
+}
+
+.wego-row-title strong {
+  font-weight: 700;
+}
+
+.wego-row-summary {
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--wego-ink-soft);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* The button sits against the right edge, so the buttons line up with the
+   design system's above. */
+.wego-row-action {
+  display: flex;
+  flex-shrink: 0;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 16px;
+  width: 200px;
+}
+
+@media (hover: hover) {
+  .wego-row:hover .wego-row-cover {
+    transform: scale(1.02);
+  }
+}
+
+.wego-row:focus-visible {
+  outline: 2px solid var(--wego-button-text);
+  outline-offset: 4px;
+}
+
+/* --- Wego case studies in the RHB layout --- */
+/* The RHB popup and its blocks on a dark, cool pine green: white titles,
+   pale mint text, and mint for labels, markers and the index, with no
+   diamond behind. White is 15:1 on the green, the soft text 11:1 and the
+   mint 8:1. */
+.wego-cs {
+  --rhb-navy: #0f2c27;
+  --rhb-navy-raised: #17392f;
+  --rhb-blue-deep: #0a211c;
+  --rhb-sky: #6fd3b0;
+  --rhb-text: #ffffff;
+  --rhb-text-soft: #c6e0d8;
+  --rhb-line: rgba(198, 224, 216, 0.16);
+  --rhb-bar: rgba(198, 224, 216, 0.5);
+  --rhb-grid-line: transparent;
+  --rhb-bezel: #0a211c;
+}
+
+/* The images sit flat, with no shadow. */
+.wego-cs .inbox-hero-shot img,
+.wego-cs .inbox-strip .inbox-shot img {
+  box-shadow: none;
+}
+
+/* A raised dark green close button with a white cross, turning Wego's
+   primary green with a white cross on hover, as Read Case Study does. */
+@media (hover: hover) {
+  .wego-cs .portfolio-modal-close.inbox-modal-close:hover {
+    background-color: var(--wego-button-hover);
+    color: var(--wego-button-hover-text);
+  }
+}
+
+/* The bar stays as tall as the RHB ones (28px logo, 24px above and below)
+   with a larger logo, so the padding shrinks to match. */
+.wego-cs .inbox-brandbar {
+  padding-block: 18px;
+}
+
+.wego-cs .inbox-brandbar-logo {
+  height: 40px;
+}
+
+/* The year under the title, and the credit at the end, as in the reader. */
+.wego-cs-year {
+  margin-top: 16px;
+  font-family: var(--font-mono);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 18px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--rhb-sky);
+}
+
+.wego-cs-credit {
+  max-width: 1104px;
+  margin: 96px auto 0;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--rhb-text-soft);
+}
+
+.wego-cs-hero-caption {
+  margin-top: 12px;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--rhb-text-soft);
+}
+
+/* An image in a strip holds the light and dark switch in its corner. */
+.wego-cs-image {
+  position: relative;
+}
+
+/* A table on the dark green: pale mint text, mint-tinted rules, the header
+   row a step lighter. */
+.wego-cs .portfolio-table-wrap {
+  max-width: none;
+  margin: 0;
+}
+
+.wego-cs .portfolio-table {
+  color: var(--rhb-text-soft);
+}
+
+.wego-cs .portfolio-table th,
+.wego-cs .portfolio-table td {
+  border-color: var(--rhb-line);
+}
+
+.wego-cs .portfolio-table th {
+  color: var(--rhb-text);
+  background-color: var(--rhb-navy-raised);
+}
+
+.wego-cs .portfolio-image-caption {
+  margin-top: 12px;
+  color: var(--rhb-text-soft);
+}
+
+/* The opening paragraphs, under the hero image. */
+.wego-cs-hero-text {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 760px;
+  margin-top: 40px;
+}
+
+/* A section's opening text, beside its heading. */
+.wego-cs-text {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Text that comes after a strip of images, in the same column. */
+.wego-cs-body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-left: calc((100% - 48px) / 3 + 48px);
+}
+
+.wego-cs-body + .wego-cs-strip,
+.wego-cs-strip + .wego-cs-body,
+.inbox-block-header + .wego-cs-body {
+  margin-top: 40px;
+}
+
+.wego-cs-subheading {
+  margin-top: 16px;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 28px;
+  color: var(--rhb-text);
+}
+
+.wego-cs-label {
+  margin-top: 8px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  color: var(--rhb-text);
+}
+
+.wego-cs-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-left: 20px;
+  list-style: disc;
+  font-size: 16px;
+  line-height: 28px;
+  color: var(--rhb-text-soft);
+}
+
+.wego-cs-list li::marker {
+  color: var(--rhb-sky);
+}
+
+.wego-cs-timeline .wego-cs-list {
+  margin-top: 8px;
+}
+
+/* Images marked to stack: one above the other across the full content
+   column, each at full width with its caption under it. */
+.wego-cs-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.wego-cs-stack .inbox-shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: calc(var(--radius-md) * var(--corner-scale));
+}
+
+.wego-cs-stack figcaption {
+  display: block;
+  margin-top: 12px;
+}
+
+.wego-cs-body + .wego-cs-stack,
+.wego-cs-stack + .wego-cs-body,
+.inbox-block-header + .wego-cs-stack,
+.wego-cs-stack + .wego-cs-strip,
+.wego-cs-strip + .wego-cs-stack {
+  margin-top: 40px;
+}
+
+/* A strip's images keep their own widths at one height; captions wrap to
+   the image. */
+.wego-cs-strip .inbox-shot {
+  width: min-content;
+}
+
+.wego-cs-strip figcaption {
+  display: block;
+  margin-top: 12px;
 }
 
 /* --- CTA --- */

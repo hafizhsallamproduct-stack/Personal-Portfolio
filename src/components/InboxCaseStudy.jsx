@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import InboxDevice from './InboxDevice';
-import RhbCaseStudy, { BlockHeader, Strips, Timeline } from './RhbCaseStudy';
+import RhbCaseStudy, { CaseStudyTitle, BlockHeader, Strips, Timeline } from './RhbCaseStudy';
 import { inboxShowcase as data } from '../data/portfolioData';
 
 // The home page as it opens the inbox: click the icon in the top bar and the
@@ -44,9 +44,7 @@ const Opening = ({ opening }) => {
 const InboxCaseStudy = ({ isStandalone }) => (
   <RhbCaseStudy data={data} titleId="inbox-case-study-title" isStandalone={isStandalone}>
     <header className="inbox-hero">
-      <h1 id="inbox-case-study-title" className="inbox-title">
-        <strong>{data.titleLead}</strong>: {data.titleRest}
-      </h1>
+      <CaseStudyTitle id="inbox-case-study-title" lead={data.titleLead} rest={data.titleRest} />
       <p className="inbox-intro">{data.intro}</p>
       <Opening opening={data.opening} />
     </header>

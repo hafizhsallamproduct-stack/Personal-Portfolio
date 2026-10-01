@@ -6,6 +6,51 @@
 }
 
 @media (max-width: 640px) {
+  .wego-feature {
+    gap: 32px;
+    padding: 48px 16px;
+  }
+  .wego-feature-title {
+    font-size: 30px;
+    line-height: 34px;
+  }
+  .wego-feature-summary {
+    font-size: 16px;
+    line-height: 24px;
+  }
+  .sketch-to-figma {
+    gap: 12px;
+  }
+  .stf-line {
+    --stf-length: 56px;
+  }
+  .ds-foundations {
+    flex-direction: column;
+    gap: 32px;
+  }
+  .wego-rows {
+    padding: 0 16px 48px;
+  }
+  .wego-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+  .wego-row-cover {
+    width: 100%;
+  }
+  .wego-row-action {
+    flex-direction: row;
+    justify-content: space-between;
+    width: auto;
+  }
+  .wego-row-title {
+    font-size: 22px;
+    line-height: 28px;
+  }
+  .stf-logo {
+    height: 40px;
+  }
   .side-projects {
     grid-template-columns: minmax(0, 1fr);
   }
@@ -63,6 +108,10 @@
   .inbox-brandbar {
     padding-block: 22px;
   }
+  /* The Wego bar at the same height, with its larger logo. */
+  .wego-cs .inbox-brandbar {
+    padding-block: 16px;
+  }
   .inbox-modal .inbox-brandbar {
     padding-right: 88px;
   }
@@ -95,6 +144,10 @@
   }
   .inbox-block {
     margin-top: 72px;
+  }
+  /* With the heading above the text, the rest of the text runs full width. */
+  .wego-cs-body {
+    margin-left: 0;
   }
   .inbox-block-header {
     grid-template-columns: minmax(0, 1fr);
@@ -281,12 +334,15 @@
   .inbox-brandbar-logo {
     height: 22px;
   }
+  .wego-cs .inbox-brandbar {
+    padding-block: 11px;
+  }
+  .wego-cs .inbox-brandbar-logo {
+    height: 32px;
+  }
   .inbox-slider-bar {
     flex: 1;
     width: auto;
-  }
-  .wip-banner {
-    margin-bottom: 32px;
   }
   .inbox-modal-body {
     padding: 32px 16px 48px;

@@ -1,4 +1,4 @@
-import RhbCaseStudy, { BlockHeader, Strips, Timeline } from './RhbCaseStudy';
+import RhbCaseStudy, { CaseStudyTitle, BlockHeader, Strips, Timeline } from './RhbCaseStudy';
 import { overseasShowcase as data } from '../data/portfolioData';
 
 // One step of the way in: the screen, with a ring on what the customer clicks
@@ -41,9 +41,7 @@ const Psychology = ({ principles }) => (
 const OverseasCaseStudy = ({ isStandalone }) => (
   <RhbCaseStudy data={data} titleId="overseas-case-study-title" isStandalone={isStandalone}>
     <header className="inbox-hero">
-      <h1 id="overseas-case-study-title" className="inbox-title">
-        <strong>{data.titleLead}</strong>: {data.titleRest}
-      </h1>
+      <CaseStudyTitle id="overseas-case-study-title" lead={data.titleLead} rest={data.titleRest} />
       <p className="inbox-intro">{data.intro}</p>
       <figure className="inbox-hero-shot">
         <img src={data.hero.image} alt={data.hero.alt} decoding="async" />
